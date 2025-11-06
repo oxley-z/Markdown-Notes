@@ -249,12 +249,36 @@ booti 是 bootm 命令的一个子集，可用于执行位于内存中的ARM64�
 booti addr [initrd[:size]] [fdt]
 ```
 
-### bootefi
+### bootelf
 
 bootelf用于从内存中启动elf镜像。
 
 ```bash
 bootefi <addr> [<fdt_addr> | -]
+```
+
+### bootp
+
+bootp 命令将通过bootp 协议下载映像。Bootp 是bootstrap Protocol 的简称，Bootp 协议将使用TCP/IP 网络协议的UDP 67/68 两个通讯端口，客户机从服务器得到IP 地址、服务器的IP地址、启动映像文件名、网关IP 等信息。
+
+```bash
+bootp [loadAddress] [[hostIPaddr:]bootfilename]
+```
+
+### bootvx
+
+使用ELF镜像启动vxWorks
+
+```bash
+bootvx  [address]
+```
+
+### bootvx32
+
+启动32位的VxWorks操作系统镜像
+
+```bash
+bootvx32  [address]
 ```
 
 ## 运行命令
@@ -919,8 +943,6 @@ _____________________________________________________________
 00.04.00   0x17cd     0xdc08     Bridge device           0x04
 00.05.00   0x17cd     0xdc01     Bridge device           0x04
 ```
-
-
 
 ### pci info
 
