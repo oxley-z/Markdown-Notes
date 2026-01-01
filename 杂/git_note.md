@@ -423,14 +423,62 @@ git log --oneline | wc -l
 
 解决办法[取消代理](#取消代理)
 
-### git查看文件状态显示为数字
+### git查看文件状态显示为数字（中文乱码）
 
 ```bash
 git config --global core.quotepath false
 ```
 
+### # 解决Git 同步 Obsidian 笔记时，换行符差异问题
+在使用 Git 同步 Obsidian 笔记时，**换行符差异**（Windows 的 `CRLF` vs Linux/macOS 的 `LF`）可能导致文件内容异常、合并冲突或版本历史混乱。以下是实践后，可行的解决方案：
+1. **根本原因**
+- **Windows**：默认换行符为 `\r\n` (CRLF)
+- **macOS/Linux**：默认换行符为 `\n` (LF)
+- Git 的自动转换功能 (`core.autocrlf`) 可能在不同系统间修改文件内容。
+2. **解决办法**
+**配置 `.gitattributes`**
+在 **Obsidian 仓库根目录** 创建/修改 `.gitattributes` 文件，强制统一换行符规则：
+```gitattributes
+# 所有文件视为文本，但由 Git 自动处理换行符（推荐）
+* text=auto
 
+# 明确指定 Markdown 相关文件使用 LF 换行符（关键！）
+*.md text eol=lf
+*.markdown text eol=lf
 
+# 避免对二进制文件进行换行符转换
+*.png binary
+*.jpg binary
+*.pdf binary
+```
+
+**作用**：
+- 所有文本文件由 Git 自动处理换行符（`text=auto`）。
+- **Markdown 文件强制使用 LF**（跨系统一致）。
+- 二进制文件禁止转换（避免损坏）。
+3. **本地 Git 配置（辅助）**
+执行以下命令 **禁用全局自动换行符转换**：
+```bash
+# 所有系统均推荐设置
+git config --global core.autocrlf false
+```
+4. **修复现有仓库**
+	如果文件已被错误转换，按步骤重置：
+	1. **提交所有更改**（避免丢失工作内容）
+	2. 删除 Git 缓存并重置：
+	
+	```bash
+	git rm --cached -r .        # 清除缓存
+	git reset --hard            # 重置工作区
+	```
+	
+	3. 重新添加文件：
+
+```bash
+git add .                   # 重新添加（应用新规则）
+git commit -m "修复换行符"
+```
+[# 解决Git 同步 Obsidian 笔记时，换行符差异问题](https://blog.csdn.net/u010006102/article/details/148685543)
 # 参考
 
 [Git Cheat Sheet (igevin.info)](https://blog.igevin.info/posts/git-cheat-sheet/)
