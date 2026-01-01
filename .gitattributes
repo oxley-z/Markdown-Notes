@@ -1,0 +1,11 @@
+# 所有文件视为文本，但由 Git 自动处理换行符（推荐）
+* text=auto
+
+# 明确指定 Markdown 相关文件使用 LF 换行符（关键！）
+*.md text eol=lf
+*.markdown text eol=lf
+
+# 避免对二进制文件进行换行符转换
+*.png binary
+*.jpg binary
+*.pdf binary
