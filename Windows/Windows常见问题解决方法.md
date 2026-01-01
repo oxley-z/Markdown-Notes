@@ -113,3 +113,14 @@ win + r 输入 regedit
 
 先将共享设置给其他网卡，之后再设置为需要共享的网卡
 
+# npm : 无法加载文件 D:\Program Files\nodejs\npm.ps1，因为在此系统上禁止运行脚本。有关详细信息，请参阅 https:/go.microsof
+解决办法
+
+* 在终端输入`get-ExecutionPolicy`查看执行策略/权限；
+* 输出`Restricted`(受限制的)；
+* 终端输入`Set-ExecutionPolicy -Scope CurrentUser`命令给用户赋予权限；
+* 输入`RemoteSigned`；
+* 终端输入`get-ExecutionPolicy`查看一下权限，显示`RemoteSigned`就可以了。
+
+
+
