@@ -113,3 +113,10 @@ win + r 输入 regedit
 
 先将共享设置给其他网卡，之后再设置为需要共享的网卡
 
+### [win10无法启用internet连接共享，为lan连接配置的IP地址需要使用自动ip寻址](https://blog.csdn.net/Caoyang_He/article/details/91125678)
+
+此问题为`192.168.137.1`地址被占用，将占用的网路的地址强制改为其他的IPv4地址即可
+
+# 8、esd转iso
+
+使用Dism++软件可转
