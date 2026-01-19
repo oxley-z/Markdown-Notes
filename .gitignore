@@ -1,3 +1,8 @@
 !.gitignore
 Thumbs.db
 *.db
+
+.obsidian/workspace-mobile.json
+.obsidian/workspace.json
+未命名
+未命名.base
