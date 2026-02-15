@@ -113,6 +113,14 @@ win + r 输入 regedit
 
 先将共享设置给其他网卡，之后再设置为需要共享的网卡
 
+### [win10无法启用internet连接共享，为lan连接配置的IP地址需要使用自动ip寻址](https://blog.csdn.net/Caoyang_He/article/details/91125678)
+
+此问题为`192.168.137.1`地址被占用，将占用的网路的地址强制改为其他的IPv4地址即可
+
+# 8、esd转iso
+
+使用Dism++软件可转
+=======
 # npm : 无法加载文件 D:\Program Files\nodejs\npm.ps1，因为在此系统上禁止运行脚本。有关详细信息，请参阅 https:/go.microsof
 解决办法
 
@@ -121,6 +129,3 @@ win + r 输入 regedit
 * 终端输入`Set-ExecutionPolicy -Scope CurrentUser`命令给用户赋予权限；
 * 输入`RemoteSigned`；
 * 终端输入`get-ExecutionPolicy`查看一下权限，显示`RemoteSigned`就可以了。
-
-
-
