@@ -479,6 +479,8 @@ git add .                   # 重新添加（应用新规则）
 git commit -m "修复换行符"
 ```
 [# 解决Git 同步 Obsidian 笔记时，换行符差异问题](https://blog.csdn.net/u010006102/article/details/148685543)
+
+## 解决
 # 参考
 
 [Git Cheat Sheet (igevin.info)](https://blog.igevin.info/posts/git-cheat-sheet/)
