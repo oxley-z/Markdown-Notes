@@ -480,11 +480,37 @@ git commit -m "修复换行符"
 ```
 [# 解决Git 同步 Obsidian 笔记时，换行符差异问题](https://blog.csdn.net/u010006102/article/details/148685543)
 
-## 解决# kex_exchange_identification: Connection closed by remote host
+## 解决kex_exchange_identification: Connection closed by remote host
+使用git push代码时出现以下问题：
 
+```git
+kex_exchange_identification: Connection closed by remote host
+Connection closed by UNKNOWN port 65535
+fatal: Could not read from remote repository.
 
+Please make sure you have the correct access rights
+and the repository exists.
+```
 
+**解决方法**：
+在`~/.ssh/`中找到config文件，将其中的内容改为：
+```config
+Host github.com
+    port 443
+    User git
+    HostName ssh.github.com
+    PreferredAuthentications publickey
+    IdentityFile ~/.ssh/id_rsa
+    ProxyCommand connect -S 127.0.0.1:7897 -a none %h %p
+```
 
+注意`port`后面的号为443，还需在`HostName`后面加上`.ssh`。之后在`git bash`中输入：
+```git
+ssh -T git@github.com
+```
+![[Pasted image 20260314131416.png]]
+输入`yes`，之后回车即可。
+[gitbash问题解决kex_exchange_identification: Connection closed by remote host](https://zhuanlan.zhihu.com/p/1918652707889219469)
 # 参考
 
 [Git Cheat Sheet (igevin.info)](https://blog.igevin.info/posts/git-cheat-sheet/)
