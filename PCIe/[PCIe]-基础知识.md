@@ -105,6 +105,8 @@ Bridge是一种连接不同总线的设备，用于扩展PCIe拓扑结构。它�
 
 [Linux NTB](https://events.static.linuxfound.org/sites/events/files/slides/Linux%20NTB_0.pdf)
 
+[Linux NTB驱动 docs](https://docs.linuxkernel.org.cn/driver-api/ntb.html)
+
 [PCIe NTB: What It Is and When to Use It](https://conclusive.tech/glossary/pcie-ntb-what-it-is-and-when-to-use-it/)
 
 [AN-510 Use of Non-transparent Bridging with IDT PCI ...](https://www.renesas.com/en/document/apn/724-non-transparent-bridging-idt-pes32nt24g2-pcie-switch?srsltid=AfmBOoorJkbVC3zETI4IyVigSZc2Zz7N-80iIM-toSYuR9DOgf5gfegN)
@@ -237,9 +239,9 @@ Vendor ID、Device ID这两个寄存器的值由 [PCI-SIG](https://pcisig.com/) 
 
 | Bits  | 定义                                  | 描述                                                         | 属性 |
 | ----- | ------------------------------------- | ------------------------------------------------------------ | ---- |
-| 0     | I/O Space Enable                      | 该位表示 PCI 设备是否响应 I/O 请求， 为 1 时响应， 为 0 时不响应。 如果 PCI 设备支持I/O 地址空间， 系统软件会将该位置 1，复位值为 0。<br/>如果 Func 不支持 I/O 空间访问，则允许该位硬连线到0b。 | RW   |
+| 0     | I/O Space Enable                      | 该位表示 PCI 设备是否响应 I/O 请求， 为 1 时响应， 为 0 时不响应。 如果 PCI 设备支持I/O 地址空间， 系统软件会将该位置 1，复位值为 0。<br/>如果 Func 不支持 I/O 空间访问，则允许该位硬连线到0b。**现代PCIe设备通常不使用I/O空间，此位应保持为0**。 | RW   |
 | 1     | Memory Space Enable                   | 该位表示 PCI 设备是否响应 Memory 请求， 为 1 时响应， 为 0 时不响应。 如果 PCI 设备支持 Memory 地址空间， 系统软件会将该位置 1。 复位值为 0。对于具有 Type 1 类型配置空间头的 Func ，该位控制对在其主侧上接收的存储器空间访问的响应。<br/>如果 Func 不支持存储器空间访问，则允许该位硬连线到0b。 | RW   |
-| 2     | Bus Master Enable                     | 该位表示 PCI 设备是否可以作为主设备， 为 1 时 PCI 设备可以作为主设备， 为 0 时不能。 复位值为 0。<br/>**具有 Type 0 配置空间标头的Func:**<br/>当该位被置位时，允许该函数发出 Memory 或 I/O 请求。<br/>当该位被清除时，不允许该函数发出任何 Memory 或 I/O 请求。<br/>**请注意**，由于MSI/MSI-X中断消息是带内内存写入，因此设置总线主<br/>启用位到 0b 也会禁用 MSI/MSI-X 中断消息。<br/>除 Memory 或 I/O 请求之外的请求不受该位控制。<br/>该位的默认值为0b。<br/>如果 Func 不生成 Memory 或 I/O 请求，则该位硬连线到0b。<br/>**具有 Type 1 配置空间标头的Func:**<br/>该位控制上游方向上的端口对 Memory 或 I/O 请求的转发。<br/>当该位是0b时，在根端口或交换机端口的下游侧接收的 Memory 或 I/O 请求必须被处理为不支持的请求 (UR)，并且对于非发布的请求，必须返回具有UR完成状态的完成。该位不影响上游或下游方向的完成转发。<br/>除 Memory 或 I/O 请求之外的请求的转发不受该位控制。<br/>该位的默认值为0b。 | RW   |
+| 2     | Bus Master Enable                     | 该位表示 PCI 设备是否可以作为主设备， 为 1 时 PCI 设备可以作为主设备（发起DMA请求）， 为 0 时不能。 复位值为 0。<br/>**具有 Type 0 配置空间标头的Func:**<br/>当该位被置位时，允许该函数发出 Memory 或 I/O 请求。<br/>当该位被清除时，不允许该函数发出任何 Memory 或 I/O 请求。<br/>**请注意**，由于MSI/MSI-X中断消息是带内内存写入，因此设置总线主<br/>启用位到 0b 也会禁用 MSI/MSI-X 中断消息。<br/>除 Memory 或 I/O 请求之外的请求不受该位控制。<br/>该位的默认值为0b。<br/>如果 Func 不生成 Memory 或 I/O 请求，则该位硬连线到0b。<br/>**具有 Type 1 配置空间标头的Func:**<br/>该位控制上游方向上的端口对 Memory 或 I/O 请求的转发。<br/>当该位是0b时，在根端口或交换机端口的下游侧接收的 Memory 或 I/O 请求必须被处理为不支持的请求 (UR)，并且对于非发布的请求，必须返回具有UR完成状态的完成。该位不影响上游或下游方向的完成转发。<br/>除 Memory 或 I/O 请求之外的请求的转发不受该位控制。<br/>该位的默认值为0b。<br/>OS/Driver在确认设备已正确初始化、DMA引擎已配置好后，才会设置此位，授予其发起事务的权力。 | RW   |
 | 3     | Special Cycle Enable                  | 该位表示 PCI 设备是否响应 Special 总线事务， 为 1 时响应， 为 0 时不响应。 PCI 设备可以使用 Special 总线事务， 将一些信息广播发送到多个目标设备， Specail 总线事务不能穿越 PCI 桥。 如果一个 PCI 设备需要将 Special 总线事务发送到 PCI 桥之下的总线时， 必须使用 Type 01h 配置周期。 PCI桥可以将 Type 01h 配置周期转换为 Special 周期， 该位的复位值为 0。 | RO   |
 | 4     | Memory Write and Invalidate           | 该位表示 PCI 设备是否支持 Memory Write and Invalidate 总线事务， 为 1时支持， 为 0 时不支持。 许多低端的 PCI 设备不支持这种总线事务。 该位对 PCIe 设备无意义。 | RO   |
 | 5     | VGA Palette Snoop                     | 其功能不适用于PCI Express，该位必须硬连线到 0b。             | RO   |
@@ -260,7 +262,7 @@ Vendor ID、Device ID这两个寄存器的值由 [PCI-SIG](https://pcisig.com/) 
 | ---- | -------------------------------------- | ------------------------------------------------------------ | ---- |
 | 3    | Interrupt Status                       | 该位为 1 且 Command 寄存器的 Interrupt Disable 位为 0 时， 表示 PCI 设备已经使用 INTx 信号向处理器提交了中断请求。 在多数 PCI 设备中的 BAR 空间， 存在自定义的中断状态寄存器， 因此设备驱动程序很少使用该位判断 PCI 设备是否提交了中断请求。 | RO   |
 | 4    | Capabilities List                      | 该位为 1 时 Capability Pointer 寄存器中的值有效。            | RO   |
-| 5    | 66 MHz Capable                         | 66MHz Capability 位， 该位只读。 为 1 时表示此设备支持 66 MHz 的 PCI 总线。 | RO   |
+| 5    | 66 MHz Capable                         | 66MHz Capability 位， 该位只读（历史遗留，PCIe忽略）。 为 1 时表示此设备支持 66 MHz 的 PCI 总线。 | RO   |
 | 7    | Fast Back-to-Back Transactions Capable | 该位为 1 表示此设备支持快速背靠背总线周期。                  | RO   |
 | 8    | Master Data Parity Error               | PCI 总线的 PERR#信号有效时将置该位为 1； 当 PCI 总线出现数据传送错误时置此位为 1； 当 Command 寄存器的 Parity Error Response 位为 1 时， 此位为 1。 | RW1C |
 | 10:9 | DEVSEL Timing                          | 该字段为 0b00 时表示 PCI 设备为快速设备； 为 0b01 时表示 PCI 设备为中速设备；为 0b10 时表示 PCI 设备为慢速设备。快速设备要求 PCI 总线主设备置 FRAME# 信号有效的一个时钟周期后，置 DEVSEL#信号有效； 中速设备要求 PCI 总线主设备置 FRAME #信号有效的两个时钟周期后， 置 DEVSEL# 信号有效； 慢速设备要求 PCI 总线主设备置 FRAME# 信号有效的三个时钟周期后， 置 DEVSEL# 信号有效。 | RO   |
@@ -356,7 +358,7 @@ PCI Express 为单个功能设备定义了一个传统中断消息，为多功�
 
 映射到 I/O 空间的基址寄存器始终为 32 位宽，其中位 0 硬连线为 1b。位 1 为保留位，读取时必须返回 0b，其他位用于将函数映射到 I/O 空间。映射到内存空间的基址寄存器可以是 32 位或 64 位宽（以支持映射到 64 位地址空间），其中位 0 硬连线为 0b。
 
-对于内存基址寄存器，位 2 和位 1 的编码含义如表 7-8 所示。如果数据可预取，则位 3 应设置为 1b，否则设置为 0b。如果读取操作没有副作用，函数在读取时返回所有字节（无论是否启用字节），并且主桥可以将处理器写入合并到此范围 139 而不会导致错误，则允许函数将某个范围标记为可预取。位 3-0 为只读。
+对于内存基址寄存器，位 2 和位 1 的编码含义如下表所示。如果数据可预取（Prefetchable），则位 3 应设置为 1b，否则设置为 0b。如果读取操作没有副作用，函数在读取时返回所有字节（无论是否启用字节），并且主桥可以将处理器写入合并到此范围而不会导致错误，则允许函数将某个范围标记为可预取。位 3-0 为只读。
 
 | Bit 2:1(b) | 描述                                                         |
 | ---------- | ------------------------------------------------------------ |
@@ -364,6 +366,15 @@ PCI Express 为单个功能设备定义了一个传统中断消息，为多功�
 | 01         | 保留                                                         |
 | 10         | 基址寄存器宽为 64 位，可以映射到 64 地址位内存空间中的任何位置。 |
 | 11         | 保留                                                         |
+
+* **Prefetchable**：
+  * 特性：对该区域的读操作没有副作用，可以从预取缓冲区中安全地预取数据。写操作可以被合并和优化。
+  * 用途：主要用于大容量的帧缓冲区或数据缓冲区（如显卡显存、网卡包缓冲区）。
+  * 地址：可以位于64位地址区域。
+* **Non-Prefetchable**
+  * 特性：读操作可能有副作用（例如，读一个寄存器会清除一个状态位），因此不能预取。写操作必须严格按程序顺序执行。
+  * 用途：用于设备控制和状态寄存器。
+  * 地址：通常位于32位地址空间以内。
 
 Func实际实现的高位数量取决于该函数将响应的地址空间大小。可以实现一个 32 位基址寄存器来支持单个大小为 2 的幂次方的内存，范围从 16 字节到 2 GB。如果Func需要 1 MB 的内存地址空间（使用 32 位基址寄存器），则需要构建地址寄存器的高 12 位，并将其余位硬连线为 0。如果实现了可调整大小的基址寄存器功能，则 BAR 中某些位的属性会受到影响。
 
@@ -405,7 +416,7 @@ Func实际实现的高位数量取决于该函数将响应的地址空间大小�
 | -------- | ------------------------------------------------------------ |
 | 0        | 读取为0b，表示一个内存请求, 读取位1b，表示一个IO请求。       |
 | 2:1      | 读为00b，指示目标仅支持解码32位地址。                        |
-| 3        | 读取为0b，表示该请求是用于非可预取内存的（意味着读取具有副作用）；NP-MMIO。 |
+| 3        | 读取为0b，表示该请求是用于**非可预取内存**的，意味着读取具有副作用（例如：读一个寄存器会清除一个状态位），因此不能预取，写操作必须严格按程序顺序执行；NP-MMIO。 |
 | 11:4     | 读取为全0，表示请求的大小（这些位是硬编码为0的）。           |
 | 31:12    | 读取为全1，因为软件尚未使用起始地址编程BAR的上位位。由于第12位是可写的最低有效位，请求的内存大小为2^12 = 4KB。 |
 
@@ -678,9 +689,121 @@ PCI-X 和PCIe 总线规范要求其设备必须支持Capabilities 结构。在PC
 
 > 《PCI Express® Base Specification Revision 5.0.pdf》7.5.3 PCI Express Capability Structure p719
 
+### PCI Express Capability List Register (Offset 00h)
+
+PCI Express Capability List寄存器用于枚举PCI配置空间的PCIe Capability结构。
+
+![Snipaste_2026-03-04_09-56-36](.\image\[PCIe]-基础知识\Snipaste_2026-03-04_09-56-36.png)
+
+> 《PCI Express® Base Specification Revision 5.0.pdf》7.5.3 PCI Express Capability Structure p719
+
+| Bits | 定义                        | 描述                                                         | 属性 |
+| ---- | --------------------------- | ------------------------------------------------------------ | ---- |
+| 7:0  | **Capability ID**           | 指示 PCI Express 功能结构。此字段必须返回功能 ID 10h，表示这是一个 PCI Express 功能结构。 | RO   |
+| 15:8 | **Next Capability Pointer** | 字段包含下一个PCI Capability结构的偏移量，如果不存在其他项，则为00h。 | RO   |
+
+### PCI Express Capabilities Register (Offset 02h)
+
+PCI Express Capabilities寄存器用于标识PCIe设备的功能类型及其相关功能。
+
+![Snipaste_2026-03-04_09-57-34](.\image\[PCIe]-基础知识\Snipaste_2026-03-04_09-57-34.png)
+
+> 《PCI Express® Base Specification Revision 5.0.pdf》7.5.3.2 PCI Express Capabilities Register (Offset 02h) p720
+
+| Bits | 定义                         | 描述                                                         | 属性   |
+| ---- | ---------------------------- | ------------------------------------------------------------ | ------ |
+| 3:0  | **Capability Version**       | 指示PCIe Capability结构的版本号。<br/>当规范版本对PCIe Capability结构的修改无法通过其他方式（例如通过新的能力字段）识别时，允许增加此字段。对PCIe Capability结构的所有此类修改必须保持软件兼容性。软件必须检查能力版本号是否大于或等于其编写时所定义的最高版本号，因为报告任何此类能力版本号的功能设备都将包含与该软件兼容的PCIe能力结构。<br/>对于符合本规范的功能设备，该字段必须硬连线为2h。 | RO     |
+| 7:4  | **Device/Port Type**         | 指示此PCIe功能设备的具体类型。需要注意的是，多功能设备中的不同功能设备通常可以具有不同的类型。<br/><br/>对于Type 0设备：<br/>**0000b** PCIe端点（Endpoint）；<br/>**0001b** 传统PCIe端点；<br/>**1001b** RCiEP（根复杂集成端点）；<br/>**1010b** RC复杂事件收集器；<br/><br/>对于Type 1设备：<br/>**0100b** PCIe根复杂的根端点；<br/>**0101b** PCIe Switch上行端口；<br/>**0110b** PCie Switch下行端口；<br/>**0111b** PCIe转PCI/PCI-X桥；<br/>**1000b** PCI/PCI-X转PCIe桥；<br/>其他值均为保留值。 | RO     |
+| 8    | **Slot Implemented**         | 当设置此位时，表示与该端口关联的链路已连接到一个外接可插拔设备（相对于连接到系统集成设备或被禁用而言），如果此位为0，表示连接到内部集成设备。<br/>此位对下游端口有效，对上游端口未定义。 | HwInit |
+| 13:9 | **Interrupt Message Number** | 该字段指示与此Capabilities结构中的任何状态位相关联生成的中断消息所使用的MSI/MSI-X向量。<br/>对于MSI，此字段的值表示生成的中断消息相对于基础消息数据的偏移量。当软件写入MSI消息控制寄存器中的多消息使能字段导致分配给该功能设备的MSI消息数量发生变化时，硬件需要更新此字段以确保其正确性。<br/>对于MSI-X，此字段的值表示用于生成中断消息的MSI-X表项。该表项必须是前32个表项之一，即使该功能设备实现了超过32个表项也是如此。对于给定的MSI-X实现，该表项必须保持不变。<br/>如果同时实现了MSI和MSI-X，允许它们使用不同的向量，但软件一次只能使能一种机制。如果MSI-X被使能，此字段的值必须指示MSI-X的向量。如果MSI被使能或两者都未被使能，此字段的值必须指示MSI的向量。如果软件同时使能了MSI和MSI-X，则此字段的值未定义。 | RO     |
+| 14   | **Ubdefined**                | 从该位读取的值是未定义的。在先前版本的规范中，该位曾用于指示对TCS路由的支持。系统软件应忽略从该位读取的值。系统软件允许对该位写入任意值。 | RO     |
+
+### Device Capabilities Register (Offset 04h)
+
+该寄存器用于识别PCIe设备功能相关特定能力。![Snipaste_2026-03-04_10-57-07](.\image\[PCIe]-基础知识\Snipaste_2026-03-04_10-57-07.png)
+
+> 《PCI Express® Base Specification Revision 5.0.pdf》7.5.3.3 Device Capabilities Register (Offset 04h) p722
+
+| Bits | 定义                             | 描述                                                         | 属性 |
+| ---- | -------------------------------- | ------------------------------------------------------------ | ---- |
+| 2:0  | **Max_Payload_Size Supported**   | 此字段表示该功能设备在事务层数据包中能够支持的最大有效载荷大小。<br/>**000b** 最大有效载荷大小 128 字节<br/>**001b** 最大有效载荷大小 256字节<br/>**010b** 最大有效载荷大小 512字节<br/>**011b** 最大有效载荷大小 1024字节<br/>**100b** 最大有效载荷大小 2048字节<br/>**101b** 最大有效载荷大小 4096字节<br/>**110b** 保留<br/>**111b** 保留<br/>多功能设备中的不同功能设备允许对此字段报告不同的值。 | RO   |
+| 4:3  | **Phantom Functions Supported**  | 此字段指示对使用未声明功能号的支持情况，通过将未声明的功能号（称为Phantom功能）与标签标识符进行逻辑组合，以扩展允许的未完成事务数量。<br/>**00b** 没有功能号位用于Phantom功能。多功能设备允许实现最多8个独立功能。<br/>**01b** 请求者ID中功能号的最高有效位用于Phantom功能；多功能设备允许实现功能0-3。功能0、1、2和3分别允许使用功能号4、5、6和7作为Phantom 功能。<br/>**10b** 请求者ID中功能号的最高两位用于Phantom功能；多功能设备允许实现功能0-1。功能0允许使用功能号2、4和6作为Phantom功能。功能1允许使用功能号3、5和7作为幻象功能。<br/>**11b** 请求者ID中功能号的所有3位都用于Phantom功能。设备必须只有一个功能0，该功能允许使用所有其他功能号作为Phantom功能。<br/>需要注意的是，在允许功能使用请求者ID中的功能号字段作为Phantom功能之前，必须通过设备控制寄存器中的Phantom功能使能字段来启用该功能的Phantom功能支持。 | RO   |
+| 5    | **Extended Tag Field Supported** | 此位与 [Device Capabilities 2 Register](#Device Status Register (Offset 0Ah)) 寄存器中的10-Bts Tag Requester Enable支持位共同指示作为请求者所支持的最大标签字段大小。如果10位标签请求者支持位被置位，则此位必须被置位。<br/>0b 支持5位标签字段<br/>1b 支持8位标签字段<br/>需要注意的是，在请求者能够生成8位标签之前，必须通过请求者功能设备控制寄存器中的扩展标签字段使能位来启用8位标签字段生成。 | RO   |
+|      |                                  | RO                                                           | RO   |
+|      |                                  |                                                              | RO   |
+
+
+
+### Device Control Register (Offset 08h)
+
+该寄存器用于控制PCIe设备特定的参数。详细说明了设备控制寄存器中的字段分配；
+
+![Snipaste_2026-03-04_14-47-47](.\image\[PCIe]-基础知识\Snipaste_2026-03-04_14-47-47.png)
+
+> 《PCI Express® Base Specification Revision 5.0.pdf》7.5.3 PCI Express Capability Structure p725
+
+| Bits  | 定义                                                         | 描述                                                         | 属性 |
+| ----- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---- |
+| 0     | **Correctable Error Reporting Enable**                       | 此位与其他位协同控制ERR_COR消息的发送。对于多功能设备，此位从各个功能的角度控制每个功能的错误报告。<br/>对于根端口，可校正错误的报告在根内部进行，不会生成外部ERR_COR消息。<br/>未与根复杂事件收集器关联的RCiEP允许将此位硬连线为0b。<br/>此位的默认值为0b。 | RW   |
+| 1     | **Non-Fatal Error Reporting Enable**                         | 此位与其他位协同控制ERR_NONFATAL消息的发送。对于多功能设备，此位从各个功能的角度控制每个功能的错误报告。<br/>对于根端口，非致命错误的报告在根内部进行，不会生成外部ERR_NONFATAL消息。<br/>未与根复杂事件收集器关联的RCiEP允许将此位硬连线为0b。<br/>此位的默认值为0b。 | RW   |
+| 2     | **Fatal Error Reporting Enable**                             | 此位与其他位协同控制ERR_FATAL消息的发送。对于多功能设备，此位从各个功能的角度控制每个功能的错误报告。<br/>对于根端口，致命错误的报告在根内部进行，不会生成外部ERR_FATAL消息。<br/>未与根复杂事件收集器关联的RCiEP允许将此位硬连线为0b。<br/>此位的默认值为0b。 | RW   |
+| 3     | **Unsupported Request Reporting Enable**                     | 此位与其他位协同控制通过发送错误消息来上报不支持请求错误。对于多功能设备，此位从各个功能的角度控制每个功能的错误报告。<br/>未与根复杂事件收集器关联的RCiEP允许将此位硬连线为0b。<br/>此位的默认值为0b。 | RW   |
+| 4     | **Enable Relaxed Ordering**                                  | 如果此位被设置，允许功能在其发起的不需要强写顺序的事务中，设置属性字段中的宽松排序位。<br/>如果功能作为请求者发起事务时从不设置宽松排序属性，则允许将此位硬连线为0b。<br/>当未硬连线为0b时，此位的默认值为1b。 | RW   |
+| 7:5   | **Max_Payload_Size**                                         | 此字段设置功能的最大TLP有效载荷大小。作为接收方，功能必须能够处理达到设定值的TLP。作为发送方，功能不得生成超过设定值的TLP。可编程的允许值由设备能力寄存器中的“Max_Payload_Size Supported”字段指示。<br/>**000b** 128字节最大有效载荷大小<br/>**001b** 256字节最大有效载荷大小<br/>**010b** 512字节最大有效载荷大小<br/>011b 1024字节最大有效载荷大小<br/>100b 2048字节最大有效载荷大小<br/>101b 4096字节最大有效载荷大小<br/>110b 保留<br/>111b 保留<br/>仅支持128字节最大有效载荷大小的功能允许将此字段硬连线为000b。<br/>系统软件不必为多功能设备的所有功能设置相同的值。<br/>对于ARI设备，最大有效载荷大小仅由功能0的设置决定。其他功能的设置始终返回软件为每个功能编程的值，但组件会忽略这些设置。<br/>此字段的默认值为000b。 | RW   |
+| 8     | **Extended Tag Field Enable**                                | 此位与 [Device Capabilities 2 Register](#Device Status Register (Offset 0Ah)) 寄存器中的10-Bts Tag Requester Enable启用位共同决定请求者允许使用的标签字段位数。当10位标签请求者启用位被清除时，适用以下规则：<br/>* 如果扩展标签字段启用位被设置，则允许功能作为请求者使用8位标签字段。<br/>* 如果该位被清除，则功能仅限于使用5位标签字段。<br/>如果软件在功能有未完成的非发布请求时更改扩展标签字段启用位的值，则结果未定义。<br/>未实现此能力的功能将此位硬连线为0b。<br/>此位的默认值由具体实现决定。 | RW   |
+| 9     | **Phantom Functions Enable**                                 | 此位与 [Device Capabilities 2 Register](#Device Status Register (Offset 0Ah)) 寄存器中的10-Bts Tag Requester Enable启用位共同决定请求者允许生成的未完成非发布请求的数量。 | RW   |
+| 10    | **Aux Power PM Enable**                                      | 当设置此位时，允许功能独立于PME Aux电源使用辅助电源。在传统操作系统上需要辅助电源的功能应继续指示PME Aux电源需求。辅助电源的分配按照电源管理能力寄存器中的Aux_Current字段请求的值进行，与电源管理控制/状态寄存器中的PME_En位无关。对于多功能设备，如果至少有一个功能设置了此位，则允许组件使用辅助电源。<br/>注意：消耗辅助电源的功能必须在辅助电源可用时保持此粘性寄存器的值。在此类功能中，常规复位不会修改此位。<br/>未实现此能力的功能将此位硬连线为0b。 | RWS  |
+| 11    | **Enable No Snoop**                                          | 如果此位被设置，允许功能在其发起的不需要硬件强制缓存一致性的事务中，设置请求者属性中的无侦测位（详见第2.2.6.5节）。需要注意的是，将此位设置为1b不应导致功能在其发起的所有事务上都设置无侦测属性。即使此位被设置，功能仅在其能够保证事务地址未存储在系统中的任何缓存中时，才允许在事务上设置无侦测属性。<br/>如果功能在其发起的事务中从不设置无侦测属性，则允许将此位硬连线为0b。 此位的默认值为1b。 | RW   |
+| 14:12 | **Max_Read_Request_Size**                                    | 此字段设置作为请求者的功能的最大读取请求大小。功能不得生成超过设定值的读取请求。该字段定义的编码如下：<br/>000b：128字节最大读取请求大小 <br/>001b：256字节最大读取请求大小 <br/>010b：512字节最大读取请求大小 <br/>011b：1024字节最大读取请求大小 <br/>100b：2048字节最大读取请求大小 <br/>101b：4096字节最大读取请求大小 <br/>110b：保留<br/>111b：保留 | RW   |
+| 15    | **Bridge Configuration Retry Enable / Initiate Function Level Reset** | 此位根据功能类型具有不同的含义：<br/>* **PCI Express to PCI/PCI-X Bridges**：<br/>**Bridge Configuration Retry Enable**：当设置此位时，允许PCI Express转PCI/PCI-X桥在响应针对桥下设备的配置请求时返回配置请求重试状态。<br/>此位的默认值为0b。<br/>* **Endpoints with Function Level Reset Capability set to 1b**：<br/>**Initiate Function Level Reset**：对此位写入1b将向该功能发起功能级复位。软件从此位读取的值始终为0b。<br/>* 其他类型：<br/>保留，必须硬连线为0b。 |      |
+
+### Device Status Register (Offset 0Ah)
+
+该寄存器提供有关PCIe设备（功能）特定参数的状态信息。
+
+![Snipaste_2026-03-04_16-57-13](.\image\[PCIe]-基础知识\Snipaste_2026-03-04_16-57-13.png)
+
+| Bits | 定义                                   | 描述                                                         | 属性 |
+| ---- | -------------------------------------- | ------------------------------------------------------------ | ---- |
+| 0    | **Correctable Error Detected**         | 此位指示检测到的可校正错误的状态。无论设备控制寄存器中的错误报告是否启用，错误都会被记录到此寄存器中。对于多功能设备，每个功能指示各自功能所感知的错误状态。<br/>对于支持高级错误处理的功能，无论可校正错误掩码寄存器的设置如何，错误都会被记录到此寄存器中。<br/>此位的默认值为0b。 | RW1C |
+| 1    | **Non-Fatal Error Detected**           | 此位指示检测到的非致命错误的状态。无论设备控制寄存器中的错误报告是否启用，错误都会被记录到此寄存器中。对于多功能设备，每个功能指示各自功能所感知的错误状态。<br/>对于支持高级错误处理的功能，无论不可校正错误掩码寄存器的设置如何，错误都会被记录到此寄存器中。<br/>此位的默认值为0b。 | RW1C |
+| 2    | **Fatal Error Detected**               | 此位指示检测到的致命错误的状态。无论设备控制寄存器中的错误报告是否启用，错误都会被记录到此寄存器中。对于多功能设备，每个功能指示各自功能所感知的错误状态。<br/>对于支持高级错误处理的功能，无论不可校正错误掩码寄存器的设置如何，错误都会被记录到此寄存器中。<br/>此位的默认值为0b。 | RW1C |
+| 3    | **Unsupported Request Detected**       | 此位指示功能是否收到了不支持请求。无论设备控制寄存器中的错误报告是否启用，错误都会被记录到此寄存器中。<br/>对于多功能设备，每个功能指示各自功能所感知的错误状态。<br/>此位的默认值为0b。 | RW1C |
+| 4    | **AUX Power Detected**                 | 需要辅助电源的功能在检测到辅助电源可用时将此位报告为已设置。 | RO   |
+| 5    | **Transactions Pending**               | **对于EP设备**：<br/>当设置此位时，表示功能已发出尚未完成的非发布请求。只有当所有未完成的非发布请求已完成或通过完成超时机制终止时，功能才将此位报告为清除。在功能级复位完成后，此位也必须被清除。<br/>**对于根端口及Switch端口**：<br/>当设置此位时，表示端口代表自己（使用端口自己的请求者ID）已发出尚未完成的非发布请求。只有当所有此类未完成的非发布请求已完成或通过完成超时机制终止时，端口才将此位报告为清除。需要注意的是，仅实现本文档所要求功能的根端口和交换机端口不会代表自己发出非发布请求，因此不适用于此情况。不代表自己发出非发布请求的根端口和交换机端口将此位硬连线为0b。 | RO   |
+| 6    | **Emergency Power Reduction Detected** | 当功能处于紧急电源降低状态时，此位被设置。只要存在任何会导致进入紧急电源降低状态的条件，功能将保持在该状态，并且对此位的写入无效。<br/>与上游端口关联的多功能设备必须在所有支持紧急电源降低状态的功能中设置此位。<br/>默认值为0b | RW1C |
+
+### Link Capabilities Register (Offset 0Ch)
+
+该寄存器用于识别PCIe链路特定的能力。
+
+![Snipaste_2026-03-05_09-22-47](.\image\[PCIe]-基础知识\Snipaste_2026-03-05_09-22-47.png)
+
+| Bits  | 定义                                                     | 描述                                                         | 属性   |
+| ----- | -------------------------------------------------------- | ------------------------------------------------------------ | ------ |
+| 3:0   | **Max Link Speed**                                       | 此字段指示关联端口的最大链路速度。编码值指定了[Link Capabilities 2 Register]()寄存器中"支持的链路速度向量"字段内的一个位位置，该位置对应于最大链路速度。<br/>可选值如下：<br/>**0001b** 指向支持的链路速度向量字段的第0位<br/>**0010b** 指向支持的链路速度向量字段的第1位<br/>**0011b** 指向支持的链路速度向量字段的第2位<br/>**0100b** 指向支持的链路速度向量字段的第3位<br/>**0101b** 指向支持的链路速度向量字段的第4位<br/>**0110b** 指向支持的链路速度向量字段的第5位<br/>**0111b** 指向支持的链路速度向量字段的第6位 | RO     |
+| 9:4   | **Maximum Link Width**                                   | 此字段指示组件实现的最大链路宽度（xN，对应于N条通道）。允许此值超过路由到插槽（下游端口）、适配器连接器（上游端口）的通道数量，或者在组件到组件连接的情况下，超过实际有线连接的宽度。<br/>可选值如下：<br/>**00 0001b** x1<br/>**00 0010b** x2<br/>**00 0100b** x4<br/>**00 1000b** x8<br/>**00 1100b** x12<br/>**01 0000b** x16<br/>**10 0000b** x32<br/>其他值无效。<br/>与上游端口关联的多功能设备必须为所有功能报告此字段的相同值。 | RO     |
+| 11:10 | **ASPM Support / Active State Power Management Support** | 此字段指示给定PCIe链路上支持的主动状态电源管理水平。<br/>可选值如下：<br/>00b 不支持ASPM<br/>01b 支持L0s<br/>10b 支持L1<br/>11b 支持L0s和L1<br/>与上游端口关联的多功能设备必须为所有功能报告此字段的相同值。 | RO     |
+| 14:12 | **L0s Exit Latency**                                     | 此字段指示给定PCIe链路的L0s退出延迟。报告的值表示该端口从L0s状态完成转换到L0状态所需的时间长度。如果不支持L0s，则该值未定义；<br/>可选值如下：<br/>000b 小于64ns<br/>001b 64ns至小于128ns<br/>010b 128ns至小于256ns<br/>011b 256ns至小于512ns<br/>100b 512ns至小于1us<br/>101b 1us至小于2us<br/>110b 2us至4us<br/>111b 大于4us<br/>需要注意的是，退出延迟可能受PCIe参考时钟配置的影响，具体取决于组件使用的是公共时钟还是独立时钟。<br/>与上游端口关联的多功能设备必须为所有功能报告此字段的相同值。 | RO     |
+| 17:15 | **L1 Exit Latency**                                      | 此字段指示给定PCIe链路的L1退出延迟。报告的值表示该端口从ASPM L1状态完成转换到L0状态所需的时间长度。如果不支持ASPM L1，则该值未定义。<br/>可选值如下：<br/>**000b** 小于1us<br/>**001b** 1us至小于2us<br/>**010b** 2us至小于4us<br/>**011b** 4us至小于8us<br/>**100b** 8us至小于16us<br/>**101b** 16us至小于32us<br/>**110b** 32us至64us<br/>**111b** 大于64us<br/>需要注意的是，退出延迟可能受PCIe参考时钟配置的影响，具体取决于组件使用的是公共时钟还是独立时钟。<br/>与上游端口关联的多功能设备必须为所有功能报告此字段的相同值。 | RO     |
+| 18    | **Clock Power Management**                               | 对于上游端口，此位为1b表示当链路处于L1和L2/L3 Ready链路状态时，组件允许通过"时钟请求"（CLKREQ#）机制移除任何参考时钟。此位为0b表示组件不具备此能力，在这些链路状态下不得移除参考时钟。 | RO     |
+| 19    | **Surprise Down Error Reporting Capable**                | 对于下游端口，如果组件支持检测和报告意外移除错误条件的可选能力，则此位必须被设置。对于上游端口以及不支持此可选能力的组件，此位必须硬连线为0b。 | RO     |
+| 20    | **Data Link Layer Link Active Reporting Capable**        | 对于下游端口，如果组件支持报告数据链路控制和管理状态机的DL_Active状态这一可选能力，则此位必须硬连线为1b。对于支持热插拔的下游端口（由槽位能力寄存器中的热插拔能力位指示）或支持高于5.0 GT/s链路速度的下游端口，此位必须硬连线为1b。<br/>对于上游端口以及不支持此可选能力的组件，此位必须硬连线为0b。 | RO     |
+| 21    | **Link Bandwidth Notification Capability**               | 此位为1b表示支持链路带宽通知状态和中断机制。对于所有支持宽度大于x1和/或多个链路速度的根端口和交换机下游端口，此能力是必需的。<br/>此字段不适用于EP、PCI Express转PCI/PCI-X桥以及交换机的上游端口，为保留字段。<br/>未实现链路带宽通知能力的功能必须将此位硬连线为0b。 | RO     |
+| 22    | **ASPM Optionality Compliance**                          | 所有功能必须将此位设置为1b。<br/>针对某些早期版本规范实现的组件会将此位设置为0b。<br/>软件允许使用此位的值来帮助决定是否启用ASPM或是否运行ASPM符合性测试。 | HwInit |
+| 31:24 | **Port Number**                                          | 此字段指示给定PCIe链路的PCIe端口号。与上游端口关联的多功能设备必须为所有功能报告此字段的相同值。 | HwInit |
+
+### Link Control Register (Offset 10h)
+
+
+
+
+
+
+
 ## <span id = "Capabilities List">PCI Capabilities List</span>
 
-其中每一个Capability 结构都有唯一的ID 号，每一个Capability 寄存器都有一个指针，这个指针指向下一个Capability 结构，从而组成一个单向链表结构，这个链表的最后一个Capability 结构的指针为0。链表开始的指针地址为0x34处的1byte数值，寻址过程如下:
+其中每一个Capability 结构都有唯一的ID 号，每一个Capability 寄存器都有一个指针，这个指针指向下一个Capability 结构，从而组成一个单向链表结构，这个链表的最后一个Capability 结构的指针为0。链表开始的指针地址为0x34处的1byte数值，寻址过程如下：
 
 ### 寻址过程
 
@@ -771,7 +894,7 @@ lspci -vvvxxxx -s <id>
 
 ## PCIe Extended Capabilities List
 
-见 [扩展配置空间](#ExtenCapabilites)
+见 [扩展配置空间](#扩展配置空间（0x100h~0x3FFh）)
 
 ### Extended Capabilities IDs
 
@@ -867,7 +990,7 @@ lspci -vvvxxxx -s <id>
 #define PCI_EXT_CAP_ID_MAX	PCI_EXT_CAP_ID_PL_16GT
 ```
 
-# <span id="ExtenCapabilites">扩展配置空间（0x100h~0x3FFh）</span>
+# 扩展配置空间（0x100h~0x3FFh）
 
 **扩展配置空间则是用来描述设备的扩展能力和配置的**。PCIe 设备可以实现许多扩展功能，例如 MSI (Message Signaled Interrupt)、MSI-X (Message Signaled Interrupts eXtended)、SR-IOV (Single Root I/O Virtualization)、AER (Advanced Error Reporting)、L1 Substate Power Management等等，这些能力需要使用扩展配置空间进行描述和配置。扩展配置空间的地址范围为 0x100 到 0x3FF，长度为 256 个字节。扩展配置空间中的每个字节都可以被读取和写入，用于描述设备的各种扩展能力和配置。PCIe 规范定义了许多不同的扩展能力结构体，如 PCIe Capability、MSI Capability、MSI-X Capability、SR-IOV Capability 等等，这些结构体包含了各种字段和寄存器，用于描述设备的扩展能力和配置。
 

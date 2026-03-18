@@ -10,7 +10,9 @@
 
 [业余程序员plus-PCIe](https://blog.csdn.net/u011037593/category_12618509.html)
 
+## 知乎
 
+[PCIe 知识体系 500问：题目 201-300 详细答案 - 比姚明高一截的文章 - 知乎 ](https://zhuanlan.zhihu.com/p/1952075163811165871)
 
 # 书籍
 
