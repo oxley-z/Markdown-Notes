@@ -40,8 +40,6 @@ PCIe采用树拓扑，PCI总线从0开始，不超过256（但一般不会一层
 
 其中**`Root Complex`**（简称RC）：根设备，也称根节点，通常集成在主机处理器或芯片组中，它是整个PCIe总线的起点，主要负责分析和生成PCIe消息，管理PCIe拓扑结构中的所有设备。
 
-
-
 RC接收来自CPU的IO命令，生成对应的PCIe消息，接受来自设备的TLP消息，解析数据并传送到CPU和存储器。RC的主要功能有：
 
 * **初始化和枚举**：在系统启动时对所有连接的PCI/PCIe设备进行初始化和枚举，分配资源（如内存空间、Bar信息、中断号信息等）
@@ -61,12 +59,12 @@ RC接收来自CPU的IO命令，生成对应的PCIe消息，接受来自设备的
 
 ### Switch
 
-PCIe Switch是一种更高级的设备，用于扩展PCIe总线的连接能力，允许多个设备通过单个PCIe端口连接到主机系统。 与PCI并行总线不同，PCIe总线采用快速差分总线和端到端连接方式，因此每个PCIe链路两端只能连接一个设备。 如果需要装载更多的PCIe设备，则必须使用Switch适配器。 在Linux系统上看不到Switch。 在软件级别，可以看到交换机的上行端口(Upstream Port，靠近RC的一侧)和下行端口(Downstream Port )。switch设备的主要功能如下：
+PCIe Switch是一种更高级的设备，用于扩展PCIe总线的连接能力，允许多个设备通过单个PCIe端口连接到主机系统。 与PCI并行总线不同，PCIe总线采用快速差分总线和端到端连接方式，因此每个PCIe链路两端只能连接一个设备。 如果需要装载更多的PCIe设备，则必须使用Switch适配器。 在Linux系统上看不到Switch。 在软件级别，可以看到交换机的上行端口(Upstream Port，靠近RC的一侧)和下行端口(Downstream Port )。Switch设备的主要功能如下：
 
 * **连接多个设备**：允许多个设备通过单个PCIe总线连接到主机，从而扩展系统的连接性。
 * **数据交换**：在多个设备之间传输数据，允许设备之间直接通信而无需主机处理器。
 * **动态分配**：支持动态分配带宽和资源，根据需要调整设备之间的通信速率和优先级。
-* **NTB技术**：支持NTB（Non-Transparent Bridge）技术，允许两个或者多个系统之间直接通信。
+* **NTB技术**：支持NTB（Non-Transparent Bridge）技术，允许两个或者多个系统（多个CPU）之间直接通信，NTB提供隔离通信通道，使不同主机或子系统能安全共享PCIe设备，适用于多服务器共享存储或工业设备间的独立数据交换。NTB通过地址转换和防火墙规则实现内存空间隔离，确保数据安全性与传输效率。
 * **支持Peer to Peer通信**：支持点对点通信，设备之间可以直接进行数据交换而无需通过主机。
 * **虚拟化支持**：支持多跟IO虚拟化（MRIOV）和单根IO虚拟化（SRIOV），实现资源的灵活分配和管理。
 
@@ -82,6 +80,36 @@ Bridge是一种连接不同总线的设备，用于扩展PCIe拓扑结构。它�
 - **数据传输**：在不同的PCI总线之间传输数据，确保数据的一致性和完整性。
 - **地址转换**：进行地址转换，确保数据包正确路由到目标设备。
 - **配置管理**：支持配置空间访问，允许操作系统和驱动程序配置Bridge设备。
+
+#### 透明桥
+
+透明桥（Transparent Bridge）通常用于总线扩展。桥的从端口侧的所有设备对主端口系统是透明的。从端口侧的所有设备只能由主端口侧的主系统对其进行配置和控制。主从两侧的设备地址完全透明。
+
+#### 非透明桥(Non-Transparent Bridge，NTB)
+
+非透明桥（Non-Transparent Bridge）通常用于嵌入式智能 I/O 板卡。它连接两个独立的处理器域, 从设备侧的资源和地址对主设备侧的主系统是不可见的，**两个PCIe设备配置方式均为Type 0**，这两个Type 0设备被称为非透明（NT）端点。允许从设备侧的本地处理器独立地配置和控制其子系统。从设备侧和主设备侧的地址完全独立。
+
+非透明桥解决了多处理系统中的地址域冲突问题。多处理器通过非透明互相隔离，处理器间的I/O数据通信通过非透明桥的地址翻译功能进行地址的相互转换。处理器间的状态信息通过非透明桥特殊寄存器实现。
+
+##### NTB通信模式优势
+
+1. **高效率**：NTB通信模式可绕过CPU，直接和PCIe设备内存进行通信，可以显著提高通信效率。
+2. **低延迟**：NTB通信模式可以减少数据传输延迟，因此可以提高应用程序的性能。
+3. **可扩展性**：NTB通信模式支持多路NTB连接，因此可以扩展被写入测PCIe设备的连接能力。
+
+##### NTB通信常用场景
+
+1. **深度学习**：在深度学习应用中，NTB通信模式可以用于连接GPU等PCIe设备和NPU，以提高深度学习模型的训练和推理 速度。
+2. **人工智能**：在人工智能应用中，NTB通信模式可以用于连接各种AI加速器和NPU，以提高人工智能应用程序的性能。
+3. **高性能计算**：在高性能计算应用中，NTB通信模式可以用于连接各种高性能计算加速器和NPU，以提高高性能计算应用程序的性能。
+
+[Linux NTB](https://events.static.linuxfound.org/sites/events/files/slides/Linux%20NTB_0.pdf)
+
+[PCIe NTB: What It Is and When to Use It](https://conclusive.tech/glossary/pcie-ntb-what-it-is-and-when-to-use-it/)
+
+[AN-510 Use of Non-transparent Bridging with IDT PCI ...](https://www.renesas.com/en/document/apn/724-non-transparent-bridging-idt-pes32nt24g2-pcie-switch?srsltid=AfmBOoorJkbVC3zETI4IyVigSZc2Zz7N-80iIM-toSYuR9DOgf5gfegN)
+
+[Using Non-transparent Bridging in PCI Express Systems](https://docs.broadcom.com/doc/12353428)
 
 # 配置空间
 
