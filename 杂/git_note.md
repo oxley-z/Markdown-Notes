@@ -429,7 +429,7 @@ git log --oneline | wc -l
 git config --global core.quotepath false
 ```
 
-### # 解决Git 同步 Obsidian 笔记时，换行符差异问题
+### 解决Git 同步 Obsidian 笔记时，换行符差异问题
 在使用 Git 同步 Obsidian 笔记时，**换行符差异**（Windows 的 `CRLF` vs Linux/macOS 的 `LF`）可能导致文件内容异常、合并冲突或版本历史混乱。以下是实践后，可行的解决方案：
 1. **根本原因**
 - **Windows**：默认换行符为 `\r\n` (CRLF)
@@ -479,6 +479,25 @@ git add .                   # 重新添加（应用新规则）
 git commit -m "修复换行符"
 ```
 [# 解决Git 同步 Obsidian 笔记时，换行符差异问题](https://blog.csdn.net/u010006102/article/details/148685543)
+
+### 解决fatal: detected dubious ownership in repository at'1/192.168.3.246/d/temp/Word/Markdown"'1/192.168.3.246/d/temp/Word/Markdown'
+```bash
+fatal: detected dubious ownership in repository at
+'1/192.168.3.246/d/temp/Word/Markdown"'1/192.168.3.246/d/temp/Word/Markdown'
+is owned by:
+(inconvertible) (S-1-5-21-3366713092-
+2324744872-2243255513-1001)
+but the current user is: DESKTOР-А5НСКАA/Admin (S-1-5-21-
+2042951902-4177094210-667796683-1001)
+To add an exception for this directory, call: git config --global --add safe. directory
+%
+(prefix)///192.168.3.246/d/temp/Word/Mar kdowI
+```
+
+解决办法
+```bash
+git config --global --add safe.directory "%(prefix)///192.168.3.246/d/temp/Word/Markdown"
+```
 
 ## 解决kex_exchange_identification: Connection closed by remote host
 使用git push代码时出现以下问题：
