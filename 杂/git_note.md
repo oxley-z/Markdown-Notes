@@ -480,7 +480,7 @@ git commit -m "修复换行符"
 ```
 [# 解决Git 同步 Obsidian 笔记时，换行符差异问题](https://blog.csdn.net/u010006102/article/details/148685543)
 
-### 解决fatal: detected dubious ownership in repository at'1/192.168.3.246/d/temp/Word/Markdown"'1/192.168.3.246/d/temp/Word/Markdown'
+### 解决obsidian fatal: detected dubious ownership in repository at'1/192.168.3.246/d/temp/Word/Markdown"'1/192.168.3.246/d/temp/Word/Markdown'
 ```bash
 fatal: detected dubious ownership in repository at
 '1/192.168.3.246/d/temp/Word/Markdown"'1/192.168.3.246/d/temp/Word/Markdown'
