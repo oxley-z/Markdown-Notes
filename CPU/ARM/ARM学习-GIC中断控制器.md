@@ -29,6 +29,7 @@ ARM Core访问各版本GIC寄存器的方式：
 ## 不同版本GIC一览表
 
 ![[IMG-20260414145334566.png]]
+
 > 《GICv3_Software_Overview_Official_Release_B.pdf》2.2 Brief history of the GIC architecture p7
 
 当前ARM64主流的GIC架构为GICv3（GICv3 依然是基石（Foundational），但 GICv4.x 已成为高性能移动端和服务器端的主流标准。）；
@@ -72,7 +73,9 @@ GIC中断控制器为每个SPI、PPI、SGI的中断维护一个状态机：
 * **Active and Pending**：前一个中断已经响应（acknowledged），该中断线上的后一个中断处于Pending状态；
 
 <mark style="background: #FF5582A6;">注意</mark>：LPI没有Active、Active and Pending两种状态，以上状态机不适用于LPI。
+
 ![[IMG-20260414162842185.png]]
+
 > 《GICv3_Software_Overview_Official_Release_B.pdf》3.2 Interrupt state machine p11
 
 ### GICv3编程模型
@@ -83,6 +86,7 @@ GICv3中断控制器将寄存器分为三层：
 * CPU interface（寄存器命名格式：ICC_\*Eln）
 
 ![[IMG-20260414163415152.png]]
+
 > 《GICv3_Software_Overview_Official_Release_B.pdf》3.5 Programmers’ model p16
 
 
