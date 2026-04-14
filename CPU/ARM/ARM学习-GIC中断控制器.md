@@ -1,0 +1,98 @@
+# 基础知识
+
+GIC控制器对来自整个系统的所有中断进行编组，确定它们的优先级，并将它们发送到一个核心进行处理。 GIC 主要用于提高处理器效率并启用中断虚拟化。GIC 基于 Arm GIC 架构实现。该架构已从 GICv1 发展到最新版本的 GICv3 和 GICv4。
+
+GIC中断控制器架构的分类：GICv1（已弃用）、GICv2、GICv3、GICv4；
+
+ARM公司中断控制器IP对应架构：
+* GIC400：支持GICv2架构；
+* GIC500：支持GICv3架构；
+* GIC600：支持GICv3架构；
+* GIC700：支持GICv4架构；
+
+GIC的核心功能是对soc中外设的中断源进行管理，并提供给软件，配置以及控制这些中断源。
+* 当对应的中断源有效时，GIC根据该中断源的配置，决定是否将该中断信号发送给CPU。如果存在多个中断源有效，GIC将会进行仲裁，选择高优先级的中断发送给CPU。
+* 当CPU接收到GIC发送的中断，通过读取GIC的寄存器，就可以知道中断来自于哪里，从而可以做出相应的处理。
+* 当CPU处理完中断后，会告诉GIC（访问GIC的寄存器）该中断处理完毕。GIC接收到CPU处理完中断后，就将该中断源取消，避免又重新发送中断给CPU及允许中断抢占。
+
+## ARM Core访问GIC的方式
+
+ARM Core访问GIC寄存器的方式有两种：
+1. 使用memory-mapped的方式：SoC在设计时预留一块内存区域给GIC，ARM Core通过读写该地址来进行GIC寄存器的操作；
+2. 通过系统寄存器的方式：通过MSR/MRS（armv8-arch32使用MCR/MRC）来进行读写GIC寄存器；
+
+ARM Core访问各版本GIC寄存器的方式：
+* ARM Core访问GICv2所有寄存器（distributor、cpu interface）都是使用memmory-mapped的方式进行访问；
+* <mark style="background: #D2B3FFA6;">ARM Core访问GICv3的distributor/redistributor使用memory-mapped方式进行访问；</mark>
+* <mark style="background: #D2B3FFA6;">GICv3的ITS/CPU interface既可以使用memory-mapped方式访问，也可以使用系统寄存器方式访问；</mark>
+
+## 不同版本GIC一览表
+
+![[IMG-20260414145334566.png]]
+> 《GICv3_Software_Overview_Official_Release_B.pdf》2.2 Brief history of the GIC architecture p7
+
+当前ARM64主流的GIC架构为GICv3（GICv3 依然是基石（Foundational），但 GICv4.x 已成为高性能移动端和服务器端的主流标准。）；
+
+
+# GIC架构
+
+## GICv2
+
+
+
+
+## GICv3
+### GICv3的中断类型
+
+| 中断                                           | 中断类型     | 描述                                                                                                                             |
+| :------------------------------------------- | :------- | :----------------------------------------------------------------------------------------------------------------------------- |
+| SPI (Shared Peripheral Interrupt)            | 共享外设中断   | 全局外设中断，可以路由到特定的PE，也可以路由到一组PEs                                                                                                  |
+| PPI (Private Peripheral Interrupt)           | 私有外设中断   | 针对单个特定PE的外设中断，无法路由，常见为每个PE的通用定时器中断（Generic Timer）                                                                              |
+| SGI (Software Generated Interrupt)           | 软件生成中断   | 通常用来做核间中断，通过向GIC的SGI寄存器写值出发                                                                                                    |
+| LPI (Locality-specific Peripheral Interrupt) | 局部特定外围中断 | LPI（低功耗中断）是GICv3新引入的中断类型，它与其他类型的中断在许多方面有所不同。<mark style="background: #FFB86CA6;">特别是，LPI 始终是基于消息的中断</mark>，并且其配置信息保存在内存而不是寄存器中 |
+> 《GICv3_Software_Overview_Official_Release_B.pdf》3. GICv3 fundamentals p9
+
+### GICv3中断号（INTID）分配
+
+| INTID     | 中断类型                     | 描述                                                                                            |
+| --------- | ------------------------ | --------------------------------------------------------------------------------------------- |
+| 0-15      | SGIs                     | 和PE绑定，每个PE都有自己的0-15号中断                                                                        |
+| 16-31     | PPIs                     | 和PE绑定，每个PE都有自己的16-31号中断                                                                       |
+| 32-1019   | SPIs                     | 外设中断，整个SoC只有这一套，那些PE响应这些中断取决于路由到哪个PE                                                          |
+| 1020-1023 | Special Interrupt Number | 特殊中断号，用于指示特殊情况，可查看《GICv3_Software_Overview_Official_Release_B.pdf》5.3 Spurious interrupts p22 |
+| 1024-8192 | Reserved                 | 保留                                                                                            |
+| 8192及以上   | LPIs                     | 最大值由芯片设计决定                                                                                    |
+> 《GICv3_Software_Overview_Official_Release_B.pdf》3.1.2 Interrupt Identifiers p9
+
+### 中断状态机
+GIC中断控制器为每个SPI、PPI、SGI的中断维护一个状态机：
+* **Inactive**：中断未触发（not assert）；
+* **Pending**：中断已经触发（assert）了，但未被PE响应；
+* **Active**：中断已经触发，并且被PE响应（acknowledged）了。
+* **Active and Pending**：前一个中断已经响应（acknowledged），该中断线上的后一个中断处于Pending状态；
+
+<mark style="background: #FF5582A6;">注意</mark>：LPI没有Active、Active and Pending两种状态，以上状态机不适用于LPI。
+![[IMG-20260414162842185.png]]
+> 《GICv3_Software_Overview_Official_Release_B.pdf》3.2 Interrupt state machine p11
+
+### GICv3编程模型
+
+GICv3中断控制器将寄存器分为三层：
+* Distributor interface（寄存器命名格式：GICD_\*）;
+* Redistributor interface（寄存器命名格式：GICR_\*）;
+* CPU interface（寄存器命名格式：ICC_\*Eln）
+
+![[IMG-20260414163415152.png]]
+> 《GICv3_Software_Overview_Official_Release_B.pdf》3.5 Programmers’ model p16
+
+
+| Register interface             | 描述                                                                                      | 功能                                                                                                               |
+| ------------------------------ | --------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Distributor interface（GICD_\*） | Distributor寄存器的访问采用memory-mapped方式访问，包含的设置一般是全局的，意味着会影响到所有连接在该GIC上的PE；<br/>用来配置SPI类型中断； | - SPI中断优先级分发<br/>- 启用或禁用SPI中断<br/>- 每个SPI中断的路由状态<br/>- 配置每个SPI的触发方式（电平触发或边沿触发）<br/>- 生成基于消息的SPI<br/>- 控制SPI中断状态机 |
+|                                |                                                                                         |                                                                                                                  |
+
+
+
+
+#GICv3
+## GICv4
