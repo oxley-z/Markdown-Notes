@@ -128,11 +128,11 @@ MSI⁃X Capability 中断机制与 MSI Capability 的中断机制类似。 PCIe 
 
 #### Next Pointer
 
-* Next Pointer 字段存放下一个 Capability 结构的地址。
+* Next Pointer 字段存放下一个 Capability 结构的地址，如果功能链表中不存在其他项，则为 00h。
 
 #### Message Control
 
-* Message Control 字段， 该字段存放当前 PCIe 设备使用 MSI⁃X 机制进行中断请求的状态与控制信息。
+* Message Control 字段， 该字段存放当前 PCIe 设备使用 MSI⁃X 机制进行中断请求的状态与控制信息，默认情况下，MSI-X 处于禁用状态。如果 MSI 和 MSI-X 均被禁用，则该功能会通过 INTx 中断（如果支持）请求服务。系统软件可以通过设置此寄存器的第 15 位来启用 MSI-X。系统软件可以修改 Message Control 寄存器的读写位和字段。设备驱动程序不允许修改 Message Control 寄存器的读写位和字段。
 
 ![image-20231223145930372](image/[PCIe]-中断（MSI、MSI-X、INTx）/image-20231223145930372.png)
 

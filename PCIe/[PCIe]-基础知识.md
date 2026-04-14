@@ -509,7 +509,7 @@ Type 1 配置空间报头内可用的 BAR 的数量与 Type 0 配置空间报头
 
 ### Primary Bus Number Register (Offset 18h)
 
-除非另有说明，此寄存器不被PCI Express功能使用，但必须实现为读写，并且默认值必须为00h，以便与传统软件兼容。
+除非另有说明，此寄存器不被PCI Express功能使用，但必须实现为读写，并且默认值必须为00h，以便与传统软件兼容，**用于记录桥设备本身所在的上游总线号**。
 
 ### Secondary Bus Number Register (Offset 19h)
 
@@ -571,7 +571,7 @@ I/O Base和I/O Limit寄存器的低四位都是只读的，包含相同的值，
 
 存储器基址寄存器和存储器限制寄存器两者的高12位是可读/可写的，并且对应于32位地址的高12位[31:20]。为了地址解码的目的，桥假定存储器基地址 (未在存储器基址寄存器中实现) 的低20位地址 [19:0] 为零。类似地，桥假定存储器限制地址 (未在存储器限制寄存器中实现) 的低20地址 [19:0] 是 0xfffffh。因此，所定义的存储器地址范围的底部将与1MB边界对齐，并且所定义的存储器地址范围的顶部将比1 MB边界小1，该寄存器的低 4 位必须为 0。
 
-如果在桥的次级侧上没有存储器映射的地址空间，则存储器限制寄存器必须被编程为小于存储器基址寄存器的值。
+**如果在桥的次级侧上没有存储器映射的地址空间，则存储器限制寄存器必须被编程为小于存储器基址寄存器的值**，例如可将base寄存器配置为0x1000，limit寄存器配置为0x0。
 
 如果没有可预取存储器空间，并且在桥的次级侧上没有存储器映射空间，则桥将不把任何存储器事务从初级总线转发到次级总线，并且将把所有存储器事务从次级总线转发到初级总线。内存基址和内存限制寄存器的底部四位都是只读的，并且在读取时返回零。这些寄存器必须由配置软件初始化，因此未指定默认状态。
 
@@ -676,6 +676,8 @@ I/O基本上限16位和I/O限制上限16位寄存器是对 [I/O Base](#I/O Base/
 | 11   | Discard Timer SERR# Enable            | 其功能不适用于PCI Express，并且该位必须硬连线到0b。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | RO  |
 
 # 标准PCI Express Capbility结构（0x40h~0xFFh）
+
+## PCI Express Capbility Register
 
 PCI-X 和PCIe 总线规范要求其设备必须支持Capabilities 结构。在PCI 总线的基本配置空间中，包含一个Capabilities Pointer 寄存器，该寄存器存放Capabilities 结构链表的头指针。在一个PCIe 设备中，可能含有多个Capability 结构，这些寄存器组成一个链表。
 
@@ -892,60 +894,129 @@ lspci -vvvxxxx -s <id>
 #define PCI_CAP_SIZEOF		4
 ```
 
+## MSI Capability结构
+
+《PCI Express® Base Specification Revision 5.0.pdf》7.7.1 p773
+
+《PCI Express Technology 3.0.pdf》Chapter 17: Interrupt Support->The MSI CApability Structure p812
+
+MSI Capability 结构共有四种组成方式， 分别是 32 和 64 位的 Message 结构， 32 位和 64位带中断 Masking 的结构。 MSI 报文可以使用 32 位地址或者 64 位地址， 而且可以使用Masking 机制使能或者禁止某个中断源。
+
+![image-20230530144822314](image/[PCIe]-基础知识/image-20230530144822314.png)
+
+> 《PCI Express Technology 3.0.pdf》Chapter 17: Interrupt Support->The MSI CApability Structure p813
+
+具体寄存器描述参见《PCI Express Technology 3.0.pdf》p814 、《PCI Express® Base Specification Revision 5.0.pdf》7.7.1 MSI Capability Structures p775、《PCI Express体系结构导读 (王齐) 》10.1
+
+详见[[PCIe]-中断（MSI、MSI-X、INTx）.md](./[PCIe]-中断（MSI、MSI-X、INTx）.md#MSI中断)
+
+## MSI-X Capability结构
+
+PCIE的MSI-X相关信息存在两个地方，一个是PCIE Capability中，存放MSI-X基本信息，主要包含MSI-X Table所在BAR地址相关信息（访问的MSI-X Table关键），另外一个是MSI-X Table，存放在bar空间中，标识中断的msg addr及对应的msg data(即中断vector)。
+
+![image-20230530165145270](image/[PCIe]-基础知识/image-20230530165145270.png)
+
+> 《PCI Express® Base Specification Revision 5.0.pdf》7.7.2 MSI-X Capability and Table Structure p781
+
+![image-20230530165305440](image/[PCIe]-基础知识/image-20230530165305440.png)
+
+> 《PCI Express® Base Specification Revision 5.0.pdf》7.7.2 MSI-X Capability and Table Structure p782
+
+详见[[PCIe]-中断（MSI、MSI-X、INTx）.md](./[PCIe]-中断（MSI、MSI-X、INTx）.md#MSI-X中断)
+
+
+
+# 扩展配置空间（0x100h~0x3FFh）
+
+**扩展配置空间则是用来描述设备的扩展能力和配置的**。PCIe 设备可以实现许多扩展功能，例如 MSI (Message Signaled Interrupt)、MSI-X (Message Signaled Interrupts eXtended)、SR-IOV (Single Root I/O Virtualization)、AER (Advanced Error Reporting)、L1 Substate Power Management等等，这些能力需要使用扩展配置空间进行描述和配置。扩展配置空间的地址范围为 0x100 到 0x3FF，长度为 256 个字节。扩展配置空间中的每个字节都可以被读取和写入，用于描述设备的各种扩展能力和配置。PCIe 规范定义了许多不同的扩展能力结构体，如 PCIe Capability、MSI Capability、MSI-X Capability、SR-IOV Capability 等等，这些结构体包含了各种字段和寄存器，用于描述设备的扩展能力和配置。
+
+![image-20230530143118468](image/[PCIe]-基础知识/image-20230530143118468.png)
+
+> 《PCI Express® Base Specification Revision 5.0.pdf》7.6 PCI Express Extended Capabilities p772
+
+> **Extended Configuration Space**
+> Refer to Figure 3‐3 on page 90 during this discussion. When PCIe was introduced, there was not enough room in the original 256‐byte configuration region to contain all the new capability structures needed. So the size of configuration space was expanded from 256 bytes per function to 4KB, called the Extended Configuration Space. The 960‐dword Extended Configuration area is only accessible using the Enhanced configuration mechanism and is therefore not visible to legacy PCI software. It contains additional optional Extended Capability registers for PCIe such as those listed in Figure 3‐3 (not a complete list).
+>
+> 《PCI Express Technology 3.0.pdf》Extended Configuration Space p89
+
+> 在此讨论过程中，请参见第90页上的图3-3。**当PCIe出现时，原始256字节配置区域中没有足够的空间来容纳所需的所有新能力结构**。因此，配置空间的大小从每个功能的256字节扩展到4KB，称为扩展配置空间。960个双字节的扩展配置区域只能使用增强型配置机制进行访问，因此对于传统的PCI软件来说是不可见的。它包含了PCIe的其他可选扩展能力寄存器，如图3-3中列出的寄存器（不完整列表）。
+
+![image-20230526150404535](image/[PCIe]-基础知识/image-20230526150404535.png)
+
+> 《PCI Express Technology 3.0.pdf》Extended Configuration Space p90
+
+例子：[PCIE-Capability能力集协议解释_逆风水手的博客-CSDN博客](https://blog.csdn.net/qq_21688871/article/details/130621768)
+
+![image-20230619140653536](image/[PCIe]-基础知识/image-20230619140653536.png)
+
+> 《PCI Express_ Base Specification Revision 4.0 Version 0.3 ( PDFDrive ) .pdf》 7.8. PCI Express Capability Structure p595
+
+## SR-IOV Capability结构
+
+这里定义的 SR-IOV Extended Capability 是 PCIe 扩展能力，必须在每个支持 SR-IOV 的 PF 中实现。该能力用于描述和控制 PF 的 SR-IOV Capabilities。
+
+![image-20230531145031018](image/[PCIe]-基础知识/image-20230531145031018.png)
+
+> 《PCI Express® Base Specification Revision 5.0.pdf》9.3.3 SR-IOV Extended Capability p1121
+
+寄存器位段描述参见《Single Root IO Virtualization and Sharing Specification Revision 1.0.pdf》3.3. SR-IOV Extended Capability或《PCI Express® Base Specification Revision 5.0.pdf》9.3.3 SR-IOV Extended Capability
+
+详见 [[PCIe]-SR-IOV&MR-IOV.md](./[PCIe]-SR-IOV&MR-IOV.md#SR-IOV Capability结构)]
+
 ## PCIe Extended Capabilities List
 
 见 [扩展配置空间](#扩展配置空间（0x100h~0x3FFh）)
 
 ### Extended Capabilities IDs
 
-| ID    | Extended Capability                                          |
-| ----- | ------------------------------------------------------------ |
-| 0000h | NULL Capability：除了扩展能力头中的寄存器外，该能力不包含其他寄存器。 |
-| 0001h | Advanced Error Reporting (AER) ：（高级错误报告 (AER)）      |
-| 0002h | Virtual Channel (VC)（虚拟通道 (VC)）： 在设备中不存在 MFVC 扩展上限结构时使用 |
-| 0003h | Device Serial Number（设备序列号）                           |
-| 0004h | Power Budgeting                                              |
-| 0005h | Root Complex Link Declaration                                |
-| 0006h | Root Complex Internal Link Control                           |
-| 0007h | Root Complex Event Collector Endpoint Association            |
-| 0008h | Multi-Function Virtual Channel (MFVC)（多功能虚拟通道 (MFVC)） |
-| 0009h | Virtual Channel (VC)（虚拟通道 (VC) ）：在设备中存在 MFVC 扩展上限结构时使用 |
-| 000Ah | Root Complex Register Block (RCRB) Header                    |
-| 000Bh | Vendor-Specific Extended Capability (VSEC) （厂商特定扩展功能 (VSEC)） |
+| ID    | Extended Capability                                                                            |
+| ----- | ---------------------------------------------------------------------------------------------- |
+| 0000h | NULL Capability：除了扩展能力头中的寄存器外，该能力不包含其他寄存器。                                                     |
+| 0001h | Advanced Error Reporting (AER) ：（高级错误报告 (AER)）                                                 |
+| 0002h | Virtual Channel (VC)（虚拟通道 (VC)）： 在设备中不存在 MFVC 扩展上限结构时使用                                        |
+| 0003h | Device Serial Number（设备序列号）                                                                    |
+| 0004h | Power Budgeting                                                                                |
+| 0005h | Root Complex Link Declaration                                                                  |
+| 0006h | Root Complex Internal Link Control                                                             |
+| 0007h | Root Complex Event Collector Endpoint Association                                              |
+| 0008h | Multi-Function Virtual Channel (MFVC)（多功能虚拟通道 (MFVC)）                                          |
+| 0009h | Virtual Channel (VC)（虚拟通道 (VC) ）：在设备中存在 MFVC 扩展上限结构时使用                                         |
+| 000Ah | Root Complex Register Block (RCRB) Header                                                      |
+| 000Bh | Vendor-Specific Extended Capability (VSEC) （厂商特定扩展功能 (VSEC)）                                   |
 | 000Ch | Configuration Access Correlation (CAC)（配置访问关联 (CAC) ）：由 PCI Express ECN 的可信配置空间 (TCS) 定义，不再受支持 |
-| 000Dh | Access Control Services (ACS) （访问控制服务 (ACS)）         |
-| 000Eh | Alternative Routing-ID Interpretation (ARI) （替代路由 ID 解释 (ARI)） |
-| 000Fh | Address Translation Services (ATS) （地址转换服务 (ATS)）    |
-| 0010h | Single Root I/O Virtualization (SR-IOV) （单根 I/O 虚拟化 (SR-IOV)） |
-| 0011h | Multi-Root I/O Virtualization (MR-IOV)（多根 I/O 虚拟化 (MR-IOV) ）：在多根 I/O 虚拟化和共享规范中定义 |
-| 0012h | Multicast                                                    |
-| 0013h | Page Request Interface (PRI) （页面请求接口 (PRI)）          |
-| 0014h | Reserved for AMD                                             |
-| 0015h | Resizable BAR（可调整大小的 BAR）                            |
-| 0016h | Dynamic Power Allocation (DPA) （动态功率分配 (DPA)）        |
-| 0017h | TPH Requester                                                |
-| 0018h | Latency Tolerance Reporting (LTR)（延迟容忍报告 (LTR)）      |
-| 0019h | Secondary PCI Express（二级 PCI Express）                    |
-| 001Ah | Protocol Multiplexing (PMUX) （协议复用 (PMUX)）             |
-| 001Bh | Process Address Space ID (PASID) （进程地址空间 ID (PASID)） |
-| 001Ch | LN Requester (LNR)                                           |
-| 001Dh | Downstream Port Containment (DPC)                            |
-| 001Eh | L1 PM Substates                                              |
-| 001Fh | Precision Time Measurement (PTM) （精密时间测量 (PTM)）      |
-| 0020h | PCI Express over M-PHY (M-PCIe)                              |
-| 0021h | FRS Queueing                                                 |
-| 0022h | Readiness Time Reporting                                     |
-| 0023h | Designated Vendor-Specific Extended Capability（指定供应商特定的扩展功能） |
-| 0024h | VF Resizable BAR                                             |
-| 0025h | Data Link Feature                                            |
-| 0026h | Physical Layer 16.0 GT/s                                     |
-| 0027h | Lane Margining at the Receiver                               |
-| 0028h | Hierarchy ID                                                 |
-| 0029h | Native PCIe Enclosure Management (NPEM)                      |
-| 002Ah | Physical Layer 32.0 GT/s                                     |
-| 002Bh | Alternate Protocol                                           |
-| 002Ch | System Firmware Intermediary (SFI)                           |
-| other | 保留                                                         |
+| 000Dh | Access Control Services (ACS) （访问控制服务 (ACS)）                                                   |
+| 000Eh | Alternative Routing-ID Interpretation (ARI) （替代路由 ID 解释 (ARI)）                                 |
+| 000Fh | Address Translation Services (ATS) （地址转换服务 (ATS)）                                              |
+| 0010h | Single Root I/O Virtualization (SR-IOV) （单根 I/O 虚拟化 (SR-IOV)）                                  |
+| 0011h | Multi-Root I/O Virtualization (MR-IOV)（多根 I/O 虚拟化 (MR-IOV) ）：在多根 I/O 虚拟化和共享规范中定义               |
+| 0012h | Multicast                                                                                      |
+| 0013h | Page Request Interface (PRI) （页面请求接口 (PRI)）                                                    |
+| 0014h | Reserved for AMD                                                                               |
+| 0015h | Resizable BAR（可调整大小的 BAR）                                                                      |
+| 0016h | Dynamic Power Allocation (DPA) （动态功率分配 (DPA)）                                                  |
+| 0017h | TPH Requester                                                                                  |
+| 0018h | Latency Tolerance Reporting (LTR)（延迟容忍报告 (LTR)）                                                |
+| 0019h | Secondary PCI Express（二级 PCI Express）                                                          |
+| 001Ah | Protocol Multiplexing (PMUX) （协议复用 (PMUX)）                                                     |
+| 001Bh | Process Address Space ID (PASID) （进程地址空间 ID (PASID)）                                           |
+| 001Ch | LN Requester (LNR)                                                                             |
+| 001Dh | Downstream Port Containment (DPC)                                                              |
+| 001Eh | L1 PM Substates                                                                                |
+| 001Fh | Precision Time Measurement (PTM) （精密时间测量 (PTM)）                                                |
+| 0020h | PCI Express over M-PHY (M-PCIe)                                                                |
+| 0021h | FRS Queueing                                                                                   |
+| 0022h | Readiness Time Reporting                                                                       |
+| 0023h | Designated Vendor-Specific Extended Capability（指定供应商特定的扩展功能）                                   |
+| 0024h | VF Resizable BAR                                                                               |
+| 0025h | Data Link Feature                                                                              |
+| 0026h | Physical Layer 16.0 GT/s                                                                       |
+| 0027h | Lane Margining at the Receiver                                                                 |
+| 0028h | Hierarchy ID                                                                                   |
+| 0029h | Native PCIe Enclosure Management (NPEM)                                                        |
+| 002Ah | Physical Layer 32.0 GT/s                                                                       |
+| 002Bh | Alternate Protocol                                                                             |
+| 002Ch | System Firmware Intermediary (SFI)                                                             |
+| other | 保留                                                                                             |
 
 > 《PCI Code and ID Assignment Specification Revision 1.11.pdf》3. Extended Capability IDs p24
 
@@ -989,74 +1060,6 @@ lspci -vvvxxxx -s <id>
 #define PCI_EXT_CAP_ID_PL_16GT	0x26	/* Physical Layer 16.0 GT/s */
 #define PCI_EXT_CAP_ID_MAX	PCI_EXT_CAP_ID_PL_16GT
 ```
-
-# 扩展配置空间（0x100h~0x3FFh）
-
-**扩展配置空间则是用来描述设备的扩展能力和配置的**。PCIe 设备可以实现许多扩展功能，例如 MSI (Message Signaled Interrupt)、MSI-X (Message Signaled Interrupts eXtended)、SR-IOV (Single Root I/O Virtualization)、AER (Advanced Error Reporting)、L1 Substate Power Management等等，这些能力需要使用扩展配置空间进行描述和配置。扩展配置空间的地址范围为 0x100 到 0x3FF，长度为 256 个字节。扩展配置空间中的每个字节都可以被读取和写入，用于描述设备的各种扩展能力和配置。PCIe 规范定义了许多不同的扩展能力结构体，如 PCIe Capability、MSI Capability、MSI-X Capability、SR-IOV Capability 等等，这些结构体包含了各种字段和寄存器，用于描述设备的扩展能力和配置。
-
-![image-20230530143118468](image/[PCIe]-基础知识/image-20230530143118468.png)
-
-> 《PCI Express® Base Specification Revision 5.0.pdf》7.6 PCI Express Extended Capabilities p772
-
-> **Extended Configuration Space**
-> Refer to Figure 3‐3 on page 90 during this discussion. When PCIe was introduced, there was not enough room in the original 256‐byte configuration region to contain all the new capability structures needed. So the size of configuration space was expanded from 256 bytes per function to 4KB, called the Extended Configuration Space. The 960‐dword Extended Configuration area is only accessible using the Enhanced configuration mechanism and is therefore not visible to legacy PCI software. It contains additional optional Extended Capability registers for PCIe such as those listed in Figure 3‐3 (not a complete list).
->
-> 《PCI Express Technology 3.0.pdf》Extended Configuration Space p89
-
-> 在此讨论过程中，请参见第90页上的图3-3。**当PCIe出现时，原始256字节配置区域中没有足够的空间来容纳所需的所有新能力结构**。因此，配置空间的大小从每个功能的256字节扩展到4KB，称为扩展配置空间。960个双字节的扩展配置区域只能使用增强型配置机制进行访问，因此对于传统的PCI软件来说是不可见的。它包含了PCIe的其他可选扩展能力寄存器，如图3-3中列出的寄存器（不完整列表）。
-
-![image-20230526150404535](image/[PCIe]-基础知识/image-20230526150404535.png)
-
-> 《PCI Express Technology 3.0.pdf》Extended Configuration Space p90
-
-例子：[PCIE-Capability能力集协议解释_逆风水手的博客-CSDN博客](https://blog.csdn.net/qq_21688871/article/details/130621768)
-
-![image-20230619140653536](image/[PCIe]-基础知识/image-20230619140653536.png)
-
-> 《PCI Express_ Base Specification Revision 4.0 Version 0.3 ( PDFDrive ) .pdf》 7.8. PCI Express Capability Structure p595
-
-## MSI Capability结构
-
-《PCI Express® Base Specification Revision 5.0.pdf》7.7.1 p773
-
-《PCI Express Technology 3.0.pdf》Chapter 17: Interrupt Support->The MSI CApability Structure p812
-
-MSI Capability 结构共有四种组成方式， 分别是 32 和 64 位的 Message 结构， 32 位和 64位带中断 Masking 的结构。 MSI 报文可以使用 32 位地址或者 64 位地址， 而且可以使用Masking 机制使能或者禁止某个中断源。
-
-![image-20230530144822314](image/[PCIe]-基础知识/image-20230530144822314.png)
-
-> 《PCI Express Technology 3.0.pdf》Chapter 17: Interrupt Support->The MSI CApability Structure p813
-
-具体寄存器描述参见《PCI Express Technology 3.0.pdf》p814 、《PCI Express® Base Specification Revision 5.0.pdf》7.7.1 MSI Capability Structures p775、《PCI Express体系结构导读 (王齐) 》10.1
-
-详见[[PCIe]-中断（MSI、MSI-X、INTx）.md](./[PCIe]-中断（MSI、MSI-X、INTx）.md#MSI中断)
-
-## MSI-X Capability结构
-
-PCIE的MSI-X相关信息存在两个地方，一个是PCIE Capability中，存放MSI-X基本信息，主要包含MSI-X Table所在BAR地址相关信息（访问的MSI-X Table关键），另外一个是MSI-X Table，存放在bar空间中，标识中断的msg addr及对应的msg data(即中断vector)。
-
-![image-20230530165145270](image/[PCIe]-基础知识/image-20230530165145270.png)
-
-> 《PCI Express® Base Specification Revision 5.0.pdf》7.7.2 MSI-X Capability and Table Structure p781
-
-![image-20230530165305440](image/[PCIe]-基础知识/image-20230530165305440.png)
-
-> 《PCI Express® Base Specification Revision 5.0.pdf》7.7.2 MSI-X Capability and Table Structure p782
-
-详见[[PCIe]-中断（MSI、MSI-X、INTx）.md](./[PCIe]-中断（MSI、MSI-X、INTx）.md#MSI-X中断)
-
-## SR-IOV Capability结构
-
-这里定义的 SR-IOV Extended Capability 是 PCIe 扩展能力，必须在每个支持 SR-IOV 的 PF 中实现。该能力用于描述和控制 PF 的 SR-IOV Capabilities。
-
-![image-20230531145031018](image/[PCIe]-基础知识/image-20230531145031018.png)
-
-> 《PCI Express® Base Specification Revision 5.0.pdf》9.3.3 SR-IOV Extended Capability p1121
-
-寄存器位段描述参见《Single Root IO Virtualization and Sharing Specification Revision 1.0.pdf》3.3. SR-IOV Extended Capability或《PCI Express® Base Specification Revision 5.0.pdf》9.3.3 SR-IOV Extended Capability
-
-详见 [[PCIe]-SR-IOV&MR-IOV.md](./[PCIe]-SR-IOV&MR-IOV.md#SR-IOV Capability结构)]
-
 
 # PCIe相较于PCI的更改
 

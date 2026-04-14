@@ -9,7 +9,7 @@ sudo apt download wireshark
 sudo apt download vim sshpass
 ```
 
-## 2.下载所有的依赖项
+## 2.下载软件包所有的依赖项
 
 ### 先查询当前包所需的依赖项有哪些
 
@@ -133,3 +133,5 @@ $ ./download.sh wireshark
 # 参考
 
 [Ubuntu 离线安装的常见操作](https://www.cnblogs.com/Blogwj123/p/17593096.html)
+
+[linux离线安装软件方法](https://lyroom.github.io/2025/09/16/linux%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6%E6%96%B9%E6%B3%95/)
