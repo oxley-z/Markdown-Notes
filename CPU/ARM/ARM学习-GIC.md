@@ -26,7 +26,6 @@ ARM Core访问各版本gic寄存器的方式：
 * ARM Core访问gicv2所有寄存器（distributor、cpu interface）都是使用memmory-mapped的方式进行访问；
 * <mark style="background: #D2B3FFA6;">ARM Core访问gicv3的distributor/redistributor使用memory-mapped方式进行访问；</mark>
 * <mark style="background: #D2B3FFA6;">gicv3的ITS/CPU interface既可以使用memory-mapped方式访问，也可以使用系统寄存器方式访问；</mark>
-
 # gic架构
 ## gicv2
 
