@@ -87,12 +87,10 @@ GICv3还支持基于消息（message）的中断触发方式。基于消息的�
 
 在GICv3中，SPI可以被设置基于message的中断，LPI则全都是基于message的中断，不过使用的寄存器不同。
 
-
-| 终端类型 | message-base中断使用的寄存器 |
-| ---- | -------------------- |
-| SPI  |                      |
-| LPI  |                      |
-
+| 中断类型 | message-base中断使用的寄存器                                                                    |
+| ---- | --------------------------------------------------------------------------------------- |
+| SPI  | GICD_SETSPI_NSR asserts（触发） an interrupt<br/>GICD_CLRSPI_NSR deassert（解除） an interrupts |
+| LPI  | GITS_TRANSLATER                                                                         |
 
 ### 中断状态
 
@@ -105,8 +103,28 @@ GIC中断控制器为每个SPI、PPI、SGI的中断维护一个状态机：
 <mark style="background: #FF5582A6;">注意</mark>：LPI没有Active、Active and Pending两种状态，以上状态机不适用于LPI。
 
 ![[IMG-20260414162842185.png]]
-
 > 《GICv3_Software_Overview_Official_Release_B.pdf》3.2 Interrupt state machine p11
+
+#### 电平触发
+
+![[IMG-20260415155929159.png]]
+> 《GICv3_Software_Overview_Official_Release_B.pdf》3.2.1 Level sensitive p11
+
+| 状态转移                         | 描述  |
+| ---------------------------- | --- |
+| Inactive to Pending          |     |
+| Pending to Active & Pending  |     |
+| Active and Pending to Active |     |
+| Active to Inactive           |     |
+
+
+
+#### 边沿触发
+
+
+
+
+
 
 ### 亲和路由
 
