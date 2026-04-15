@@ -28,7 +28,7 @@ ARM Core访问各版本GIC寄存器的方式：
 
 ## 不同版本GIC一览表
 
-![[IMG-20260414145334566.png]]
+![](image/ARM学习-GIC中断控制器/IMG-20260414145334566.png)
 
 > 《GICv3_Software_Overview_Official_Release_B.pdf》2.2 Brief history of the GIC architecture p7
 
