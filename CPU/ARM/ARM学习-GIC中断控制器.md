@@ -42,6 +42,8 @@ ARM Core访问各版本GIC寄存器的方式：
 
 
 ## GICv3
+
+ARM 通用中断控制器架构规范（GIC）3.0 和 4.0 版本均使用”处理单元”（PE）一词作为实现 ARM 架构的机器的通用术语。例如，ARMCortex-A57 MPCore™是一款多核处理器，最多可包含四个核心。对于 ARMCortex-A57 MPCore™，架构规范中将每个核心都称为一个处理单元（PE）。
 ### GICv3的中断类型
 
 | 中断                                           | 中断类型     | 描述                                                                                                                             |
@@ -80,7 +82,7 @@ GIC中断控制器为每个SPI、PPI、SGI的中断维护一个状态机：
 GICv3中断控制器将寄存器分为三层：
 * Distributor interface（寄存器命名格式：GICD_\*）;
 * Redistributor interface（寄存器命名格式：GICR_\*）;
-* CPU interface（寄存器命名格式：ICC_\*Eln）
+* CPU interface（寄存器命名格式：ICC_\*\_ELn）
 
 ![[IMG-20260414163415152.png]]
 > 《GICv3_Software_Overview_Official_Release_B.pdf》3.5 Programmers’ model p16
@@ -90,12 +92,25 @@ GICv3中断控制器将寄存器分为三层：
 | -------------------------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Distributor interface(GICD_\*)   | Distributor寄存器的访问采用memory-mapped方式访问，包含的设置一般是全局的，意味着会影响到所有连接在该GIC上的PE；<br/>用来配置SPI类型中断； | - SPI中断优先级分发<br/>- 启用或禁用SPI中断<br/>- 每个SPI中断的路由状态<br/>- 配置每个SPI的触发方式（电平触发或边沿触发）<br/>- 生成基于消息的SPI<br/>- 控制SPI中断状态机                                              |
 | Redistributor interface(GICR_\*) | 每个PE对应一组Redistrator；<br/>用来配置SGI和PPI中断；                                                 | - 启用和禁用SGI和PPI<br/>- 设置SGI和PPI优先级<br/>- 配置每个PPI的触发方式（电平触发/边沿触发）<br/>- 分配每个SGI和PPI所需的中断组<br/>- 控制SGI和PPI的状态机<br/>- 控制内存中LPI相关中断属性和挂起状态的数据结构基地址<br/>- 每个PE的功耗控制 |
-| CPU interface(ICCR_\*Eln)        | 每组Redistributor都连接到一个CPU interface，CPU interface的配置也是针对某个具体的PE；                         | - 用于启用中断处理的常规控制与配置。<br/>- 响应中断<br/>- 执行优先级降级和中断deactive操作<br/>- 为每个PE设置中断优先级掩码<br/>- 为每个PE配置中断抢占策略                                                            |
+| CPU interface(ICC_\*_ELn)        | 每组Redistributor都连接到一个CPU interface，CPU interface的配置也是针对某个具体的PE；                         | - 用于启用中断处理的常规控制与配置。<br/>- 响应中断<br/>- 执行优先级降级和中断deactive操作<br/>- 为每个PE设置中断优先级掩码<br/>- 为每个PE配置中断抢占策略<br/>- 仲裁PE最高待处理的最高优先级中断                                    |
+> 《GICv3_Software_Overview_Official_Release_B.pdf》3.5 Programmers’ model p16
 
+### 亲和路由
 
+PE的亲和性由4个8位字段表示，类似于IP地址：
 
+<affinity level3>.<affinity level2> .<affinity level1> .<affinity level0> 
 
+![[IMG-20260415101713496.png]]
+> 《GICv3_Software_Overview_Official_Release_B.pdf》3.3 Affinity routing p13
 
 
 #GICv3
+
+### 参考手册
+《GICv3_Software_Overview_Official_Release_B.pdf》
+
 ## GICv4
+
+
+
