@@ -130,6 +130,7 @@ GICv3中断控制器将寄存器分为三层：
 > 《GICv3_Software_Overview_Official_Release_B.pdf》3.5 Programmers’ model p16
 
 #GICv3
+
 《GICv3_Software_Overview_Official_Release_B.pdf》
 
 ## GICv4
