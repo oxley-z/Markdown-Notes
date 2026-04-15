@@ -52,7 +52,7 @@ ARM Core访问各版本GIC寄存器的方式：
 ## GICv3
 
 ARM 通用中断控制器架构规范（GIC）3.0 和 4.0 版本均使用”处理单元”（PE）一词作为实现 ARM 架构的机器的通用术语。例如，ARMCortex-A57 MPCore™是一款多核处理器，最多可包含四个核心。对于 ARMCortex-A57 MPCore™，架构规范中将每个核心都称为一个处理单元（PE）。
-### GICv3的中断类型
+### 中断类型
 
 | 中断                                           | 中断类型     | 描述                                                                                                                             |
 | :------------------------------------------- | :------- | :----------------------------------------------------------------------------------------------------------------------------- |
@@ -62,7 +62,7 @@ ARM 通用中断控制器架构规范（GIC）3.0 和 4.0 版本均使用”处�
 | LPI (Locality-specific Peripheral Interrupt) | 局部特定外围中断 | LPI（低功耗中断）是GICv3新引入的中断类型，它与其他类型的中断在许多方面有所不同。<mark style="background: #FFB86CA6;">特别是，LPI 始终是基于消息的中断</mark>，并且其配置信息保存在内存而不是寄存器中 |
 > 《GICv3_Software_Overview_Official_Release_B.pdf》3. GICv3 fundamentals p9
 
-### GICv3中断号（INTID）分配
+#### 中断号（INTID）分配
 
 | INTID     | 中断类型                     | 描述                                                                                            |
 | --------- | ------------------------ | --------------------------------------------------------------------------------------------- |
@@ -74,7 +74,7 @@ ARM 通用中断控制器架构规范（GIC）3.0 和 4.0 版本均使用”处�
 | 8192及以上   | LPIs                     | 最大值由芯片设计决定                                                                                    |
 > 《GICv3_Software_Overview_Official_Release_B.pdf》3.1.2 Interrupt Identifiers p9
 
-### 中断状态机
+### 中断状态
 GIC中断控制器为每个SPI、PPI、SGI的中断维护一个状态机：
 * **Inactive**：中断未触发（not assert）；
 * **Pending**：中断已经触发（assert）了，但未被PE响应；
@@ -87,7 +87,31 @@ GIC中断控制器为每个SPI、PPI、SGI的中断维护一个状态机：
 
 > 《GICv3_Software_Overview_Official_Release_B.pdf》3.2 Interrupt state machine p11
 
-### GICv3编程模型
+### 亲和路由
+
+PE的亲和性由4个8位字段表示，类似于IP地址：
+
+<affinity level3>.<affinity level2> .<affinity level1> .<affinity level0> 
+
+![[IMG-20260415101713496.png]]
+> 《GICv3_Software_Overview_Official_Release_B.pdf》3.3 Affinity routing p13
+
+### 安全模型
+
+GICv3架构支持ARM TrustZone技术，每个INTID都必须分配一个group和security配置。
+
+| 中断类型               | 示例应用                                                      |
+| ------------------ | --------------------------------------------------------- |
+| Secure Group 0     | Interrupts for EL3（Secure Firmware）                       |
+| Secure Group 1     | Interrupts for EL1（Trusted OS）                            |
+| Non-secure Group 1 | Interrupts for the Non-secure state（OS and/or Hypervisor） |
+Group 0中断试中以FIQ信号的形式发出。Group 1中断则根据PE的当前安全状态和异常级别，以IRQ或FIQ信号的形式发出。
+
+
+
+
+
+### 编程模型
 
 GICv3中断控制器将寄存器分为三层：
 * Distributor interface（寄存器命名格式：GICD_\*）;
@@ -106,19 +130,9 @@ GICv3中断控制器将寄存器分为三层：
 | CPU interface(ICC_\*_ELn)        | 每组Redistributor都连接到一个CPU interface，CPU interface的配置也是针对某个具体的PE；                         | - 用于启用中断处理的常规控制与配置。<br/>- 响应中断<br/>- 执行优先级降级和中断deactive操作<br/>- 为每个PE设置中断优先级掩码<br/>- 为每个PE配置中断抢占策略<br/>- 仲裁PE最高待处理的最高优先级中断                                    |
 > 《GICv3_Software_Overview_Official_Release_B.pdf》3.5 Programmers’ model p16
 
-### 亲和路由
-
-PE的亲和性由4个8位字段表示，类似于IP地址：
-
-<affinity level3>.<affinity level2> .<affinity level1> .<affinity level0> 
-
-![[IMG-20260415101713496.png]]
-> 《GICv3_Software_Overview_Official_Release_B.pdf》3.3 Affinity routing p13
 
 
 #GICv3
-
-### 参考手册
 《GICv3_Software_Overview_Official_Release_B.pdf》
 
 ## GICv4
