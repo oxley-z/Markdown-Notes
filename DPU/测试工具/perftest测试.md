@@ -2,7 +2,7 @@
 
 perftest是一组基于uverbs编写的测试程序，是RDMA性能相关的micro-benchmark。可用于软硬件调优以及功能测试。
 
-![image-20221206111828373](./image\perftest测试/image-20221206111828373.png)
+![](image/perftest测试/image-20221206111828373.png)
 
 ## 源码位置
 

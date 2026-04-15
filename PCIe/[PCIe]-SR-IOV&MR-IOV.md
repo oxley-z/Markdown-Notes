@@ -2,7 +2,7 @@
 
 ## SR-IOV
 
-![img](image\[PCIe]-SR-IOV&MR-IOV\sriov.jpg)
+![](image/[PCIe]-SR-IOV&MR-IOV/sriov.jpg)
 
 ## SR-IOV Capability结构
 
@@ -190,8 +190,7 @@ struct pci_sriov {
 
 ## MR-IOV
 
-![img](image\[PCIe]-SR-IOV&MR-IOV\mriov.jpg)
-
+![](image/[PCIe]-SR-IOV&MR-IOV/mriov.jpg)
 
 
 # 参考

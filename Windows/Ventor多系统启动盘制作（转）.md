@@ -10,9 +10,9 @@ Markdown Content:
 
 为了解决这些问题，决定另辟蹊径，为大家介绍 Ventoy 这一简单快捷的系统多功能启动U盘制作。希望这个方法能简化装机流程，解决兼容性问题，尤其对经常装机或者碰到不同新旧机器较多的朋友。
 
-[![点击可播放视频](./image/Ventor多系统启动盘制作（转）/v2-600a137e22a5d6711c6ad0081877165d.jpeg?source=7e7ef6e2&needBackground=1)亲历打造Ventoy多功能多系统启动U盘，解决Windows系统安装维护难题！206 播放 · 0 赞同 视频](https://www.zhihu.com/zvideo/1860251961267478528)
+[![点击可播放视频](./image/Ventor多系统启动盘制作（转）/v2-600a137e22a5d6711c6ad0081877165d.jpeg)亲历打造Ventoy多功能多系统启动U盘，解决Windows系统安装维护难题！206 播放 · 0 赞同 视频](https://www.zhihu.com/zvideo/1860251961267478528)
 
-![](./image/Ventor多系统启动盘制作（转）/v2-2f5ed18e491a3fd657a4899888210495.jpeg?source=25ab7b06)
+![](./image/Ventor多系统启动盘制作（转）/v2-2f5ed18e491a3fd657a4899888210495.jpeg)
 
 04:13
 
