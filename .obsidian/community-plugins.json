@@ -1,8 +1,8 @@
 [
   "obsidian-excalidraw-plugin",
   "oz-clear-unused-images",
-  "obsidian-git",
   "editor-width-slider",
   "highlightr-plugin",
-  "attachment-management"
+  "attachment-management",
+  "obsidian-git"
 ]

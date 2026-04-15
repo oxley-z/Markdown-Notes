@@ -110,12 +110,12 @@ GIC中断控制器为每个SPI、PPI、SGI的中断维护一个状态机：
 ![[IMG-20260415155929159.png]]
 > 《GICv3_Software_Overview_Official_Release_B.pdf》3.2.1 Level sensitive p11
 
-| 状态转移                         | 描述  |
-| ---------------------------- | --- |
-| Inactive to Pending          |     |
-| Pending to Active & Pending  |     |
-| Active and Pending to Active |     |
-| Active to Inactive           |     |
+| 状态转移                         | 描述                                                                                                                                                                             |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Inactive to Pending          | 中断线电平触发GIC，GIC将中断信号发送到PE（前提是中断已是能且优先级足够高），GIC状态机切换到Pending；                                                                                                                    |
+| Pending to Active & Pending  | PE读取GIC中断控制器的IAR（Interrupt Acknowledge Register）寄存器后切换到AP（Active and Pending）状态，此时GIC发送到PE的中断信号被deassert（原因是操作GIC的IAR寄存器，硬件行为完成GIC到PE的deassert），但此时外设到GIC的中断信号还维持高电平（假设高电平触发）； |
+| Active and Pending to Active |                                                                                                                                                                                |
+| Active to Inactive           |                                                                                                                                                                                |
 
 
 
