@@ -34,7 +34,6 @@ ARM Core访问各版本GIC寄存器的方式：
 
 当前ARM64主流的GIC架构为GICv3（GICv3 依然是基石（Foundational），但 GICv4.x 已成为高性能移动端和服务器端的主流标准。）；
 
-
 # GIC架构
 
 ## GICv2
@@ -52,6 +51,7 @@ ARM Core访问各版本GIC寄存器的方式：
 ## GICv3
 
 ARM 通用中断控制器架构规范（GIC）3.0 和 4.0 版本均使用”处理单元”（PE）一词作为实现 ARM 架构的机器的通用术语。例如，ARMCortex-A57 MPCore™是一款多核处理器，最多可包含四个核心。对于 ARMCortex-A57 MPCore™，架构规范中将每个核心都称为一个处理单元（PE）。
+
 ### 中断类型
 
 | 中断                                           | 中断类型     | 描述                                                                                                                             |
@@ -74,7 +74,28 @@ ARM 通用中断控制器架构规范（GIC）3.0 和 4.0 版本均使用”处�
 | 8192及以上   | LPIs                     | 最大值由芯片设计决定                                                                                    |
 > 《GICv3_Software_Overview_Official_Release_B.pdf》3.1.2 Interrupt Identifiers p9
 
+#### 中断如何发送到中断控制器
+
+传统方式：外设中断信号通过专用硬件中断线和中断控制器连接，中断控制器通过硬件连线（区分IRQ和FIQ）与PE相连。
+
+![[IMG-20260415150118180.png]]
+>《GICv3_Software_Overview_Official_Release_B.pdf》3.1.3 How interrupts are signaled to the interrupt controller p9
+
+GICv3还支持基于消息（message）的中断触发方式。基于消息的中断是指先将中断消息写入内存中，然后通过写入GIC中断控制器中的寄存器来设置和清除的中断。基于消息的中断触发方式可以有效的去掉外设与中断控制器间的硬件中断线，在大型SoC系统中能显著减轻硬件设计者的工作量（外设动辄会存在成百上千的中断线连接到SoC上）。
+
+![[IMG-20260415150520193.png]]
+
+在GICv3中，SPI可以被设置基于message的中断，LPI则全都是基于message的中断，不过使用的寄存器不同。
+
+
+| 终端类型 | message-base中断使用的寄存器 |
+| ---- | -------------------- |
+| SPI  |                      |
+| LPI  |                      |
+
+
 ### 中断状态
+
 GIC中断控制器为每个SPI、PPI、SGI的中断维护一个状态机：
 * **Inactive**：中断未触发（not assert）；
 * **Pending**：中断已经触发（assert）了，但未被PE响应；
@@ -96,9 +117,6 @@ PE的亲和性由4个8位字段表示，类似于IP地址：
 ![[IMG-20260415101713496.png]]
 > 《GICv3_Software_Overview_Official_Release_B.pdf》3.3 Affinity routing p13
 
-
-
-
 ### 安全模型
 
 GICv3架构支持ARM TrustZone技术，每个INTID都必须分配一个group和security配置。
@@ -109,6 +127,12 @@ GICv3架构支持ARM TrustZone技术，每个INTID都必须分配一个group和s
 | Secure Group 1     | Interrupts for EL1（Trusted OS）                            |
 | Non-secure Group 1 | Interrupts for the Non-secure state（OS and/or Hypervisor） |
 Group 0中断试中以FIQ信号的形式发出。Group 1中断则根据PE的当前安全状态和异常级别，以IRQ或FIQ信号的形式发出。
+
+![[IMG-20260415144010647.png]]
+> 《ARM Cortex-A Series Programmer's Guide for ARMv8-A.pdf》Chapter 3 Fundamentals of ARMv8 p29(3-2)
+
+在 ARMv8-A 和 GICv3 中，对两种安全状态的支持是可选的。实现可以选择只实现一种安全状态，也可以选择实现两种安全状态。
+
 
 ### 编程模型
 
