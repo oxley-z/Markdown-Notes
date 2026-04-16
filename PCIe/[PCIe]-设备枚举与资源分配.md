@@ -63,7 +63,7 @@ UEFI对于PCI总线的支持包括：
 
 ### UBOOT对PCI/CPIe设备的枚举
 
-详见[[uboot]-PCI设备枚举及初始化.md](../uboot/[uboot]-PCI设备枚举及初始化.md)
+详见[\[uboot\]-PCI设备枚举及初始化.md](../uboot/[uboot]-PCI设备枚举及初始化.md)
 
 ```c
 pci_uclass_post_probe
@@ -74,7 +74,7 @@ pci_uclass_post_probe
     		-->dm_pciauto_setup_device	/* 为指定的 PCI 设备根据类型和资源区域（内存、预取内存或 I/O）分配bar地址空间。该函数还会设置设备的命令状态寄存器以启用必要的功能，并处理特定设备（如 VGA）的特殊配置需求。 */
 ```
 
-[uboot PCI相关命令](../uboot/Uboot命令.md#pci命令)
+[uboot PCI相关命令](../uboot/[uboot]-uboot命令.md#pci命令)
 
 # 参考
 
