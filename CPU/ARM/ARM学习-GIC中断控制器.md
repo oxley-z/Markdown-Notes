@@ -131,12 +131,12 @@ GIC中断控制器为每个SPI、PPI、SGI的中断维护一个状态机：
 > 《GICv3_Software_Overview_Official_Release_B.pdf》3.2.2 Edge-triggered p12
 
 
-| 状态转移                          | 描述  |
-| ----------------------------- | --- |
-| Inactive to Pending           |     |
-| Pending to Active             |     |
-| Active to Active and Pending  |     |
-| Active and Pending to Pending |     |
+| 状态转移                          | 描述                                                                                                  |
+| ----------------------------- | --------------------------------------------------------------------------------------------------- |
+| Inactive to Pending           | GIC检测到中断信号发送跳变（上升沿或下降沿）并触发PE后，GIC状态机切换到Pending状态（之后中断信号回到什么电平都无所谓）。                                 |
+| Pending to Active             | PE读取GIC的IAR寄存器响应中断，GIC将状态机切到Active，此时GIC通知PE的中断信号被deassert（是因为操作了GIC的IAR寄存器，硬件行为完成GIC到PE的deassert）。 |
+| Active to Active and Pending  | 在PE处理当前中断期间（Active状态），同一中断源再次产生边沿触发中断                                                               |
+| Active and Pending to Pending |                                                                                                     |
 
 
 
