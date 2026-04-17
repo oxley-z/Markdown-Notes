@@ -130,7 +130,6 @@ GIC中断控制器为每个SPI、PPI、SGI的中断维护一个状态机：
 
 > 《GICv3_Software_Overview_Official_Release_B.pdf》3.2.2 Edge-triggered p12
 
-
 | 状态转移                          | 描述                                                                                                                                                          |
 | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Inactive to Pending           | GIC检测到中断信号发送跳变（上升沿或下降沿）并触发PE后，GIC状态机切换到Pending状态（之后中断信号回到什么电平都无所谓）。                                                                                         |
@@ -206,6 +205,20 @@ GICv3中断控制器将寄存器分为三层：
 | CPU interface(ICC_\*_ELn)        | 每组Redistributor都连接到一个CPU interface，CPU interface的配置也是针对某个具体的PE；                         | - 用于启用中断处理的常规控制与配置。<br/>- 响应中断<br/>- 执行优先级降级和中断deactive操作<br/>- 为每个PE设置中断优先级掩码<br/>- 为每个PE配置中断抢占策略<br/>- 仲裁PE最高待处理的最高优先级中断                                    |
 
 > 《GICv3_Software_Overview_Official_Release_B.pdf》3.5 Programmers’ model p16
+
+### 中断处理
+
+#### 当中断Pending时会发生什么？
+
+中断源置位，通常由外设置位了专用的中断信号，当GIC中断控制器接收到中断信号时，会决定是否将中断发送给已连接的PE中的哪一个，具体如何选择取决于如下设置：
+
+* **Group是否使能**：明确该中断号（INTID）分配给了哪个Group（Group 0、secure Group 1、Non-secure Group 1），对于每个Group，在Distributor interface和CPU interface两个层面都有对应的Group bit位，需要这两组寄存器中的对应Group bit位均符合，中断才会被送到PE；
+* **中断是否使能**：单独禁用的中断可以由GIC将其中断状态且为Pending，但是不会通知PE；
+* **路由控制**：根据中断类型，GIC需决定由哪个PE接收中断。
+	* 对于SPIs，由GICD_IROUTEn寄存器控制，一个SPI可以路由到特定的PE，也可以指向任意一个连接的PE；
+	* 
+
+
 
 #GICv3
 
