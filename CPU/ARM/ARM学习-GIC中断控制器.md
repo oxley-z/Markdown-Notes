@@ -58,7 +58,7 @@ ARM 通用中断控制器架构规范（GIC）3.0 和 4.0 版本均使用”处�
 | :------------------------------------------- | :------- | :----------------------------------------------------------------------------------------------------------------------------- |
 | SPI (Shared Peripheral Interrupt)            | 共享外设中断   | 全局外设中断，可以路由到特定的PE，也可以路由到一组PEs                                                                                                  |
 | PPI (Private Peripheral Interrupt)           | 私有外设中断   | 针对单个特定PE的外设中断，无法路由，常见为每个PE的通用定时器中断（Generic Timer）                                                                              |
-| SGI (Software Generated Interrupt)           | 软件生成中断   | 通常用来做核间中断，通过向GIC的SGI寄存器写值出发                                                                                                    |
+| SGI (Software Generated Interrupt)           | 软件生成中断   | 通常用来做核间中断，通过向GIC的SGI寄存器写值触发                                                                                                    |
 | LPI (Locality-specific Peripheral Interrupt) | 局部特定外围中断 | LPI（低功耗中断）是GICv3新引入的中断类型，它与其他类型的中断在许多方面有所不同。<mark style="background: #FFB86CA6;">特别是，LPI 始终是基于消息的中断</mark>，并且其配置信息保存在内存而不是寄存器中 |
 > 《GICv3_Software_Overview_Official_Release_B.pdf》3. GICv3 fundamentals p9
 
@@ -130,7 +130,7 @@ GIC中断控制器为每个SPI、PPI、SGI的中断维护一个状态机：
 
 PE的亲和性由4个8位字段表示，类似于IP地址：
 
-<affinity level3>.<affinity level2> .<affinity level1> .<affinity level0> 
+<affinity level3>.<affinity level2>.<affinity level1>.<affinity level0> 
 
 ![](image/ARM学习-GIC中断控制器/IMG-20260415173503933.png)
 > 《GICv3_Software_Overview_Official_Release_B.pdf》3.3 Affinity routing p13
