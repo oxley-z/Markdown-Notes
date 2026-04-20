@@ -26,7 +26,7 @@ PS D:\>
 
 # 绕过校验
 
-安装并配置好环境变量后，初次使用 Claude Code ，可能会强制要求登录 Anthropic 账户，需要通过修改配置，来绕过校验，在C盘用户目录下（C:\Users\%USERNAME%\.claude.json）找到`claude.json`，加入以下代码:
+安装并配置好环境变量后，初次使用 Claude Code ，可能会强制要求登录 Anthropic 账户，需要通过修改配置，来绕过校验，在C盘用户目录下（C:\Users\\%USERNAME%\\.claude.json）找到`claude.json`，加入以下代码:
 
 ```json
 "hasCompletedOnboarding": true,
@@ -55,7 +55,7 @@ PS D:\>
 #### CMD
 
 ```cmd
-REM 用百炼 API Key 替换 YOUR_DASHSCOPE_API_KEY
+# 用百炼 API Key 替换 YOUR_DASHSCOPE_API_KEY
 setx ANTHROPIC_API_KEY "YOUR_DASHSCOPE_API_KEY"
 setx ANTHROPIC_BASE_URL "https://dashscope.aliyuncs.com/apps/anthropic"
 setx ANTHROPIC_MODEL "qwen3.6-plus"
@@ -90,7 +90,7 @@ echo $env:ANTHROPIC_MODEL
 ### 方式1（进入claude后切换）
 
 进入claude后输入
-```bash
+```plaintext
 /model [模型名称]
 ```
 
