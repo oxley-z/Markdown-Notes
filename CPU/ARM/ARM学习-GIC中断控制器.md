@@ -231,6 +231,8 @@ CPU interface有两个IAR（Interrupt Acknowledge Register）寄存器，读取I
 | ICC_IAR0_EL1 | 用于确认Group 0中断 | Secure中断（通常通过FIQ信号）                  |
 | ICC_IAR1_EL1 | 用于确认Group 1中断 | Non-secure或Secure Group 1（通常通过IRQ信号） |
 
+#### 伪终端
+
 
 
 #GICv3
