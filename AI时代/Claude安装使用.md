@@ -78,7 +78,9 @@ echo %ANTHROPIC_MODEL%
 [Environment]::SetEnvironmentVariable("ANTHROPIC_MODEL", "qwen3.6-plus", [EnvironmentVariableTarget]::User)
 ```
 
-查看参数是否设置成功
+配置完成后重启PowerShell。
+
+查看参数是否设置成功：
 
 ```powershell
 echo $env:ANTHROPIC_API_KEY
