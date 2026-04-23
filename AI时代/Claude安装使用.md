@@ -41,17 +41,19 @@ PS D:\>
 ![](image/Claude安装使用/IMG-20260418205156628.png)
 
 # 切换国产大模型
+## 阿里云百炼
 
 进入`阿里云百炼`：
 官网：[https://bailian.console.aliyun.com/](https://bailian.console.aliyun.com/)
 
 ### API-Key创建
 
-首先需要在在阿里云百炼中创建API-Key；
+首先需要在在阿里云百炼中 [创建API-Key](https://bailian.console.aliyun.com/cn-beijing?spm=a2c4g.11186623.0.0.7c6c5ec6Q6vx5O&tab=model#/api-key&userCode=okjhlpr5)；
 
 ### 环境变量配置
 
-在 Windows 中，可以通过 CMD 或 PowerShell 将阿里云百炼提供的 Base URL 和[API Key](https://help.aliyun.com/zh/model-studio/get-api-key)设置为环境变量。
+在 Windows 中，可以通过 CMD 或 PowerShell 将阿里云百炼提供的 Base URL 和 [API Key](https://help.aliyun.com/zh/model-studio/get-api-key) 设置为环境变量。
+
 #### CMD
 
 ```cmd
@@ -87,22 +89,56 @@ echo $env:ANTHROPIC_API_KEY
 echo $env:ANTHROPIC_BASE_URL
 echo $env:ANTHROPIC_MODEL 
 ```
-## 模型切换
+### 模型切换
 
-### 方式1（进入claude后切换）
+#### 方式1（进入claude后切换）
 
 进入claude后输入
 ```plaintext
 /model [模型名称]
 ```
 
-### 方式2（命令行直接切换进入）
+#### 方式2（命令行直接切换进入）
 
 ```plaintext
 claude --model qwen3.6-plus
 ```
 
 具体的模型名称可查看阿里云百炼中的模型名称。
+
+### 参考
+
+[阿里云百炼Claude Code接入参考](https://help.aliyun.com/zh/model-studio/claude-code?spm=a2c4g.11186623.help-menu-2400256.d_0_4_2.9c8a6fd1PDWZcP)
+
+## 腾讯混元大模型
+
+### API-Key创建
+
+首先需要在在 [腾讯混元API管理](https://hunyuan.cloud.tencent.com/#/app/apiKeyManage) 中创建API-Key；
+
+### 环境变量配置
+
+#### PowerShell
+
+```PowerShell
+# 用腾讯混元 API Key 替换 YOUR_DASHSCOPE_API_KEY
+
+[Environment]::SetEnvironmentVariable("ANTHROPIC_API_KEY", "YOUR_DASHSCOPE_API_KEY", [EnvironmentVariableTarget]::User)
+
+[Environment]::SetEnvironmentVariable("ANTHROPIC_BASE_URL", "https://api.hunyuan.cloud.tencent.com/anthropic", [EnvironmentVariableTarget]::User)
+
+[Environment]::SetEnvironmentVariable("ANTHROPIC_MODEL", "hunyuan-2.0-thinking-20251109", [EnvironmentVariableTarget]::User)
+```
+
+配置完成后重启`PowerShell`即可使用。
+### token用量查询
+
+[腾讯云-资源包管理](https://console.cloud.tencent.com/hunyuan/packages)
+
+### 参考
+
+[混元 Anthropic API 兼容接口相关调用示例](https://cloud.tencent.com/document/product/1729/127293)
+
 # 卸载claude code
 
 ## 步骤1 删除npm包
@@ -132,5 +168,3 @@ Remove-Item -Path ".claude" -Recurse -Force
 Remove-Item -Path ".mcp.json" -Force
 ```
 
-# 参考
-[https://help.aliyun.com/zh/model-studio/claude-code#03fe567f8f8wx](https://help.aliyun.com/zh/model-studio/claude-code?spm=a2c4g.11186623.help-menu-2400256.d_0_4_2.9c8a6fd1PDWZcP)

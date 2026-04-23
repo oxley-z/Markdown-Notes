@@ -1,4 +1,4 @@
-# 安装Hermes
+# 安装Hermes（未成功）
 
 管理员身份打开`PowerShell`，运行：
 
