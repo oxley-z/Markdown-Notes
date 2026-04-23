@@ -103,6 +103,34 @@ claude --model qwen3.6-plus
 ```
 
 具体的模型名称可查看阿里云百炼中的模型名称。
+# 卸载claude code
+
+## 步骤1 删除npm包
+
+```bash
+npm uninstall -g @anthropic-ai/claude-code  
+npm uninstall -g https://gaccode.com/claudecode/install
+```
+
+## 步骤2 删除配置文件
+
+```bash
+# 删除用户配置和状态
+rm -rf ~/.claude
+rm ~/.claude.json
+
+# 删除特定用于项目的配置（在您的项目目录行）
+rm -rf .claude
+rm -f .mcp.json
+
+# 删除用户设置和状态
+Remove-Item -Path "$env:USERPROFILE\.claude" -Recurse -Force
+Remove-Item -Path "$env:USERPROFILE\.claude.json" -Force
+
+# 删除特定于项目的设置（从您的项目目录运行）
+Remove-Item -Path ".claude" -Recurse -Force
+Remove-Item -Path ".mcp.json" -Force
+```
 
 # 参考
 [https://help.aliyun.com/zh/model-studio/claude-code#03fe567f8f8wx](https://help.aliyun.com/zh/model-studio/claude-code?spm=a2c4g.11186623.help-menu-2400256.d_0_4_2.9c8a6fd1PDWZcP)
