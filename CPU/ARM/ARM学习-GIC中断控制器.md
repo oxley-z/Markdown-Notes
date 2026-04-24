@@ -155,8 +155,6 @@ GIC中断控制器为每个SPI、PPI、SGI的中断维护一个状态机：
          仅在上升沿的瞬间触发一次
 ```
 
-
-
 ### 亲和路由
 
 PE的亲和性由4个8位字段表示，类似于IP地址：
@@ -184,7 +182,6 @@ Group 0中断试中以FIQ信号的形式发出。Group 1中断则根据PE的当�
 > 《ARM Cortex-A Series Programmer's Guide for ARMv8-A.pdf》Chapter 3 Fundamentals of ARMv8 p29(3-2)
 
 在 ARMv8-A 和 GICv3 中，对两种安全状态的支持是可选的。实现可以选择只实现一种安全状态，也可以选择实现两种安全状态。
-
 
 ### 编程模型
 
