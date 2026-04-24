@@ -6,7 +6,7 @@
 irm https://claude.ai/install.ps1 | iex
 ```
 
-安装完成后的claude在`C:\Users\asus\.local\bin`目录下存在`claude.exe`则说明安装成功；
+安装完成后的claude在`C:\Users\asus\.local\bin`目录下存在`claude.exe`则说明安装成功。
 
 # 配置环境变量
 
