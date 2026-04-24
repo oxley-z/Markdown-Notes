@@ -43,8 +43,8 @@ $ git submodule add <远程仓库的URL> <子模块路径>
 设置代理，根据自己端口号设置。
 
 ```bash
-git config --global http.proxy http://127.0.0.1:1080
-git config --global https.proxy http://127.0.0.1:1080
+git config --global http.proxy http://127.0.0.1:7897
+git config --global https.proxy http://127.0.0.1:7897
 ```
 
 #### <span id="取消代理">取消代理</span>
@@ -500,6 +500,7 @@ git config --global --add safe.directory "%(prefix)///192.168.3.246/d/temp/Word/
 ```
 
 ## 解决kex_exchange_identification: Connection closed by remote host
+
 使用git push代码时出现以下问题：
 
 ```git
@@ -530,6 +531,35 @@ ssh -T git@github.com
 ![[Pasted image 20260314131416.png]]
 输入`yes`，之后回车即可。
 [gitbash问题解决kex_exchange_identification: Connection closed by remote host](https://zhuanlan.zhihu.com/p/1918652707889219469)
+
+## FATAL: Unable to connect to relay host, errno=10061
+
+使用git push代码时出现以下问题：
+
+```git
+FATAL: Unable to connect to relay host, errno=10061
+Connection closed by UNKNOWN port 65535
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+```
+
+**解决方法**：
+
+在`~/.ssh/`中找到config文件，将其中的内容改为：
+
+```config
+Host github.com
+
+    HostName github.com
+
+    User git
+
+    # 如果是 Windows 且使用 Git Bash，通常路径如下：
+
+    ProxyCommand connect -S 127.0.0.1:7897 %h %p
+```
 # 参考
 
 [Git Cheat Sheet (igevin.info)](https://blog.igevin.info/posts/git-cheat-sheet/)
