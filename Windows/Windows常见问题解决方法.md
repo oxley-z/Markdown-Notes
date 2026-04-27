@@ -36,8 +36,14 @@ Windows Registry Editor Version 5.00
 
 ## Power Shell7下git显示中文乱码，git bash显示正常
 
+### 将控制台编码切换为 UTF-8
 
+```powershell
+chcp 65001
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+```
 
+此时再执行 `git status`，乱码问题应该已经解决。
 
 # 3、禁用驱动程序强制签名
 
