@@ -34,7 +34,9 @@ Windows Registry Editor Version 5.00
 
 [去掉ubuntu下windows文件夹绿色背景_有硬币就是土豪的博客-CSDN博客](https://blog.csdn.net/gengli2017/article/details/82917827)
 
-Power Shell7下git显示中文乱码，git bash显示正常
+## Power Shell7下git显示中文乱码，git bash显示正常
+
+
 
 
 # 3、禁用驱动程序强制签名
