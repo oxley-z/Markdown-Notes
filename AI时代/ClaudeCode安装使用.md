@@ -1,6 +1,9 @@
+
+[Anthropic官网(https://www.anthropic.com/)](https://www.anthropic.com/)
+
 # 安装claude
 
-在Windows Powershell中执行：
+在`Windows Powershell`中执行：
 
 ```bash
 irm https://claude.ai/install.ps1 | iex
