@@ -34,6 +34,8 @@ Windows Registry Editor Version 5.00
 
 [去掉ubuntu下windows文件夹绿色背景_有硬币就是土豪的博客-CSDN博客](https://blog.csdn.net/gengli2017/article/details/82917827)
 
+Powe
+
 # 3、禁用驱动程序强制签名
 
 打开设置（win+i）->更新和安全->恢复->高级启动->立即重新启动->疑难解答->高级选项->启动设置->重启->根据提示输入`7`禁用驱动程序强制签名
