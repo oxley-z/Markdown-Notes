@@ -47,8 +47,24 @@ chcp 65001
 
 如果希望在每次启动 PowerShell 时自动设置，可以把这两行命令加入到你的 `$PROFILE` 文件中。
 
+```powershell
+notepad $PROFILE
+```
 
+键入以下内容：
 
+```powershell
+# 设置控制台代码页为 UTF-8
+chcp 65001 > $null
+# 强制 PowerShell 输出编码为 UTF-8
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+```
+
+如果之前未修改过执行策略，运行 profile 时可能会被禁止。以管理员身份打开 PowerShell 7 并执行：
+
+```powershell
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
 # 3、禁用驱动程序强制签名
 
 打开设置（win+i）->更新和安全->恢复->高级启动->立即重新启动->疑难解答->高级选项->启动设置->重启->根据提示输入`7`禁用驱动程序强制签名
