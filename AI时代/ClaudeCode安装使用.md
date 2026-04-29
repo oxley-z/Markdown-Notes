@@ -1,7 +1,17 @@
 
-[Anthropic官网(https://www.anthropic.com/)](https://www.anthropic.com/)
+# claude code简介
 
-# 安装claude
+Claude Code 是 [Anthropic](https://www.anthropic.com/) 推出的面向开发者的 AI 编程协作工具。
+
+Claude Code 定位不是聊天，而是在本地代码仓库中执行高权限、可上下文感知的工程任务。
+
+Claude Code 与在聊天窗口里写几段代码不同，它理解你的整个项目，能直接读取你的文件、运行测试并根据反馈修改代码。
+
+Claude Code 不是一个代码生成器，而是一个能读项目、懂上下文、遵守约束的 AI 编程搭档。
+
+Claude Code 是 Agent（智能体工具），不是 Chat（聊天工具）。
+
+# 安装claude code
 
 在`Windows Powershell`中执行：
 
@@ -11,7 +21,7 @@ irm https://claude.ai/install.ps1 | iex
 
 安装完成后的claude在`C:\Users\asus\.local\bin`目录下存在`claude.exe`则说明安装成功；
 
-# 配置环境变量
+## 配置环境变量
 
 将`claude.exe`的文件位置加入到环境变量中：
 
@@ -27,7 +37,7 @@ PS D:\>
 
 环境变量配置完成。
 
-# 绕过校验
+## 绕过校验
 
 安装并配置好环境变量后，初次使用 Claude Code ，可能会强制要求登录 Anthropic 账户，需要通过修改配置，来绕过校验，在C盘用户目录下（C:\Users\\%USERNAME%\\.claude.json）找到`claude.json`，加入以下代码:
 
@@ -196,6 +206,61 @@ Remove-Item -Path "$env:USERPROFILE\.claude.json" -Force
 Remove-Item -Path ".claude" -Recurse -Force
 Remove-Item -Path ".mcp.json" -Force
 ```
+
+# cc常用操作
+
+### 命令行命令
+
+
+### 对话内命令
+
+| 命令       | 含义     | 使用场景                                                                      |
+| -------- | ------ | ------------------------------------------------------------------------- |
+| /init    | 初始化    | 用于初始化项目，claude会自动扫描当前文件夹，读取代码、现有文档、配置文件以及代码结构，然后生成一份专属于你项目的 CLAUDE.md 文件。 |
+| /clear   | 清空上下文  | 当需要重新开始时                                                                  |
+| /reset   | 重置对话   |                                                                           |
+| /compact | 压缩对话   | 当上下文过长，需要重新开始对话并且不希望丢掉之前的记忆                                               |
+| /cost    | 查看费用情况 | API用户用于查询当前AI模型的API费用情况                                                   |
+| /model   | 切换模型   | 用于切换不同的模型，此处需要注意如果模型提供商不是同一个需要修改`ANTHROPIC_BASE_URL`及`API-Keys`           |
+| /status  | 状态     | 查看当前cc状态                                                                  |
+| /doctor  | 检测     | 检测当前cc安装情况                                                                |
+| /review  | 代码审查   | 检查Git暂存区改动                                                                |
+| /docs    | 索引文档   | 让claude参考指定文档                                                             |
+
+#### 前缀触发器
+
+| 符号  | 类型      | 作用                            |
+| --- | ------- | ----------------------------- |
+| /   | command | 执行内置操作                        |
+| @   | context | 引用文件或目录                       |
+| !   | bash模式  | 直接执行终端命令（会消耗token）            |
+| #   | memory  | 把内容持久写入CLAUDE.md项目记忆中，跨会话长期有效 |
+
+
+### 三种工作模式
+
+claude code可按场景切换模式，提高使用效率。
+
+#### 自动编辑模式（accept edits on）：免确认批量操作
+
+<mark style="background: #FFB86CA6;">自动编辑模式</mark>适合无需逐次确认的文件创建、修改场景。按下 <mark style="background: #BBFABBA6;">Shift+Tab</mark> 一次即可开启，此时 Claude 会自动执行编辑操作，无需手动确认。比如提示 “创建一个酷炫的 todolist 应用”，它会直接生成文件并修改，省去反复确认的时间。
+
+![](image/ClaudeCode安装使用/IMG-20260429101246282.png)
+
+#### Plan模式（paln mode on）：前期规划神器
+
+面对项目搭建或复杂问题时，用 Shift+Tab 两次开启 Plan 模式。它会<mark style="background: #FF5582A6;">先梳理方案框架</mark>，比如要做 “像素风格的移动端 todolist”，会自动规划技术栈、页面结构、适配方案等，<mark style="background: #FF5582A6;">确认后再动手</mark>。若不满意可直接说 “重新规划”，直到符合预期。
+
+![](image/ClaudeCode安装使用/IMG-20260429102706467.png)
+
+#### Yolo模式：全权限放手干
+
+重构代码、启动新项目或修复复杂 bug 时，用 `claude --dangerously-skip-permissions` 进入 Yolo 模式。<mark style="background: #FF5582A6;">此时 Claude 拥有更高权限，可直接执行更多操作</mark>（需注意安全，建议在沙箱环境使用）。进入后仍能用 Shift+Tab 调整模式，灵活切换权限粒度。
+
+![](image/ClaudeCode安装使用/IMG-20260429102629918.png)
+
+# Skills
+
 
 
 # 免费Token
