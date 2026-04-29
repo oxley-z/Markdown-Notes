@@ -207,7 +207,7 @@ Remove-Item -Path ".claude" -Recurse -Force
 Remove-Item -Path ".mcp.json" -Force
 ```
 
-# cc常用操作
+# ClaudeCode基础知识
 
 ### 命令行命令(help)
 
@@ -334,7 +334,6 @@ Remove-Item -Path ".mcp.json" -Force
 | ------ | ----- |
 | Ctrl+J | 多行换行符 |
 
-
 ### 三种工作模式
 
 claude code可按场景切换模式，提高使用效率。
@@ -362,6 +361,22 @@ claude code可按场景切换模式，提高使用效率。
 重构代码、启动新项目或修复复杂 bug 时，用 `claude --dangerously-skip-permissions` 进入 Yolo 模式。<mark style="background: #FF5582A6;">此时 Claude 拥有更高权限，可直接执行更多操作</mark>（需注意安全，建议在沙箱环境使用）。进入后仍能用 Shift+Tab 调整模式，灵活切换权限粒度。
 
 ![](image/ClaudeCode使用/IMG-20260429144748229.png)
+
+### CLAUDE.md
+
+`CLAUDE.md` 是 Claude Code 中最重要的配置文件，<mark style="background: #FF5582A6;">用于向 Claude 传递项目级别的持久指令</mark>。每次启动 Claude Code 会话时，它都<mark style="background: #FFB86CA6;">会自动读取并加载这个文件中的内容，作为系统级上下文融入每一次对话中</mark>。
+
+通俗地说，`CLAUDE.md` 就是你在项目中给 Claude 写的一份工作手册——告诉它这个项目是什么、遵循什么规范、有哪些注意事项，让它每次都能以符合项目要求的方式工作，而不是每次对话都重新解释。
+
+#### CLAUDE.md的作用
+
+没有 `CLAUDE.md` 时，Claude 每次都从零开始理解你的项目，你需要反复告诉它：用哪个包管理器、代码风格是什么、测试怎么跑、哪些文件不要动……有了 `CLAUDE.md`，这些信息只需写一次，Claude 每次都会遵守。
+
+- **统一团队行为**：将文件提交到 git，所有团队成员使用 Claude Code 时都遵循相同的规范；
+- **减少重复沟通**：项目约定、架构规则、禁止事项只写一次，永久生效；
+- **降低出错概率**：明确告知 Claude 哪些操作有风险，避免它做出错误的决策；
+- **加速 AI 理解**：帮助 Claude 快速定位关键文件和理解项目结构，减少不必要的文件探索；
+
 
 
 # Skills
