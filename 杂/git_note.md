@@ -499,6 +499,17 @@ To add an exception for this directory, call: git config --global --add safe. di
 git config --global --add safe.directory "%(prefix)///192.168.3.246/d/temp/Word/Markdown"
 ```
 
+### TortoiseGitPlink Fatal Error
+
+![](image/git_note/IMG-20260501135309988.png)
+
+解决方法：
+1. **右键** -> **TortoiseGit** -> **Settings**。
+2. 点击左侧的 **Network**。
+3. 查看 **SSH Client** 路径：
+	- **想用 TortoiseGit 的方式：** 确保路径指向 `...\TortoiseGit\bin\TortoiseGitPlink.exe`。此时你必须使用 `.ppk` 私钥。
+	- **想用 Git Bash 的方式：** 将路径改为 Git 安装目录下的 `ssh.exe`（通常在 `C:\Program Files\Git\usr\bin\ssh.exe`）。这样它就会去 `~/.ssh/id_rsa` 找私钥了。
+
 ## 解决kex_exchange_identification: Connection closed by remote host
 
 使用git push代码时出现以下问题：
