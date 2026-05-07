@@ -7,6 +7,10 @@
 
 **核心功能**：将图片wiki链接转换成标准的 markdown 相对路径链接，让笔记更有普适性。
 
+## 多平台文章&消息同步
+
+[笔记同步助手教程](https://www.bijitongbu.site/tutorials/)
+
 # Clearing Unused Images
 
 **核心功能**：清除没有被笔记链接的图片。
@@ -47,3 +51,4 @@
     
 3. 最后用 Consistent Attachments and Links 插件将链接转换为相对路径  
     `Consistent Attachments and Links: Convert All Embed Paths to Relative`
+
