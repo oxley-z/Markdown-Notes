@@ -566,6 +566,69 @@ src/
 必填项：`DATABASE_URL`、`NEXTAUTH_SECRET`、`NEXTAUTH_URL`
 ````
 
+##### 多模块仓库（Monorepo）配置
+
+在 Monorepo 中，可以在仓库根目录放一个全局 `CLAUDE.md`，每个子目录下再放各自的 `CLAUDE.md`。Claude 打开某个子包的文件时，会同时加载根目录和该子包目录下的两个文件：
+
+```CLAUDE.md
+my-monorepo/
+├── CLAUDE.md                  ← 全局规范：共用命令、整体架构、通用约定
+├── packages/
+│   ├── web/
+│   │   └── CLAUDE.md          ← 前端专属：React 规范、样式约定、构建流程
+│   ├── api/
+│   │   └── CLAUDE.md          ← 后端专属：API 设计规范、数据库约定
+│   └── shared/
+│       └── CLAUDE.md          ← 共享包：导出规则、版本管理约定
+└── tools/
+    └── CLAUDE.md              ← 工具脚本：特殊说明和使用限制
+```
+
+##### 用@语法引用外部文件
+
+当项目已经有了规范文档（如 API 设计规范、数据库设计文档等），不需要将内容复制到 `CLAUDE.md` 中，直接用 `@文件路径` 引用即可。
+
+Claude 读取 `CLAUDE.md` 时会自动加载引用的文件内容：
+
+```CLAUDE.md
+## 规范文档
+
+详细的 API 设计规范请参考：
+@docs/api-design-guide.md
+
+数据库设计约定：
+@docs/database-conventions.md
+
+组件库使用说明：
+@docs/component-guidelines.md
+```
+
+> 引用的文件路径是相对于 `CLAUDE.md` 所在目录的相对路径。引用的文件内容会占用上下文窗口，避免引用过大的文件（建议单个引用文件不超过 500 行）。
+
+##### 全局CLAUDE.md
+
+用户级别的 `~/.claude/CLAUDE.md` 适合存放跨项目通用的个人偏好和习惯，这些内容对所有项目生效：
+
+```CLAUDE.md
+<!-- 文件路径：~/.claude/CLAUDE.md -->
+# 个人全局配置
+
+## 回答偏好
+- 回复使用中文
+- 代码修改前先简要说明修改思路，不要直接给出代码
+- 遇到有多种实现方案时，列出选项让我选择，而不是直接选一种
+
+## 通用约定
+- 提交信息使用英文，格式：`type(scope): description`
+- 新文件开头不加版权注释
+- 优先使用原生 API，避免引入不必要的依赖
+
+## 安全习惯
+- 修改认证相关代码前主动提示我注意安全影响
+- 不要在代码注释或日志中输出任何密钥或 token
+```
+
+
 # Skills
 
 
