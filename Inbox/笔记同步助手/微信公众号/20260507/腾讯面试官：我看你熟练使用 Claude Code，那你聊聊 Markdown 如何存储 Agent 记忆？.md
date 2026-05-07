@@ -47,7 +47,7 @@ Manus 把文件系统视为结构化的外部记忆；Claude Code 则把 `CLAUDE
 
 Claude Code 的记忆系统采用双轨制：`CLAUDE.md`（人工编写） 和 **Auto Memory（自动积累）**。
 
-![[Inbox/笔记同步助手/20260507/images/cf746b6f557ac79620d73a9bfccb9b2a_MD5.jpg]]
+![[Inbox/笔记同步助手/images/cf746b6f557ac79620d73a9bfccb9b2a_MD5.jpg]]
 
 #### CLAUDE.md：该写什么、不该写什么
 
@@ -181,7 +181,7 @@ paths:
 
 ### Markdown 记忆和传统长期记忆的区别
 
-![[Inbox/笔记同步助手/20260507/images/22b3701098e8676c43cac1425c7b69bd_MD5.jpg]]
+![[Inbox/笔记同步助手/images/22b3701098e8676c43cac1425c7b69bd_MD5.jpg]]
 
 Markdown 记忆和传统长期记忆的适用边界
 
@@ -246,7 +246,7 @@ Markdown 的局限性也很明确：当你需要从海量非结构化文本中�
 
 ---
 
-![[Inbox/笔记同步助手/20260507/images/cda0d5eab0be622da10b95c7b9a0282b_MD5.jpg|cover_image]]
+![[Inbox/笔记同步助手/images/cda0d5eab0be622da10b95c7b9a0282b_MD5.jpg|cover_image]]
 
 Original 小金 小金AI
 

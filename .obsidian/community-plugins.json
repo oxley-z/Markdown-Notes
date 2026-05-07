@@ -1,8 +1,8 @@
 [
   "editor-width-slider",
   "highlightr-plugin",
-  "obsidian-git",
   "obsidian-custom-attachment-location",
   "consistent-attachments-and-links",
-  "notehelper"
+  "notehelper",
+  "obsidian-git"
 ]

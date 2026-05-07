@@ -3,11 +3,11 @@
   "dateSavedFormat": "yyyy-MM-dd HH:mm:ss",
   "apiKey": "o56E763mpliEuMYjSNr31x5GO5Bs",
   "filter": "ALL",
-  "syncAt": "2026-05-07T09:47:33.869+08:00",
+  "syncAt": "2026-05-07T09:59:39.513+08:00",
   "customQuery": "in:all",
   "template": "{{{content}}}",
   "highlightOrder": "LOCATION",
-  "folder": "Inbox/笔记同步助手/{{{date}}}",
+  "folder": "Inbox/笔记同步助手/{{{siteName}}}/{{{date}}}",
   "folderDateFormat": "yyyyMMdd",
   "endpoint": "https://obsidian.notebooksyncer.com/api/graphql",
   "filename": "{{{title}}}",
@@ -39,7 +39,7 @@
   "enablePngToJpeg": true,
   "jpegQuality": 85,
   "imageDownloadRetries": 3,
-  "imageAttachmentFolder": "Inbox/笔记同步助手/{{{date}}}/images",
+  "imageAttachmentFolder": "Inbox/笔记同步助手/images",
   "imageUploadRelay": "none",
   "enableDiaryLinks": false,
   "diaryFolder": "Daily Notes",
@@ -50,7 +50,7 @@
   "diaryLinkPrefix": "- ",
   "diaryLinkMaxLength": 0,
   "deviceSyncCursors": {
-    "desktop-moustbox-ov9c": "2026-05-07T09:47:33.869+08:00"
+    "desktop-moustbox-ov9c": "2026-05-07T09:59:39.513+08:00"
   },
   "initialSyncCompleted": true,
   "deviceAutoSync": {

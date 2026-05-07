@@ -2,10 +2,10 @@
 author: 老廖AI Agent实验室
 source: 微信公众号
 url: https://mp.weixin.qq.com/s?t=pages/image_detail&scene=1&__biz=MzIwNDQ4MDYzNg==&mid=2247484664&idx=1&sn=d7024cb11cb8e1a37a04da28a99e78c4&from_masonry=1&sharer_shareinfo_first=2eb73a5d22b8dc85a0d36b04e533e9b4&sharer_shareinfo=2eb73a5d22b8dc85a0d36b04e533e9b4#wechat_redirect
-saved: 2026-05-07 09:31:01
+saved: 2026-05-07 09:34:39
 tags:
   - 笔记同步助手
-id: 2b1d5b91-4863-435c-8ee0-d472a89fef99
+id: 96f41949-e11d-4f2d-91f9-807cf33a297f
 ---
 
 公众号名称：老廖AI Agent实验室
@@ -67,8 +67,8 @@ Claude Code 不再只是写代码，而是在“长出能力模块”
 
 图1：
 
-![[Inbox/笔记同步助手/20260507/images/92dd69063e9efb9bb05fd2565b91f8ca_MD5.png|Image]]
+![[Inbox/笔记同步助手/images/82fa97651d274b8d618d3929a1ea0d06_MD5.jpg|Image]]
 
 图2：
 
-![[Inbox/笔记同步助手/20260507/images/606d3dc270b0bc618eaaeb747e3be127_MD5.png|Image]]
+![[Inbox/笔记同步助手/images/ff9dbc7f634eb413c332b90ab1a31a96_MD5.jpg|Image]]
