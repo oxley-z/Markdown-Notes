@@ -648,7 +648,14 @@ skills 本质上就是教 AI 按固定流程做事的操作说明书，一旦写
 
 ### 方式1 全局安装
 
+在claude code中执行
 
+```bash
+# 添加市场
+/plugin marketplace add <组织名>/<仓库名称>
+# 安装插件
+/plugin install <插件名称>@<插件市场名称>
+```
 
 ### 方式2 按项目安装
 
