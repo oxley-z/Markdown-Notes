@@ -817,9 +817,9 @@ anthropic官方plugin
 
 skills 本质上就是教 AI 按固定流程做事的操作说明书，一旦写好，就能像函数一样反复调用。可以把 Skills 看成把某类事情应该怎么专业做这件事，封装成一个可复用、可自动触发的能力模块。
 
-
 ### skills安装
 
+可根据需求，将skill文件放入项目下或者全局的`.claude/skills/<skill-name>`文件夹下。
 
 ### 常用skills
 
