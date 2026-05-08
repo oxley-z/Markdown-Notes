@@ -3,7 +3,7 @@
   "dateSavedFormat": "yyyy-MM-dd HH:mm:ss",
   "apiKey": "o56E763mpliEuMYjSNr31x5GO5Bs",
   "filter": "ALL",
-  "syncAt": "2026-05-07T12:01:19.600+08:00",
+  "syncAt": "2026-05-07T22:13:47.436+08:00",
   "customQuery": "in:all",
   "template": "{{{content}}}",
   "highlightOrder": "LOCATION",
@@ -50,7 +50,7 @@
   "diaryLinkPrefix": "- ",
   "diaryLinkMaxLength": 0,
   "deviceSyncCursors": {
-    "desktop-moustbox-ov9c": "2026-05-07T12:01:19.600+08:00"
+    "desktop-moustbox-ov9c": "2026-05-07T22:13:47.436+08:00"
   },
   "initialSyncCompleted": true,
   "deviceAutoSync": {
