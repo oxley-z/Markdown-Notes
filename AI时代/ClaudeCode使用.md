@@ -632,9 +632,47 @@ Claude 读取 `CLAUDE.md` 时会自动加载引用的文件内容：
 ##### karpathy
 
 
+# plugin(插件)
 
-# Skills
 
+# skills(技能)
+
+
+
+## skills安装
+
+### 方式1
+
+### 方式2
+
+
+
+
+## 常用skills
+
+[anthropic-agent-skills](https://github.com/anthropics/skills)
+
+[andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills)
+
+[obsidian-skills](https://github.com/kepano/obsidian-skills)
+
+# hook
+
+# 开源项目
+
+https://github.com/xu-xiang/everything-claude-code-zh
+
+**为 AI 智能体（Agent）框架打造的性能优化系统。源自 Anthropic 黑客松获胜作品。**
+
+这不仅仅是配置文件。它是一个完整的系统：包含技能（Skills）、本能（Instincts）、内存优化、持续学习、安全扫描以及研究优先的开发模式。这些生产级的智能体（Agents）、钩子（Hooks）、命令（Commands）、规则（Rules）以及 MCP 配置，是在构建真实产品的 10 个多月高强度日常使用中演化而来的。
+
+适用于 **Claude Code**， **Codex**， **Cowork** 以及其他 AI 智能体框架。
+
+
+# 常用网站
+
+
+claude code技能宇宙 [https://oneskill.one/](https://oneskill.one/?)
 
 
 # 免费Token
