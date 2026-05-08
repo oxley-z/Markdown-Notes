@@ -207,7 +207,7 @@ Remove-Item -Path ".claude" -Recurse -Force
 Remove-Item -Path ".mcp.json" -Force
 ```
 
-# ClaudeCode基础知识
+# claude code基础知识
 
 ### 命令行命令(help)
 
@@ -306,17 +306,17 @@ Remove-Item -Path ".mcp.json" -Force
 
 #### 常规操作
 
-| 快捷键       | 描述              | 上下文                                        |
-| --------- | --------------- | ------------------------------------------ |
-| Ctrl+C    | 取消当前输入或生成       | 标准中断                                       |
-| Ctrl+D    | 退出claude code会话 | EOF信号                                      |
-| Ctrl+G    | 在默认文本编辑器中打开     | 在默认文本编辑器中编辑您的提示或自定义响应                      |
-| Ctrl+L    | 清除终端屏幕          | 保留对话历史                                     |
-| Ctrl+O    | 切换详细输出          | 显示详细的工具使用和执行状态                             |
-| Ctrl+R    | 反向搜索命令历史        | 交互式搜索以前的命令                                 |
-| Shift+Tab | 切换权限模式          | 在[自动编辑模式](ClaudeCode使用.md#自动编辑模式)、Plan Mode 和正常模式之间切换     |
-| Alt+P     | 切换模型            | 在不清除提示的情况下切换模型                             |
-| Alt+T     | 切换扩展思考          | 启用或禁用扩展思考模式。首先运行 `/terminal-setup` 以启用此快捷键 |
+| 快捷键       | 描述              | 上下文                                                   |
+| --------- | --------------- | ----------------------------------------------------- |
+| Ctrl+C    | 取消当前输入或生成       | 标准中断                                                  |
+| Ctrl+D    | 退出claude code会话 | EOF信号                                                 |
+| Ctrl+G    | 在默认文本编辑器中打开     | 在默认文本编辑器中编辑您的提示或自定义响应                                 |
+| Ctrl+L    | 清除终端屏幕          | 保留对话历史                                                |
+| Ctrl+O    | 切换详细输出          | 显示详细的工具使用和执行状态                                        |
+| Ctrl+R    | 反向搜索命令历史        | 交互式搜索以前的命令                                            |
+| Shift+Tab | 切换权限模式          | 在[自动编辑模式](ClaudeCode使用.md#自动编辑模式)、Plan Mode 和正常模式之间切换 |
+| Alt+P     | 切换模型            | 在不清除提示的情况下切换模型                                        |
+| Alt+T     | 切换扩展思考          | 启用或禁用扩展思考模式。首先运行 `/terminal-setup` 以启用此快捷键            |
 
 #### 文本编辑
 
@@ -632,10 +632,10 @@ Claude 读取 `CLAUDE.md` 时会自动加载引用的文件内容：
 ##### karpathy
 
 
-# plugin(插件)
+## plugin(插件)
 
 
-## plugin安装
+### plugin安装
 
 在claude code中执行
 
@@ -646,7 +646,7 @@ Claude 读取 `CLAUDE.md` 时会自动加载引用的文件内容：
 /plugin install <插件名称>@<插件市场名称>
 ```
 
-## 常用plugin
+### 常用plugin
 
 anthropic官方plugin
 [anthropic-agent-skills](https://github.com/anthropics/skills)
@@ -672,25 +672,26 @@ anthropic官方plugin
 /plugin install obsidian@obsidian-skills
 ```
 
-# skills(技能)
+## skills(技能)
 
 skills 本质上就是教 AI 按固定流程做事的操作说明书，一旦写好，就能像函数一样反复调用。可以把 Skills 看成把某类事情应该怎么专业做这件事，封装成一个可复用、可自动触发的能力模块。
 
 
-## skills安装
+### skills安装
 
-### 方式1：插件安装
-
-
-### 方式2：手动安装
+#### 方式1：插件安装
 
 
+#### 方式2：手动安装
 
 
-## 常用skills
 
 
-# hook
+### 常用skills
+
+[find-skills](https://github.com/vercel-labs/skills/tree/main/skills/find-skills) 一个能为当前任务快速找到最匹配skills的元skill
+
+## hook
 
 # 开源项目
 
