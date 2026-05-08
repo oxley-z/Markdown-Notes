@@ -178,6 +178,10 @@ claude --model qwen3.6-plus
 
 [国家超算平台第三方工具接入](https://www.scnet.cn/ac/openapi/doc/2.0/moduleapi/tutorial/callbytools_claudecode.html)
 
+## CC-Switch
+
+仓库：[https://github.com/farion1231/cc-switch](https://github.com/farion1231/cc-switch)
+
 # 卸载claude code
 
 ## 步骤1 删除npm包
@@ -268,27 +272,81 @@ Remove-Item -Path ".mcp.json" -Force
 
 ### 对话内命令
 
-| 命令       | 含义          | 使用场景                                                                      |
-| -------- | ----------- | ------------------------------------------------------------------------- |
-| /init    | 初始化         | 用于初始化项目，claude会自动扫描当前文件夹，读取代码、现有文档、配置文件以及代码结构，然后生成一份专属于你项目的 CLAUDE.md 文件。 |
-| /clear   | 清空上下文       | 当需要重新开始时                                                                  |
-| /reset   | 重置对话        |                                                                           |
-| /resume  | 选择历史对话      | 从历史中选择并恢复之前的对话，继续之前未完成的任务                                                 |
-| /undo    | 撤销更改        | 撤销上次的文件修改                                                                 |
-| /redo    | 重做更改        | 重做被撤销的修改                                                                  |
-| /compact | 压缩对话        | 当上下文过长，需要重新开始对话并且不希望丢掉之前的记忆                                               |
-| /cost    | 查看费用情况      | API用户用于查询当前AI模型的API费用情况                                                   |
-| /model   | 切换模型        | 用于切换不同的模型，此处需要注意如果模型提供商不是同一个需要修改`ANTHROPIC_BASE_URL`及`API-Keys`           |
-| /status  | 状态          | 查看当前cc状态                                                                  |
-| /config  | 配置          | 查看和修改配置                                                                   |
-| /doctor  | 检测          | 检测当前cc安装情况                                                                |
-| /review  | 代码审查        | 检查Git暂存区改动                                                                |
-| /docs    | 索引文档        | 让claude参考指定文档                                                             |
-| /theme   | 主题切换        | 可切换内置主题                                                                   |
-| /memory  | 编辑CLAUDE.md | 编辑CLAUDE.md文件，可选CLAUDE.md或CLAUDE.local.md                                 |
-| /tasks   | 管理后台任务      |                                                                           |
-| /export  | 导出对话        | 导出当前对话内容                                                                  |
-| /plan    | 进入plan模式    |                                                                           |
+![](image/ClaudeCode使用/claude%20code最新指令大全.pdf)
+#### 会话管理
+
+| 命令              | 含义     | 使用场景                                                              |
+| --------------- | ------ | ----------------------------------------------------------------- |
+| /clear          | 清空上下文  | 当需要重新开始时                                                          |
+| /compact        | 压缩对话   | 当上下文过长，需要重新开始对话并且不希望丢掉之前的记忆                                       |
+| /rename \[名称\]  | 重命名会话  | 重命名会话，如不提供名称则根据对话内容自动生成                                           |
+| /resume \[名称\]  | 选择历史对话 | 从历史中选择并恢复之前的对话，继续之前未完成的任务                                         |
+| /export         | 导出对话   | 导出当前对话内容                                                          |
+| /btw            | 临时对话   | By the way缩写，可以暂时切出正在执行的项目，隔离上下文，方便使用者与CC进行临时对话。会话完毕后，可按esc消除临时会话 |
+| /reset          | 重置对话   |                                                                   |
+| /tasks          | 管理后台任务 |                                                                   |
+| /fork 或 /branch | 创建会话分支 | 在当前对话点创建一个分支。当你想探索两种不同的方法而又不想失去当前位置时很有用。                          |
+#### 配置与设置
+
+| 命令                  | 含义         | 使用场景                                                            |
+| ------------------- | ---------- | --------------------------------------------------------------- |
+| /config 或 /settings | 配置         | 配置各种设置，包括切换"显示回合时长"和发布渠道，支持搜索设置                                 |
+| /model              | 切换模型       | 用于切换不同的模型，此处需要注意如果模型提供商不是同一个需要修改`ANTHROPIC_BASE_URL`及`API-Keys` |
+| /theme              | 主题切换       | 可切换内置主题                                                         |
+| /permissions        | 管理工具权限     | 允许按工具名称过滤规则（原名 /allowed-tools）                                  |
+| /hooks              | 管理钩子配置     |                                                                 |
+| /keybindings        | 配置自定义键盘快捷键 |                                                                 |
+#### 插件与MCP
+
+| 命令              | 含义   | 使用场景                                                       |
+| --------------- | ---- | ---------------------------------------------------------- |
+| /plugin         | 插件管理 | 管理插件，包含 install、enable/disable、marketplace、validate 子命令    |
+| /reload-plugins |      | 激活待处理的插件更改而无需重启                                            |
+| /mcp            |      | 启用/禁用 MCP 服务器，还有 add、add-json、add-from-claude-desktop 等子命令 |
+#### 统计与诊断
+
+| 命令       | 含义     | 使用场景                                                        |
+| -------- | ------ | ----------------------------------------------------------- |
+| /status  | 状态     | 查看当前cc状态，提供有趣的 Claude Code 统计信息，如喜爱的模型、使用图表、连续使用天数，支持日期范围过滤 |
+| /usage   |        | 显示当前套餐使用情况                                                  |
+| /cost    | 查看费用情况 | API用户用于查询当前AI模型的API费用情况                                     |
+| /doctor  | 检测     | 检测当前cc安装情况，提供全面的错误消息和诊断，验证权限规则语法，帮助识别和修复无效的设置文件             |
+| /debug   |        | 让 Claude 帮助排查当前会话问题                                         |
+| /context |        | 帮助调试上下文问题，可视化上下文使用情况，包括分组的技能和代理                             |
+#### 效率与模式
+
+| 命令      | 含义          | 使用场景                                                                      |
+| ------- | ----------- | ------------------------------------------------------------------------- |
+| /init   | 初始化         | 用于初始化项目，claude会自动扫描当前文件夹，读取代码、现有文档、配置文件以及代码结构，然后生成一份专属于你项目的 CLAUDE.md 文件。 |
+| /effort | 配置努力程度      | 重置努力程度为默认（/effort auto）或设置下一回合的努力程度                                       |
+| /plan   | 进入plan模式    | 进入计划模式，可选择提供描述                                                            |
+| /docs   | 索引文档        | 让claude参考指定文档                                                             |
+| /memory | 编辑CLAUDE.md | 编辑CLAUDE.md文件，可选CLAUDE.md或CLAUDE.local.md                                 |
+#### 内容操作
+
+| 命令                    | 含义   | 使用场景                                        |
+| --------------------- | ---- | ------------------------------------------- |
+| /undo 或 /rewind       | 撤销更改 | 撤销上次的文件修改                                   |
+| /redo                 | 重做更改 | 重做被撤销的修改                                    |
+| /review               | 代码审查 | 检查Git暂存区改动                                  |
+| /add-dir              |      | 向外部脚本公开目录                                   |
+| /rewind 或 /checkpoint |      | 将对话和/或你的代码回放到之前的某个点。如果我走上了错误的道路，这能让你重新回到正轨。 |
+#### 工具与任务
+
+| 命令               | 含义   | 使用场景                                              |
+| ---------------- | ---- | ------------------------------------------------- |
+| /simplify        | 核查代码 | 输入后会派生出3个agent，从代码质量、运行效率和复用性三个角度做一次代码审核，然后自动优化修改 |
+| /diff            | 差异查看 | 打开一个交互式差异查看器，显示我所做的每个更改。使用箭头键导航。                  |
+| /security-review |      | 分析待处理的更改以寻找安全漏洞：注入、认证问题、数据暴露。                     |
+#### 其他命令
+
+| 命令             | 含义          | 使用场景 |
+| -------------- | ----------- | ---- |
+| /help          | 提供有关可用命令的信息 |      |
+| /release-notes | 查看发布说明      |      |
+
+
+
 
 #### 前缀触发器
 
@@ -301,6 +359,11 @@ Remove-Item -Path ".mcp.json" -Force
 | &        | async（异步任务）     |                               |
 | \\+Entry | multiline（多行输入） | 换行不发送，写多行内容，长需求描述一次性写完        |
 | 无前缀      | 自然语言            | 普通任务指令                        |
+#### 参考
+
+[Claude Code 内置 / 命令完整列表](https://zhuanlan.zhihu.com/p/2018844788078687993)
+
+[这里有50个以上的斜杠命令在Claude Code中，大家可能不知道它们的存在](https://www.reddit.com/r/ClaudeAI/comments/1shz99l/here_are_50_slash_commands_in_claude_code_that/?tl=zh-hans)
 
 ### 快捷键
 
@@ -628,23 +691,59 @@ Claude 读取 `CLAUDE.md` 时会自动加载引用的文件内容：
 - 不要在代码注释或日志中输出任何密钥或 token
 ```
 
-
 ##### karpathy
 
 
 ## plugin(插件)
 
+Claude Code插件系统简而言之可以使用以下公式概括：
+
+```text
+插件 = 自定义命令 + Sub Agents + Hooks + MCPS
+```
+
+#### /plugin
+
+在 Claude Code 里输入 /plugin，会打开插件管理器（一个带 Tab 的界面），常用的几个 Tab：
+
+* **Discover**：逛插件“应用商店”；
+* **Installed**：你装了哪些、启用/禁用/卸载；
+* **Marketplaces**：你添加了哪些“商店”；
+* **Errors**：插件没生效时先看这里；
+
+如果没有 `/plugin` 命令，通常是版本太老，插件功能要求 Claude Code >= 1.0.33（跑一下 claude --version）。
+
+![](image/ClaudeCode使用/IMG-20260508144442785.png)
 
 ### plugin安装
 
-在claude code中执行
+plugin通常安装步骤为：
 
+1. 添加插件市场（Marketplaces）；
+2. 选择插件进行安装（Discover）；
+3. 选择安装位置完成安装；
+
+#### 添加插件市场
+
+Claude Code插件系统可以配置多个插件市场，配置方式和添加插件市场一致；
 ```bash
 # 添加市场
 /plugin marketplace add <组织名>/<仓库名称>
+```
+
+#### 安装插件
+
+```cli
 # 安装插件
 /plugin install <插件名称>@<插件市场名称>
 ```
+
+#### 安装位置
+
+插件安装有 scope（和 Claude Code 其它配置的 scope 是一套体系）：
+* **user**：装在 ~/.claude/settings.json，自己所有项目都能用（默认）；
+* **project**：装在 .claude/settings.json，团队随仓库一起共享；
+* **local**：装在 .claude/settings.local.json，只在本机生效，且一般会被 gitignore；
 
 ### 常用plugin
 
@@ -655,14 +754,11 @@ anthropic官方plugin
 /plugin install anthropic-agent-skills
 ```
 
-
 [andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills)
 
 ```bash
-/plugin marketplace add anthropics/skills
-
-/plugin install document-skills@anthropic-agent-skills
-/plugin install example-skills@anthropic-agent-skills
+/plugin marketplace add forrestchang/andrej-karpathy-skills
+/plugin install andrej-karpathy-skills@karpathy-skills
 ```
 
 [obsidian-skills](https://github.com/kepano/obsidian-skills)
@@ -672,6 +768,51 @@ anthropic官方plugin
 /plugin install obsidian@obsidian-skills
 ```
 
+### 卸载插件
+
+```CLI
+/plugin uninstall <插件名称>@<插件市场名称>
+```
+
+### 插件市场
+
+###### Claude Code Templates
+
+涵盖了 DevOps自动化、文档生成、项目管理、测试套件等。实用性强，收录的都是开发日常高频使用场景插件。
+
+* 官网地址：[https://www.aitmpl.com/plugins](https://www.aitmpl.com/plugins)
+* github地址：[https://github.com/davila7/claude-code-templates](https://github.com/davila7/claude-code-templates)
+##### Anthropic Marketplaces
+
+涵盖了Agent SDK开发、Git工作流自动化、全面的功能开发工作流程等官方插件，稳定性值得信赖。
+
+* github地址：[https://github.com/anthropics/claude-code](https://github.com/anthropics/claude-code)
+
+##### Claude Code Marketplaces
+
+社区聚合站点，把各个插件市场进行了聚合展示。
+
+* 官网地址：[https://claudemarketplaces.com/](https://claudemarketplaces.com/)
+
+##### Seth Hobson
+
+收录了很多 自定义命令、MCP、专业化Agent工作流 以及 开发工具。
+
+* 官网地址：[https://sethhobson.com/](https://sethhobson.com/)
+
+### 自定义plugin
+
+暂未完成
+
+- 插件开发指南：[https://docs.claude.com/en/docs/claude-code/plugins](https://docs.claude.com/en/docs/claude-code/plugins)
+- 高级插件开发：[https://docs.claude.com/en/docs/claude-code/plugins#develop-more-complex-plugins](https://docs.claude.com/en/docs/claude-code/plugins#develop-more-complex-plugins)
+- 插件市场管理：[https://docs.claude.com/en/docs/claude-code/plugin-marketplaces](https://docs.claude.com/en/docs/claude-code/plugin-marketplaces)
+- 技术参考文档：[https://docs.claude.com/en/docs](https://docs.claude.com/en/docs/claude-code/plugins-reference)
+
+### 参考
+
+[Claude Code上线插件系统，AI编程模式再次升级](https://zhuanlan.zhihu.com/p/1966078675586904155)
+
 ## skills(技能)
 
 skills 本质上就是教 AI 按固定流程做事的操作说明书，一旦写好，就能像函数一样反复调用。可以把 Skills 看成把某类事情应该怎么专业做这件事，封装成一个可复用、可自动触发的能力模块。
@@ -679,17 +820,16 @@ skills 本质上就是教 AI 按固定流程做事的操作说明书，一旦写
 
 ### skills安装
 
-#### 方式1：插件安装
-
-
-#### 方式2：手动安装
-
-
-
 
 ### 常用skills
 
 [find-skills](https://github.com/vercel-labs/skills/tree/main/skills/find-skills) 一个能为当前任务快速找到最匹配skills的元skill
+
+
+### 参考
+
+官方skills仓库：[https://github.com/anthropics/skills](https://github.com/anthropics/skills)
+
 
 ## hook
 
@@ -708,8 +848,7 @@ https://github.com/xu-xiang/everything-claude-code-zh
 
 
 claude code技能宇宙 [https://oneskill.one/](https://oneskill.one/?)
-
-
+面向每个 Agent 的 Skills 市场 [https://lobehub.com/zh/skills](https://lobehub.com/zh/skills)
 # 免费Token
 
 [2026 大模型 API 免费额度汇总20260317](https://cloud.tencent.com/developer/article/2626756?cps_key=1d358d18a7a17b4a6df8d67a62fd3d3d)
