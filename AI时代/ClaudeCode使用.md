@@ -635,18 +635,7 @@ Claude 读取 `CLAUDE.md` 时会自动加载引用的文件内容：
 # plugin(插件)
 
 
-# skills(技能)
-
-skills 本质上就是教 AI 按固定流程做事的操作说明书，一旦写好，就能像函数一样反复调用。可以把 Skills 看成把某类事情应该怎么专业做这件事，封装成一个可复用、可自动触发的能力模块。
-
-
-
-
-
-
-## skills安装
-
-### 方式1 全局安装
+## plugin安装
 
 在claude code中执行
 
@@ -657,18 +646,49 @@ skills 本质上就是教 AI 按固定流程做事的操作说明书，一旦写
 /plugin install <插件名称>@<插件市场名称>
 ```
 
-### 方式2 按项目安装
+## 常用plugin
+
+anthropic官方plugin
+[anthropic-agent-skills](https://github.com/anthropics/skills)
+```bash
+/plugin marketplace add anthropics/skills
+/plugin install anthropic-agent-skills
+```
+
+
+[andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills)
+
+```bash
+/plugin marketplace add anthropics/skills
+
+/plugin install document-skills@anthropic-agent-skills
+/plugin install example-skills@anthropic-agent-skills
+```
+
+[obsidian-skills](https://github.com/kepano/obsidian-skills)
+
+```bash
+/plugin marketplace add kepano/obsidian-skills
+/plugin install obsidian@obsidian-skills
+```
+
+# skills(技能)
+
+skills 本质上就是教 AI 按固定流程做事的操作说明书，一旦写好，就能像函数一样反复调用。可以把 Skills 看成把某类事情应该怎么专业做这件事，封装成一个可复用、可自动触发的能力模块。
+
+
+## skills安装
+
+### 方式1：插件安装
+
+
+### 方式2：手动安装
 
 
 
 
 ## 常用skills
 
-[anthropic-agent-skills](https://github.com/anthropics/skills)
-
-[andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills)
-
-[obsidian-skills](https://github.com/kepano/obsidian-skills)
 
 # hook
 
