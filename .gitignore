@@ -4,5 +4,9 @@ Thumbs.db
 
 .obsidian/workspace-mobile.json
 .obsidian/workspace.json
+
+.obsidian/plugins/notehelper/data.json
+.obsidian/plugins/notehelper/url-local-map.json
+
 未命名
 未命名.base
