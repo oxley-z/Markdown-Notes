@@ -714,9 +714,17 @@ Claude 读取 `CLAUDE.md` 时会自动加载引用的文件内容：
 - 不要在代码注释或日志中输出任何密钥或 token
 ```
 
-##### karpathy
+#### karpathy的CLAUDE.md
 
+````CLAUDE.md
 
+````
+
+## 参考
+
+CLAUDE.md原作者问答：[https://news.ycombinator.com/item?id=46098838](https://news.ycombinator.com/item?id=46098838)
+
+[https://www.humanlayer.dev/blog/writing-a-good-claude-md](https://www.humanlayer.dev/blog/writing-a-good-claude-md)
 ## plugin(插件)
 
 Claude Code插件系统简而言之可以使用以下公式概括：
