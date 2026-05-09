@@ -183,6 +183,7 @@ claude --model qwen3.6-plus
 ![](image/ClaudeCode使用/IMG-20260509102620309.png)
 
 可使用模型：
+
 ```
 z-ai/glm-4.6v-flash-free
 z-ai/glm-4.7-flash-free
@@ -933,4 +934,4 @@ claude code技能宇宙 [https://oneskill.one/](https://oneskill.one/?)
 面向每个 Agent 的 Skills 市场 [https://lobehub.com/zh/skills](https://lobehub.com/zh/skills)
 # 免费Token
 
-[2026 大模型 API 免费额度汇总20260317](https://cloud.tencent.com/developer/article/2
+[2026 大模型 API 免费额度汇总20260317](https://cloud.tencent.com/developer/article/2626756?cps_key=1d358d18a7a17b4a6df8d67a62fd3d3d)
