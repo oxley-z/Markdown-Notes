@@ -177,6 +177,7 @@ claude --model qwen3.6-plus
 ## ZenMux
 
 ### API-Key创建
+
 首先在 [ZenMux PAYG API](https://zenmux.ai/platform/pay-as-you-go)管理页面创建API-Key，注意需要选择API限制，其中后缀带free的模型可免费使用。
 
 ![](image/ClaudeCode使用/IMG-20260509102620309.png)
@@ -888,6 +889,9 @@ skills 解决这些问题：
 ### 常用skills
 
 [find-skills](https://github.com/vercel-labs/skills/tree/main/skills/find-skills) 一个能为当前任务快速找到最匹配skills的元skill
+
+
+[https://github.com/anthropics/skills](https://github.com/anthropics/skills)
 
 ### 相关链接
 
