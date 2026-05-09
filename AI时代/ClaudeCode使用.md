@@ -183,7 +183,8 @@ claude --model qwen3.6-plus
 ![](image/ClaudeCode使用/IMG-20260509102620309.png)
 
 可使用模型：
-
+z-ai/glm-4.6v-flash-free
+z-ai/glm-4.7-flash-free
 ### 环境变量配置
 
 #### PowerShell
