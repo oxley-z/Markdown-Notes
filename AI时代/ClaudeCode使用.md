@@ -174,6 +174,29 @@ claude --model qwen3.6-plus
 
 配置完成后重启`PowerShell`即可使用。
 
+## ZenMux
+
+### API-Key创建
+首先在 [ZenMux PAYG API](https://zenmux.ai/platform/pay-as-you-go)管理页面创建API-Key，注意需要选择API限制，其中后缀带free的模型可免费使用。
+
+![](image/ClaudeCode使用/IMG-20260509102620309.png)
+
+### 环境变量配置
+
+#### PowerShell
+
+```PowerShell
+# 用ZenMux API Key 替换 YOUR_DASHSCOPE_API_KEY
+
+[Environment]::SetEnvironmentVariable("ANTHROPIC_API_KEY", "YOUR_DASHSCOPE_API_KEY", [EnvironmentVariableTarget]::User)
+
+[Environment]::SetEnvironmentVariable("ANTHROPIC_BASE_URL", "https://zenmux.ai/api/anthropic", [EnvironmentVariableTarget]::User)
+
+[Environment]::SetEnvironmentVariable("ANTHROPIC_MODEL", "z-ai/glm-4.6v-flash-free", [EnvironmentVariableTarget]::User)
+```
+
+配置完成后重启`PowerShell`即可使用。
+
 ### 参考
 
 [国家超算平台第三方工具接入](https://www.scnet.cn/ac/openapi/doc/2.0/moduleapi/tutorial/callbytools_claudecode.html)
@@ -854,17 +877,23 @@ skills 解决这些问题：
 
 可根据需求，将skill文件放入项目下或者全局的`.claude/skills/<skill-name>`文件夹下。
 
-
-
 ### 常用skills
 
 [find-skills](https://github.com/vercel-labs/skills/tree/main/skills/find-skills) 一个能为当前任务快速找到最匹配skills的元skill
 
+### 相关链接
+
+Skill 聚合入口：[https://skills.sh/](https://skills.sh/)
+Skills 市场（中文界面）：[https://skillsmp.com/zh](https://skillsmp.com/zh)
+Agent Skills 官方标准站点：[https://agentskills.io](https://agentskills.io/)
+Anthropic 官方工程文章（Agent Skills 实战理念）：[https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills)
+Claude 技能精选列表（Awesome 系列）：[https://github.com/ComposioHQ/awesome-claude-skills](https://github.com/ComposioHQ/awesome-claude-skills)
+软件开发自动化工作流 Skills 集合：[https://github.com/obra/superpowers](https://github.com/obra/superpowers)
 
 ### 参考
 
 官方skills仓库：[https://github.com/anthropics/skills](https://github.com/anthropics/skills)
-
+Agent Skill-菜鸟教程：[https://www.runoob.com/claude-code/claude-agent-skills.html](https://www.runoob.com/claude-code/claude-agent-skills.html)
 
 ## hook
 
