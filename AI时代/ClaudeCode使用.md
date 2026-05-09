@@ -891,14 +891,36 @@ skills 解决这些问题：
 
 ### skills安装
 
+#### 方式1：自然语言安装
+
+可以直接在claude code的对话窗口提出需求：
+
+```text
+帮我安装下 skill，项目地址是：https://github.com/anthropics/skills/blob/mai
+n/skills/pptx 
+```
+
+#### 方式2：手动安装
+
 可根据需求，将skill文件放入项目下或者全局的`.claude/skills/<skill-name>`文件夹下。
+
+#### 方式3：npx安装
+
+在powershell中执行：
+
+```powershell
+npx skills add https://github.com/kepano/obsidian-skills
+```
 
 ### 常用skills
 
-[find-skills](https://github.com/vercel-labs/skills/tree/main/skills/find-skills) 一个能为当前任务快速找到最匹配skills的元skill
+一个能为当前任务快速找到最匹配skills的元skill：[find-skills](https://github.com/vercel-labs/skills/tree/main/skills/find-skills)
 
+Anthropic官方skills仓库：[anthropic-agent-skills](https://github.com/anthropics/skills)
 
-[https://github.com/anthropics/skills](https://github.com/anthropics/skills)
+Athropic官方出品的能够根据需求一步步写出一个skill的skills：[skill-creator](https://github.com/anthropics/skills/tree/main/skills/skill-creator)
+
+obsidian官方出品的skills：[obsidian-skills](https://github.com/kepano/obsidian-skills)
 
 ### 相关链接
 
