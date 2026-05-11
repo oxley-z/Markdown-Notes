@@ -919,7 +919,6 @@ npx skills add https://github.com/kepano/obsidian-skills
 Anthropic官方skills仓库：[anthropic-agent-skills](https://github.com/anthropics/skills)
 
 Athropic官方出品的能够根据需求一步步写出一个skill的skills：[skill-creator](https://github.com/anthropics/skills/tree/main/skills/skill-creator)
-
 obsidian官方出品的skills：[obsidian-skills](https://github.com/kepano/obsidian-skills)
 
 ### 相关链接
