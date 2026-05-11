@@ -102,7 +102,17 @@ ollama远程可用模型查询 [https://ollama.com/search?c=cloud](https://ollam
 | gpt-oss:20b-cloud            | Text        |
 | gpt-oss:120b-cloud           | text        |
 
+## 注意事项
+
+若使用CC-Switch配置API，退出CC-Switch无法正常连到ollama，需要开启CC-Switch对ollama进行配置，配置过程与正常配置其他模型提供商一致。
+
+```
+export ANTHROPIC_AUTH_TOKEN=ollama  # required but ignored
+export ANTHROPIC_BASE_URL=http://localhost:11434
+```
+
 # 参考
 
+ollame API Reference [https://docs.ollama.com/api/anthropic-compatibility](https://docs.ollama.com/api/anthropic-compatibility)
 [Ollama-Claude Code doc](https://docs.ollama.com/integrations/claude-code)
 [Claude Code 直连 Ollama / LM Studio：本地、云端开源模型都能跑](https://zhuanlan.zhihu.com/p/2010741899133198392)
