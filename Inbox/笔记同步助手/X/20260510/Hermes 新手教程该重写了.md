@@ -8,7 +8,7 @@ tags:
 id: 527c2471-1b34-437a-af3e-9a31120cdb2a
 ---
 
-![cover](https://pbs.twimg.com/media/HH3iU1KaMAAx-jo.jpg)
+![[Inbox/笔记同步助手/images/b44d4b225e56ed06ef96ae39263b70a6_MD5.jpg|cover]]
 
 œ我本来不想写 Hermes 新手教程。
 
@@ -40,7 +40,7 @@ Hermes 这种工具，最怕教程过期。
 
 普通聊天工具像临时喊来的助手，问完就散。Hermes 更像给这个助手安排了一张桌子，旁边有笔记本、有 SOP、有消息入口，也有一块任务板。临时问一句概念解释，用不上这么重的家伙；整理日报、追踪资料、维护项目、保存偏好、定时执行低风险任务，才是它舒服的位置。
 
-![](https://pbs.twimg.com/media/HH4mWqWaUAAA0MB.jpg)
+![[Inbox/笔记同步助手/images/8590fd42fd3cfad3bb641167d294f1b0_MD5.jpg]]
 
 ## 第一天不要做三件
 
@@ -54,7 +54,7 @@ Telegram、Discord、Slack、WhatsApp、飞书都能接，问题是任何一个 
 
 \`\`\` 安装 Hermes → 选择模型 provider → 跑通 CLI / TUI 会话 → 确认 sessions 能恢复 → 配 SOUL / Memory → 用 Skills → 接 Gateway → 建 Profile → 上 Cron / Kanban / Docker \`\`\`
 
-![](https://pbs.twimg.com/media/HH4mWqNa0AAhRbP.jpg)
+![[Inbox/笔记同步助手/images/c0edcb042ab0b4ca4986c8bcece61131_MD5.jpg]]
 
 先把版本跑出
 
@@ -84,7 +84,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -Command "iwr https://raw.githubus
 
 这一步别省。Hermes 改得太勤，很多“教程失效”未必是作者写错了，常常只是命令长了新枝。
 
-![](https://pbs.twimg.com/media/HH4mWqWa4AA9gMI.jpg)
+![[Inbox/笔记同步助手/images/f2ca4d456a43a556b5541b88d4f97f6f_MD5.jpg]]
 
 准备认真用的话，doctor 也别往后拖，
 
@@ -98,7 +98,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -Command "iwr https://raw.githubus
 
 跑它不是为了背命令。先看一眼入口，心里会稳很多。model、gateway、cron、kanban、skills、curator、memory、profile、dashboard、logs 都在这一屏里，Hermes 现在的重心，其实也写在这一串命令里了。
 
-![](https://pbs.twimg.com/media/HH4mWqWbgAAAqbm.jpg)
+![[Inbox/笔记同步助手/images/2e79ef64493d8cec942033b9a696536f_MD5.jpg]]
 
 第二步，先把模型接上
 
@@ -209,7 +209,7 @@ Skill 记流程和 SOP。
 
 \`\`\` Memory = 它该知道什么 Skill = 某类任务该怎么做 \`\`\`
 
-![](https://pbs.twimg.com/media/HH4mWqTaYAAWQNx.jpg)
+![[Inbox/笔记同步助手/images/33b3bf13dc5ffc3ff108ee18c81b88ec_MD5.jpg]]
 
 训练 Hermes 时，天天喊“记住我”用处有限。一个任务做顺了，直接让它沉淀成 Skill，效果更稳定，
 
@@ -257,7 +257,7 @@ Gateway 成功不看服务有没有启动，要看聊天软件里能不能给 He
 
 第二天换一个说法让它做同类任务，看它有没有沿用偏好。测到这一步，才算测到了 Gateway + Memory 的组合能力。
 
-![](https://pbs.twimg.com/media/HH4mWqVbwAAu7TL.jpg)
+![[Inbox/笔记同步助手/images/3d1462418a8beef952eecc52e7713c56_MD5.jpg]]
 
 第七步，Profile 才是多 Agent 的正确起点
 
@@ -337,7 +337,7 @@ docker run -it --rm \\ -v ～/.hermes:/opt/data \\ nousresearch/hermes-agent set
 
 最新版继续把这件事往前推，增加了 heartbeat、reclaim、zombie detection、retry budget、incomplete exit auto-block 等能力。翻译成人话就是，以前多 Agent 很像“派出去就听天由命”，现在更像有任务板、有心跳、有失败恢复、有交接记录。
 
-![](https://pbs.twimg.com/media/HH4mWqPakAAT64o.jpg)
+![[Inbox/笔记同步助手/images/dbcb4a786d08dfe6b7fcca7a1a7ddb1a_MD5.jpg]]
 
 入门只需要知道这几个命令，
 

@@ -156,7 +156,7 @@ claude --model qwen3.6-plus
 
 #### API-Key创建
 
-首先需要在在 [国家超算平台API管理]([https://hunyuan.cloud.tencent.com/#/app/apiKeyManage](https://www.scnet.cn/ui/console/index.html#/llm/apikeys)) 中创建API-Key；
+首先需要在在 [国家超算平台API管理](https://www.scnet.cn/ui/console/index.html#/llm/apikeys) 中创建API-Key；
 
 ### 环境变量配置
 

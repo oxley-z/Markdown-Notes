@@ -14,7 +14,7 @@ id: f62bd7f7-1ec0-40d9-b004-79e25ea5e4c9
 
 发布时间：2026-03-21 00:04
 
-![](https://relay-1.bijitongbu.site/p/ecf52f2cdbce0bedda433b44bbf99b6d.png)
+![[Inbox/笔记同步助手/images/9ecbaa9c4f94abbad8d459c5b93d21ab_MD5.jpg]]
 
 > 原文：50 Claude Code Tips and Best Practices For Daily Use  
 > 作者：Vishwas@CodevolutionWeb
@@ -447,7 +447,7 @@ Claude 思考时，终端里会显示一个转圈动画，配上像 “Flibberti
 
 ---
 
-![cover_image](https://mmbiz.qpic.cn/sz_mmbiz_jpg/2KnQQTdtULFW5RdlnicAjqrLgr7ia0s0Lp4QHGrY6ibCmGHjh45TkCsHt9u8QLy5gYbYAKNA5Baa0bIGHrXjSWmTeDGAYeldF2ibtsxtia20K5vA/0?wx_fmt=jpeg)
+![[Inbox/笔记同步助手/images/231365f9acf3a8b7129065a8c3bd995a_MD5.jpg|cover_image]]
 
 Original 九皋山人者 AI 方寸山
 

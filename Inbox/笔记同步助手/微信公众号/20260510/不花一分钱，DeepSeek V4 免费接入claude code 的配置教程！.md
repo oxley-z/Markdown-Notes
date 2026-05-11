@@ -14,7 +14,7 @@ id: 0ce3c4f0-e68a-4cbb-a043-b4b80fb856e3
 
 发布时间：2026-04-26 12:48
 
-![](https://relay-1.bijitongbu.site/p/70700830928012fac75cec7b2954ce2f.png)
+![[Inbox/笔记同步助手/images/e28aa8dfcbd48c81e9cc3083bb0a262f_MD5.jpg]]
 
 大家好，今天是坚持更新的第44天！
 
@@ -24,7 +24,7 @@ id: 0ce3c4f0-e68a-4cbb-a043-b4b80fb856e3
 
 不过好东西往往不便宜，虽然官方API最近搞了限时折扣2.5折，但真拿来跑日常项目或者高频调试，token消耗速度可是很快的
 
-![](https://relay-1.bijitongbu.site/p/e112c7af0289a24fb84c80c7fb8347c2.png)
+![[Inbox/笔记同步助手/images/2ca37e7073e03cadaab7e4cee35c5b6e_MD5.jpg]]
 
 但是我的想法很简单，就是想先零成本试水，测试下接入claude code后再决定要不要长期投入，不想一上来就掏钱。
 
@@ -32,7 +32,7 @@ id: 0ce3c4f0-e68a-4cbb-a043-b4b80fb856e3
 
 更爽的是，这些免费额度可以直接接到Claude Code里，界面还是那个熟悉的界面，但背后跑的是免费的 V4。
 
-![](https://relay-1.bijitongbu.site/p/d621b639e3c5109613f4f2d0e89360cc.png)
+![[Inbox/笔记同步助手/images/8de2d320563984a7b48008aec2163995_MD5.jpg]]
 
 一开始我也觉得配置肯定很麻烦，搞不好还会报错，结果我实际操作下来发现真没想象中复杂，就几个简单的步骤，不用写代码，几分钟就能搞定。
 
@@ -50,15 +50,15 @@ https://bailian.console.aliyun.com/cn-beijing#/home
 
 注册登录后在控制台找API-KEY 管理，新建一个，它直接送100万 token，这量级够你折腾很久了。
 
-![](https://relay-1.bijitongbu.site/p/ea1ef7a668b68dbedb8ffef1f76668a0.png)
+![[Inbox/笔记同步助手/images/95cf8449f48fa57ce4f5586eba046d23_MD5.jpg]]
 
 另一个是魔搭社区，网址 modelscope.cn，这个更直接，每天送 2000 次调用机会。
 
-![](https://relay-1.bijitongbu.site/p/37ebf9bf1e8514da22cba35f7ee6cad9.png)
+![[Inbox/笔记同步助手/images/5f56bfe906ea8e215e8ceb51ba06aedf_MD5.jpg]]
 
 仅需在首页的访问控制页面那里找到访问令牌即可。
 
-![](https://relay-1.bijitongbu.site/p/54516e72b580d7575cfadb88294de34d.png)
+![[Inbox/笔记同步助手/images/3a517c8fd9224b3110aaeff0fd646497_MD5.jpg]]
 
 两个平台选一个就行，或者都注册了备用，把生成的 Key 复制下来，找个地方存好，别弄丢了。
 
@@ -70,7 +70,7 @@ https://github.com/farion1231/cc-switch
 
 装好后打开，界面很简单，点加好，新建供应商，在页面里选 Bailian（对应阿里云）或者ModelScope（对应魔塔）。
 
-![](https://relay-1.bijitongbu.site/p/8a3717716183605994e50b0b72c1d88c.png)
+![[Inbox/笔记同步助手/images/1a7f26d16cb93690f5cbbc64be4db859_MD5.jpg]]
 
 选好后，把刚才复制的Key粘贴进API Key输入框，其他的先不动，然后点保存。
 
@@ -78,7 +78,7 @@ https://github.com/farion1231/cc-switch
 
 往下拉找到高级选项，可以点击获取模型列表，CC Switch会自动获取所有可调用的AI模型，然后我们选择DeepSeek V4 pro版本即可，可以点击一键设置其他模型统一是DeepSeek V4 pro也是可以的。
 
-![](https://relay-1.bijitongbu.site/p/f3589003918cf559ea80641cb7e8314e.png)
+![[Inbox/笔记同步助手/images/1c538296959da8887397d533abd9ce93_MD5.jpg]]
 
 这是需要避坑的是，因为Claude Code的原生逻辑是为Anthropic的Claude模型设计的，当你强行接入OpenA 兼容格式的第三方模型（比如阿里云百炼）时，需要一个请求转换层 / 路由，把 Claude Code 的内部请求转换成标准的 OpenAI格式，再把响应转回来。
 
@@ -90,7 +90,7 @@ https://dashscope.aliyuncs.com/apps/anthropic
 
 对于魔搭社区的话，正常配置好api-key后，获取模型列表后，选择DeepSeek V4 Flash模型，应该目前只支持这个模型吧，v4 pro没有显示。
 
-![](https://relay-1.bijitongbu.site/p/fc72ed23836e65668ee51e70b9c265f8.png)
+![[Inbox/笔记同步助手/images/c67430243813667cb582f539e102c86d_MD5.jpg]]
 
 最后一步，点保存配置，这时候你打开终端，输入Claude，界面还是那个熟悉的样子，但背后跑的已经是免费的 DeepSeek V4 了。
 
@@ -131,19 +131,19 @@ https://dashscope.aliyuncs.com/apps/anthropic
 
 很快claude code会联网搜索后并且完成了，虽然效果挺一般，但总体还是挺不错的。
 
-![](https://relay-1.bijitongbu.site/p/836db535628d20caba297a36c4bc80b2.png)
+![[Inbox/笔记同步助手/images/ff84f0ec07b06fbd0f310ae3c5a33ed0_MD5.jpg]]
 
 在同一提示词下，对比DeepSeek V4 pro的生成结果，我个人认为pro还是强些的。
 
-![](https://relay-1.bijitongbu.site/p/d53c642e9eafe995d0cc915c93fa58f7.png)
+![[Inbox/笔记同步助手/images/50e9fb308eb08cf3e3cc1949989f2b4f_MD5.jpg]]
 
 在Flash模型生成的内容挺可以的。
 
-![](https://relay-1.bijitongbu.site/p/47cf903e8eaa71d07b7ec4e42bf1f120.png)
+![[Inbox/笔记同步助手/images/93c939447669214619beded6f8ad5b23_MD5.jpg]]
 
 但我感觉pro模型生成的结果比较棒一些的。
 
-![](https://relay-1.bijitongbu.site/p/bac6ac8c6ce9f6af1ac387c091060dfb.png)
+![[Inbox/笔记同步助手/images/8723cdcd66b3220688e4016c82322bdc_MD5.jpg]]
 
 ### 写到最后
 
@@ -159,7 +159,7 @@ https://dashscope.aliyuncs.com/apps/anthropic
 
 ---
 
-![cover_image](https://mmbiz.qpic.cn/sz_mmbiz_jpg/KiapdU6opqFGib7MNyBFMJmJH9VTRwnNcHJUgDtUnj4glcibuK2sDU68P4xxcCyugjQQrFstJQmM7nTLVdOibxOYJIBwFk4BnvKTZiaJlUuoJQics/0?wx_fmt=jpeg)
+![[Inbox/笔记同步助手/images/571bc72593eda3bdaef545a28eef02d1_MD5.jpg|cover_image]]
 
 原创 AI小雷 AI智界前沿
 

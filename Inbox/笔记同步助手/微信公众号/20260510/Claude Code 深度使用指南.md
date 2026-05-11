@@ -95,7 +95,7 @@ VS Code 是目前最流行的代码编辑器，Claude Code 与它的配合非常
 
   
 
-![](https://relay-1.bijitongbu.site/p/a467e5510873e4dff4a4d091b7fbdd7b.png)
+![[Inbox/笔记同步助手/images/f68221c223de2954bf49f7f0ef1f148d_MD5.jpg]]
 
   
 
@@ -136,7 +136,7 @@ claude --dangerously-skip-permissions
 
   
 
-![](https://relay-1.bijitongbu.site/p/ef2db0d29dae3796f4dc6ed20262fc46.png)
+![[Inbox/笔记同步助手/images/ae02cf75ef7899da728405db3a435094_MD5.jpg]]
 
   
 
@@ -196,7 +196,7 @@ Skill 分两类：
 
   
 
-![](https://relay-1.bijitongbu.site/p/4ee108bcfc767731fc7b5a22d449f254.png)
+![[Inbox/笔记同步助手/images/fa517ab6e10714842ab5d4dc25484990_MD5.jpg]]
 
   
 
@@ -219,7 +219,7 @@ Claude Code 有 100 万 Token 的上下文预算，随着使用增加，性能�
 
 输入 `/context` 可以查看当前 Token 用量。建议让 Claude Code 在提示符下方创建一个实时显示上下文用量的状态栏（有个开源项目: `claude-hub` 挺不错，目前我也在用），方便随时监控。当用量接近 20% 时(这是对于max用户而言1M上下文，pro用户的上下文是200k，当接近90%就可以清一次上下文了。)，果断清除，重新开始。
 
-![](https://relay-1.bijitongbu.site/p/f5f22afe20521427bf92a202c6bacaab.png)
+![[Inbox/笔记同步助手/images/9484c407bbb85de8c709fccb07e7ef68_MD5.jpg]]
 
   
 
@@ -256,7 +256,7 @@ Claude Code 的门槛远比想象中低，但它的上限远比大多数人用�
 
 ---
 
-![cover_image](https://mmbiz.qpic.cn/sz_mmbiz_jpg/umSAYCoHawicQibrH4OAvowQN1hDtsvqV0HBQ8QvpTpu2ruMQgu0yNduJQVrGR975yWQhibxmW1Wwo0wNiazdEhQZMEo23Eb2MXDibEUq5Qh5Wkc/0?wx_fmt=jpeg)
+![[Inbox/笔记同步助手/images/06acdfaa7e2364d23059423e953f946d_MD5.jpg|cover_image]]
 
 原创 何富贵AI 富贵的胡思乱想
 

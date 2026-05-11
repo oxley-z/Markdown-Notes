@@ -126,7 +126,7 @@ mkdir -p ～/.cache/tmp && TMPDIR=～/.cache/tmp claude
 
 完成！HUD 会立即显示，**无需重启**。
 
-![](https://relay-1.bijitongbu.site/p/c5c39872fa6b87bc19959fec5d269e6b.png)
+![[Inbox/笔记同步助手/images/69a2a5228da4b8178554448271a9f2fd_MD5.jpg]]
 
 ---
 
@@ -228,7 +228,7 @@ _如果你在使用 Claude Code，这个插件绝对值得一试！特别是对�
 
 ---
 
-![cover_image](https://mmbiz.qpic.cn/sz_mmbiz_jpg/Tibs6tZp0ThknzWLFYR4plcI3JZEr7b31LZX6wS542KhuoIbUSjUJJTEqibAGfKwYTOdhM51MxVcC3pRSCF3P69Y8LicT4uLiaFRn39Qa4qvvH0/0?wx_fmt=jpeg)
+![[Inbox/笔记同步助手/images/41a50ab8db887a1271c0f30a339a6e57_MD5.jpg|cover_image]]
 
 咔哒 二进制茶馆
 
