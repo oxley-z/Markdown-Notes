@@ -63,7 +63,7 @@ RDMA的三个特性：Low-Latency（低延迟）、Low CPU overhead（低CPU消�
 
 <center>RDMA传输过程</center>
 
-### RDMA三种不同的硬件实现
+# RDMA三种不同的硬件实现
 
 * **Infiniband**：基于InfiniBand架构的RDMA技术，由IBTA（InfiniBand Trade Assocation）提出。搭建基于IB技术的RDMA网络需要专用的IB网卡和IB交换机。从性能上，很明显Infiniband网络最好，但网卡和交换机的价格相对也比较高，RoCEv2和iWARP进需使用特殊的网卡即可，价格相对便宜。
 * **iWARP**：Internet Wide Area RDMA Protocal，基于TCP/IP协议的RDMA技术，由IETF标准定义。iWARP支持在标准以太网基础设施上使用RDMA技术，而<font color=red>不需要交换机支持无损以太网传输</font>，但服务器需要使用支持iWARP的网卡。与此同时，收TCP影响，性能稍差。
@@ -151,7 +151,7 @@ RoCE技术可通过普通以太网交换机实现，但服务器需要支持RoCE
 
 ![RDMA_rocev1_vs_rocev2](image/RDMA基础知识/rdma_rocev1_vs_rocev2.png)
 
-## RDMA通信原理
+# RDMA通信原理
 
 RDMA协议定义RC、UC、UD三种通信模式，其中RC（Reliable Connection）模式，保证报文正确的传输到目的端，支持报文ACK确认、超时重传，若某个报文超时没有确认，则重传该报文后的所有报文。UC（Unreliable Conection）模式需要提前建立链接，报文不需要携带地址信息，不需要ACK确认、重传，不保证对端能正确接收。UD（Unreliable Datagram）模式不需要建立链接，每个报文都携带目标地址、目标队列信息，不需要ACK确认、重传，每个报文不能大于网络[MTU限制](https://baike.baidu.com/item/%E6%9C%80%E5%A4%A7%E4%BC%A0%E8%BE%93%E5%8D%95%E5%85%83/9730690?fromtitle=mtu&fromid=508920)[^MTU]。三种模式稳定性依次下降，执行效率依次升高，RC、UC链路资源都需要占用网卡的Cache资源，并发链路数量过多时，需要考虑UD模式。
 
@@ -164,17 +164,35 @@ RDMA协议定义RC、UC、UD三种通信模式，其中RC（Reliable Connection�
 | 连接（Connection） | RC（Reliable Connection） | UC（Unreliable Connection） |
 | 数据报（Datagram） | RD（Reliable Datagram）   | UD（Unreliable Datagram）   |
 
-#### [RC](#RC)
+#### RC
 
-面向连接的可靠服务；队列对仅与另一个QP关联
+特点：
 
-#### [UC](#uc)
+- 面向连接的可靠服务；
+- 一个QP只和一个另外的QP相连；
+- 消息通过一个QP的发送队列可靠地传输到另一个QP的接收队列；
+- 数据包按序交付；
+- RC连接很类似于普通以太网的TCP连接；
 
-面向连接的不可靠服务
+#### UC
+
+特点：
+
+- 面向连接的不可靠服务；
+- 一个QP只和一个另外的QP相连；
+- <mark style="background: #FF5582A6;">连接是不可靠的</mark>，所以数据包有可能会丢失；
+- 传输层出错的消息不会进行重传，错误处理必须由高层的协议来进行；
 
 #### UD
 
-面向数据报的可靠服务；
+特点：
+
+- 面向数据报的可靠服务；
+- 一个QP可以和其它任意的UD QP 进行数据传输和单包数据的接收；
+- 不保证按序性和交付性；
+- 交付的数据包可能被接收端丢弃；
+- 支持多播消息（一对多）；
+- UD 连接很类似于UDP 连接；
 
 #### RD
 
@@ -188,8 +206,6 @@ RDMA协议定义RC、UC、UD三种通信模式，其中RC（Reliable Connection�
 | ------ | -------------------------------------------------- | ----------------------------------------------------------- |
 | 相同点 | 通信均包括双方QP对的参与                           | 通信均包括双方QP对的参与                                    |
 | 不同点 | 面向连接的通信若有N个节点与之通信，本机需要N个QP对 | 面向数据报的通信可以做到N个节点与之通信，本机仅需一个QP队； |
-
-
 
 ## 关键概念
 
@@ -299,14 +315,14 @@ RDMA传输层主要完成数据与应用的绑定，即在硬件收到报文时�
 
 当建立QP可以指定不同的传输操作。可用的操作选项如下表所示。RD不被当前API支持。
 
-|                                                | <a id=UD>UD</a> | <a id=uc >UC</a> | <a id=rc >RC</a> | <a id=RD>RD</a> |
-| ---------------------------------------------- | --------------- | ---------------- | ---------------- | --------------- |
-| Send                                           | √               | √                | √                | √               |
-| Receive                                        | √               | √                | √                | √               |
-| RDMA Write                                     |                 | √                | √                | √               |
-| RDMA Read                                      |                 |                  | √                | √               |
-| Atomic Fetch and Add / Atomic Compare and Swap |                 |                  | √                | √               |
-| Max message size                               | MTU[^MTU]       | 1GB              | 1GB              | 1GB             |
+|                                                | UD        | UC  | RC  | RD  |
+| ---------------------------------------------- | --------- | --- | --- | --- |
+| Send                                           | √         | √   | √   | √   |
+| Receive                                        | √         | √   | √   | √   |
+| RDMA Write                                     |           | √   | √   | √   |
+| RDMA Read                                      |           |     | √   | √   |
+| Atomic Fetch and Add / Atomic Compare and Swap |           |     | √   | √   |
+| Max message size                               | MTU[^MTU] | 1GB | 1GB | 1GB |
 
 Send/Receive和RDMA Read/Write最大的区别是Send/Receive发送端只管发，最终数据存储在哪里由接收端决定。RDMA Read/Write在在发送时就携带了远端节点的写入地址
 
@@ -355,7 +371,7 @@ RDMA的send/receive是双边操作，即必须要远端的应用感知参与才�
 
 <center>RDMA Read/Write行为</center>
 
-## OFED
+# OFED（OpenFabrics Enterprise Distribution）
 
 Mellanox OFED是一个单一的软件堆栈，包括驱动、中间件、用户接口，以及一系列的标准协议IPoIB、SDP、SRP、iSER、RDS、DAPL(Direct Access Programming Library)，支持MPI、Lustre/NFS over RDMA等协议，并提供Verbs编程接口；Mellanox OFED由开源OpenFabrics组织维护。
 
@@ -363,7 +379,7 @@ Mellanox OFED是一个单一的软件堆栈，包括驱动、中间件、用户�
 
 <center>Mellanox OFED架构</center>
 
-## 相关软件
+# 相关软件
 
 ### [rdma-core]([linux-rdma/rdma-core: RDMA core userspace libraries and daemons (github.com)](https://github.com/linux-rdma/rdma-core))
 
