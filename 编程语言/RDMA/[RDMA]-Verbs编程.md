@@ -6,23 +6,23 @@
 
 **IB_VERBS**
 
-&emsp;&emsp;接口以ibv_xx（用户态）或者ib_xx（内核态）作为前缀，是最基础的编程接口；
+接口以ibv_xx（用户态）或者ib_xx（内核态）作为前缀，是最基础的编程接口；
 
 **RDMA_CM**
 
-&emsp;&emsp;以rdma_为前缀，主要分为两个功能：
+以rdma_为前缀，主要分为两个功能：
 
 **CMA（Connection Management Abstraction）**
 
-&emsp;&emsp;在Socket和Verbs API基础上实现，用于CM建链并交换信息的一组接口。CM建链是在Socket基础上封装为QP实现，从用户的角度来看，是在通过AP交换之后数据交换所需要的QPN，Key等信息。
+在Socket和Verbs API基础上实现，用于CM建链并交换信息的一组接口。CM建链是在Socket基础上封装为QP实现，从用户的角度来看，是在通过AP交换之后数据交换所需要的QPN，Key等信息。
 
 **CM_VERBS**
 
-&emsp;&emsp;RDMA_CM主要用于管理连接，使通信的双方能够确定彼此的GID和QPN信息，从而可以进行后续的交互处理。
+RDMA_CM主要用于管理连接，使通信的双方能够确定彼此的GID和QPN信息，从而可以进行后续的交互处理。
 
-&emsp;&emsp;RDMA_CM也可以用于数据交换，相当于在Verbs API上有封装了一套数据交换接口。
+RDMA_CM也可以用于数据交换，相当于在Verbs API上有封装了一套数据交换接口。
 
-&emsp;&emsp;侠义的Verbs API指以ibv_ /ib_为前缀的用户态Verbs接口，因为RDMA的典型应用是在用户态，下文主要介绍用户态的Verbs API。
+狭义的Verbs API指以ibv_ /ib_为前缀的用户态Verbs接口，因为RDMA的典型应用是在用户态，下文主要介绍用户态的Verbs API。
 
 Linux内核RDMA子系统
 
