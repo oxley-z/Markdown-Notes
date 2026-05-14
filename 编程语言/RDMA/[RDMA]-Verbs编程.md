@@ -1,22 +1,23 @@
 # RDMA_Verbs编程
 
 ---
+# Verbs API
 
 广义的Verbs API分为两部分：
 
-**IB_VERBS**
+## IB_VERBS
 
 接口以ibv_xx（用户态）或者ib_xx（内核态）作为前缀，是最基础的编程接口；
 
-**RDMA_CM**
+## RDMA_CM
 
-以rdma_为前缀，主要分为两个功能：
+以rdma_为前缀的接口，主要分为两个功能：
 
-**CMA（Connection Management Abstraction）**
+### CMA（Connection Management Abstraction）
 
 在Socket和Verbs API基础上实现，用于CM建链并交换信息的一组接口。CM建链是在Socket基础上封装为QP实现，从用户的角度来看，是在通过AP交换之后数据交换所需要的QPN，Key等信息。
 
-**CM_VERBS**
+### CM_VERBS
 
 RDMA_CM主要用于管理连接，使通信的双方能够确定彼此的GID和QPN信息，从而可以进行后续的交互处理。
 
@@ -26,11 +27,11 @@ RDMA_CM也可以用于数据交换，相当于在Verbs API上有封装了一套�
 
 Linux内核RDMA子系统
 
-代码仓库[https://git.kernel.org/pub/scm/linux/kernel/git/rdma/rdma.git/](https://git.kernel.org/pub/scm/linux/kernel/git/rdma/rdma.git/)
+代码仓库 [https://git.kernel.org/pub/scm/linux/kernel/git/rdma/rdma.git/](https://git.kernel.org/pub/scm/linux/kernel/git/rdma/rdma.git/)
 
 代码位于内核driver/infiniband/目录下，包括核心代码和各厂商的驱动代码；
 
-Linux内核RDMA子系统邮件订阅[[Majordomo Lists at VGER.KERNEL.ORG](http://vger.kernel.org/vger-lists.html#linux-rdma)]([Majordomo Lists at VGER.KERNEL.ORG](http://vger.kernel.org/vger-lists.html#linux-rdma))
+Linux内核RDMA子系统邮件订阅 [[Majordomo Lists at VGER.KERNEL.ORG](http://vger.kernel.org/vger-lists.html#linux-rdma)]([Majordomo Lists at VGER.KERNEL.ORG](http://vger.kernel.org/vger-lists.html#linux-rdma))
 
 
 
@@ -51,7 +52,7 @@ Linux内核RDMA子系统邮件订阅[[Majordomo Lists at VGER.KERNEL.ORG](http:/
 
 
 ---
-
+# 软件库
 ## rdma-core
 
 rdma-core GitHub维护仓库 [https://github.com/linux-rdma/rdma-core](https://github.com/linux-rdma/rdma-core)
