@@ -157,6 +157,10 @@ ibnodes
 
 #### 验证端到端 RDMA 通讯是否在用户空间应用程序中正常工作
 
+```bash
+sudo apt install infiniband-diags
+```
+
 server
 
 ```bash
@@ -174,6 +178,10 @@ ibping -c 10000 -f -C mlx4_0 -P 1 -L 49
 rping是RDMA的一个示例程序，属于RDMA连接管理库librdmacm。可用于测试两个RDMA节点间的连通性。
 
 rping是一个工具，包含在 librdmacm-utils中，并发送 RDMA 流量。rping与所有 RDMA 驱动的协议（InfiniBand、RoCE 和 iWARP）相关。
+
+```bash
+sudo apt install rdmacm-utils
+```
 
 server
 
