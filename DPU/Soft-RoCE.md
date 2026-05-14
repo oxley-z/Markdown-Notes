@@ -14,11 +14,11 @@ VmWare Workstation 16 Pro 16.2.4
 
 ubuntu-20.04.3-desktop-amd64 
 
-# 测试步骤
+# Soft-RoCE部署
 
-### 部署RDMA软件栈
+## 部署RDMA软件栈
 
-#### 确认内核是否支持RXE
+### 确认内核是否支持RXE
 
 ```bash
 cat /boot/config-$(uname -r) | grep RXE
@@ -28,7 +28,7 @@ cat /boot/config-$(uname -r) | grep RXE
 
 如果CONFIG_RDMA_RXE的值为y或者m，表示当前的操作系统可以使用RXE。
 
-#### 安装用户态动态链接库
+### 安装用户态动态链接库
 
 ```bash
 sudo apt-get install libibverbs1 ibverbs-utils librdmacm1 libibumad3 ibverbs-providers rdma-core
@@ -41,7 +41,7 @@ dpkg -L libibverbs1   //查看包内容
 
 ![image-20221104093403871](image/Soft-RoCE/image-20221104093403871.png)
 
-### 安装其他工具
+## 安装其他工具
 
 1. iproute2
 
@@ -57,11 +57,11 @@ iproute2是用来替代net-tools软件包的，是一组开源的网络工具集
 sudo apt-get install perftest
 ```
 
-### 克隆虚拟机
+## 克隆虚拟机
 
 注意：需要选择完整克隆
 
-### 配置网络模式
+## 配置网络模式
 
 两台虚拟机均选择NET模式（N）：用于共享主机的IP地址
 
@@ -85,7 +85,7 @@ sudo apt-get install perftest
 
 ![image-20221104094337074](image/Soft-RoCE/image-20221104094337074.png)
 
-### 配置RXE网卡
+## 配置RXE网卡
 
 加载内核驱动，modprobe会自动加载其他驱动。
 
@@ -115,9 +115,9 @@ ibv_devinfo -d <网卡名称>
 
 注意：步骤配置RXE网卡，两台虚拟机都需要完成。
 
-### 其他相关命令
+# 其他相关命令
 
-#### 删除RDMA内核模块
+## 删除RDMA内核模块
 
 ```bash
 sudo rdma link delete <rxe name>
@@ -125,37 +125,37 @@ sudo rdma link delete <rxe name>
 
 其中rxe name为ibv_devices显示的rxe设备名称
 
-#### 查看RDMA连接状态
+## 查看RDMA连接状态
 
 ```bash
 rdma link show
 ```
 
-#### 更改MTU包大小
+## 更改MTU包大小
 
 ```bash
 sudo ifconfig <网卡名称> mtu <MTU包大小>
 ```
 
-#### 显示所有RDMA网口的所有信息
+## 显示所有RDMA网口的所有信息
 
 ```bash
 ibv_devinfo -v
 ```
 
-#### 查看链路类型
+## 查看链路类型
 
 ```bash
 ibstat
 ```
 
-#### 查看网络中infiniband设备
+## 查看网络中infiniband设备
 
 ```bash
 ibnodes
 ```
 
-#### 验证端到端 RDMA 通讯是否在用户空间应用程序中正常工作
+## 验证端到端 RDMA 通讯是否在用户空间应用程序中正常工作
 
 ```bash
 sudo apt install infiniband-diags
@@ -217,15 +217,44 @@ ping data: rdma-ping-9: JKLMNOPQRSTUVWXY
 eddy@eddy:~$ 
 ```
 
+# 使用softroce和Wireshark对RoCEv2数据包进行抓取
 
+## 普通网卡环境
 
+根据 [Soft-RoCE部署](#Soft-RoCE部署) 配置好环境直接启动wireshark即可抓取；
 
+示例：
+```bash
+sudo modprobe rdma_rxe
+sudo rdma link add rxe0 type rxe netdev ens33
+ibv_devices
+sudo wireshark
+```
+## CX5网卡环境
 
+根据 [Soft-RoCE部署](#Soft-RoCE部署) 配置好环境；
 
+卸载 `mlx5_core` 驱动。
 
+```bash
+sudo rmmod mlx5_core
+```
 
+将CX5网卡绑定至Soft-RoCE；
 
+```bash
+# 注意替换<>内容
+sudo rdma link add rxe0 type rxe netdev <待抓取RoCE数据包的网口名称>
+```
 
+示例：
+
+```bash
+sudo rmmod mlx5_core
+sudo rdma link add rxe0 type rxe netdev ens6f0np0
+ibv_devices
+sudo wireshark
+```
 
 # 参考资料
 

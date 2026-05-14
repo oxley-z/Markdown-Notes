@@ -17,7 +17,7 @@ sudo apt-get install -y gcc g++ python git zlib1g-dev pciutils vim kmod strace w
 sudo ./dpdk_setup_ports.py -s                                                     
 ```
 
-![image-20231116113042267](image/trex/image-20231116113042267.png)
+![IMG-20260514151832461](image/trex/IMG-20260514151832461.png)
 
 ### 绑定dpdk接口
 
@@ -25,7 +25,7 @@ sudo ./dpdk_setup_ports.py -s
 sudo ./dpdk_setup_ports.py -c 1 2		#绑定两个接口
 ```
 
-![image-20231116113020269](image/trex/image-20231116113020269.png)
+![IMG-20260514151832468](image/trex/IMG-20260514151832468.png)
 
 注释：Active 端口作为管理端口，管理端口不能被绑定，否则不能管理linux。
 
@@ -58,7 +58,7 @@ sudo vim /etc/trex_cfg.yaml
             default_gw : 1.1.1.1			#对端DUT接口地址
 ```
 
-![image-20231116113348806](image/trex/image-20231116113348806.png)
+![IMG-20260514151832464](image/trex/IMG-20260514151832464.png)
 
 其中`interfaces`为需要使用的网卡的BDF号，若使用虚拟机，出现[问题1](#err1)的相关错误，可添加`low_end`
 
@@ -70,13 +70,13 @@ sudo ./t-rex-64 -i
 
 服务器启动后，可以监听各个端口的收发包情况
 
-![image-20231116113939641](image/trex/image-20231116113939641.png)
+![IMG-20260514151832458](image/trex/IMG-20260514151832458.png)
 
 ### console连接环境确认
 
 打开控制台、进入servicee模式，执行ping命令，确认环境：
 
-![image-20231116114334512](image/trex/image-20231116114334512.png)
+![IMG-20260514151832454](image/trex/IMG-20260514151832454.png)
 
 ### 发送流量
 
