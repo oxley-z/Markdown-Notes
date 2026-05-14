@@ -1,6 +1,6 @@
 # ARM64平台Linux内核启动流程
 
-ARM64  QEMU仿真平台的构建、Linux源码的编译、QEMU的启动，可查看[[QEMU]-搭建arm64_linux_kernel环境](../../QEMU/[QEMU]-搭建arm64_linux_kernel环境.md)
+ARM64  QEMU仿真平台的构建、Linux源码的编译、QEMU的启动，可查看[[QEMU]-搭建arm64_linux_kernel环境](../../Embedded/QEMU/[QEMU]-搭建arm64_linux_kernel环境.md)
 
 内核版本：linux-5.10 [The Linux Kernel Archives](https://www.kernel.org/)
 
@@ -10,7 +10,7 @@ kernel启动的第一阶段主要为汇编代码，用于**初始化CPU、初始
 
 ### kernel第一行代码的入口
 
-在 [[QEMU]-搭建arm64_linux_kernel环境](../../QEMU/[QEMU]-搭建arm64_linux_kernel环境.md) 完成kernel源码的编译后，会生成以下几个文件，分别是：
+在 [[QEMU]-搭建arm64_linux_kernel环境](../../Embedded/QEMU/[QEMU]-搭建arm64_linux_kernel环境.md) 完成kernel源码的编译后，会生成以下几个文件，分别是：
 
 * `Image`(arch/arm64/boot)：Image就是我们的kernel image；
 * `vmlinux`(./)：这是未压缩的、可链接格式（ELF） 的内核可执行文件。可供gdb调试使用的内核文件，禁止编辑，vmlinux.lds文件是在编译时，由vmlinux.lds.S文件对链接器ld的输出进行排序后生成；vmlinux.lds.S是用来对输出文件中的段进行排序，并定义相关的符号名；

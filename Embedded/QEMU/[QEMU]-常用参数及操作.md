@@ -507,7 +507,7 @@ More information on the QEMU project at <https://qemu.org>.
 
 ### -help 或 -h
 
-用于显示[帮助信息](#帮助)
+用于显示[帮助信息]([QEMU]-常用参数及操作.md#帮助)
 
 ### -vesion
 
