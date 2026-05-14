@@ -61,7 +61,7 @@ sudo apt-get install perftest
 
 注意：需要选择完整克隆
 
-### [配置网络模式](#in)
+### 配置网络模式
 
 两台虚拟机均选择NET模式（N）：用于共享主机的IP地址
 
@@ -85,7 +85,7 @@ sudo apt-get install perftest
 
 ![image-20221104094337074](image/Soft-RoCE/image-20221104094337074.png)
 
-### [配置RXE网卡](#rxe)
+### 配置RXE网卡
 
 加载内核驱动，modprobe会自动加载其他驱动。
 
@@ -99,7 +99,7 @@ sudo modprobe rdma_rxe
 sudo rdma link add rxe0 type rxe netdev ens33
 ```
 
-注意这里的rxe_0是RDMA的设备名，可任意取名，ens33为虚拟机的网络设备名，可在<a id=in>配置网络格式</a>步骤查看，每个虚拟机可能存在差异
+注意这里的rxe_0是RDMA的设备名，可任意取名，ens33为虚拟机的网络设备名，可在 [配置网络模式](#配置网络模式) 步骤查看，每个虚拟机可能存在差异
 
 使用ibv_devices查看设备列表
 
@@ -114,8 +114,6 @@ ibv_devinfo -d <网卡名称>
 ![image-20221104095130793](image/Soft-RoCE/image-20221104095130793.png)
 
 注意：步骤配置RXE网卡，两台虚拟机都需要完成。
-
-
 
 ### 其他相关命令
 
