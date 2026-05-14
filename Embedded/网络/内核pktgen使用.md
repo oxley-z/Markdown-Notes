@@ -28,7 +28,7 @@ $ sudo modprobe pktgen
 
 在加载pktgen之后会在`proc/net/pktgen`下创建出如下几个文件：
 
-![image-20230915083323445](image/%E5%86%85%E6%A0%B8pktgen%E4%BD%BF%E7%94%A8/image-20230915083323445.png)
+![image-20230915083323445](image/内核pktgen使用/image-20230915083323445.png)
 
 ### 添加设备
 
@@ -36,7 +36,7 @@ $ sudo modprobe pktgen
 $ echo "add_device ens33" > /proc/net/pktgen/kpktgend_0
 ```
 
-![image-20230915091151661](image/%E5%86%85%E6%A0%B8pktgen%E4%BD%BF%E7%94%A8/image-20230915091151661.png)
+![image-20230915091151661](image/内核pktgen使用/image-20230915091151661.png)
 
 ### 设置报文
 
@@ -48,7 +48,7 @@ $ echo "count 1000000" > /proc/net/pktgen/eth3
 $ echo "dst_mac aa:bb:cc:dd:ee:ff" > /proc/net/pktgen/eth3
 ```
 
-![image-20230915091238685](image/%E5%86%85%E6%A0%B8pktgen%E4%BD%BF%E7%94%A8/image-20230915091238685.png)
+![image-20230915091238685](image/内核pktgen使用/image-20230915091238685.png)
 
 * 查看配置结果
 
@@ -56,7 +56,7 @@ $ echo "dst_mac aa:bb:cc:dd:ee:ff" > /proc/net/pktgen/eth3
 cat /proc/net/pktgen/ens33
 ```
 
-![image-20230915091552982](image/%E5%86%85%E6%A0%B8pktgen%E4%BD%BF%E7%94%A8/image-20230915091552982.png)
+![image-20230915091552982](image/内核pktgen使用/image-20230915091552982.png)
 
 ### 发送报文
 
@@ -70,7 +70,7 @@ $ echo "start" > /proc/net/pktgen/pgctrl
 $ cat /proc/net/pktgen/ens33
 ```
 
-![image-20230915091751564](image/%E5%86%85%E6%A0%B8pktgen%E4%BD%BF%E7%94%A8/image-20230915091751564.png)
+![image-20230915091751564](image/内核pktgen使用/image-20230915091751564.png)
 
 ## 配置命令
 
@@ -197,13 +197,13 @@ echo "Done"
 
 执行结果
 
-![pktgen](image/%E5%86%85%E6%A0%B8pktgen%E4%BD%BF%E7%94%A8/pktgen.gif)
+![pktgen](image/内核pktgen使用/pktgen.gif)
 
 ### 内核pktgen脚本
 
 在仓库[torvalds/linux/samples/pktgen](https://github.com/torvalds/linux/tree/master/samples/pktgen)中提供了多个pktgen的脚本例子，
 
-![image-20230915105901218](image/%E5%86%85%E6%A0%B8pktgen%E4%BD%BF%E7%94%A8/image-20230915105901218.png)
+![image-20230915105901218](image/内核pktgen使用/image-20230915105901218.png)
 
 ### 脚本使用
 
@@ -211,13 +211,13 @@ echo "Done"
 ./pktgen_sample01_simple.sh -i ens33 -d 127.0.0.1 -t 1 -n 1000 -m 00:15:5d:4b:19:b1 -s 100000
 ```
 
-![image-20230915110658031](image/%E5%86%85%E6%A0%B8pktgen%E4%BD%BF%E7%94%A8/image-20230915110658031.png)
+![image-20230915110658031](image/内核pktgen使用/image-20230915110658031.png)
 
 ### 测试网络PPS性能指标，判断是否丢包
 
 客户端安装pktgen来发包，接收端通过sar命令（linux系统）来查看端口统计信息，通过对比收发两端的速率来判断是否有丢包。
 
-![image-20230915111012837](image/%E5%86%85%E6%A0%B8pktgen%E4%BD%BF%E7%94%A8/image-20230915111012837.png)
+![image-20230915111012837](image/内核pktgen使用/image-20230915111012837.png)
 
 ## 其他pktgen命令
 

@@ -2,7 +2,7 @@
 
 在以太网交换机连接领域，链路聚合是一种在不同网络交换机之间并行组合多个端口的技术。它的功能是经济高效地扩展带宽，并在链路故障时提供冗余。但是，总称“链路聚合”是一个相当宽泛的术语，包含各种概念：链路聚合控制协议，链路聚合组，MLAG，802.3ad，802.1AX等。其中，LAG与LACP的问题使许多人感到困惑。在这里，我们按顺序介绍LAG与LACP，并比较LAG与LACP，以说明它们的关系和差异。
 
-![img](image/LAG%20vs%20LACP%EF%BC%9A%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F/LAG-vs-LACP-What-is-the-Difference.jpg)
+![img](image/LAG%20vs%20LACP：有什么区别？/LAG-vs-LACP-What-is-the-Difference.jpg)
 
 ## **LAG vs LACP：什么是 LAG？**
 
@@ -18,7 +18,7 @@
 
 此外，为了上行链路骨干核心交换机，我们可以使用 4 根带有相应模块的光纤跳线来链接 48 端口千兆 PoE 交换机 10GE SFP+ 端口和 10GbE 光纤交换机。然后，S1600-48T4S 上的上行链路带宽扩展到 40GE。在 48 端口 PoE 交换机上形成两个 LAG。形成 LAG 的链路上限和两个交换机之间的 LAG 数量因供应商和交换机型号而异。
 
-![img](image/LAG%20vs%20LACP%EF%BC%9A%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F/LAG-vs-LACP-link-aggregation-implement-scenario-by-fs-PoE-switch-and-fiber-switch.jpg)
+![img](image/LAG%20vs%20LACP：有什么区别？/LAG-vs-LACP-link-aggregation-implement-scenario-by-fs-PoE-switch-and-fiber-switch.jpg)
 
 图 1：在 FS 48 端口 PoE 交换机和 24 端口 PoE 交换机上并行链接 4 个 1GE 端口以设置 LAG，从而将带宽从 1000Mbps 提高到 4 × 1000Mbps。在此照片中，已在 FS 48 端口 PoE 交换机上实施了两个 LAG。
 

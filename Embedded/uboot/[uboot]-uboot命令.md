@@ -179,7 +179,7 @@ bdinfo命令用于查看当前开发板的信息。
 
 version 命令用于查看 uboot 的版本号。
 
-![version](image/uboot%E5%91%BD%E4%BB%A4/96a5b030b658bfffc69ea156a5cb6068.jpg)
+![version](image/Uboot命令/96a5b030b658bfffc69ea156a5cb6068.jpg)
 
 ## BOOT操作
 

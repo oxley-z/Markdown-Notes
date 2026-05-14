@@ -2,7 +2,7 @@
 
 1. 一端为网口一端为串口的线连接交换机后的`IOIOI`口
 
-![image-20221202112822243](image/Mellanox%20IB%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE/image-20221202112822243.png)
+![image-20221202112822243](image/Mellanox%20IB交换机相关配置/image-20221202112822243.png)
 
 2. 另一端连接在电脑的RS232口上
 

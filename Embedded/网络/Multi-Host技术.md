@@ -8,7 +8,7 @@ Multi-Host技术是一种可扩展的计算机系统设计，它允许多个主�
 
 
 
-![Multi-host演示](image/Multi-Host%E6%8A%80%E6%9C%AF/Multi-host%E6%BC%94%E7%A4%BA.gif)
+![Multi-host演示](image/Multi-Host技术/Multi-host演示.gif)
 
 
 

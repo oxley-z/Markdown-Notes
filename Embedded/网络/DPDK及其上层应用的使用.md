@@ -65,13 +65,13 @@ $ ls -l build/app
 ./dpdk-stable-20.11.9/usertools/dpdk-devbind.py -s
 ```
 
-![image-20230921134405249](image/DPDK%E5%8F%8A%E5%85%B6%E4%B8%8A%E5%B1%82%E5%BA%94%E7%94%A8%E7%9A%84%E4%BD%BF%E7%94%A8/image-20230921134405249.png#pic_center)
+![image-20230921134405249](image/DPDK及其上层应用的使用/image-20230921134405249.png#pic_center)
 
 ## TestPMD安装使用
 
 TestPMD是一个使用DPDK软件包分发的参考应用程序。其主要目的是在网络接口的以太网端口之间转发数据包。
 
-![image-20230921134040659](image/DPDK%E5%8F%8A%E5%85%B6%E4%B8%8A%E5%B1%82%E5%BA%94%E7%94%A8%E7%9A%84%E4%BD%BF%E7%94%A8/image-20230921134040659.png)
+![image-20230921134040659](image/DPDK及其上层应用的使用/image-20230921134040659.png)
 
 ### 编译igb_uio驱动
 
@@ -113,7 +113,7 @@ $ cd dpdk-stable-21.11.2/build/app/
 $ sudo ./dpdk-testpmd -l 0-3 -n 4 -- -i --portmask=0x3 --nb-cores=2
 ```
 
-![image-20230921113227538](image/DPDK%E5%8F%8A%E5%85%B6%E4%B8%8A%E5%B1%82%E5%BA%94%E7%94%A8%E7%9A%84%E4%BD%BF%E7%94%A8/image-20230921113227538.png)
+![image-20230921113227538](image/DPDK及其上层应用的使用/image-20230921113227538.png)
 
 `-l `参数用来设置用到的逻辑核。0核用来管理命令行，1、2核用来转发数据包。`-n` 参数用来指定使用的内存通道数。--（破折号）分开了EAL参数和应用程序参数。端口掩码指定使用的网卡端口。`--nb-cores`用来指定两个核作为数据的转发。
 
@@ -209,7 +209,7 @@ testpmd> start
 $ testpmd> show config fwd
 ```
 
-![image-20230921113320721](image/DPDK%E5%8F%8A%E5%85%B6%E4%B8%8A%E5%B1%82%E5%BA%94%E7%94%A8%E7%9A%84%E4%BD%BF%E7%94%A8/image-20230921113320721.png)
+![image-20230921113320721](image/DPDK及其上层应用的使用/image-20230921113320721.png)
 
 表明 TestPMD 正使用默认的 IO 转发模式，`logical Core 1` 将对`Port 0`接收到的数据包转发到`Port 1`上发送出去；
 

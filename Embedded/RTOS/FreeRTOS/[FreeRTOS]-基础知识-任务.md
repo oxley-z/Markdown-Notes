@@ -22,7 +22,7 @@ FreeRTOS存在4种任务状态：
 
 转换关系如下图，**只有就绪态可转变为运行态**：
 
-![TaskExecution.gif](../FreeRTOS/image/[FreeRTOS]-基础知识-任务/FreeRTOS任务状态.jpg)
+![TaskExecution.gif](image/[FreeRTOS]-基础知识-任务/FreeRTOS任务状态.jpg)
 
 ### 任务优先级
 

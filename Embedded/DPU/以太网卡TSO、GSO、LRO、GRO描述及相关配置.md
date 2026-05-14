@@ -9,7 +9,7 @@ TSO针对TCP在发送端网卡上的拆包
 
 已弃用UFO [segmentation-offloads](https://www.kernel.org/doc/Documentation/networking/segmentation-offloads.txt)
 
-![image-20221205151526276](image/Bluefiled2%E9%85%8D%E7%BD%AETSO%E3%80%81GSO/image-20221205151526276.png)
+![image-20221205151526276](image/Bluefiled2配置TSO、GSO/image-20221205151526276.png)
 
 UFO针对UDP在发送端网卡上的拆包
 
