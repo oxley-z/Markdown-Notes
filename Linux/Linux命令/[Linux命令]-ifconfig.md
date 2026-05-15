@@ -1,3 +1,7 @@
+---
+github.io: false
+csdn: false
+---
 # ifconfig
 
 ## 显示网络设备信息（激活状态的）

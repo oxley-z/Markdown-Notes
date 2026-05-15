@@ -1,3 +1,7 @@
+---
+github.io: true
+csdn: false
+---
 # Windows Terminal添加至鼠标右键
 
 ## 安装

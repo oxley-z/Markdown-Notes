@@ -1,3 +1,7 @@
+---
+github.io: false
+csdn: false
+---
 # lspci
 
 | 选项                                         | 功能                                                                                                                                                                                               |

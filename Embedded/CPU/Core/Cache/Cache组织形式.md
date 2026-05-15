@@ -1,4 +1,7 @@
-
+---
+github.io:
+csdn: yes
+---
 
 # Cache 组织形式（VIVT、VIPT、PIPT）
 

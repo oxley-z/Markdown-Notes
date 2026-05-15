@@ -1,4 +1,7 @@
-
+---
+github.io: false
+csdn: yes
+---
 # 玄铁RISC-V处理器软件生态
 
 

@@ -1,3 +1,7 @@
+---
+github.io: true
+csdn: false
+---
 # ethtool
 
 ## 常用参数

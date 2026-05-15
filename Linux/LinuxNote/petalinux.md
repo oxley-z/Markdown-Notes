@@ -1,3 +1,7 @@
+---
+github.io: true
+csdn: false
+---
 # 安装petalinux2022.2
 
 1. 安装依赖包

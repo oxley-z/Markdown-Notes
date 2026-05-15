@@ -1,3 +1,7 @@
+---
+github.io: true
+csdn: false
+---
 # Linux内核网卡中断分配不均衡调优
 
 ## 查看CPU具体中断情况

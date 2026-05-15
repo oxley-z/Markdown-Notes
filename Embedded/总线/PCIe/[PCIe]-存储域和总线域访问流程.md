@@ -1,3 +1,7 @@
+---
+github.io: false
+csdn: false
+---
 # 存储域和总线域访问流程
 
 ## 跨域访问

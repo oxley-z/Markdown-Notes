@@ -1,3 +1,7 @@
+---
+github.io: true
+csdn: false
+---
 # nmcli
 
 `nmcli`是 `NetworkManager` 的命令行工具。

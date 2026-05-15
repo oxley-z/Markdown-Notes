@@ -1,4 +1,7 @@
-
+---
+github.io:
+csdn: yes
+---
 # Cache的基本原理
 
 

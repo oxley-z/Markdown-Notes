@@ -1,3 +1,7 @@
+---
+github.io: false
+csdn: false
+---
 # 有趣的Linux命令
 
 ## 小火车

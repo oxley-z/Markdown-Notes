@@ -1,3 +1,7 @@
+---
+github.io: true
+csdn: false
+---
 # Linux内核基础知识
 
 ![Linux_kernel_map](image/[Linux]-内核基础知识/Linux_kernel_map.png)
