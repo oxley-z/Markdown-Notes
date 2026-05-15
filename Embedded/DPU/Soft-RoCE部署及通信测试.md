@@ -1,5 +1,6 @@
 ---
 github.io: yes
+csdn:
 ---
 # Soft-RoCE部署及通信测试
 

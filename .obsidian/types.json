@@ -1,0 +1,9 @@
+{
+  "types": {
+    "aliases": "aliases",
+    "cssclasses": "multitext",
+    "tags": "tags",
+    "github.io": "checkbox",
+    "csdn": "checkbox"
+  }
+}
