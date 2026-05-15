@@ -328,7 +328,7 @@ BIST被调用的 Function 不能阻止 PCI Express 链路的正常操作。
 
 ### Capabilities Pointer (Offset 34h)
 
-该寄存器用于指向由该 Func 实现的能力的链表。由于需要所有 PCI Express 功能来实现 PCI 功率管理能力和 PCI Express 能力结构，因此这些结构必须被包括在链表中的某处; 该寄存器可以指向这些能力结构中的任一个或者指向由该功能实现的可选能力结构。**底部两位被保留并且必须被设置为 00b**。在使用该寄存器作为配置空间中指向新功能的链表的第一条目的指针之前，软件必须屏蔽这些位。具体使用实例见[PCI Capabilities List](#PCI%20Capabilities%20List)。
+该寄存器用于指向由该 Func 实现的能力的链表。由于需要所有 PCI Express 功能来实现 PCI 功率管理能力和 PCI Express 能力结构，因此这些结构必须被包括在链表中的某处; 该寄存器可以指向这些能力结构中的任一个或者指向由该功能实现的可选能力结构。**底部两位被保留并且必须被设置为 00b**。在使用该寄存器作为配置空间中指向新功能的链表的第一条目的指针之前，软件必须屏蔽这些位。具体使用实例见[PCI Capabilities List]([PCIe]-基础知识.md#PCI%20Capabilities%20List)。
 
 ### Interrupt Line Register (Offset 3Ch)
 
@@ -681,7 +681,7 @@ I/O基本上限16位和I/O限制上限16位寄存器是对 [I/O Base](#I/O Base/
 
 PCI-X 和PCIe 总线规范要求其设备必须支持Capabilities 结构。在PCI 总线的基本配置空间中，包含一个Capabilities Pointer 寄存器，该寄存器存放Capabilities 结构链表的头指针。在一个PCIe 设备中，可能含有多个Capability 结构，这些寄存器组成一个链表。
 
-而PCIe的Capabilities List也分为两个部分：PCI兼容部分 [PCI Capabilities List](#Capabilities%20List) 和PCIe扩展部分 [Extended Capabilities List](#ExtenCapabilites)。
+而PCIe的Capabilities List也分为两个部分：PCI兼容部分 [PCI Capabilities List]([PCIe]-基础知识.md#Capabilities%20List) 和PCIe扩展部分 [Extended Capabilities List]([PCIe]-基础知识.md#ExtenCapabilites)。
 
 ![image-20230530092421373](image/[PCIe]-基础知识/image-20230530092421373.png)
 
@@ -966,7 +966,7 @@ PCIE的MSI-X相关信息存在两个地方，一个是PCIE Capability中，存�
 
 ## PCIe Extended Capabilities List
 
-见 [扩展配置空间](#扩展配置空间（0x100h~0x3FFh）)
+见 [扩展配置空间]([PCIe]-基础知识.md#扩展配置空间（0x100h~0x3FFh）)
 
 ### Extended Capabilities IDs
 
