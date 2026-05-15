@@ -24,7 +24,7 @@ ubuntu-20.04.3-desktop-amd64
 cat /boot/config-$(uname -r) | grep RXE
 ```
 
-![image-20221104093116411](image/Soft-RoCE/image-20221104093116411.png)
+![IMG-20260515105611869](image/Soft-RoCE部署及通信测试/IMG-20260515105611869.png)
 
 如果CONFIG_RDMA_RXE的值为y或者m，表示当前的操作系统可以使用RXE。
 
@@ -35,11 +35,11 @@ sudo apt-get install libibverbs1 ibverbs-utils librdmacm1 libibumad3 ibverbs-pro
 dpkg -L libibverbs1   //查看包内容
 ```
 
-![image-20221104103741733](image/Soft-RoCE/image-20221104103741733.png)
+![IMG-20260515105611633](image/Soft-RoCE部署及通信测试/IMG-20260515105611633.png)
 
 安装完成后查看ibv_devices
 
-![image-20221104093403871](image/Soft-RoCE/image-20221104093403871.png)
+![IMG-20260515105611839](image/Soft-RoCE部署及通信测试/IMG-20260515105611839.png)
 
 ## 安装其他工具
 
@@ -65,25 +65,25 @@ sudo apt-get install perftest
 
 两台虚拟机均选择NET模式（N）：用于共享主机的IP地址
 
-![image-20221104093718394](image/Soft-RoCE/image-20221104093718394.png)
+![IMG-20260515105611829](image/Soft-RoCE部署及通信测试/IMG-20260515105611829.png)
 
 查看两台虚拟机IP地址
 
-![image-20221104094006730](image/Soft-RoCE/image-20221104094006730.png)
+![IMG-20260515105611782](image/Soft-RoCE部署及通信测试/IMG-20260515105611782.png)
 
-![image-20221104094024753](image/Soft-RoCE/image-20221104094024753.png)
+![IMG-20260515105611767](image/Soft-RoCE部署及通信测试/IMG-20260515105611767.png)
 
 查看Windows主机虚拟网卡IP地址：
 
-![image-20221104094126945](image/Soft-RoCE/image-20221104094126945.png)
+![IMG-20260515105611736](image/Soft-RoCE部署及通信测试/IMG-20260515105611736.png)
 
 这里需要注意如果没在同一网段的话需要更改虚拟机网阔模式为自定义，自定义i选择虚拟网卡
 
 查看两台虚拟机与Windows主机网络连通性
 
-![image-20221104094325962](image/Soft-RoCE/image-20221104094325962.png)
+![IMG-20260515105611752](image/Soft-RoCE部署及通信测试/IMG-20260515105611752.png)
 
-![image-20221104094337074](image/Soft-RoCE/image-20221104094337074.png)
+![IMG-20260515105611724](image/Soft-RoCE部署及通信测试/IMG-20260515105611724.png)
 
 ## 配置RXE网卡
 
@@ -99,11 +99,11 @@ sudo modprobe rdma_rxe
 sudo rdma link add rxe0 type rxe netdev ens33
 ```
 
-注意这里的rxe_0是RDMA的设备名，可任意取名，ens33为虚拟机的网络设备名，可在 [配置网络模式](#配置网络模式) 步骤查看，每个虚拟机可能存在差异
+注意这里的rxe_0是RDMA的设备名，可任意取名，ens33为虚拟机的网络设备名，可在 [配置网络模式](Soft-RoCE部署及通信测试.md#配置网络模式) 步骤查看，每个虚拟机可能存在差异
 
 使用ibv_devices查看设备列表
 
-![image-20221104095034015](image/Soft-RoCE/image-20221104095034015.png)
+![IMG-20260515105611709](image/Soft-RoCE部署及通信测试/IMG-20260515105611709.png)
 
 查看虚拟RDMA设备简略信息
 
@@ -111,7 +111,7 @@ sudo rdma link add rxe0 type rxe netdev ens33
 ibv_devinfo -d <网卡名称>
 ```
 
-![image-20221104095130793](image/Soft-RoCE/image-20221104095130793.png)
+![IMG-20260515105611695](image/Soft-RoCE部署及通信测试/IMG-20260515105611695.png)
 
 注意：步骤配置RXE网卡，两台虚拟机都需要完成。
 
@@ -221,7 +221,7 @@ eddy@eddy:~$
 
 ## 普通网卡环境
 
-根据 [Soft-RoCE部署](#Soft-RoCE部署) 配置好环境直接启动wireshark即可抓取；
+根据 [Soft-RoCE部署](Soft-RoCE部署及通信测试.md#Soft-RoCE部署) 配置好环境直接启动wireshark即可抓取；
 
 示例：
 
@@ -233,7 +233,7 @@ sudo wireshark
 ```
 ## CX5网卡环境
 
-根据 [Soft-RoCE部署](#Soft-RoCE部署) 配置好环境；
+根据 [Soft-RoCE部署](Soft-RoCE部署及通信测试.md#Soft-RoCE部署) 配置好环境；
 
 卸载 `mlx5_core` 驱动：
 
