@@ -224,6 +224,7 @@ eddy@eddy:~$
 根据 [Soft-RoCE部署](#Soft-RoCE部署) 配置好环境直接启动wireshark即可抓取；
 
 示例：
+
 ```bash
 sudo modprobe rdma_rxe
 sudo rdma link add rxe0 type rxe netdev ens33
@@ -234,13 +235,19 @@ sudo wireshark
 
 根据 [Soft-RoCE部署](#Soft-RoCE部署) 配置好环境；
 
-卸载 `mlx5_core` 驱动。
+卸载 `mlx5_core` 驱动：
 
 ```bash
 sudo rmmod mlx5_core
 ```
 
-将CX5网卡绑定至Soft-RoCE；
+加载 `rdma_rxe`：
+
+```bash
+sudo modprobe rdma_rxe
+```
+
+将CX5网卡绑定至 Soft-RoCE：
 
 ```bash
 # 注意替换<>内容
@@ -251,6 +258,7 @@ sudo rdma link add rxe0 type rxe netdev <待抓取RoCE数据包的网口名称>
 
 ```bash
 sudo rmmod mlx5_core
+sudo modprobe rdma_rxe
 sudo rdma link add rxe0 type rxe netdev ens6f0np0
 ibv_devices
 sudo wireshark
