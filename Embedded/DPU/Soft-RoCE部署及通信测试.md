@@ -1,3 +1,6 @@
+---
+github.io: yes
+---
 # Soft-RoCE部署及通信测试
 
 # 环境
