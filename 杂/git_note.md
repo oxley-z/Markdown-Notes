@@ -185,7 +185,11 @@ git ls-files | xargs cat | wc -l
 git ls-files
 ```
 
+### 查看分支对应情况
 
+```bash
+git branch -vv
+```
 
 ## 推送
 
@@ -321,7 +325,13 @@ git switch -
 git checkout -f lettershell
 ```
 
+### 将本地分支与远程分支名称改为一致
 
+```bash
+# master为本地分支名，main为远程分支名
+git branch -m master main
+git push -u origin main
+```
 
 ## .gitignore
 

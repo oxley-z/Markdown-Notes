@@ -99,7 +99,7 @@ sudo modprobe rdma_rxe
 sudo rdma link add rxe0 type rxe netdev ens33
 ```
 
-注意这里的rxe_0是RDMA的设备名，可任意取名，ens33为虚拟机的网络设备名，可在 [配置网络模式](Soft-RoCE部署及通信测试.md#配置网络模式) 步骤查看，每个虚拟机可能存在差异
+注意这里的rxe_0是RDMA的设备名，可任意取名，ens33为虚拟机的网络设备名，可在 [配置网络模式](#配置网络模式) 步骤查看，每个虚拟机可能存在差异
 
 使用ibv_devices查看设备列表
 
@@ -221,7 +221,7 @@ eddy@eddy:~$
 
 ## 普通网卡环境
 
-根据 [Soft-RoCE部署](Soft-RoCE部署及通信测试.md#Soft-RoCE部署) 配置好环境直接启动wireshark即可抓取；
+根据 [Soft-RoCE部署](#Soft-RoCE部署) 配置好环境直接启动wireshark即可抓取；
 
 示例：
 
@@ -233,7 +233,7 @@ sudo wireshark
 ```
 ## CX5网卡环境
 
-根据 [Soft-RoCE部署](Soft-RoCE部署及通信测试.md#Soft-RoCE部署) 配置好环境；
+根据 [Soft-RoCE部署](#Soft-RoCE部署) 配置好环境；
 
 卸载 `mlx5_core` 驱动：
 
