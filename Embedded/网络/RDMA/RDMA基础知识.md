@@ -222,9 +222,9 @@ RDMA协议定义RC、UC、UD三种通信模式，其中RC（Reliable Connection�
 
 ### WQ与WQE
 
-Work Queue简称WQ，它是一个储存工作请求的队列；即保存 WQE，WQ里可以容纳很多WQE，WQ总是由软件向其增加WQE（入队），硬件从中取出WQE，即软件给硬件“下发任务”。这种软件下发和硬件执行的方式通常称为“**Post**”
+Work Queue简称WQ，它是一个储存工作请求的队列；即保存 WQE，WQ里可以容纳很多WQE，WQ总是由软件向其增加WQE（入队），硬件从中取出WQE（出队），即软件给硬件”下发任务”，并且这些WQE总是遵循先进先出（FIFO）的形式。这种软件下发和硬件执行的方式通常称为“**Post**”，Post包含Post Send和Post Receive，其中Post Send支持RDMA Write、RDMA Read、Send等更具体的操作，Post Receive则只支持Receive。
 
-WQE表示RDMA的一种“任务说明”，其中包含了软件所希望硬件去做的任务以及关于这个任务的详细信息；
+Work Queue Element简称WQE，表示RDMA的一种“任务说明”，其作用类似于以太网方案中收发队列的描述符。其中包含了软件所希望硬件去做的任务类型（远程读、远程写、发送还是接收等）以及关于这个任务的详细信息（数据所在的内存地址、数据长度和访问密钥等）。
 
 ![image-20221102103248547](image/RDMA基础知识/image-20221102103248547.png)
 
@@ -419,7 +419,7 @@ Mellanox OFED是一个单一的软件堆栈，包括驱动、中间件、用户�
 10. [[MLNX_OFED Documentation Rev 5.0-2.1.8.0 pdf](https://www.liberouter.org/repo/mlnx-ofed/MLNX_OFED Documentation Rev 5.0-2.1.8.0__04_30_2020.pdf)
 11. [MTU Considerations for RoCE based Applications (mellanox.com)](https://support.mellanox.com/s/article/MLNX2-117-1682kn) MTU相应解释
 12. [【RDMA】基于RoCE的应用程序的MTU注意事项|探测网络中的MTU设置_bandaoyu的博客-CSDN博客](https://blog.csdn.net/bandaoyu/article/details/116706925) MTU相应解释
-
+13. [《Linux高性能网络详解 从DPDK、RDMA到XDP》](https://book.douban.com/subject/36322557/)
 
 🎈
 
