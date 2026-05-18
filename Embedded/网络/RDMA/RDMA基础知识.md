@@ -368,7 +368,19 @@ RDMA的send/receive是双边操作，即必须要远端的应用感知参与才�
 <center>RDMA Read/Write行为</center>
 
 ### 其他操作类型
+#### 带立即数的发送（Send With Immediate）
 
+操作码为 IBV_WR_SEND_WITH_IMM。指发送端即时传输 32 位的数据（称为立即值）。该值作为接收通知的一部分发送给接收端，不包含在数据缓存中。之后接收端被通知已接收到数据时，通知消息中带有内联的立即值。更具体地讲，接收端应用程序通过读取 CQE 中的某个字段获取立即值。
+
+#### 带立即值的RDMA写（RDMA Write With Immediate）
+
+操作码为 IBV_WR_RDMA_WRITE_WITH_IMM。带（32 位）立即值的 RDMA 写会将立即值通知远端应用程序，在此过程中还会消耗远程主机某个 RQ 中的一个 WQE 。具体流程为：
+1. 远端应用程序先发起一次 Receive 操作 ，然后轮询 CQE；
+2. 本地应用程序发起带立即值的 RDMA 写， 此立即值最终不会写入远端内存 ， 而是作为 CQE 的一部分被远端应用程序获取。
+
+#### 原子获取和加（Atomic Fetch and Add）/原子比较和交换（Atomic Compare and Swap）
+
+操作码为 IBV_WR_ATOMIC_FETCH_AND_ADD 和 IBV_WR_ATOMIC_CMP_AND_SWP。两者都是 RDMA 操作的原子扩展。 原子获取和加操作以原子方式将指定内存地址中的值增加指定的数值，并将加之前的数值返回给调用者。 原子比较和交换以原子方式将某个内存地址中的数值与指定数值进行比较，如果它们相等，则另一个新值将被写入该内存地址。
 
 ## 其他名词解释
 
