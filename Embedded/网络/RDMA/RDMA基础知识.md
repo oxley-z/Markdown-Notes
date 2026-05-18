@@ -167,7 +167,6 @@ RDMA协议定义RC、UC、UD三种通信模式，其中RC（Reliable Connection�
 #### RC
 
 特点：
-
 - 面向连接的可靠服务；
 - 一个QP只和一个另外的QP相连；
 - 消息通过一个QP的发送队列可靠地传输到另一个QP的接收队列；
@@ -177,7 +176,6 @@ RDMA协议定义RC、UC、UD三种通信模式，其中RC（Reliable Connection�
 #### UC
 
 特点：
-
 - 面向连接的不可靠服务；
 - 一个QP只和一个另外的QP相连；
 - <mark style="background: #FF5582A6;">连接是不可靠的</mark>，所以数据包有可能会丢失；
@@ -186,7 +184,6 @@ RDMA协议定义RC、UC、UD三种通信模式，其中RC（Reliable Connection�
 #### UD
 
 特点：
-
 - 面向数据报的可靠服务；
 - 一个QP可以和其它任意的UD QP 进行数据传输和单包数据的接收；
 - 不保证按序性和交付性；
@@ -196,7 +193,7 @@ RDMA协议定义RC、UC、UD三种通信模式，其中RC（Reliable Connection�
 
 #### RD
 
-面向数据报的不可靠服务
+面向数据报的不可靠服务；
 
 #### 服务类型差异
 
@@ -209,24 +206,23 @@ RDMA协议定义RC、UC、UD三种通信模式，其中RC（Reliable Connection�
 
 ## 关键概念
 
-| 缩略语 | 全称                                     |
-| --- | -------------------------------------- |
-| WQ  | [Work Queue](#wq)                      |
-| WQE | [Work Queue Entry/Element](#wqe)       |
-| QP  | [Queue Pair](#qp)                      |
-| SQ  | [Send Queue](#sq)                      |
-| RQ  | [Receive Queue](#rq)                   |
-| SRQ | [Shared Receive Queue](#srq)           |
-| CQ  | [Completion Queue](#cq)                |
-| CQE | [Completion Queue Entry/Element](#cqe) |
-| WR  | [Work Request](#wr)                    |
-| WC  | [Work Completion](#wc)                 |
+| 缩略语 | 全称                                        |
+| --- | ----------------------------------------- |
+| WQ  | [Work Queue](#wq)                         |
+| WQE | [Work Queue Entry/Element](#wqe)          |
+| QP  | [Queue Pair](#QP与QPN)                     |
+| QPN | [Queue Pair Number](#QP与QPN)              |
+| SQ  | [Send Queue](#SQ与RQ)                      |
+| RQ  | [Receive Queue](#SQ与RQ)                   |
+| SRQ | [Shared Receive Queue](#srq)              |
+| CQ  | [Completion Queue](#CQ与CQE)               |
+| CQE | [Completion Queue Entry/Element](#CQ与CQE) |
+| WR  | [Work Request](#WR与WC)                    |
+| WC  | [Work Completion](#WR与WC)                 |
 
-### WQ
+### WQ与WQE
 
-Work Queue简称WQ，它是一个储存工作请求的队列；即保存 [WQE](#wqe)，WQ里可以容纳很多WQE，WQ总是由软件向其增加WQE（入队），硬件从中取出WQE，即软件给硬件“下发任务”。这种软件下发和硬件执行的方式通常称为“**Post**”
-
-### WQE
+Work Queue简称WQ，它是一个储存工作请求的队列；即保存 WQE，WQ里可以容纳很多WQE，WQ总是由软件向其增加WQE（入队），硬件从中取出WQE，即软件给硬件“下发任务”。这种软件下发和硬件执行的方式通常称为“**Post**”
 
 WQE表示RDMA的一种“任务说明”，其中包含了软件所希望硬件去做的任务以及关于这个任务的详细信息；
 
@@ -234,13 +230,15 @@ WQE表示RDMA的一种“任务说明”，其中包含了软件所希望硬件�
 
 <center>WQ与WQE关系</center>
 
-### QP
+### QP与QPN
 
 每对QP由Send Queue（SQ）和Receive Queue（RQ）构成也就是一对WQ的总称，这些队列中管理着各种类型的消息。QP会被映射到应用的虚拟地址空间，使得应用直接通过它访问RNIC网卡。
 
 [9. RDMA之Queue Pair - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/195757767) qp详细讲解。
 
-### SQ和RQ
+QPN指的是每个QP的编号，在IB网络中，每个QP（队列对：Queue Pair）都有唯一的编号，QPN在连接时用于标识要连接的队列对。
+
+### SQ与RQ
 
 任何通信过程都需要收、发两端，SQ表示发送队列，用来存放发送任务，RQ表示接收队列，用来存放接收任务。再一次Send-Recv过程中，发送端软件需要把表示一次发送任务的WQE放在SQ中，同样需要接收端软件需要给硬件下发一个表示接收任务的WQE，这样接收过去的任务才能知道存放在哪个位置。这个过程对于发送SQ来说称为Post Send，对于接收SQ来说称为Post-Receive。
 
@@ -283,7 +281,6 @@ CQ即完成队列，与WQ相同，其中也包含多个CQE，可以认为CQE和W
 ![image-20221102111559306](image/RDMA基础知识/image-20221102111559306.png)
 
 步骤如下：
-
 1. 接收端APP以WQE的形式下发一次RECV任务到RQ；
 2. 发送端APP以WQE的形式下发一次SEND任务到SQ；
 3. 发送端硬件从SQ中拿到任务，从内存中哪到待发送的数据，组装数据包；
@@ -295,7 +292,7 @@ CQ即完成队列，与WQ相同，其中也包含多个CQE，可以认为CQE和W
 9. 发送端网卡收到ACK后，生成CQE，放置于CQ中；
 10. 发送端APP取得任务完成信息。
 
-### WR和WC
+### WR与WC
 
 WR称为Work Request，意为工作请求；WC称为Work Completion，意为工作完成。这两者是WQE和CQE在用户层的映射。WQE与CQE本身对用户不可见，是驱动实现中的概念，用户只通过APU下发WR，接收端收到WC。
 
@@ -304,10 +301,6 @@ WR称为Work Request，意为工作请求；WC称为Work Completion，意为工�
 <center>WQ与CQ</center>
 
 ![image-20221102112907797](image/RDMA基础知识/image-20221102112907797.png)
-
-
-
-
 
 RDMA传输层主要完成数据与应用的绑定，即在硬件收到报文时，由哪个应用来处理这个报文；传统的TCP/IP网络使用端口号（port）来区分，即在TCP/IP网络上，某两个IP地址对应的节点的端口之间进行通信，RDMA中使用新的概念<a id=qp>**Queue Pair**</a>来进行数据传输，在RDMA硬件上会同时运行多个QP，每个QP都会有编号（number），这个编号即可决定哪个应用来进行处理当前的QP，[RDMA编程基础5:00：InfiniBand_腾讯视频 (qq.com)](https://v.qq.com/x/page/j0319e5j7ay.html)
 
@@ -371,6 +364,26 @@ RDMA的send/receive是双边操作，即必须要远端的应用感知参与才�
 
 <center>RDMA Read/Write行为</center>
 
+## 其他名词解释
+
+### PSN
+
+PSN（Packet Sequeue Number）指的是数据包序列号，用于确保消息的可靠传输，在IB网络的 [RC](#RC) 传输中，每个发送的数据包都会分配唯一的序列号，接收端会使用这些序列号来确认消息的接受顺序，检测是否存在丢包或收到重复的数据包。
+
+### LID
+
+LID（Local Identifier）本质上时本地标识符，可理解为MAC地址，在IB网络中用于标识网络中的每个本地节点或交换机节点（子网内的目标寻址）。
+
+由于RoCE是基于以太网的，它使用GID和标准的以太网地址来进行通信，故而在RoCE网络中LID不使用。
+
+在IB网络中，LID是由子网管理器（Subnet Manager）分配，并用于在子网内部进行路由。
+
+### GID
+
+GID（Global Identifier）指的是全局标识符，在IB及RoCE网络中，GID用于标识网络中的每个节点，GID通常与节点的MAC或IP地址相关联，用于在以太网中通信。
+
+在RoCE网络中，GID表存储了网卡的GID信息，应用程序可以根据GID获取MAC地址和IP地址。
+
 # OFED（OpenFabrics Enterprise Distribution）
 
 Mellanox OFED是一个单一的软件堆栈，包括驱动、中间件、用户接口，以及一系列的标准协议IPoIB、SDP、SRP、iSER、RDS、DAPL(Direct Access Programming Library)，支持MPI、Lustre/NFS over RDMA等协议，并提供Verbs编程接口；Mellanox OFED由开源OpenFabrics组织维护。
@@ -381,13 +394,13 @@ Mellanox OFED是一个单一的软件堆栈，包括驱动、中间件、用户�
 
 # 相关软件
 
-### [rdma-core]([linux-rdma/rdma-core: RDMA core userspace libraries and daemons (github.com)](https://github.com/linux-rdma/rdma-core))
+### rdma-core
 
-用户态核心代码，API，文档以及各厂商的用户态驱动；
+[rdma-core]([linux-rdma/rdma-core: RDMA core userspace libraries and daemons (github.com)](https://github.com/linux-rdma/rdma-core))包含用户态核心代码，API，文档以及各厂商的用户态驱动；
 
-### [perftest]([linux-rdma/perftest: Infiniband Verbs Performance Tests (github.com)](https://github.com/linux-rdma/perftest))
+### perftest
 
-测试RDMA性能的工具；
+[perftest]([linux-rdma/perftest: Infiniband Verbs Performance Tests (github.com)](https://github.com/linux-rdma/perftest))用于测试RDMA性能的工具；
 
 
 [^MTU]:表示Infiniband协议最大传输单元（Maximum Transmission Unit，MTU）用来通知对方所能接受[数据服务](https://baike.baidu.com/item/数据服务/23724818?fromModule=lemma_inlink)[单元](https://baike.baidu.com/item/单元/32922?fromModule=lemma_inlink)的最大尺寸，定义的大小有256B、512B、1024B、2048B和4096B，说明发送方能够接受的[有效载荷](https://baike.baidu.com/item/有效载荷/3653893?fromModule=lemma_inlink)大小。默认情况下为1024B（active_mtu）
