@@ -307,7 +307,7 @@ WR称为Work Request，意为工作请求；WC称为Work Completion，意为工�
 
 RDMA传输层主要完成数据与应用的绑定，即在硬件收到报文时，由哪个应用来处理这个报文；传统的TCP/IP网络使用端口号（port）来区分，即在TCP/IP网络上，某两个IP地址对应的节点的端口之间进行通信，RDMA中使用新的概念<a id=qp>Queue Pair</a>来进行数据传输，在RDMA硬件上会同时运行多个QP，每个QP都会有编号（number），这个编号即可决定哪个应用来进行处理当前的QP，[RDMA编程基础5:00：InfiniBand_腾讯视频 (qq.com)](https://v.qq.com/x/page/j0319e5j7ay.html)
 
-## 数据收发
+## 操作类型
 
 当建立QP可以指定不同的传输操作。可用的操作选项如下表所示。RD不被当前API支持。
 
@@ -366,6 +366,9 @@ RDMA的send/receive是双边操作，即必须要远端的应用感知参与才�
 ![image-20221103100709465](image/RDMA基础知识/image-20221103100709465.png)
 
 <center>RDMA Read/Write行为</center>
+
+### 其他操作类型
+
 
 ## 其他名词解释
 
