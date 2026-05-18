@@ -232,11 +232,11 @@ Work Queue Element简称WQE，表示RDMA的一种“任务说明”，其作用�
 
 ### QP与QPN
 
-每对QP由Send Queue（SQ）和Receive Queue（RQ）构成也就是一对WQ的总称，这些队列中管理着各种类型的消息。QP会被映射到应用的虚拟地址空间，使得应用直接通过它访问RNIC网卡。
+每对QP（Queue Pair）由Send Queue（SQ）和Receive Queue（RQ）构成也就是一对WQ的总称，这些队列中管理着各种类型的消息。QP会被映射到应用的虚拟地址空间，使得应用直接通过它访问RNIC网卡。
 
 [9. RDMA之Queue Pair - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/195757767) qp详细讲解。
 
-QPN指的是每个QP的编号，在IB网络中，每个QP（队列对：Queue Pair）都有唯一的编号，QPN在连接时用于标识要连接的队列对。
+QPN指的是每个QP的编号，在IB网络中，每个节点的每个QP都有唯一的编号，QPN在连接时用于标识要连接的队列对。
 
 ### SQ与RQ
 
@@ -264,7 +264,7 @@ SRQ即Shared Receive Queue，意为共享接收队列，即多个QP共享一个R
 
 ### CQ与CQE
 
-CQ即完成队列，与WQ相同，其中也包含多个CQE，可以认为CQE和WQE是相反的概念，即CQE可认为是硬件给软件的“任务报告”，CQE中描述了某个任务是否被正确的执行，如果错误会将错误的信息描述在CQE中。
+CQ即完成队列，与WQ相同，其中也包含多个CQE，可以认为CQE和WQE是相反的概念，即CQE可认为是硬件给软件的“任务报告”，CQE中描述了某个任务是否被正确的执行，如果错误也会将错误的信息描述在CQE中。
 
 ![image-20221102110403019](image/RDMA基础知识/image-20221102110403019.png)
 
@@ -292,9 +292,12 @@ CQ即完成队列，与WQ相同，其中也包含多个CQE，可以认为CQE和W
 9. 发送端网卡收到ACK后，生成CQE，放置于CQ中；
 10. 发送端APP取得任务完成信息。
 
+### CQN
+与QPN类似，每个节点的每个CQ都有唯一的编号，称谓CQN（Completion Queue Number，完成队列编号），通过CQN可以唯一确定和标识一个RDMA节点上的CQ。
+
 ### WR与WC
 
-WR称为Work Request，意为工作请求；WC称为Work Completion，意为工作完成。这两者是WQE和CQE在用户层的映射。WQE与CQE本身对用户不可见，是驱动实现中的概念，用户只通过APU下发WR，接收端收到WC。
+WR称为Work Request，意为工作请求；WC称为Work Completion，意为工作完成。这两者是WQE和CQE在用户层的映射，WQE与CQE本身对用户不可见，是驱动实现中的概念，用户只通过Verbs API下发WR，接收端收到WC。
 
 ![image-20221102113443379](image/RDMA基础知识/image-20221102113443379.png)
 
@@ -302,7 +305,7 @@ WR称为Work Request，意为工作请求；WC称为Work Completion，意为工�
 
 ![image-20221102112907797](image/RDMA基础知识/image-20221102112907797.png)
 
-RDMA传输层主要完成数据与应用的绑定，即在硬件收到报文时，由哪个应用来处理这个报文；传统的TCP/IP网络使用端口号（port）来区分，即在TCP/IP网络上，某两个IP地址对应的节点的端口之间进行通信，RDMA中使用新的概念<a id=qp>**Queue Pair**</a>来进行数据传输，在RDMA硬件上会同时运行多个QP，每个QP都会有编号（number），这个编号即可决定哪个应用来进行处理当前的QP，[RDMA编程基础5:00：InfiniBand_腾讯视频 (qq.com)](https://v.qq.com/x/page/j0319e5j7ay.html)
+RDMA传输层主要完成数据与应用的绑定，即在硬件收到报文时，由哪个应用来处理这个报文；传统的TCP/IP网络使用端口号（port）来区分，即在TCP/IP网络上，某两个IP地址对应的节点的端口之间进行通信，RDMA中使用新的概念<a id=qp>Queue Pair</a>来进行数据传输，在RDMA硬件上会同时运行多个QP，每个QP都会有编号（number），这个编号即可决定哪个应用来进行处理当前的QP，[RDMA编程基础5:00：InfiniBand_腾讯视频 (qq.com)](https://v.qq.com/x/page/j0319e5j7ay.html)
 
 ## 数据收发
 
@@ -319,7 +322,7 @@ RDMA传输层主要完成数据与应用的绑定，即在硬件收到报文时�
 
 Send/Receive和RDMA Read/Write最大的区别是Send/Receive发送端只管发，最终数据存储在哪里由接收端决定。RDMA Read/Write在在发送时就携带了远端节点的写入地址
 
-发送与接收，因为接收端是个被动的行为，不知道在哪个时刻会有数据的到来，所以需要在接收之前就需要指定好接收数据的地址，这种行为称为**Post Receive Request（RR）**。
+发送与接收，因为接收端是个被动的行为，不知道在哪个时刻会有数据的到来，所以需要在接收之前就需要指定好接收数据的地址，这种行为称为 **Post Receive Request（RR）**。
 
 ### RDMA双边操作（SEND/RECV）
 
