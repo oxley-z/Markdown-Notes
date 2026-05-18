@@ -3,7 +3,7 @@
 ---
 # Verbs API
 
-广义的Verbs API分为两部分：
+广义的Verbs API分为两部分：[IB_VERBS](#IB_VERBS)、[RDMA_CM](#RDMA_CM)。
 
 ## IB_VERBS
 
@@ -11,19 +11,25 @@
 
 ## RDMA_CM
 
-以rdma_为前缀的接口，主要分为两个功能：
+以`rdma_`为前缀的接口，主要分为两个功能：
 
 ### CMA（Connection Management Abstraction）
 
-在Socket和Verbs API基础上实现，用于CM建链并交换信息的一组接口。CM建链是在Socket基础上封装为QP实现，从用户的角度来看，是在通过AP交换之后数据交换所需要的QPN，Key等信息。
+在Socket和Verbs API基础上实现，用于CM建链并交换信息的一组接口。CM建链是在Socket基础上封装为QP实现，从用户的角度来看，是在通过AP交换之后数据交换所需要的QPN，Key等信息，减少了代码量，让RDMA编程更加简单，其接口类似于Socket。
+
+```c
+rdma_listen()
+rdma_connect()
+rdma_accept()
+```
 
 ### CM_VERBS
 
-RDMA_CM主要用于管理连接，使通信的双方能够确定彼此的GID和QPN信息，从而可以进行后续的交互处理。
+RDMA_CM本质上是建立在libibverbs上的一层包装，主要用于管理连接，使通信的双方能够确定彼此的GID和QPN信息，从而可以进行后续的交互处理。
 
 RDMA_CM也可以用于数据交换，相当于在Verbs API上有封装了一套数据交换接口。
 
-狭义的Verbs API指以ibv_ /ib_为前缀的用户态Verbs接口，因为RDMA的典型应用是在用户态，下文主要介绍用户态的Verbs API。
+狭义的Verbs API指以ibv_\*为前缀的用户态Verbs接口，以及以ib_\*开头的内核rdma子系统，分别用于用户态和内核态的rdma应用。
 
 # Linux内核RDMA子系统
 
@@ -248,6 +254,9 @@ SQ错误状态。当某个Send WR发生完成错误（即硬件通过CQE告知�
 ### ERR（Error）
 
 即错误状态。其他状态如果发生了错误，都可能进入该状态。Error状态时，QP会停止处理WQE，已经处理到一半的WQE也会停止。上层需要在修复错误后再将QP重新切换到RST的初始状态。
+
+## 典型应用
+
 
 # 参考链接
 
