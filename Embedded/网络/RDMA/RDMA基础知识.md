@@ -153,17 +153,22 @@ RoCE技术可通过普通以太网交换机实现，但服务器需要支持RoCE
 
 # RDMA通信原理
 
-RDMA协议定义RC、UC、UD三种通信模式，其中RC（Reliable Connection）模式，保证报文正确的传输到目的端，支持报文ACK确认、超时重传，若某个报文超时没有确认，则重传该报文后的所有报文。UC（Unreliable Conection）模式需要提前建立链接，报文不需要携带地址信息，不需要ACK确认、重传，不保证对端能正确接收。UD（Unreliable Datagram）模式不需要建立链接，每个报文都携带目标地址、目标队列信息，不需要ACK确认、重传，每个报文不能大于网络[MTU限制](https://baike.baidu.com/item/%E6%9C%80%E5%A4%A7%E4%BC%A0%E8%BE%93%E5%8D%95%E5%85%83/9730690?fromtitle=mtu&fromid=508920)[^MTU]。三种模式稳定性依次下降，执行效率依次升高，RC、UC链路资源都需要占用网卡的Cache资源，并发链路数量过多时，需要考虑UD模式。
+RDMA协议定义RC、UC、UD三种通信模式，其中RC（Reliable Connection）模式，保证报文正确的传输到目的端，支持报文ACK确认、超时重传，若某个报文超时没有确认，则重传该报文后的所有报文。UC（Unreliable Conection）模式需要提前建立链接，报文不需要携带地址信息，不需要ACK确认、重传，不保证对端能正确接收。UD（Unreliable Datagram）模式不需要建立链接，每个报文都携带目标地址、目标队列信息，不需要ACK确认、重传，每个报文不能大于网络 [MTU限制](https://baike.baidu.com/item/%E6%9C%80%E5%A4%A7%E4%BC%A0%E8%BE%93%E5%8D%95%E5%85%83/9730690?fromtitle=mtu&fromid=508920)[^MTU]。三种模式稳定性依次下降，执行效率依次升高，RC、UC链路资源都需要占用网卡的Cache资源，并发链路数量过多时，需要考虑UD模式。
 
 协议定义双边、单边两种通信原语。<font color=red>**send**</font>、<font color=red>**recv**</font>指令属于双边原语，接收端执行recv指令等待数据到达，发送端执行send指令发起数据传输，双边CPU都参与传输过程，适合小数据传输。<font color=red>**read**</font>、<font color=red>**write**</font>指令属于单边原语，得知远端内存地址后，本地网卡直接访问远端内存，远端CPU无感知。单边源于是RDMA规范中最具创新的特性，通过RDMA协议把本地内存总线延伸到其他主机，传输效率高，适合较大数据的传输。不同模式下支持原语不同，RC模式支持全部原语，UC模式不支持read，UD模式仅支持send、recv单边操作。
 
 ## 服务类型
 
-|                    | 可靠（Reliable）          | 不可靠（Unreliable）        |
-| ------------------ | ------------------------- | --------------------------- |
+|                | 可靠（Reliable）            | 不可靠（Unreliable）           |
+| -------------- | ----------------------- | ------------------------- |
 | 连接（Connection） | RC（Reliable Connection） | UC（Unreliable Connection） |
-| 数据报（Datagram） | RD（Reliable Datagram）   | UD（Unreliable Datagram）   |
+| 数据报（Datagram）  | RD（Reliable Datagram）   | UD（Unreliable Datagram）   |
 
+- 可靠：是指通过一些机制保证发送出去的数据包都能够被对方正确无误的接收；
+- 不可靠：是指发送端只管发数据，有没有被接收端接收到，不在考虑范围内。
+
+- 连接：面向连接的服务，每个QP只与一个远端QP关联；
+- 数据报：面向数据报的服务，每个QP不会绑定到单个远端QP，而是在WQE内的信息中标识目的地；
 #### RC
 
 特点：
@@ -360,9 +365,11 @@ Doorbell record：通过主机中的内存作为中介，软件和硬件都知�
 | RDMA Write                                     |           | √   | √   | √   |
 | RDMA Read                                      |           |     | √   | √   |
 | Atomic Fetch and Add / Atomic Compare and Swap |           |     | √   | √   |
+| Send With immediate                            | √         | √   | √   |     |
+| RDMA Write with immediate                      |           | √   | √   |     |
 | Max message size                               | MTU[^MTU] | 1GB | 1GB | 1GB |
 
-Send/Receive和RDMA Read/Write最大的区别是Send/Receive发送端只管发，最终数据存储在哪里由接收端决定。RDMA Read/Write在在发送时就携带了远端节点的写入地址
+Send/Receive和RDMA Read/Write最大的区别是Send/Receive发送端只管发，最终数据存储在哪里由接收端决定。RDMA Read/Write在在发送时就携带了远端节点的写入地址。
 
 发送与接收，因为接收端是个被动的行为，不知道在哪个时刻会有数据的到来，所以需要在接收之前就需要指定好接收数据的地址，这种行为称为 **Post Receive Request（RR）**。
 
@@ -410,13 +417,15 @@ RDMA的send/receive是双边操作，即必须要远端的应用感知参与才�
 <center>RDMA Read/Write行为</center>
 
 ### 其他操作类型
-#### 带立即数的发送（Send With Immediate）
+#### 带立即值的发送（Send With Immediate）
 
 操作码为 IBV_WR_SEND_WITH_IMM。指发送端即时传输 32 位的数据（称为立即值）。该值作为接收通知的一部分发送给接收端，不包含在数据缓存中。之后接收端被通知已接收到数据时，通知消息中带有内联的立即值。更具体地讲，接收端应用程序通过读取 CQE 中的某个字段获取立即值。
 
 #### 带立即值的RDMA写（RDMA Write With Immediate）
 
-操作码为 IBV_WR_RDMA_WRITE_WITH_IMM。带（32 位）立即值的 RDMA 写会将立即值通知远端应用程序，在此过程中还会消耗远程主机某个 RQ 中的一个 WQE 。具体流程为：
+操作码为 IBV_WR_RDMA_WRITE_WITH_IMM。带（32 位）立即值的 RDMA 写会将立即值通知远端应用程序，在此过程中还会消耗远程主机某个 RQ 中的一个 WQE 。
+
+具体流程为：
 1. 远端应用程序先发起一次 Receive 操作 ，然后轮询 CQE；
 2. 本地应用程序发起带立即值的 RDMA 写， 此立即值最终不会写入远端内存 ， 而是作为 CQE 的一部分被远端应用程序获取。
 
@@ -424,6 +433,7 @@ RDMA的send/receive是双边操作，即必须要远端的应用感知参与才�
 
 操作码为 IBV_WR_ATOMIC_FETCH_AND_ADD 和 IBV_WR_ATOMIC_CMP_AND_SWP。两者都是 RDMA 操作的原子扩展。 原子获取和加操作以原子方式将指定内存地址中的值增加指定的数值，并将加之前的数值返回给调用者。 原子比较和交换以原子方式将某个内存地址中的数值与指定数值进行比较，如果它们相等，则另一个新值将被写入该内存地址。
 
+**原子比较和交换操作的作用**：原子比较和交换是原子操作的一种，可用于在多线程编程中实现不被打断的数据交换操作，从而避免多线程同时谢某一数据时由于执行顺序的不确定性以及中断的不可预知性产生的数据不一致问题。
 ## 其他名词解释
 
 ### PSN
