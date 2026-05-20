@@ -10,11 +10,13 @@ perftest是一组基于uverbs编写的测试程序，是RDMA性能相关的micro
 
 ## 安装
 
-直接安装preftest
+直接apt安装preftest
 
 ```bash
 sudo apt install perftest
 ```
+
+## 帮助信息
 
 ```bash
 Options:
@@ -23,20 +25,26 @@ Options:
   -c, --connection=  连接类型RC / XRC / UC / DC（默认RC）
   -d, --ib-dev=  使用IB设备（找到第一个默认设备）
   -D, --duration  在自定义的秒数内运行测试。
+  -e, --events  Sleep on CQ events (default poll)
+  -X, --vector=<completion vector>  Set <completion vector> used for events
   -f, --margin  measure results within margins. (default=2sec)
   -F, --CPU-freq  即使已加载cpufreq_ondemand模块，并且cpu-freq不在最大值，也不会显示警告。
+  -g, --mcg  Send messages to multicast group with 1 QP attached to it.
+         When there is no multicast gid specified, a default IPv6 typed gid will be used.
   -h, --help  Show this help screen.
   -i, --ib-port=  使用IB设备的端口<端口>（默认1）
   -I, --inline_size=  Max size of message to be sent in inline
   -l, --post_list= Post list of WQEs of size (instead of single post)
   -L, --hop_limit=  设置跳数限制值（对于IPv4 RawEth QP，为ttl）。值0-255（默认64）Set hop limit value (ttl for IPv4 RawEth QP). Values 0-255 (default 64)
   -m, --mtu=  MTU size : 256 - 4096 (default port mtu)
+  -M, --MGID=<multicast_gid>  In multicast, uses <multicast_gid> as the group MGID.
   -n, --iters=  交换次数（至少5次，默认为5000次）
   -N, --noPeak 取消峰值BW计算（默认情况下峰值不超过iters = 20000）
   -O, --dualport  在双端口模式下运行测试。（Run test in dual-port mode.）
   -p, --port=  Listen on/connect to port (default 18515)
   -q, --qp=  qp的数量（默认为1）
-  -Q, --cq-mod  仅在<-cq-mod>完成后生成Cqe
+  -Q, --cq-mod  仅在<--cq-mod>完成后生成Cqe
+  -r, --rx-depth=<dep>  Rx queue size (default 512). If using srq, rx-depth controls max-wr size of the srq
   -R, --rdma_cm  Connect QPs with rdma_cm and run test on those QPs
   -s, --size=  （每个QP）交换消息的大小（默认为65536）
   -S, --sl=  SL (default 0)
@@ -45,6 +53,7 @@ Options:
   -u, --qp-timeout= QP超时，超时值为4 usec * 2 ^（超时），默认值为14
   -V, --version  显示版本号
   -w, --limit_bw=  设置验证器带宽限制(Set verifier limit for bandwidth)
+  -W, --report-counters=<list of counter names>  Report performance counter change (example: "counters/port_xmit_data,hw_counters/out_of_buffer")
   -x, --gid-index=  Test uses GID with GID index (Default : IB - no gid . ETH - 0)
   -y, --limit_msgrate=  Set verifier limit for Msg Rate
   -z, --com_rdma_cm  Communicate with rdma_cm module to exchange data - use regular QPs
@@ -88,6 +97,14 @@ Options:
         Note: in Latency under load test SW rate limit is forced
       --use_ooo  Use out of order data placement
 ```
+
+### post_list
+
+测试选项为 -l, --post_list=\<list size> 和 --recv_post_list=\<list size> 。使用这个选项时，软件会为每个 QP 准备 list size 个 WQE，并将它们彼此链接。所谓链接，指的是分配含 list size 个变量的队列（或数组），并将队列中每个 WQE 的 next 指针指向队列中的下一个元素。数组中的最后一个 WQE 将指向 NULL 。
+
+在这种情况下，当软件 post 列表中的第一个 WQE 时，将指示硬件处理所有的 WQE ,也就是说每次都会 post list size 个消息。
+
+此选项通常用于单个进程的 QP 最大消息处理速率。
 
 
 
