@@ -442,7 +442,7 @@ PSN（Packet Sequeue Number）指的是数据包序列号，用于确保消息�
 
 ### LID
 
-LID（Local Identifier）本质上时本地标识符，可理解为MAC地址，在IB网络中用于标识网络中的每个本地节点或交换机节点（子网内的目标寻址）。
+LID（Local Identifier）本质上是本地标识符，可理解为MAC地址，在IB网络中用于标识网络中的每个本地节点或交换机节点（子网内的目标寻址）。
 
 由于RoCE是基于以太网的，它使用GID和标准的以太网地址来进行通信，故而在RoCE网络中LID不使用。
 
