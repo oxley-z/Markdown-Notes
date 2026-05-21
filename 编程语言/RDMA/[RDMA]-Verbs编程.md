@@ -278,3 +278,7 @@ SQ错误状态。当某个Send WR发生完成错误（即硬件通过CQE告知�
 
 [RDMA read and write with IB verbs | The Geek in the Corner (wordpress.com)](https://thegeekinthecorner.wordpress.com/2010/09/28/rdma-read-and-write-with-ib-verbs/) 编程示例。
 
+[RDMA 编程完整学习路线图](https://www.cnblogs.com/clnchanpin/p/19510176)
+
+[RDMAmojo](https://www.rdmamojo.com/) 优质博客
+

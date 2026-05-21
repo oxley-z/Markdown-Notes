@@ -103,21 +103,33 @@
 
 专栏 [网络编程_bandaoyu的博客-CSDN博客](https://blog.csdn.net/bandaoyu/category_8400071.html)
 
+# 学习路线
+
+[RDMA 编程完整学习路线图](https://www.cnblogs.com/clnchanpin/p/19510176)
+
 # 论坛
 
 [NGDCN - 未来网络技术网](https://ngdcn.com/)
 
 # 博客
 
-[RDMAmojo - RDMAmojo - blog on RDMA technology and programming by Dotan Barak RDMAmojo](http://www.rdmamojo.com/)
+[RDMAmojo - RDMAmojo - blog on RDMA technology and programming by Dotan Barak RDMAmojo](http://www.rdmamojo.com/) RDMA 优质博客
 
 # 视频
 
 [(23) The Linux SoftRoCE Driver - YouTube](https://www.youtube.com/watch?v=NumH5YeVjHU) OFA组织2017年年会时对于Soft-RoCE实现的介绍视频
 
+Youtube：[Linux Foundation: RDMA Programming](https://www.youtube.com/@LinuxfoundationOrg/search?query=RDMA%20Programming) RDMA编程
+Youtube：[SNIAVideo：RDMA](https://www.youtube.com/@SNIAVideo/search?query=rdma) 高性能计算课程
+
+[RDMA Courses and Certifications](https://www.classcentral.com/subject/rdma) # RDMA 课程和认证
 # 书籍
 
 [《Linux高性能网络详解：从DPDK、RDMA到XDP》](https://book.douban.com/subject/36322557/)
+
+《RDMA Aware Programming User Manual》 - RDMA编程用户手册
+
+《InfiniBand Architecture Specification》 - 官方标准
 
 # 编程
 
