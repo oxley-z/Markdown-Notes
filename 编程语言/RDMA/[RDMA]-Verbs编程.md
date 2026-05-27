@@ -77,6 +77,29 @@ Linux内核驱动程序的RDMA子系统代码位于内核源码中的drivers/inf
 
 ### 用户态驱动程序
 
+用户态驱动程序并没有放在Linux Kernel的代码库中，而是在如下的独立Github仓库中进行托管：
+
+[https://github.com/linux-rdma/rdma-core](https://github.com/linux-rdma/rdma-core)
+
+目录结构大致如下：
+
+```sql
+├── build
+├── kernel-headers
+├── libibverbs
+├── providers
+│   ├── erdma
+│   ├── hns
+│   ├── mlx5
+│   ├── rxe
+│   └── ......
+├── pyverbs
+└── ......
+```
+
+- **build目录**：包含了用于构建用户态驱动的构建系统；
+- **kernel-headers目录**：包含了与内核代码相关的必要头文件。由于用户态驱动程序依赖内核态驱动程序来提供对设备特权级操作的支持，因此必不可少要和内核打交道。由于Linux Kernel的代码迭代速度很快，用户态与内核态的接口在不同版本之间也会有细微变化。该目录下的文件会在Linux Kernel发布新版本时进行对应的更新，从而保证用户态驱动可以与对应的内核版本进行正常的交互。
+
 ---
 # Verbs相关软件库
 ## rdma-core
