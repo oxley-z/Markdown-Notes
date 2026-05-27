@@ -64,9 +64,15 @@ id: be410d40-cb23-45a1-ab4e-e0afc35c6ea9
 
 ##### 2.2 hypervisors的两种类型
 
--   **standalone 或 Type 1 hypervisors** Hypervisor直接在硬件上运行，并完全控制硬件平台及其所有资源，包括 CPU 和物理内存。其上的虚拟机可以运行一个或多个完整的guest os.![[Inbox/笔记同步助手/微信公众号/20260527/images/ad74d448e77676b5c43f4e7f334507e7_MD5.jpg]]
+-   **standalone 或 Type 1 hypervisors** Hypervisor直接在硬件上运行，并完全控制硬件平台及其所有资源，包括 CPU 和物理内存。其上的虚拟机可以运行一个或多个完整的guest os.
+
+![[Inbox/笔记同步助手/微信公众号/20260527/images/ad74d448e77676b5c43f4e7f334507e7_MD5.jpg]]
     
--   **hosted 或 Type 2 hypervisors** (1)完全控制硬件平台及其所有资源，包括 CPU 和物理内存 (2)如果您以前使用过 Virtual Box 或 VMware Workstation 等软件，那么这就是您正在运行的虚拟机管理程序类型。​操作系统（称为主机操作系统）安装在平台上，管理程序在主机操作系统内运行，利用现有功能来管理硬件。​管理程序然后可以托管虚拟机，这些虚拟机本身运行操作系统。​我们将其称为来guest os。​  ![[Inbox/笔记同步助手/微信公众号/20260527/images/a04e90c9e62c5965563e910de6cbcee4_MD5.jpg]] Arm 平台上最常用的两个开源虚拟机管理程序是 Xen（type 1）和 KVM（type 2）。我们将使用这些管理程序来说明本文中的一些要点。当然除此之外还有许多其他的开源或专业的hypervisor。
+-   **hosted 或 Type 2 hypervisors** (1)完全控制硬件平台及其所有资源，包括 CPU 和物理内存 (2)如果您以前使用过 Virtual Box 或 VMware Workstation 等软件，那么这就是您正在运行的虚拟机管理程序类型。​操作系统（称为主机操作系统）安装在平台上，管理程序在主机操作系统内运行，利用现有功能来管理硬件。​管理程序然后可以托管虚拟机，这些虚拟机本身运行操作系统。​我们将其称为来guest os。​  
+
+![[Inbox/笔记同步助手/微信公众号/20260527/images/a04e90c9e62c5965563e910de6cbcee4_MD5.jpg]] 
+
+Arm 平台上最常用的两个开源虚拟机管理程序是 Xen（type 1）和 KVM（type 2）。我们将使用这些管理程序来说明本文中的一些要点。当然除此之外还有许多其他的开源或专业的hypervisor。
     
 
 ##### 2.3 全虚拟化和半虚拟化
