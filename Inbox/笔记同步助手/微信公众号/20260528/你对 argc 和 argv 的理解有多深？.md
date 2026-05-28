@@ -62,7 +62,7 @@ for(inti=0;i
 
 `` `这段代码都是一些最基本的 C 语言操作，相信大家都可以看懂，这段代码的运行结果如下：` ``
 
-`` `![](https://relay-1.bijitongbu.site/p/f201f7a90f7b022b8f3341130eae2031.png)` ``
+`` `![[Inbox/笔记同步助手/微信公众号/20260528/images/3bf7f3cebae7ccd3d2f0f8a7d961e53c_MD5.jpg]]` ``
 
   
 
@@ -95,7 +95,7 @@ ptr++;
 
 `` `当程序被执行时，操作系统会为新进程分配内存。在进程的**栈（Stack）**的高地址部分，布局通常是这样的（栈由高地址向低地址生长）：` ``
 
-`` `![](https://relay-1.bijitongbu.site/p/f09a8e555a3aa28b03cc2319cbfaf4a5.png)` ``
+`` `![[Inbox/笔记同步助手/微信公众号/20260528/images/8109d8c6251c53f920af725ee6072fc1_MD5.jpg]]` ``
 
   
 
@@ -162,7 +162,7 @@ return0;
 
 ``` ``这段代码中我们使用`getchar`让程序阻塞，运行程序后，我们重开一个终端，执行`ps aux`命令，这是按照进程`id`大小排列的，这个程序我们刚刚启动，我们直接翻到最下面：`` ```
 
-`` `![](https://relay-1.bijitongbu.site/p/df85543636f4dd2f05fcf10f5dfd4ec4.png)` ``
+`` `![[Inbox/笔记同步助手/微信公众号/20260528/images/7a9b34aa9c5de04376edcdde14c10920_MD5.jpg]]` ``
 
   
 
@@ -192,35 +192,35 @@ return0;
 > 
 > `` `[一位音视频方向读者秋招上岸的经历](https://mp.weixin.qq.com/s?__biz=Mzg5ODUxNDMxMA==&mid=2247491143&idx=1&sn=d6d9c58b601272e62d9ed0a49c17f4fd&chksm=c06032aef717bbb8ec01029246e110c2fea9035f32a1a7ea13148cd532f7f973889ff8f3cefa&scene=21#wechat_redirect)` ``
 
-`` `![|80](https://relay-1.bijitongbu.site/p/3acacfadb5e8362b0447c11584fe25e2.png)` ``
+`` `![[Inbox/笔记同步助手/微信公众号/20260528/images/acf7863907ef5ed05ca73dbb1a259dc7_MD5.jpg||80]]` ``
 
-`` `![|100](https://relay-1.bijitongbu.site/p/8de6f8c577ba84c82a2ba2988414bc34.png)` ``
+`` `![[Inbox/笔记同步助手/微信公众号/20260528/images/86dc24c4e5ab204309dc9978015c902c_MD5.jpg||100]]` ``
 
 `` `扫码加我微信   ` ``
 
 `` `进技术交流群` ``
 
-`` `![|80](https://relay-1.bijitongbu.site/p/2e77eb5761cad6f536813ad83b401eda.png)   ` ``
+`` `![[Inbox/笔记同步助手/微信公众号/20260528/images/acf7863907ef5ed05ca73dbb1a259dc7_MD5.jpg||80]]   ` ``
 
-`` `![|19](https://relay-1.bijitongbu.site/p/67c892fbd64d1e854e0923c6bfdcbdf0.png)` ``
+`` `![[Inbox/笔记同步助手/微信公众号/20260528/images/b500c626eb54dd2d328f35951fc7534d_MD5.jpg||19]]` ``
 
 `` `分享` ``
 
-`` `![|19](https://relay-1.bijitongbu.site/p/8637ee2eaba668ee33123808595e715a.png)` ``
+`` `![[Inbox/笔记同步助手/微信公众号/20260528/images/3a6bc8f4c65664397053a979c14ef344_MD5.jpg||19]]` ``
 
 `` `收藏` ``
 
-`` `![|19](https://relay-1.bijitongbu.site/p/396dd8cebaeb6ebcd9889d994811208f.png)` ``
+`` `![[Inbox/笔记同步助手/微信公众号/20260528/images/92dc8fde70261eb990ce5dc14363064a_MD5.jpg||19]]` ``
 
 `` `点赞` ``
 
-`` `![|19](https://relay-1.bijitongbu.site/p/d951641e2050b7e8b94c1a96005896b5.png)` ``
+`` `![[Inbox/笔记同步助手/微信公众号/20260528/images/32efd9863037a659feda94462b48b91f_MD5.jpg||19]]` ``
 
 `` `在看` ``
 
 ---
 
-![cover_image](https://mmbiz.qpic.cn/sz_mmbiz_jpg/lSRNJGrqOz5Giav4GEEa5gMTVAL3icyLc1087SgOycqyXl4dqKRlXJbgHib1d8zJsgicBqZue0Qb7dzibkUVb0lP7EkuA0IKgsjgrLEAIpIdT4nY/0?wx_fmt=jpeg)
+![[Inbox/笔记同步助手/微信公众号/20260528/images/de8ccb2819709e811a2ab2c4cb4c9be6_MD5.jpg|cover_image]]
 
 仲一 嵌入式与Linux那些事
 
