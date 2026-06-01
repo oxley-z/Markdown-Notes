@@ -24,11 +24,11 @@ id: f4026fb1-04d8-4e85-8761-8935f3bd932d
 
 然后创建key
 
-![](https://relay-1.bijitongbu.site/p/c5d4295e97cd3d784136701913898308.png)
+![[Inbox/笔记同步助手/微信公众号/20260528/images/7661c1c9790fbd499cd198be385a23fd_MD5.jpg]]
 
 保存key，最后按照下文配置code agent就行了。
 
-![](https://relay-1.bijitongbu.site/p/4a93977e1c05a4d3048e761d250a65f4.png)
+![[Inbox/笔记同步助手/微信公众号/20260528/images/1a6cf94d544efc37125cf4be5aece895_MD5.jpg]]
 
 ## 文本模型
 
@@ -154,11 +154,11 @@ with requests.post(url, headers=headers, json=payload, stream=True, timeout=60) 
 
 ### claude code
 
-![](https://relay-1.bijitongbu.site/p/c84c291c7517fea67b6d9b6aa38b0187.png)
+![[Inbox/笔记同步助手/微信公众号/20260528/images/8137a9f0318e096fd464e3c484c84547_MD5.jpg]]
 
 ## codex
 
-![](https://relay-1.bijitongbu.site/p/724ee7438e98a2055565d9480ff77fc6.png)
+![[Inbox/笔记同步助手/微信公众号/20260528/images/9d0393080cf4c335d914ace043485be3_MD5.jpg]]
 
 ---
 
