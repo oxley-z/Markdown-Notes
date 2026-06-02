@@ -25,7 +25,7 @@ irm https://claude.ai/install.ps1 | iex
 
 将`claude.exe`的文件位置加入到环境变量中：
 
-![](image/ClaudeCode使用/IMG-20260429144748259.png)
+![](image/ClaudeCode教程/IMG-20260602172535541.png)
 
 之后确定并退出命令行，重新打开命令行输入
 
@@ -51,7 +51,7 @@ PS D:\>
 
 再次执行`claude`即可正常启动：
 
-![](image/ClaudeCode使用/IMG-20260429144748274.png)
+![](image/ClaudeCode教程/IMG-20260602172536038.png)
 
 # 切换国产大模型
 ## 阿里云（百炼平台）
@@ -180,7 +180,7 @@ claude --model qwen3.6-plus
 
 首先在 [ZenMux PAYG API](https://zenmux.ai/platform/pay-as-you-go)管理页面创建API-Key，注意需要选择API限制，其中后缀带free的模型可免费使用。
 
-![](image/ClaudeCode使用/IMG-20260509102620309.png)
+![](image/ClaudeCode教程/IMG-20260602172535411.png)
 
 可使用模型：
 
@@ -303,7 +303,7 @@ Remove-Item -Path ".mcp.json" -Force
 
 ### 对话内命令
 
-![](image/ClaudeCode使用/claude%20code最新指令大全.pdf)
+![](image/ClaudeCode教程/IMG-20260602172536165.pdf)
 #### 会话管理
 
 | 命令              | 含义     | 使用场景                                                              |
@@ -408,7 +408,7 @@ Remove-Item -Path ".mcp.json" -Force
 | Ctrl+L    | 清除终端屏幕          | 保留对话历史                                                |
 | Ctrl+O    | 切换详细输出          | 显示详细的工具使用和执行状态                                        |
 | Ctrl+R    | 反向搜索命令历史        | 交互式搜索以前的命令                                            |
-| Shift+Tab | 切换权限模式          | 在[自动编辑模式](ClaudeCode使用.md#自动编辑模式)、Plan Mode 和正常模式之间切换 |
+| Shift+Tab | 切换权限模式          | 在[自动编辑模式](ClaudeCode教程.md#自动编辑模式)、Plan Mode 和正常模式之间切换 |
 | Alt+P     | 切换模型            | 在不清除提示的情况下切换模型                                        |
 | Alt+T     | 切换扩展思考          | 启用或禁用扩展思考模式。首先运行 `/terminal-setup` 以启用此快捷键            |
 
@@ -438,7 +438,7 @@ claude code可按场景切换模式，提高使用效率。
 
 <mark style="background: #FFB86CA6;">自动编辑模式（accept edits on 免确认批量操作）</mark>适合无需逐次确认的文件创建、修改场景。按下 <mark style="background: #BBFABBA6;">Shift+Tab</mark> 一次即可开启，此时 Claude 会自动执行编辑操作，无需手动确认。比如提示 “创建一个酷炫的 todolist 应用”，它会直接生成文件并修改，省去反复确认的时间。
 
-![](image/ClaudeCode使用/IMG-20260429144748244.png)
+![](image/ClaudeCode教程/IMG-20260602172536069.png)
 
 #### Plan模式
 
@@ -446,7 +446,7 @@ claude code可按场景切换模式，提高使用效率。
 
 面对项目搭建或复杂问题时，用 Shift+Tab 两次（或者执行`/plan`）开启 Plan 模式(paln mode on）。它会<mark style="background: #FF5582A6;">先梳理方案框架</mark>，比如要做 “像素风格的移动端 todolist”，会自动规划技术栈、页面结构、适配方案等，<mark style="background: #FF5582A6;">确认后再动手</mark>。若不满意可直接说 “重新规划”，直到符合预期。
 
-![](image/ClaudeCode使用/IMG-20260429144748221.png)
+![](image/ClaudeCode教程/IMG-20260602172536079.png)
 
 #### Yolo模式
 
@@ -454,7 +454,7 @@ claude code可按场景切换模式，提高使用效率。
 
 重构代码、启动新项目或修复复杂 bug 时，用 `claude --dangerously-skip-permissions` 进入 Yolo 模式。<mark style="background: #FF5582A6;">此时 Claude 拥有更高权限，可直接执行更多操作</mark>（需注意安全，建议在沙箱环境使用）。进入后仍能用 Shift+Tab 调整模式，灵活切换权限粒度。
 
-![](image/ClaudeCode使用/IMG-20260429144748229.png)
+![](image/ClaudeCode教程/IMG-20260602172536114.png)
 
 ### CLAUDE.md
 
@@ -752,7 +752,7 @@ Claude Code插件系统简而言之可以使用以下公式概括：
 
 如果没有 `/plugin` 命令，通常是版本太老，插件功能要求 Claude Code >= 1.0.33（跑一下 claude --version）。
 
-![](image/ClaudeCode使用/IMG-20260508144442785.png)
+![](image/ClaudeCode教程/IMG-20260602172535509.png)
 
 ### plugin安装
 
@@ -865,7 +865,7 @@ skills 本质上就是教 AI 按固定流程做事的操作说明书，一旦写
     
 - 简单来说，过去我们用提示词（prompt）教 AI 做事，现在用 Agent Skills 可以把提示词 + 资源打包成可复用、可共享的技能包，更高效、更可靠。
 
-![](image/ClaudeCode使用/IMG-20260508170258371.png)
+![](image/ClaudeCode教程/IMG-20260602172535467.png)
 
 ### skills工作原理
 

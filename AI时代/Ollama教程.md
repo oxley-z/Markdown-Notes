@@ -20,7 +20,7 @@ ollama signal
 
 这里需要注意，需要把上面中的 `https://ollama.com/connect?name=.....`链接复制到浏览器打开，然后登录你的账号，确认授权：
 
-![](image/Ollama安装使用/IMG-20260427104346964.png)
+![](image/Ollama教程/IMG-20260602172524454.png)
 
 ## 创建API-Keys
 
