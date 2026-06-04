@@ -44,7 +44,9 @@ opencode web --hostname 0.0.0.0
 | --fork     | ——  | 分叉会话   |
 | --prompt   | ——  | 初始化提示词 |
 | --model    | -m  | 指定模型   |
-|            |     |        |
+| --agent    | ——  | 指定代理   |
+| --port     | ——  | 监听端口   |
+| --hostname | ——  | 主机地址   |
 
 
 ## OpenCode TUI（终端界面）
