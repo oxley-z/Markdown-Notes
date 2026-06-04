@@ -22,7 +22,7 @@ npm install -g opencode-ai
 
 分享与协作：一键生成会话分享链接。
 
-## 命令行命令
+## OpenCode CLI
 
 ### Web界面
 
@@ -33,6 +33,44 @@ opencode web
 opencode web --port 4096
 # 在网络中访问
 opencode web --hostname 0.0.0.0
-
 ```
 
+## OpenCode TUI（终端界面）
+
+OpenCode 提供了一个交互式终端界面（TUI，Terminal User Interface），用于在命令行中与 AI 进行高效协作开发。
+
+TUI 是 OpenCode 的核心使用方式，所有代码分析、修改、执行都通过这个界面完成。
+
+OpenCode TUI 本质是一个可执行命令的 AI 对话终端，它把开发、命令行和 AI 融合在一起。
+
+所有的 TUI 命令使用斜杆 / 唤起。
+
+在 TUI 输入框中输入 / 就会列出联想的命令：
+
+![](image/OpenCode教程/IMG-20260604143811938.png)
+
+#### OpenCode TUI 命令
+
+
+| 命令                           | 描述                  | 快捷键       |
+| ---------------------------- | ------------------- | --------- |
+| /connect                     | 添加LLM提供商并配置API Keys | ——        |
+| /compact                     | 压缩当前会话上下文           | ctrl+x->c |
+| /details                     | 切换工具执行详情显示          | ctrl+x->d |
+| /editor                      | 打开外部编辑器编写信息         | ctrl+x->e |
+| /exit（/quit /q）              | 退出TUI               | ctrl+x->q |
+| /export                      | 导出当前对话为 Markdown    | ctrl+x->x |
+| /init                        | 创建/更新 AGENTS.md     | ctrl+x->i |
+| /models                      | 列出可用模型              | ctrl+x->m |
+| /new（/clear）                 | 新建会话                | ctrl+x->n |
+| /redo                        | 重做被 /undo 撤销的操作     | ctrl+x->r |
+| /sessions（/resume /continue） | 会话列表与切换             | ctrl+x->l |
+| /share                       | 分享当前会话              | ctrl+x->s |
+| /themes                      |                     |           |
+
+
+
+
+# 参考
+
+[https://www.runoob.com/opencode/opencode-tutorial.html](https://www.runoob.com/opencode/opencode-tutorial.html)
