@@ -22,6 +22,17 @@ npm install -g opencode-ai
 
 分享与协作：一键生成会话分享链接。
 
-## 内置工具
+## 命令行命令
 
+### Web界面
+
+```bash
+# 打开默认web界面
+opencode web
+# 打开以4096为断开的opencode web界面
+opencode web --port 4096
+# 在网络中访问
+opencode web --hostname 0.0.0.0
+
+```
 
