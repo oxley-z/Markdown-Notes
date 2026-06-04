@@ -35,6 +35,18 @@ opencode web --port 4096
 opencode web --hostname 0.0.0.0
 ```
 
+### 启动参数
+
+| 参数         | 简写  | 说明     |
+| ---------- | --- | ------ |
+| --continue | -c  | 继续上次会话 |
+| --session  | -s  | 指定会话ID |
+| --fork     | ——  | 分叉会话   |
+| --prompt   | ——  | 初始化提示词 |
+| --model    | -m  | 指定模型   |
+|            |     |        |
+
+
 ## OpenCode TUI（终端界面）
 
 OpenCode 提供了一个交互式终端界面（TUI，Terminal User Interface），用于在命令行中与 AI 进行高效协作开发。
@@ -51,7 +63,6 @@ OpenCode TUI 本质是一个可执行命令的 AI 对话终端，它把开发、
 
 #### OpenCode TUI 命令
 
-
 | 命令                           | 描述                  | 快捷键       |
 | ---------------------------- | ------------------- | --------- |
 | /connect                     | 添加LLM提供商并配置API Keys | ——        |
@@ -66,9 +77,21 @@ OpenCode TUI 本质是一个可执行命令的 AI 对话终端，它把开发、
 | /redo                        | 重做被 /undo 撤销的操作     | ctrl+x->r |
 | /sessions（/resume /continue） | 会话列表与切换             | ctrl+x->l |
 | /share                       | 分享当前会话              | ctrl+x->s |
-| /themes                      |                     |           |
+| /themes                      | 列出/切换主题             | ctrl+x->t |
+| /thinking                    | 显示/隐藏模型推理过程         | ——        |
+| /undo                        | 撤销上一条消息（含文件变更）      | ctrl+x->u |
+| unshare                      | 取消分享会话              | ——        |
 
+### 快捷键
 
+OpenCode的快捷键实现是以`ctrl+x`为"前导键"，后跟具体的命令，命令一般为对于`/`命令的首字母，参考 [OpenCode TUI 命令](#OpenCode%20TUI%20命令)。
+
+### 使用建议
+
+- 多使用 <mark style="background: #FFB86CA6;">@</mark> 引用文件，提高准确率
+- 复杂任务先用计划模式，使用 Tab 键切换模式。
+- 小步迭代，不要一次做太复杂。
+- 重要操作前确保 Git 已提交。
 
 
 # 参考
