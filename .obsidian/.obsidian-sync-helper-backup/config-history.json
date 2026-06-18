@@ -1,5 +1,157 @@
 [
   {
+    "timestamp": "2026-06-18T06:23:19.176Z",
+    "version": "3.0.0",
+    "settings": {
+      "dateHighlightedFormat": "yyyy-MM-dd HH:mm:ss",
+      "dateSavedFormat": "yyyy-MM-dd HH:mm:ss",
+      "apiKey": "o56E763mpliEuMYjSNr31x5GO5Bs",
+      "filter": "ALL",
+      "syncAt": "2026-06-18T09:31:53.566+08:00",
+      "customQuery": "in:all",
+      "template": "{{{content}}}",
+      "highlightOrder": "LOCATION",
+      "folder": "Inbox/笔记同步助手/{{{siteName}}}/{{{date}}}",
+      "folderDateFormat": "yyyyMMdd",
+      "endpoint": "https://obsidian.notebooksyncer.com/api/graphql",
+      "filename": "{{{title}}}",
+      "filenameDateFormat": "yyyyMMdd",
+      "attachmentFolder": "Inbox/笔记同步助手/attachments",
+      "version": "3.0.0",
+      "mergeMode": "messages",
+      "messageSortOrder": "desc",
+      "messageFolder": "Inbox/笔记同步助手",
+      "frequency": 0,
+      "intervalId": 0,
+      "frontMatterVariables": [],
+      "frontMatterTemplate": "author: {{{author}}}\nsource: {{{siteName}}}\nurl: {{{originalUrl}}}\nsaved: {{{dateSaved}}}\ntags: [笔记同步助手{{#labels}}, {{{name}}}{{/labels}}]",
+      "syncOnStart": true,
+      "enableHighlightColorRender": false,
+      "highlightManagerId": "omni",
+      "highlightColorMapping": {
+        "yellow": "#fff3a3",
+        "red": "#ff5582",
+        "blue": "#adccff",
+        "green": "#bbfabb"
+      },
+      "singleFileName": "同步助手_{{{date}}}",
+      "singleFileDateFormat": "yyyyMMdd",
+      "sectionSeparator": "%%{{{dateSaved}}}_start%%",
+      "sectionSeparatorEnd": "%%{{{dateSaved}}}_end%%",
+      "wechatMessageTemplate": "---\n#### {{{heading}}}\n## 📅 {{{dateSaved}}}\n{{{content}}}",
+      "imageMode": "local",
+      "enablePngToJpeg": true,
+      "jpegQuality": 85,
+      "imageDownloadRetries": 3,
+      "imageAttachmentFolder": "Inbox/笔记同步助手/images",
+      "imageUploadRelay": "none",
+      "enableDiaryLinks": false,
+      "diaryFolder": "Daily Notes",
+      "diaryDateFormat": "yyyy-MM-dd",
+      "diaryAnchor": "notehelper-links",
+      "diaryLinkType": "all",
+      "autoCreateDiaryNote": false,
+      "diaryLinkPrefix": "- ",
+      "diaryLinkMaxLength": 0,
+      "deviceSyncCursors": {
+        "desktop-mox07ds2-j26s": "2026-06-18T09:31:53.566+08:00"
+      },
+      "initialSyncCompleted": true,
+      "deviceAutoSync": {
+        "desktop-moustbox-ov9c": {
+          "frequency": 0,
+          "syncOnStart": true
+        },
+        "desktop-mox07ds2-j26s": {
+          "frequency": 0,
+          "syncOnStart": false
+        }
+      },
+      "deviceAutoSyncMigrated": true,
+      "escapeHashtags": true,
+      "enableDebugLog": false,
+      "burnAfterReading": false,
+      "burnAfterReadingEnabledAt": "",
+      "pendingBurnDeletes": []
+    }
+  },
+  {
+    "timestamp": "2026-06-18T06:22:19.550Z",
+    "version": "3.0.0",
+    "settings": {
+      "dateHighlightedFormat": "yyyy-MM-dd HH:mm:ss",
+      "dateSavedFormat": "yyyy-MM-dd HH:mm:ss",
+      "apiKey": "o56E763mpliEuMYjSNr31x5GO5Bs",
+      "filter": "ALL",
+      "syncAt": "2026-06-18T09:31:53.566+08:00",
+      "customQuery": "in:all",
+      "template": "{{{content}}}",
+      "highlightOrder": "LOCATION",
+      "folder": "Inbox/笔记同步助手/{{{siteName}}}/{{{date}}}",
+      "folderDateFormat": "yyyyMMdd",
+      "endpoint": "https://obsidian.notebooksyncer.com/api/graphql",
+      "filename": "{{{title}}}",
+      "filenameDateFormat": "yyyyMMdd",
+      "attachmentFolder": "Inbox/笔记同步助手/attachments",
+      "version": "3.0.0",
+      "mergeMode": "messages",
+      "messageSortOrder": "desc",
+      "messageFolder": "Inbox/笔记同步助手",
+      "frequency": 0,
+      "intervalId": 0,
+      "frontMatterVariables": [],
+      "frontMatterTemplate": "author: {{{author}}}\nsource: {{{siteName}}}\nurl: {{{originalUrl}}}\nsaved: {{{dateSaved}}}\ntags: [笔记同步助手{{#labels}}, {{{name}}}{{/labels}}]",
+      "syncOnStart": true,
+      "enableHighlightColorRender": false,
+      "highlightManagerId": "omni",
+      "highlightColorMapping": {
+        "yellow": "#fff3a3",
+        "red": "#ff5582",
+        "blue": "#adccff",
+        "green": "#bbfabb"
+      },
+      "singleFileName": "同步助手_{{{date}}}",
+      "singleFileDateFormat": "yyyyMMdd",
+      "sectionSeparator": "%%{{{dateSaved}}}_start%%",
+      "sectionSeparatorEnd": "%%{{{dateSaved}}}_end%%",
+      "wechatMessageTemplate": "---\n#### {{{heading}}}\n## 📅 {{{dateSaved}}}\n{{{content}}}",
+      "imageMode": "local",
+      "enablePngToJpeg": true,
+      "jpegQuality": 85,
+      "imageDownloadRetries": 3,
+      "imageAttachmentFolder": "Inbox/笔记同步助手/images",
+      "imageUploadRelay": "none",
+      "enableDiaryLinks": false,
+      "diaryFolder": "Daily Notes",
+      "diaryDateFormat": "yyyy-MM-dd",
+      "diaryAnchor": "notehelper-links",
+      "diaryLinkType": "all",
+      "autoCreateDiaryNote": false,
+      "diaryLinkPrefix": "- ",
+      "diaryLinkMaxLength": 0,
+      "deviceSyncCursors": {
+        "desktop-mox07ds2-j26s": "2026-06-18T09:31:53.566+08:00"
+      },
+      "initialSyncCompleted": true,
+      "deviceAutoSync": {
+        "desktop-moustbox-ov9c": {
+          "frequency": 0,
+          "syncOnStart": true
+        },
+        "desktop-mox07ds2-j26s": {
+          "frequency": 0,
+          "syncOnStart": false
+        }
+      },
+      "deviceAutoSyncMigrated": true,
+      "escapeHashtags": true,
+      "enableDebugLog": false,
+      "burnAfterReading": false,
+      "burnAfterReadingEnabledAt": "",
+      "pendingBurnDeletes": []
+    }
+  },
+  {
     "timestamp": "2026-06-18T06:02:48.490Z",
     "version": "2.10.7",
     "settings": {
@@ -201,152 +353,6 @@
       "diaryLinkMaxLength": 0,
       "deviceSyncCursors": {
         "desktop-moustbox-ov9c": "2026-06-09T11:14:05.593+08:00"
-      },
-      "initialSyncCompleted": true,
-      "deviceAutoSync": {
-        "desktop-moustbox-ov9c": {
-          "frequency": 0,
-          "syncOnStart": true
-        },
-        "desktop-mox07ds2-j26s": {
-          "frequency": 0,
-          "syncOnStart": false
-        }
-      },
-      "deviceAutoSyncMigrated": true,
-      "escapeHashtags": true,
-      "enableDebugLog": false
-    }
-  },
-  {
-    "timestamp": "2026-06-08T01:32:55.454Z",
-    "version": "2.10.7",
-    "settings": {
-      "dateHighlightedFormat": "yyyy-MM-dd HH:mm:ss",
-      "dateSavedFormat": "yyyy-MM-dd HH:mm:ss",
-      "apiKey": "o56E763mpliEuMYjSNr31x5GO5Bs",
-      "filter": "ALL",
-      "syncAt": "2026-06-08T09:32:03.012+08:00",
-      "customQuery": "in:all",
-      "template": "{{{content}}}",
-      "highlightOrder": "LOCATION",
-      "folder": "Inbox/笔记同步助手/{{{siteName}}}/{{{date}}}",
-      "folderDateFormat": "yyyyMMdd",
-      "endpoint": "https://obsidian.notebooksyncer.com/api/graphql",
-      "filename": "{{{title}}}",
-      "filenameDateFormat": "yyyyMMdd",
-      "attachmentFolder": "Inbox/笔记同步助手/微信公众号/{{{date}}}/attachments",
-      "version": "2.10.7",
-      "mergeMode": "messages",
-      "messageSortOrder": "desc",
-      "messageFolder": "Inbox/笔记同步助手/{{{yearSaved}}}/{{{monthSaved}}}",
-      "frequency": 0,
-      "intervalId": 0,
-      "frontMatterVariables": [],
-      "frontMatterTemplate": "author: {{{author}}}\nsource: {{{siteName}}}\nurl: {{{originalUrl}}}\nsaved: {{{dateSaved}}}\ntags: [笔记同步助手]{{#labels}}[{{{name}}}]{{/labels}}",
-      "syncOnStart": true,
-      "enableHighlightColorRender": false,
-      "highlightManagerId": "omni",
-      "highlightColorMapping": {
-        "yellow": "#fff3a3",
-        "red": "#ff5582",
-        "blue": "#adccff",
-        "green": "#bbfabb"
-      },
-      "singleFileName": "同步助手_{{{date}}}",
-      "singleFileDateFormat": "yyyyMMdd",
-      "sectionSeparator": "%%{{{dateSaved}}}_start%%",
-      "sectionSeparatorEnd": "%%{{{dateSaved}}}_end%%",
-      "wechatMessageTemplate": "---\n#### {{{heading}}}\n## 📅 {{{dateSaved}}}\n{{{content}}}",
-      "imageMode": "local",
-      "enablePngToJpeg": true,
-      "jpegQuality": 85,
-      "imageDownloadRetries": 3,
-      "imageAttachmentFolder": "Inbox/笔记同步助手/微信公众号/{{{date}}}/images",
-      "imageUploadRelay": "none",
-      "enableDiaryLinks": false,
-      "diaryFolder": "Daily Notes",
-      "diaryDateFormat": "yyyy-MM-dd",
-      "diaryAnchor": "notehelper-links",
-      "diaryLinkType": "all",
-      "autoCreateDiaryNote": false,
-      "diaryLinkPrefix": "- ",
-      "diaryLinkMaxLength": 0,
-      "deviceSyncCursors": {
-        "desktop-moustbox-ov9c": "2026-06-08T09:32:03.012+08:00"
-      },
-      "initialSyncCompleted": true,
-      "deviceAutoSync": {
-        "desktop-moustbox-ov9c": {
-          "frequency": 0,
-          "syncOnStart": true
-        },
-        "desktop-mox07ds2-j26s": {
-          "frequency": 0,
-          "syncOnStart": false
-        }
-      },
-      "deviceAutoSyncMigrated": true,
-      "escapeHashtags": true,
-      "enableDebugLog": false
-    }
-  },
-  {
-    "timestamp": "2026-06-08T01:25:40.479Z",
-    "version": "2.10.7",
-    "settings": {
-      "dateHighlightedFormat": "yyyy-MM-dd HH:mm:ss",
-      "dateSavedFormat": "yyyy-MM-dd HH:mm:ss",
-      "apiKey": "o56E763mpliEuMYjSNr31x5GO5Bs",
-      "filter": "ALL",
-      "syncAt": "2026-06-08T09:03:26.507+08:00",
-      "customQuery": "in:all",
-      "template": "{{{content}}}",
-      "highlightOrder": "LOCATION",
-      "folder": "Inbox/笔记同步助手/{{{siteName}}}/{{{date}}}",
-      "folderDateFormat": "yyyyMMdd",
-      "endpoint": "https://obsidian.notebooksyncer.com/api/graphql",
-      "filename": "{{{title}}}",
-      "filenameDateFormat": "yyyyMMdd",
-      "attachmentFolder": "Inbox/笔记同步助手/微信公众号/{{{date}}}/attachments",
-      "version": "2.10.7",
-      "mergeMode": "messages",
-      "messageSortOrder": "desc",
-      "messageFolder": "Inbox/笔记同步助手/{{{yearSaved}}}/{{{monthSaved}}}",
-      "frequency": 0,
-      "intervalId": 0,
-      "frontMatterVariables": [],
-      "frontMatterTemplate": "author: {{{author}}}\nsource: {{{siteName}}}\nurl: {{{originalUrl}}}\nsaved: {{{dateSaved}}}\ntags: [笔记同步助手]{{#labels}}[{{{name}}}]{{/labels}}",
-      "syncOnStart": true,
-      "enableHighlightColorRender": false,
-      "highlightManagerId": "omni",
-      "highlightColorMapping": {
-        "yellow": "#fff3a3",
-        "red": "#ff5582",
-        "blue": "#adccff",
-        "green": "#bbfabb"
-      },
-      "singleFileName": "同步助手_{{{date}}}",
-      "singleFileDateFormat": "yyyyMMdd",
-      "sectionSeparator": "%%{{{dateSaved}}}_start%%",
-      "sectionSeparatorEnd": "%%{{{dateSaved}}}_end%%",
-      "wechatMessageTemplate": "---\n#### {{{heading}}}\n## 📅 {{{dateSaved}}}\n{{{content}}}",
-      "imageMode": "local",
-      "enablePngToJpeg": true,
-      "jpegQuality": 85,
-      "imageDownloadRetries": 3,
-      "imageAttachmentFolder": "Inbox/笔记同步助手/微信公众号/{{{date}}}/images",
-      "imageUploadRelay": "none",
-      "enableDiaryLinks": false,
-      "diaryFolder": "Daily Notes",
-      "diaryDateFormat": "yyyy-MM-dd",
-      "diaryAnchor": "notehelper-links",
-      "diaryLinkType": "all",
-      "autoCreateDiaryNote": false,
-      "diaryLinkPrefix": "- ",
-      "diaryLinkMaxLength": 0,
-      "deviceSyncCursors": {
-        "desktop-moustbox-ov9c": "2026-06-08T09:03:26.507+08:00"
       },
       "initialSyncCompleted": true,
       "deviceAutoSync": {
