@@ -129,6 +129,38 @@ VIP Status Display
 	border: 1px solid var(--background-modifier-border);
 }
 
+/* 大号「刷新高级权益状态」引导按钮 */
+.vip-refresh-fresh {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 6px;
+	margin: 4px 0 18px;
+}
+
+.vip-refresh-fresh-btn.mod-cta {
+	width: 100%;
+	max-width: 420px;
+	padding: 12px 20px;
+	font-size: 1.05em;
+	font-weight: 600;
+	border-radius: 8px;
+	cursor: pointer;
+}
+
+.vip-refresh-fresh-btn.mod-cta:disabled {
+	opacity: 0.6;
+	cursor: default;
+}
+
+.vip-refresh-fresh-hint {
+	font-size: 0.82em;
+	line-height: 1.4;
+	color: var(--text-muted);
+	text-align: center;
+	max-width: 460px;
+}
+
 .notehelper-help-links {
 	display: flex;
 	flex-wrap: wrap;

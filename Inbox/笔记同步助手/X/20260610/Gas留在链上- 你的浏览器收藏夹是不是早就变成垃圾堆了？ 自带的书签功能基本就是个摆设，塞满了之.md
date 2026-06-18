@@ -23,7 +23,7 @@ id: 842993c4-9234-415c-993c-e939569985ab
 🔗 [github.com/dd3v/favbox](https://github.com/dd3v/favbox)  
 🔗 [chromewebstore.google.com/detail/favb…](https://chromewebstore.google.com/detail/favbox/eangbddipcghohfjefjmfihcj)
 
-![[Inbox/笔记同步助手/微信公众号/20260610/images/afc6d5fc71dc2e4d3e0e321bb8a9d8c4_MD5.jpg]]
+![[Inbox/笔记同步助手/images/afc6d5fc71dc2e4d3e0e321bb8a9d8c4_MD5.jpg]]
 
 ---
 

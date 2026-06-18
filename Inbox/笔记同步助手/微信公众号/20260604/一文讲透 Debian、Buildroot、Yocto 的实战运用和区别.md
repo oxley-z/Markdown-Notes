@@ -24,7 +24,7 @@ Debian 适合快速把系统跑起来，Buildroot 适合做小而可控的固件
 
 ## 一、先把定位讲清楚
 
-![[Inbox/笔记同步助手/微信公众号/20260604/images/73f3bef4140f3cafb9f432c3b8017c3a_MD5.jpg]]
+![[Inbox/笔记同步助手/images/73f3bef4140f3cafb9f432c3b8017c3a_MD5.jpg]]
 
 Debian 是一个通用 Linux 发行版。它提供完整的软件仓库、成熟的包管理和大量预编译软件。对于网关、边缘计算盒子、开发板验证、工控主机这类设备，Debian 的效率很高。
 
@@ -45,7 +45,7 @@ Yocto 更像一个工业级 Linux 发行版构建框架。它通过 Layer、Reci
 
 ## 二、Debian：适合快速验证和通用设备
 
-![[Inbox/笔记同步助手/微信公众号/20260604/images/b1bbdf600958148ce2cf4d73b845e274_MD5.jpg]]
+![[Inbox/笔记同步助手/images/b1bbdf600958148ce2cf4d73b845e274_MD5.jpg]]
 
 Debian 最大的价值是效率。开发者可以直接基于官方或板厂镜像启动系统，然后用 `apt` 安装网络、数据库、AI 推理、容器、调试工具和业务依赖。
 
@@ -81,7 +81,7 @@ Debian 的优势很直接：
 
 ## 三、Buildroot：适合小体积、固定功能和强可控
 
-![[Inbox/笔记同步助手/微信公众号/20260604/images/540af08aaebc2748c02e4f727c51ed98_MD5.jpg]]
+![[Inbox/笔记同步助手/images/540af08aaebc2748c02e4f727c51ed98_MD5.jpg]]
 
 Buildroot 的思路和 Debian 完全不同。它不是让设备运行一个通用发行版，而是在开发机上构建一个面向目标设备的最小系统。
 
@@ -117,7 +117,7 @@ Buildroot 的正确使用方式，是把它当成“固件构建系统”。它�
 
 ## 四、Yocto：适合复杂产品线和长期演进
 
-![[Inbox/笔记同步助手/微信公众号/20260604/images/3bb50cc90d8ee1a4c8d966a8e817aa12_MD5.jpg]]
+![[Inbox/笔记同步助手/images/3bb50cc90d8ee1a4c8d966a8e817aa12_MD5.jpg]]
 
 Yocto 的门槛最高，但它解决的问题也更复杂。它不是简单生成一个 rootfs，而是用 Layer 和 Recipe 把 BSP、内核、应用、中间件、SDK、镜像、许可证和版本策略组织起来。
 
