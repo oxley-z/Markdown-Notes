@@ -89,7 +89,7 @@ OpenCode TUI 本质是一个可执行命令的 AI 对话终端，它把开发、
 
 ### 快捷键
 
-OpenCode的快捷键实现是以`ctrl+x`为"前导键"，后跟具体的命令，命令一般为对于`/`命令的首字母，参考 [OpenCode TUI 命令](#OpenCode%20TUI%20命令)。
+OpenCode的快捷键实现是以`ctrl+x`为"<mark style="background: #FF5582A6;">前导键</mark>"，后跟具体的命令，类似于vim的快捷键模式，命令一般为对于`/`命令的首字母，参考 [OpenCode TUI 命令](#OpenCode%20TUI%20命令)。
 
 ### 使用建议
 
