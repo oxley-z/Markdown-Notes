@@ -102,26 +102,65 @@ OpenCode的快捷键实现是以`ctrl+x`为"<mark style="background: #FF5582A6;"
 
 可以通过提供`AGENT.md`文件，为OpenCode提供自定义指令，让他按照需要的项目规范进行开发。
 
-### AGENT.md的作用
+### AGENTS.md的作用
 
-AGENT.md相当于给AI提供开发规范，通常用于：
+AGENTS.md相当于给AI提供开发规范，通常用于：
+
 - 定义项目结构；
 - 约束代码风格；
 - 规范开发流程；
 - 指导AI如何执行任务；
+
 上述内容会被加入LLM的上下文中。
 
 ### AGENT.md创建及实例
 
-在OpenCode TUI中执行
-```
-/init
-```
+在OpenCode TUI中执行 `/init`
+
 OpenCode会执行以下操作：
+
 - 扫描项目结构；
 - 分析代码组织形式；
-- 自动生成AGRNT.md；
+- 自动生成AGRNTS.md；
 
+```AGENT.md
+# 项目说明
+
+这是一个基于xxx的项目，主要完成xxxx
+
+## 项目结构
+
+- doc/ 规范文档
+- prj/ 工程目录
+  - workspace_0/ 工作空间0
+	  - drivers/ 驱动代码
+	    - src/ 源码
+	    - inc/ 头文件
+	  - app/ 应用代码
+	  - common/ 公共文件目录
+  - workspace_1/ 工作空间1
+- temp/ 临时目录
+  
+  
+  
+## 代码规范
+
+- 严格使用驼峰命名方式对函数及变量进行命名
+- 公共代码放置于prj/common文件夹下
+- 对所有的函数必须添加必要注释
+  
+## 开发约定
+
+- API必须统一做错误处理
+- 程序结束必须做资源释放
+```
+
+AGENTS.md本质是规范AI的工作过程及产出。
+
+### 兼容性
+
+
+#AGENTS.md
 
 # 参考
 
