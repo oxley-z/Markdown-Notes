@@ -64,6 +64,7 @@ OpenCode TUI 本质是一个可执行命令的 AI 对话终端，它把开发、
 
 ![](image/OpenCode教程/IMG-20260604143811938.png)
 
+#CLI
 #### OpenCode TUI 命令
 
 | 命令                           | 描述                  | 快捷键       |
@@ -85,6 +86,7 @@ OpenCode TUI 本质是一个可执行命令的 AI 对话终端，它把开发、
 | /undo                        | 撤销上一条消息（含文件变更）      | ctrl+x->u |
 | /unshare                     | 取消分享会话              | ——        |
 
+#TUI
 ### 快捷键
 
 OpenCode的快捷键实现是以`ctrl+x`为"<mark style="background: #FF5582A6;">前导键</mark>"，后跟具体的命令，类似于vim的快捷键模式，命令一般为对于`/`命令的首字母，参考 [OpenCode TUI 命令](#OpenCode%20TUI%20命令)。
@@ -159,8 +161,32 @@ AGENTS.md本质是规范AI的工作过程及产出。
 
 ### 兼容性
 
+OpenCode兼容ClaudeCode的规则体系：
 
-#AGENTS.md
+- 项目规则：ClAUDE.md
+- 全局规则：~/.claude/CLAUDE.md
+- 技能目录：~/.claude/skills
+
+可以通过以下选项进行关闭兼容
+```
+export OPENCODE_DISABLE_CLAUDE_CODE=1
+```
+
+### 规则加载优先级
+
+OpenCode启动时按以下顺序加载：
+
+1. 当前目录下查找AGENTS.md；
+2. 如果没有，则查找CLAUDE.md；
+3. 全局规则~/.config/opencode/AGENTS.md；
+4. Claude全局规则~/.claude/CLAUDE.md；
+
+<mark style="background: #FFB86CA6;">注意</mark>
+
+- 当前目录下的AGENTS.md优先级最高；
+- 同级只会使用第一个匹配文件。
+
+#AGENTS
 
 # 参考
 
