@@ -1,6 +1,6 @@
 [
   {
-    "timestamp": "2026-06-23T01:05:15.835Z",
+    "timestamp": "2026-06-23T02:59:57.281Z",
     "version": "3.0.0",
     "settings": {
       "dateHighlightedFormat": "yyyy-MM-dd HH:mm:ss",
@@ -11,16 +11,16 @@
       "customQuery": "in:all",
       "template": "{{{content}}}",
       "highlightOrder": "LOCATION",
-      "folder": "Inbox/笔记同步助手/{{{siteName}}}/{{{date}}}",
+      "folder": "Inbox/笔记同步助手/{{{siteName}}}/{{{yearSaved}}}/{{{monthSaved}}}/{{{date}}}",
       "folderDateFormat": "yyyyMMdd",
       "endpoint": "https://obsidian.notebooksyncer.com/api/graphql",
       "filename": "{{{title}}}",
       "filenameDateFormat": "yyyyMMdd",
-      "attachmentFolder": "Inbox/笔记同步助手/attachments",
+      "attachmentFolder": "Inbox/笔记同步助手/{{{siteName}}}/{{{yearSaved}}}/{{{monthSaved}}}/attachments",
       "version": "3.0.0",
       "mergeMode": "messages",
       "messageSortOrder": "desc",
-      "messageFolder": "Inbox/笔记同步助手",
+      "messageFolder": "Inbox/笔记同步助手/{{{siteName}}}/{{{yearSaved}}}/{{{monthSaved}}}",
       "frequency": 0,
       "intervalId": 0,
       "frontMatterVariables": [],
@@ -43,7 +43,7 @@
       "enablePngToJpeg": true,
       "jpegQuality": 85,
       "imageDownloadRetries": 3,
-      "imageAttachmentFolder": "Inbox/笔记同步助手/images",
+      "imageAttachmentFolder": "Inbox/笔记同步助手/{{{siteName}}}/{{{yearSaved}}}/{{{monthSaved}}}/images",
       "imageUploadRelay": "none",
       "enableDiaryLinks": false,
       "diaryFolder": "Daily Notes",
@@ -81,27 +81,27 @@
     }
   },
   {
-    "timestamp": "2026-06-23T01:04:59.601Z",
+    "timestamp": "2026-06-23T02:59:53.682Z",
     "version": "3.0.0",
     "settings": {
       "dateHighlightedFormat": "yyyy-MM-dd HH:mm:ss",
       "dateSavedFormat": "yyyy-MM-dd HH:mm:ss",
       "apiKey": "o56E763mpliEuMYjSNr31x5GO5Bs",
       "filter": "ALL",
-      "syncAt": "2026-06-18T09:31:53.566+08:00",
+      "syncAt": "2026-06-21T12:21:18.153+08:00",
       "customQuery": "in:all",
       "template": "{{{content}}}",
       "highlightOrder": "LOCATION",
-      "folder": "Inbox/笔记同步助手/{{{siteName}}}/{{{date}}}",
+      "folder": "Inbox/笔记同步助手/{{{siteName}}}/{{{yearSaved}}}/{{{monthSaved}}}/{{{date}}}",
       "folderDateFormat": "yyyyMMdd",
       "endpoint": "https://obsidian.notebooksyncer.com/api/graphql",
       "filename": "{{{title}}}",
       "filenameDateFormat": "yyyyMMdd",
-      "attachmentFolder": "Inbox/笔记同步助手/attachments",
+      "attachmentFolder": "Inbox/笔记同步助手/{{{siteName}}}/{{{yearSaved}}}/{{{monthSaved}}}/attachments",
       "version": "3.0.0",
       "mergeMode": "messages",
       "messageSortOrder": "desc",
-      "messageFolder": "Inbox/笔记同步助手",
+      "messageFolder": "Inbox/笔记同步助手/{{{siteName}}}/{{{yearSaved}}}/{{{monthSaved}}}",
       "frequency": 0,
       "intervalId": 0,
       "frontMatterVariables": [],
@@ -124,7 +124,7 @@
       "enablePngToJpeg": true,
       "jpegQuality": 85,
       "imageDownloadRetries": 3,
-      "imageAttachmentFolder": "Inbox/笔记同步助手/images",
+      "imageAttachmentFolder": "Inbox/笔记同步助手/{{{siteName}}}/{{{yearSaved}}}/{{{monthSaved}}}/images",
       "imageUploadRelay": "none",
       "enableDiaryLinks": false,
       "diaryFolder": "Daily Notes",
@@ -135,7 +135,8 @@
       "diaryLinkPrefix": "- ",
       "diaryLinkMaxLength": 0,
       "deviceSyncCursors": {
-        "desktop-mox07ds2-j26s": "2026-06-18T09:31:53.566+08:00"
+        "desktop-mox07ds2-j26s": "2026-06-18T09:31:53.566+08:00",
+        "desktop-mqpxk4ec-ueue": "2026-06-21T12:21:18.153+08:00"
       },
       "initialSyncCompleted": true,
       "deviceAutoSync": {
@@ -161,27 +162,27 @@
     }
   },
   {
-    "timestamp": "2026-06-18T06:23:19.176Z",
+    "timestamp": "2026-06-23T02:58:35.335Z",
     "version": "3.0.0",
     "settings": {
       "dateHighlightedFormat": "yyyy-MM-dd HH:mm:ss",
       "dateSavedFormat": "yyyy-MM-dd HH:mm:ss",
       "apiKey": "o56E763mpliEuMYjSNr31x5GO5Bs",
       "filter": "ALL",
-      "syncAt": "2026-06-18T09:31:53.566+08:00",
+      "syncAt": "2026-06-22T12:21:18.153+08:00",
       "customQuery": "in:all",
       "template": "{{{content}}}",
       "highlightOrder": "LOCATION",
-      "folder": "Inbox/笔记同步助手/{{{siteName}}}/{{{date}}}",
+      "folder": "Inbox/笔记同步助手/{{{siteName}}}/{{{yearSaved}}}/{{{monthSaved}}}/{{{date}}}",
       "folderDateFormat": "yyyyMMdd",
       "endpoint": "https://obsidian.notebooksyncer.com/api/graphql",
       "filename": "{{{title}}}",
       "filenameDateFormat": "yyyyMMdd",
-      "attachmentFolder": "Inbox/笔记同步助手/attachments",
+      "attachmentFolder": "Inbox/笔记同步助手/{{{siteName}}}/{{{yearSaved}}}/{{{monthSaved}}}/attachments",
       "version": "3.0.0",
       "mergeMode": "messages",
       "messageSortOrder": "desc",
-      "messageFolder": "Inbox/笔记同步助手",
+      "messageFolder": "Inbox/笔记同步助手/{{{siteName}}}/{{{yearSaved}}}/{{{monthSaved}}}",
       "frequency": 0,
       "intervalId": 0,
       "frontMatterVariables": [],
@@ -204,7 +205,7 @@
       "enablePngToJpeg": true,
       "jpegQuality": 85,
       "imageDownloadRetries": 3,
-      "imageAttachmentFolder": "Inbox/笔记同步助手/images",
+      "imageAttachmentFolder": "Inbox/笔记同步助手/{{{siteName}}}/{{{yearSaved}}}/{{{monthSaved}}}/images",
       "imageUploadRelay": "none",
       "enableDiaryLinks": false,
       "diaryFolder": "Daily Notes",
@@ -215,7 +216,8 @@
       "diaryLinkPrefix": "- ",
       "diaryLinkMaxLength": 0,
       "deviceSyncCursors": {
-        "desktop-mox07ds2-j26s": "2026-06-18T09:31:53.566+08:00"
+        "desktop-mox07ds2-j26s": "2026-06-18T09:31:53.566+08:00",
+        "desktop-mqpxk4ec-ueue": "2026-06-22T12:21:18.153+08:00"
       },
       "initialSyncCompleted": true,
       "deviceAutoSync": {
@@ -224,6 +226,10 @@
           "syncOnStart": true
         },
         "desktop-mox07ds2-j26s": {
+          "frequency": 0,
+          "syncOnStart": false
+        },
+        "desktop-mqpxk4ec-ueue": {
           "frequency": 0,
           "syncOnStart": false
         }
@@ -237,27 +243,27 @@
     }
   },
   {
-    "timestamp": "2026-06-18T06:22:19.550Z",
+    "timestamp": "2026-06-23T02:58:34.289Z",
     "version": "3.0.0",
     "settings": {
       "dateHighlightedFormat": "yyyy-MM-dd HH:mm:ss",
       "dateSavedFormat": "yyyy-MM-dd HH:mm:ss",
       "apiKey": "o56E763mpliEuMYjSNr31x5GO5Bs",
       "filter": "ALL",
-      "syncAt": "2026-06-18T09:31:53.566+08:00",
+      "syncAt": "2026-06-22T12:21:18.153+08:00",
       "customQuery": "in:all",
       "template": "{{{content}}}",
       "highlightOrder": "LOCATION",
-      "folder": "Inbox/笔记同步助手/{{{siteName}}}/{{{date}}}",
+      "folder": "Inbox/笔记同步助手/{{{siteName}}}/{{{yearSaved}}}/{{{monthSaved}}}/{{{da}}}",
       "folderDateFormat": "yyyyMMdd",
       "endpoint": "https://obsidian.notebooksyncer.com/api/graphql",
       "filename": "{{{title}}}",
       "filenameDateFormat": "yyyyMMdd",
-      "attachmentFolder": "Inbox/笔记同步助手/attachments",
+      "attachmentFolder": "Inbox/笔记同步助手/{{{siteName}}}/{{{yearSaved}}}/{{{monthSaved}}}/attachments",
       "version": "3.0.0",
       "mergeMode": "messages",
       "messageSortOrder": "desc",
-      "messageFolder": "Inbox/笔记同步助手",
+      "messageFolder": "Inbox/笔记同步助手/{{{siteName}}}/{{{yearSaved}}}/{{{monthSaved}}}",
       "frequency": 0,
       "intervalId": 0,
       "frontMatterVariables": [],
@@ -280,7 +286,7 @@
       "enablePngToJpeg": true,
       "jpegQuality": 85,
       "imageDownloadRetries": 3,
-      "imageAttachmentFolder": "Inbox/笔记同步助手/images",
+      "imageAttachmentFolder": "Inbox/笔记同步助手/{{{siteName}}}/{{{yearSaved}}}/{{{monthSaved}}}/images",
       "imageUploadRelay": "none",
       "enableDiaryLinks": false,
       "diaryFolder": "Daily Notes",
@@ -291,7 +297,8 @@
       "diaryLinkPrefix": "- ",
       "diaryLinkMaxLength": 0,
       "deviceSyncCursors": {
-        "desktop-mox07ds2-j26s": "2026-06-18T09:31:53.566+08:00"
+        "desktop-mox07ds2-j26s": "2026-06-18T09:31:53.566+08:00",
+        "desktop-mqpxk4ec-ueue": "2026-06-22T12:21:18.153+08:00"
       },
       "initialSyncCompleted": true,
       "deviceAutoSync": {
@@ -300,6 +307,10 @@
           "syncOnStart": true
         },
         "desktop-mox07ds2-j26s": {
+          "frequency": 0,
+          "syncOnStart": false
+        },
+        "desktop-mqpxk4ec-ueue": {
           "frequency": 0,
           "syncOnStart": false
         }
@@ -313,31 +324,31 @@
     }
   },
   {
-    "timestamp": "2026-06-18T06:02:48.490Z",
-    "version": "2.10.7",
+    "timestamp": "2026-06-23T02:58:34.241Z",
+    "version": "3.0.0",
     "settings": {
       "dateHighlightedFormat": "yyyy-MM-dd HH:mm:ss",
       "dateSavedFormat": "yyyy-MM-dd HH:mm:ss",
       "apiKey": "o56E763mpliEuMYjSNr31x5GO5Bs",
       "filter": "ALL",
-      "syncAt": "2026-06-18T09:31:53.566+08:00",
+      "syncAt": "2026-06-22T12:21:18.153+08:00",
       "customQuery": "in:all",
       "template": "{{{content}}}",
       "highlightOrder": "LOCATION",
-      "folder": "Inbox/笔记同步助手/{{{siteName}}}/{{{date}}}",
+      "folder": "Inbox/笔记同步助手/{{{siteName}}}/{{{yearSaved}}}/{{{monthSaved}}}/{{{d}}}",
       "folderDateFormat": "yyyyMMdd",
       "endpoint": "https://obsidian.notebooksyncer.com/api/graphql",
       "filename": "{{{title}}}",
       "filenameDateFormat": "yyyyMMdd",
-      "attachmentFolder": "Inbox/笔记同步助手/attachments",
-      "version": "2.10.7",
+      "attachmentFolder": "Inbox/笔记同步助手/{{{siteName}}}/{{{yearSaved}}}/{{{monthSaved}}}/attachments",
+      "version": "3.0.0",
       "mergeMode": "messages",
       "messageSortOrder": "desc",
-      "messageFolder": "Inbox/笔记同步助手",
+      "messageFolder": "Inbox/笔记同步助手/{{{siteName}}}/{{{yearSaved}}}/{{{monthSaved}}}",
       "frequency": 0,
       "intervalId": 0,
       "frontMatterVariables": [],
-      "frontMatterTemplate": "author: {{{author}}}\nsource: {{{siteName}}}\nurl: {{{originalUrl}}}\nsaved: {{{dateSaved}}}\ntags: [笔记同步助手]{{#labels}}[{{{name}}}]{{/labels}}",
+      "frontMatterTemplate": "author: {{{author}}}\nsource: {{{siteName}}}\nurl: {{{originalUrl}}}\nsaved: {{{dateSaved}}}\ntags: [笔记同步助手{{#labels}}, {{{name}}}{{/labels}}]",
       "syncOnStart": true,
       "enableHighlightColorRender": false,
       "highlightManagerId": "omni",
@@ -356,7 +367,7 @@
       "enablePngToJpeg": true,
       "jpegQuality": 85,
       "imageDownloadRetries": 3,
-      "imageAttachmentFolder": "Inbox/笔记同步助手/images",
+      "imageAttachmentFolder": "Inbox/笔记同步助手/{{{siteName}}}/{{{yearSaved}}}/{{{monthSaved}}}/images",
       "imageUploadRelay": "none",
       "enableDiaryLinks": false,
       "diaryFolder": "Daily Notes",
@@ -367,7 +378,8 @@
       "diaryLinkPrefix": "- ",
       "diaryLinkMaxLength": 0,
       "deviceSyncCursors": {
-        "desktop-mox07ds2-j26s": "2026-06-18T09:31:53.566+08:00"
+        "desktop-mox07ds2-j26s": "2026-06-18T09:31:53.566+08:00",
+        "desktop-mqpxk4ec-ueue": "2026-06-22T12:21:18.153+08:00"
       },
       "initialSyncCompleted": true,
       "deviceAutoSync": {
@@ -378,11 +390,18 @@
         "desktop-mox07ds2-j26s": {
           "frequency": 0,
           "syncOnStart": false
+        },
+        "desktop-mqpxk4ec-ueue": {
+          "frequency": 0,
+          "syncOnStart": false
         }
       },
       "deviceAutoSyncMigrated": true,
       "escapeHashtags": true,
-      "enableDebugLog": false
+      "enableDebugLog": false,
+      "burnAfterReading": false,
+      "burnAfterReadingEnabledAt": "",
+      "pendingBurnDeletes": []
     }
   }
 ]
