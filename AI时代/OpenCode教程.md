@@ -96,6 +96,32 @@ OpenCode的快捷键实现是以`ctrl+x`为"<mark style="background: #FF5582A6;"
 - 小步迭代，不要一次做太复杂。
 - 重要操作前确保 Git 已提交。
 
+## OpenCode 规则（AGENTS.md）
+
+在OpenCode中规则是控制AI行为的核心机制。
+
+可以通过提供`AGENT.md`文件，为OpenCode提供自定义指令，让他按照需要的项目规范进行开发。
+
+### AGENT.md的作用
+
+AGENT.md相当于给AI提供开发规范，通常用于：
+- 定义项目结构；
+- 约束代码风格；
+- 规范开发流程；
+- 指导AI如何执行任务；
+上述内容会被加入LLM的上下文中。
+
+### AGENT.md创建及实例
+
+在OpenCode TUI中执行
+```
+/init
+```
+OpenCode会执行以下操作：
+- 扫描项目结构；
+- 分析代码组织形式；
+- 自动生成AGRNT.md；
+
 
 # 参考
 
