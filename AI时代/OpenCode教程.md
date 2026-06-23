@@ -50,8 +50,6 @@ opencode web --hostname 0.0.0.0
 | --debug    | -d  | 启用调试模式（输出更多日志）                 |
 | --cwd      | -c  | 指定当前工作目录（启动时切换到该目录）            |
 | --prompt   | ——  | 非交互式模式：直接运行单个提示并输出响应（适合脚本/自动化） |
-
-
 ## OpenCode TUI（终端界面）
 
 OpenCode 提供了一个交互式终端界面（TUI，Terminal User Interface），用于在命令行中与 AI 进行高效协作开发。
