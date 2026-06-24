@@ -4,7 +4,7 @@
 
 ### Power Management-电源管理能力（0x01）
 
-
+该结构是所有PCIe设备Func所必须的，该功能在
 
 ### MSI（Message Signaled Interrupts）-消息信号中断能力（0x05）
 
