@@ -24,7 +24,7 @@ id: fd259a59-8cd6-425d-aabf-5626620a6812
 
 GitHub：_https://github.com/AgnesAI-Labs/Agnes-AI_
 
-![](https://relay-1.bijitongbu.site/p/13c8f72a29ac260456a048a67a4f0e0a.png)
+![[Inbox/笔记同步助手/微信公众号/2026/06/images/c1fded05f6644a485766e2f4cccf6a71_MD5.jpg]]
 
 回头算了下， Agnes 已经免费开放第三周了，今天看到其公布最新一则统计数据，非常亮眼。
 
@@ -32,7 +32,7 @@ GitHub：_https://github.com/AgnesAI-Labs/Agnes-AI_
 
 其中文本模型贡献约 2.67 万亿，图片和视频合起来约 1.44 万亿，图片一周生成 567 万多张，视频 237 万多秒。
 
-![](https://relay-1.bijitongbu.site/p/5b73056aaacda42feb8c6b694d5a7a30.png)
+![[Inbox/笔记同步助手/微信公众号/2026/06/images/4a12a6a11503b2d375a0706daf7c0086_MD5.jpg]]
 
 更关键的是，它不光没有限制大家调用，还接着对模型能力进行升级，并且照样可以免费使用。
 
@@ -48,19 +48,19 @@ GitHub：_https://github.com/AgnesAI-Labs/Agnes-AI_
 
 上次不少同学说看到一个有效余额，这个其实不用管的，通过 API Key 调用模型均是免费。
 
-![](https://relay-1.bijitongbu.site/p/28f7bc4ed45d910b1d8de6c83aba151d.png)
+![[Inbox/笔记同步助手/微信公众号/2026/06/images/1a0d7e1ab95ff7e9c5d1994508f49f0d_MD5.jpg]]
 
 打开 cc-switch 给 Claude Code 配置模型，选「自定义配置」，填上供应商名称。
 
 再把 API Key 粘贴进去，请求地址填这个：https://apihub.agnes-ai.com/v1
 
-![](https://relay-1.bijitongbu.site/p/bf068282d624e96a108bc99f997fa4d0.png)
+![[Inbox/笔记同步助手/微信公众号/2026/06/images/c824b7ce6a618847827958c2617d4176_MD5.jpg]]
 
 继续点击「高级选项」，这里需要注意，API 格式选「OpenAI Chat Completions」。
 
 而模型映射全部填 「agnes-2.0-flash」，还可以把 1M 勾上，声明支持百万上下文长度。
 
-![](https://relay-1.bijitongbu.site/p/6f286334e98bb53620707012c6b10e15.png)
+![[Inbox/笔记同步助手/微信公众号/2026/06/images/f71229673fd2d7d8f48386ad7120bbc7_MD5.jpg]]
 
 为了避免请求不兼容，建议在下面配置 JSON 里增加下面两个参数，直接复制粘贴过去即可。
 
@@ -76,11 +76,11 @@ GitHub：_https://github.com/AgnesAI-Labs/Agnes-AI_
 }
 ```
 
-![](https://relay-1.bijitongbu.site/p/0987e90e6cbed6586c0e6c07164af461.png)
+![[Inbox/笔记同步助手/微信公众号/2026/06/images/867089c7121e2ed509fb2a5ec9350642_MD5.jpg]]
 
 点击「保存」，回到主界面「启用」，再把本地路由开关打开，如果没看到这个开关可到设置里开启。
 
-![](https://relay-1.bijitongbu.site/p/81c6fe2ea75f77d0a086b164a0e4b21d.png)
+![[Inbox/笔记同步助手/微信公众号/2026/06/images/e35c412061564fab9abfe649b60a8fc7_MD5.jpg]]
 
 接下来，打开 Claude Code 就可以使用了。但到这里只能使用 Agnes-2.0-Flash 文本模型。
 
@@ -88,7 +88,7 @@ GitHub：_https://github.com/AgnesAI-Labs/Agnes-AI_
 
 现在很多开发者，开始围绕 Agnes 做相关开源项目了，在 GitHub 上一搜就能看到。
 
-![](https://relay-1.bijitongbu.site/p/27e35b4484b5a55cd124da91e67dee40.png)
+![[Inbox/笔记同步助手/微信公众号/2026/06/images/8d7fb97ab4ec881b6c0cd43d76578cd3_MD5.jpg]]
 
 其中 agnes-ai-generation-skill，把 Agnes 的文本、图片、视频 API 封装成了一个 Skill。
 
@@ -98,7 +98,7 @@ GitHub：_https://github.com/AgnesAI-Labs/Agnes-AI_
 帮我安装这个 Skill 在当前项目。https://github.com/Yacey/agnes-ai-generation-skill
 ```
 
-![](https://relay-1.bijitongbu.site/p/42e8acf6593b892627583732e7d0992e.png)
+![[Inbox/笔记同步助手/微信公众号/2026/06/images/1f4084d714af1bc7b623e60101c57432_MD5.jpg]]
 
 ### 实测 4K 生成效果
 
@@ -106,39 +106,39 @@ GitHub：_https://github.com/AgnesAI-Labs/Agnes-AI_
 
 先来个简单点的，让它生成一张 4K 超高清产品海报图，提示词如下：
 
-![](https://relay-1.bijitongbu.site/p/3559eeabc8a3be833783dea2439f7fee.png)
+![[Inbox/笔记同步助手/微信公众号/2026/06/images/0f30ee450bd531a34b3b3f29de1642f8_MD5.jpg]]
 
 稍等一会，就一张 3848 × 2160 尺寸的超高清产品大图就生成了，整体效果还不错。
 
-![](https://relay-1.bijitongbu.site/p/a21394fe26c1bb6f45f64be08fc53ddc.png)
+![[Inbox/笔记同步助手/微信公众号/2026/06/images/d1617495c4a84e286533d02251222c26_MD5.jpg]]
 
 看起来挺高级的，而且名称渲染也正确，但下面描述的文字有点模糊不清晰。
 
 于是我再试下，让它生成一张手机拍摄的照片，一篇手写内容，这次还指定了宽高比。
 
-![](https://relay-1.bijitongbu.site/p/a391c1bca0878c78f765367167482e5f.png)
+![[Inbox/笔记同步助手/微信公众号/2026/06/images/c95ad4fa9864a737f9a4681e5cd8cc8c_MD5.jpg]]
 
 这次字体全部正确，指定的尺寸也对上，放大还能清楚看到纸张的破旧纹理。
 
-![](https://relay-1.bijitongbu.site/p/68f55297b53a66b571239af7b1a2aacf.png)
+![[Inbox/笔记同步助手/微信公众号/2026/06/images/93140350ad1dbb9418f9481c17c37ef9_MD5.jpg]]
 
 继续上难度，Agnes 模型支持 4K 图片生成，对老旧照片修复的场景来说是非常实用。
 
 于是我找来了一张破损极其严重的老照片，模糊到我们肉眼都很难看清全部信息。
 
-![](https://relay-1.bijitongbu.site/p/d91285315ed933e06f5ed1fddb7cb3c5.png)
+![[Inbox/笔记同步助手/微信公众号/2026/06/images/a1c1829be34b8d45143f5ed412991924_MD5.jpg]]
 
 直接将图片发送给 Agnes-Image-2.1-Flash 做 4K 高清修复。
 
 这张图的确是有点难到 Agnes 了，第一次生成的图片没有看到婴儿，然后再试了一次。
 
-![](https://relay-1.bijitongbu.site/p/7ba69c0fde753bb8ad52a79f05579d98.png)
+![[Inbox/笔记同步助手/微信公众号/2026/06/images/34f73e9a88673320b4cc4a8dd847120f_MD5.jpg]]
 
 结果修出来的效果，我觉得已达到修复原图的九成以上，人物、姿态、背景基本都正确。
 
 大家可以看下，左边是第一次生成效果，右边是第二次同样的提示词生成效果。
 
-![](https://relay-1.bijitongbu.site/p/b0ad983f7f4e35a3725e298daa18d019.png)
+![[Inbox/笔记同步助手/微信公众号/2026/06/images/3a63f470251655f43d8e487c29524611_MD5.jpg]]
 
 所以有时候，在使用 Agnes 模型生成图片，如果觉得不满意可以多抽下卡。
 
@@ -158,7 +158,7 @@ GitHub：_https://github.com/AgnesAI-Labs/Agnes-AI_
 
 还放出了修复进度看板，大家的反馈、Bug、功能排期实时同步，处理到哪一步全部公开透明。
 
-![](https://relay-1.bijitongbu.site/p/50e42f39d2e078f72081169c005bc804.png)
+![[Inbox/笔记同步助手/微信公众号/2026/06/images/370d8243a8f78930a6dabba27c7fae58_MD5.jpg]]
 
 ### 写在最后
 
