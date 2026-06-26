@@ -17,7 +17,18 @@
 
 ##### D0状态
 
-所有Func都必须支持D0状态。D0分为两个不同的子状态：“<mark style="background: #FF5582A6;">未初始化</mark>”子状态和“<mark style="background: #FF5582A6;">激活</mark>”子状态。当组件退出常规复位后，该组件的所有Func都进入D0<sub>未初始化状态</sub>。当Func完成FLR复位时，它也进入D0<sub>未初始化状态</sub>。配置完成后，Func进入D0<sub>激活状态</sub>，这是PCIe Func完全可操作的状态。只要该Func的“内存空间使能”（Memory Space Enable）、“I/O 空间使能”（I/O Space Enable）或“总线主控使能”（Bus Master Enable）位中的任意一个或组合被置位（Set），该功能就会进入 D0<sub>活动状态</sub>。
+所有Func都必须支持D0状态。D0分为两个不同的子状态：“<mark style="background: #FF5582A6;">未初始化</mark>”（uninitialized）子状态和“<mark style="background: #FF5582A6;">激活</mark>”（Active）子状态。当组件退出常规复位后，该组件的所有Func都进入D0<sub>未初始化状态</sub>。当Func完成FLR复位时，它也进入D0<sub>未初始化状态</sub>。配置完成后，Func进入D0<sub>激活状态</sub>，这是PCIe Func完全可操作的状态。只要该Func的“内存空间使能”（Memory Space Enable）、“I/O 空间使能”（I/O Space Enable）或“总线主控使能”（Bus Master Enable）位中的任意一个或组合被置位（Set），该功能就会进入 D0<sub>活动状态</sub>。
+
+###### D0<sub>uninitialized</sub>状态
+
+正常复位或软件控制PCIe设备从D3<sub>hot</sub>状态迁移至D0状态时，进入D0<sub>uninitialized</sub>；此时PCIe设备相关寄存器恢复到默认状态，在该状态下的特性如下：  
+
+1. 只响应配置相关事务的处理；  
+2. 命令寄存器使能位全部恢复到了默认状态，这意味着它不能发起Memory或I/O读写事务。
+
+###### D0<sub>Active</sub>状态
+
+一旦PCIe相关配置寄存器被软件配置和启用，它将处于D0激活状态，并完全运行。
 
 ##### D1状态
 
@@ -29,7 +40,7 @@ D2状态的支持是可选的，当处于D2状态时，Func不得在链路上发
 
 ##### D3状态
 
-D3状态必须支持（同时包括D3<sub>cold</sub>和D3<sub>hot</sub>状态）。
+D3状态必须支持（同时包括D3<sub>cold</sub>和D3<sub>hot</sub>状态）。该状态时PCIe设备的功耗最小。
 
 如果PMCSR中的No_Soft_Reset字段已被置位，则处于D3<sub>hot</sub>状态的Func必须维护功能上下文。当Func从D3<sub>hot</sub>转换到D0状态后，系统软件无需对其进行重新初始化（该Func将处于D0<sub>active</sub>状态）。如果No_Soft_Reset字段被清除，则Func在D3<sub>hot</sub>状态下无需保持其功能上下文，这并不保证功能上下文一定会被清楚，软件绝不能依赖此行为。因此，在这种情况下，由于功能在转换到 D0 后将处于 D0<sub>uninitialized</sub>状态，系统软件必须对其进行完全的重新初始化。
 
@@ -45,10 +56,18 @@ D3状态必须支持（同时包括D3<sub>cold</sub>和D3<sub>hot</sub>状态）
 
 总线的电源管理状态可以通过其在特定时刻的某些属性来表征，例如是否供电、时钟速度以及允许何种类型的总线活动。这些状态被称为 B0、B1、B2 和 B3。
 
-
 #### 链路电源状态
 
+PCIe协议定义了以下物理层Link状态，这些状态也对应了LTSSM状态，L-state由下游组件的D-state决定，除L3外其他状态的LinkUp都仍为1。
 
+- L0 - Fully Active状态;
+- L0s - 低功耗模式，仅支持ASPM方式，硬件自动发起的，软件无法控制，单向进入，如USP有大量数据，DSP没有数据的时候DSP可以独立进入L0s；
+- L1 - 低功耗模式，支持PCI-PM和ASPM两种方式；L1子状态可以关闭参考时钟、Tx common mode电路，Rx electric idle detect电路更加省电；
+- L2 -可选低功耗模式，仅支持PCI-PM方式，关闭参考时钟、关闭PLL、关闭Main Power, 但是需要保留Aux Power;
+- L3 - 可选低功耗模式，仅支持PCI-PM方式，处于所有power都off的状态，非LTSSM状态；
+
+省电顺序：L0<L0s<L1<L2<L3，越省电的状态recovery到L0正常工作状态的时间就会越长。  
+L1和L2/3 Ready的进入需要在L0状态下协商进行。
 
 ## MSI（Message Signaled Interrupts）-消息信号中断能力（0x05）
 
