@@ -60,13 +60,13 @@ D3状态必须支持（同时包括D3<sub>cold</sub>和D3<sub>hot</sub>状态）
 
 PCIe协议定义了以下物理层Link状态，这些状态也对应了LTSSM状态，L-state由下游组件的D-state决定，除L3外其他状态的LinkUp都仍为1。
 
-- L0 - Fully Active状态;
+- L0 - Fully Active状态；
 - L0s - 低功耗模式，仅支持ASPM方式，硬件自动发起的，软件无法控制，单向进入，如USP有大量数据，DSP没有数据的时候DSP可以独立进入L0s；
 - L1 - 低功耗模式，支持PCI-PM和ASPM两种方式；L1子状态可以关闭参考时钟、Tx common mode电路，Rx electric idle detect电路更加省电；
-- L2 -可选低功耗模式，仅支持PCI-PM方式，关闭参考时钟、关闭PLL、关闭Main Power, 但是需要保留Aux Power;
+- L2 -可选低功耗模式，仅支持PCI-PM方式，关闭参考时钟、关闭PLL、关闭Main Power, 但是需要保留Aux Power；
 - L3 - 可选低功耗模式，仅支持PCI-PM方式，处于所有power都off的状态，非LTSSM状态；
 
-省电顺序：L0<L0s<L1<L2<L3，越省电的状态recovery到L0正常工作状态的时间就会越长。  
+省电顺序：L0<L0s<L1<L2<L3，越省电的状态recovery到L0正常工作状态的时间就会越长。
 L1和L2/3 Ready的进入需要在L0状态下协商进行。
 
 ## MSI（Message Signaled Interrupts）-消息信号中断能力（0x05）
