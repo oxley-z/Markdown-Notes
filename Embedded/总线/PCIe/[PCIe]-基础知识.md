@@ -699,10 +699,10 @@ PCI Express Capability List寄存器用于枚举PCI配置空间的PCIe Capabilit
 
 > 《PCI Express® Base Specification Revision 5.0.pdf》7.5.3 PCI Express Capability Structure p719
 
-| Bits | 定义                        | 描述                                                         | 属性 |
-| ---- | --------------------------- | ------------------------------------------------------------ | ---- |
-| 7:0  | **Capability ID**           | 指示 PCI Express 功能结构。此字段必须返回功能 ID 10h，表示这是一个 PCI Express 功能结构。 | RO   |
-| 15:8 | **Next Capability Pointer** | 字段包含下一个PCI Capability结构的偏移量，如果不存在其他项，则为00h。 | RO   |
+| Bits | 定义                          | 描述                                                            | 属性  |
+| ---- | --------------------------- | ------------------------------------------------------------- | --- |
+| 7:0  | **Capability ID**           | 指示 PCI Express 功能结构。此字段必须返回功能 ID 10h，表示这是一个 PCI Express 功能结构。 | RO  |
+| 15:8 | **Next Capability Pointer** | 字段包含下一个PCI Capability结构的偏移量，如果不存在其他项，则为00h。                   | RO  |
 
 ### PCI Express Capabilities Register (Offset 02h)
 
