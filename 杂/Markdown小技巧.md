@@ -158,7 +158,7 @@ x<sup>2</sup>+y<sup>2</sup>
 
 ### md写法
 
-[跳转至git_note](./git_note.md#撤销与删除)
+[跳转至git_note](../工具软件/Git/git_note.md#撤销与删除)
 
 ```html
 [跳转至gitnote](./git_note,md#撤销与删除)

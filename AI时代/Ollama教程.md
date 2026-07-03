@@ -84,6 +84,7 @@ ollama远程可用模型查询 [https://ollama.com/search?c=cloud](https://ollam
 | minimax-m2.1:cloud           | Text        |
 | minimax-m2.5:cloud           | Text        |
 | minimax-m2.7:cloud           | Text        |
+| minimax-m3:cloud             | Text, Image |
 | qwen3.5:cloud                | Text, Image |
 | qwen3.5:397b-cloud           | Text, Image |
 | qwen3-coder-next:cloud       | Text        |
@@ -100,11 +101,11 @@ ollama远程可用模型查询 [https://ollama.com/search?c=cloud](https://ollam
 | deepseek-v3.2:cloud          | Text        |
 | kimi-k2-thinking:cloud       | Text        |
 | gpt-oss:20b-cloud            | Text        |
-| gpt-oss:120b-cloud           | text        |
+| gpt-oss:120b-cloud           | Text        |
 
 ## 注意事项
 
-若使用CC-Switch配置API，退出CC-Switch无法正常连到ollama，需要开启CC-Switch对ollama进行配置，配置过程与正常配置其他模型提供商一致。
+若使用CC-Switch配置API，退出CC-Switch无法正常连到ollama，需要开启CC-Switch对ollama进行配置，配置过程与正常配置其他模型提供 商一致。
 
 ```
 export ANTHROPIC_AUTH_TOKEN=ollama  # required but ignored

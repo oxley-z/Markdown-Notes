@@ -431,7 +431,7 @@ git log --oneline | wc -l
 
 ### Failed to connect to github.com port 443:connection timed out
 
-解决办法[取消代理](#取消代理)
+解决办法[取消代理](git_note.md#取消代理)
 
 ### git查看文件状态显示为数字（中文乱码）
 
@@ -511,7 +511,7 @@ git config --global --add safe.directory "%(prefix)///192.168.3.246/d/temp/Word/
 
 ### TortoiseGitPlink Fatal Error
 
-![](image/git_note/IMG-20260501135309988.png)
+![](image/git_note/IMG-20260703142642858.png)
 
 解决方法：
 1. **右键** -> **TortoiseGit** -> **Settings**。
@@ -549,7 +549,7 @@ Host github.com
 ```git
 ssh -T git@github.com
 ```
-![[Pasted image 20260314131416.png]]
+![[../../杂/image/Pasted image 20260314131416.png]]
 输入`yes`，之后回车即可。
 [gitbash问题解决kex_exchange_identification: Connection closed by remote host](https://zhuanlan.zhihu.com/p/1918652707889219469)
 
