@@ -140,11 +140,6 @@ PME 上下文（PME Con​​text）包含 PME_Status 和 PME_En 位的值，实
 ## MSI（Message Signaled Interrupts）-消息信号中断能力（0x05）
 
 
-
-
-
-
-
 # Extended Capabilities结构
 
 
