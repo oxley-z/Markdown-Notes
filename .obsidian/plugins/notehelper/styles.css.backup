@@ -177,3 +177,18 @@ VIP Status Display
 .notehelper-help-links a:hover {
 	text-decoration: underline;
 }
+
+/* 调试模式排查提示：调试模式开关说明的第一行紫色引导字。--color-purple 是 Obsidian
+   内置主题变量，浅色/深色主题都有合适紫色。作为描述首行，留一点下边距与常规描述分隔。 */
+.notehelper-debug-hint {
+	color: var(--color-purple);
+	font-size: 13px;
+	margin-bottom: 4px;
+}
+
+/* 调试模式说明弹窗的要点列表 */
+.notehelper-debug-mode-points {
+	margin: 12px 0 0;
+	padding-left: 20px;
+	line-height: 1.7;
+}
