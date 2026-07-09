@@ -15,11 +15,10 @@ DM模型包含成员如下：
 
 * uclass：uboot的驱动类，全局管理驱动程序；
 * uclass_driver：uclass驱动类对应的driver。
-
 * udevice：指设备对象，一个driver的实例；
 * driver：udevice的驱动，硬件外设的driver；
 
-## 驱动模型
+## DM驱动模型
 
 ### uclass
 
@@ -477,7 +476,7 @@ ll_entry_declare(struct driver, pci_bridge_drv, driver)
 
 <center>u-boot.map</center>
 
-## U-Boot DM的使能
+## uboot DM驱动的使能
 
 要打开DM ，最后反映在几个配置信息上：
 
@@ -485,7 +484,23 @@ ll_entry_declare(struct driver, pci_bridge_drv, driver)
 * CONFIG_DM_XXX=y，某个驱动的DM模型的打开；
 * 可以通过Kconifg、Makefile来查看对应宏的使用情况。
 
+## DM驱动匹配流程
 
+DM驱动匹配的整个流程可以分为：**初始化**->**扫描与绑定（Bind）**->**激活（Probe）**三大阶段
+### 阶段一：基础初始化
+
+在`board_init_f`中会调用`dm_init_and_scan()` ->`dm_init()`。在`dm_init()`中初始化根设备（root device），这是一个虚拟的设备，其他所有的设备最终都会挂载在它的树下。同时初始化各种内部结构（如 uclass 链表头）。
+
+### 阶段二：扫描设备树与设备绑定（Bind）
+
+通过核心函数`dm_scan_fdt`遍历设备树节点，提取节点的`compatible`属性（list_bind_fdt()函数）。将其与`U_BOOT_DRIVER`注册的所有驱动程序进行遍历比较，检查驱动程序中的`.of_match`数组。若具有相同的`compatible`字符串则匹配成功，此时会生成`udevice`，创建对应的`struct udevice`结构体，这样，driver与udevice便完成了设备绑定（赋值`dev->driver`）。
+### 阶段三：按需激活（Probe）
+
+根据uclass_id，调用uclass_get_device_by_seq来得到udevice，进而调用device_probe来调用驱动的probe函数。
+
+[# 基于 rk3566 的 uboot 分析 - dts 加载和 dm 模型的本质](https://baron-z.cn/2024/02/11/rk3566%20uboot/#yi-she-bei-shu-jia-zai-shi-yong)
+[详细【Uboot驱动开发】（三）Uboot驱动模型](https://zhuanlan.zhihu.com/p/460754843)
+`uclass`与`uclass_driver`绑定，也是在驱动`probe`之后，确保该驱动存在，设备存在，最后为该驱动绑定`uclass`与`uclass_driver`，为上层提供统一接口。
 
 # 参考
 

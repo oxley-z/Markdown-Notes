@@ -136,12 +136,12 @@ MSI⁃X Capability 中断机制与 MSI Capability 的中断机制类似。 PCIe 
 
 ![image-20231223145930372](image/[PCIe]-中断（MSI、MSI-X、INTx）/image-20231223145930372.png)
 
-| Bits  | 定义          | 描述                                                         | 属性 |
-| ----- | ------------- | ------------------------------------------------------------ | ---- |
-| 10:0  | Table Size    | MSI⁃X 中断机制使用 MSI⁃X Table 存放 Message Address 字段和 Message Data 字段。 该字段用来存放 MSI⁃X Table 的大小， 该字段对系统软件只读，系统软件读取该字段以确定被编码为 N-1 的 MSI-X  Table大小 N。例如，返回值 000 0000 0011b 表示表大小为4。每个entry对应一个中断向量。从 table size 可看出一个 func 对多支持 2<sup>11</sup> 个 MXI-X 中断。 | RO   |
-| 13:11 | Resved        | 读时总是返回0，写操作没有效果。                              | RO   |
-| 14    | Function Mask | 该位可读写， 是中断请求的全局 Mask 位， 复位值为 0。 如果该位为 1， 该设备所有的中断请求都将被屏蔽； 如果该位为 0， 则由 Per Vector Mask 位决定是否屏蔽相应的中断请求。 Per Vector Mask 位在 MSI⁃X Table 中定义 | RW   |
-| 15    | MSI-X Enable  | 该位可读写， 是 MSI⁃X 中断机制的使能位， 复位值为 0， 表示不使能 MSI⁃X 中断机制。该位为 1 且 MSI Enable 位为 0 时， 当前 PCIe 设备使用 MSI⁃X 中断机制， 此时 INTx 和 MSI 中断机制被禁止。 | RW   |
+| Bits  | 定义            | 描述                                                                                                                                                                                                                                                 | 属性  |
+| ----- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- |
+| 10:0  | Table Size    | MSI⁃X 中断机制使用 MSI⁃X Table 存放 Message Address 字段和 Message Data 字段。 该字段用来存放 MSI⁃X Table 的大小， 该字段对系统软件只读，系统软件读取该字段以确定被编码为 N-1 的 MSI-X  Table大小 N。例如，返回值 000 0000 0011b 表示表大小为4。每个entry对应一个中断向量。从 table size 可看出一个 func 对多支持 2<sup>11</sup> 个 MXI-X 中断。 | RO  |
+| 13:11 | Resved        | 读时总是返回0，写操作没有效果。                                                                                                                                                                                                                                   | RO  |
+| 14    | Function Mask | 该位可读写， 是中断请求的全局 Mask 位， 复位值为 0。 如果该位为 1， 该设备所有的中断请求都将被屏蔽； 如果该位为 0， 则由 Per Vector Mask 位决定是否屏蔽相应的中断请求。 Per Vector Mask 位在 MSI⁃X Table 中定义                                                                                                           | RW  |
+| 15    | MSI-X Enable  | 该位可读写， 是 MSI⁃X 中断机制的使能位， 复位值为 0， 表示不使能 MSI⁃X 中断机制。该位为 1 且 MSI Enable 位为 0 时， 当前 PCIe 设备使用 MSI⁃X 中断机制， 此时 INTx 和 MSI 中断机制被禁止。                                                                                                                       | RW  |
 
 #### Table Offset/Table BIR
 
@@ -149,10 +149,10 @@ MSI⁃X Capability 中断机制与 MSI Capability 的中断机制类似。 PCIe 
 
 <center>Table Offset/Table BIR</center>
 
-| Bits | 定义         | 描述                                                         | 属性 |
-| ---- | ------------ | ------------------------------------------------------------ | ---- |
-| 2:0  | Table BIR    | 该字段存放 MSI⁃X Table 所在的位置， PCIe 总线规范规定 MSI⁃X Table 存放在设备的 BAR 空间中。 该字段表示设备使用 BAR0 ～ 5 寄存器中的哪个空间存放 MSI⁃X table。 该字段由三位组成，其中 0b000 ～ 0b101 与 BAR0～ 5 空间一一对应。 | RO   |
-| 31:3 | Table Offset | 该字段存放 MSI⁃X Table 在相应 BAR 空间中的偏移。             | RO   |
+| Bits | 定义           | 描述                                                                                                                                                       | 属性  |
+| ---- | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- | --- |
+| 2:0  | Table BIR    | 该字段存放 MSI⁃X Table 所在的位置， PCIe 总线规范规定 MSI⁃X Table 存放在设备的 BAR 空间中。 该字段表示设备使用 BAR0 ～ 5 寄存器中的哪个空间存放 MSI⁃X table。 该字段由三位组成，其中 0b000 ～ 0b101 与 BAR0～ 5 空间一一对应。 | RO  |
+| 31:3 | Table Offset | 该字段存放 MSI⁃X Table 在相应 BAR 空间中的偏移。                                                                                                                        | RO  |
 
 #### PBA Offset/PBA BIR
 
@@ -160,10 +160,10 @@ MSI⁃X Capability 中断机制与 MSI Capability 的中断机制类似。 PCIe 
 
 <center>PBA Offset/PBA BIR</center>
 
-| Bits | 定义       | 描述                                                         | 属性 |
-| ---- | ---------- | ------------------------------------------------------------ | ---- |
-| 2:0  | PBA BIR    | 该字段表示 Pending Table 存放在 PCIe 设备的哪个 BAR 空间中，0 表示 BAR0 空间， 1 表示 BAR1 空间， 依此类推。 在通常情况下，Pending Table 和 MSI⁃X Table 存放在 PCIe 设备的同一个 BAR 空间中。 | RO   |
-| 31:3 | PBA Offset | 该字段存放 Pending Table 在相应 BAR 空间中的偏移。           |      |
+| Bits | 定义         | 描述                                                                                                                                       | 属性  |
+| ---- | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------- | --- |
+| 2:0  | PBA BIR    | 该字段表示 Pending Table 存放在 PCIe 设备的哪个 BAR 空间中，0 表示 BAR0 空间， 1 表示 BAR1 空间， 依此类推。 在通常情况下，Pending Table 和 MSI⁃X Table 存放在 PCIe 设备的同一个 BAR 空间中。 | RO  |
+| 31:3 | PBA Offset | 该字段存放 Pending Table 在相应 BAR 空间中的偏移。                                                                                                      |     |
 
 ### MSI-X Table 结构
 
@@ -181,10 +181,10 @@ MSI⁃X Capability 中断机制与 MSI Capability 的中断机制类似。 PCIe 
 
 <center>Message Address</center>
 
-| Bits | 定义            | 描述                                                         | 属性     |
-| ---- | --------------- | ------------------------------------------------------------ | -------- |
-| 1:0  | Reserved        | 为了正确的DWORD对齐，软件必须始终将零写入这两个位；此字段的默认值为00b。PCIe 设备可以根据需要将这个字段设为只读， 或者可读写 | RO or RW |
-| 31:2 | Message Address | 当 MSI⁃X Enable 位有效时， 该字段存放 MSI⁃X 存储器写事务的目的地址的低 32 位。 |          |
+| Bits | 定义              | 描述                                                                     | 属性       |
+| ---- | --------------- | ---------------------------------------------------------------------- | -------- |
+| 1:0  | Reserved        | 为了正确的DWORD对齐，软件必须始终将零写入这两个位；此字段的默认值为00b。PCIe 设备可以根据需要将这个字段设为只读， 或者可读写。 | RO or RW |
+| 31:2 | Message Address | 当 MSI⁃X Enable 位有效时， 该字段存放 MSI⁃X 存储器写事务的目的地址的低 32 位。                   |          |
 
 #### Message Upper Address
 
@@ -193,7 +193,6 @@ MSI⁃X Capability 中断机制与 MSI Capability 的中断机制类似。 PCIe 
 ![image-20231223153549407](image/[PCIe]-中断（MSI、MSI-X、INTx）/image-20231223153549407.png)
 
 <center>Message Upper Address</center>
-
 #### Message Data
 
 该字段可读写， 存放 MSI⁃X 报文使用的数据。 其定义与处理器系统使用的中断控制器和 PCIe 设备相关。
@@ -201,20 +200,17 @@ MSI⁃X Capability 中断机制与 MSI Capability 的中断机制类似。 PCIe 
 ![image-20231223153746119](image/[PCIe]-中断（MSI、MSI-X、INTx）/image-20231223153746119.png)
 
 <center>Message Data</center>
-
 #### Vector Control
-
-
 
 ![image-20231223154006842](image/[PCIe]-中断（MSI、MSI-X、INTx）/image-20231223154006842.png)
 
 <center>Vector Control</center>
 
-| Bits  | 定义     | 描述                                                         | 属性           |
-| ----- | -------- | ------------------------------------------------------------ | -------------- |
-| 0     | Mask Bit | 当该位为 1 时， PCIe 设备不能使用该 Entry 提交中断请求； 为 0 时可以提交中断请求。然而，用相同向量编程的任何其他 MSI-X 表将仍然能够发送等效消息，除非它们也被屏蔽。 | RW             |
-| 15:1  | Reserved | 默认情况下，这些位的值必须为0。                              | RW or Reserved |
-| 23:16 | ST Lower | 如果该功能实现 TPH Requester Extended Capability 结构，并且ST表位置指示值10b，则该字段包含操纵标签的低8位，并且必须是读写的。 | RW             |
+| Bits  | 定义       | 描述                                                                                                                         | 属性             |
+| ----- | -------- | -------------------------------------------------------------------------------------------------------------------------- | -------------- |
+| 0     | Mask Bit | 当该位为 1 时， PCIe 设备不能使用该 Entry 提交中断请求； 为 0 时可以提交中断请求。然而，用相同向量编程的任何其他 MSI-X 表将仍然能够发送等效消息，除非它们也被屏蔽。                            | RW             |
+| 15:1  | Reserved | 默认情况下，这些位的值必须为0。                                                                                                           | RW or Reserved |
+| 23:16 | ST Lower | 如果该功能实现 TPH Requester Extended Capability 结构，并且ST表位置指示值10b，则该字段包含操纵标签的低8位，并且必须是读写的。                                        | RW             |
 | 31:24 | ST Upper | 如果该函数实现 TPH Requester Extended Capability 结构，并且ST表位置指示值为10b，并且设置了扩展TPH请求者支持位，则该字段包含转向标签的高8位，并且必须是读写的。<br/>否则软件必须保留这些保留位的值； | RW             |
 
 #### MSI-X PBA Table
@@ -229,10 +225,10 @@ MSI⁃X Capability 中断机制与 MSI Capability 的中断机制类似。 PCIe 
 
 #### MSI/MSI-X对比
 
-|                  | MSI             | MSI-X                |
-| ---------------- | --------------- | -------------------- |
-| 中断向量数       | 32              | 2048                 |
-| 中断号约束       | 必须连续        | 可以随意分配         |
+|          | MSI          | MSI-X              |
+| -------- | ------------ | ------------------ |
+| 中断向量数    | 32           | 2048               |
+| 中断号约束    | 必须连续         | 可以随意分配             |
 | 中断信息存放位置 | capbility寄存器 | MSI-X Table(bar空间) |
 
 ### MSI/MSI-X操作流程

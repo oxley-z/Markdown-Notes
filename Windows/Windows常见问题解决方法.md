@@ -169,3 +169,6 @@ win + r 输入 regedit
 ```bash
 msiexec /package <software.msi>
 ```
+# 11、# Win11关闭Windows Defender实时保护，暂时关闭和永久关闭方法
+
+[# Win11关闭Windows Defender实时保护，暂时关闭和永久关闭方法 | Win10怎么永久关闭Windows Defender实时保护](https://blog.csdn.net/COCO56/article/details/128613164)
