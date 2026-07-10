@@ -516,7 +516,6 @@ DM驱动匹配的整个流程可以分为：**初始化**->**扫描与绑定（B
 [uboot驱动模型(DM)分析(二)](https://www.cnblogs.com/gs1008612/p/8253213.html)
 
 [u-boot 学习笔记：uclass 与 UCLASS_DRIVER 的理解](https://blog.csdn.net/tcjy1000/article/details/137735466)
-
 [uboot驱动之udevice](https://blog.csdn.net/huhaoxuan2010/article/details/106528814)
 
 [uboot 设备驱动模型 ](https://www.cnblogs.com/YYFaGe/p/16672483.html)
