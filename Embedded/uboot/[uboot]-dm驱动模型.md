@@ -498,6 +498,7 @@ DM驱动匹配的整个流程可以分为：**初始化**->**扫描与绑定（B
 
 根据uclass_id，调用uclass_get_device_by_seq来得到udevice，进而调用device_probe来调用驱动的probe函数。
 
+
 [# 基于 rk3566 的 uboot 分析 - dts 加载和 dm 模型的本质](https://baron-z.cn/2024/02/11/rk3566%20uboot/#yi-she-bei-shu-jia-zai-shi-yong)
 [详细【Uboot驱动开发】（三）Uboot驱动模型](https://zhuanlan.zhihu.com/p/460754843)
 `uclass`与`uclass_driver`绑定，也是在驱动`probe`之后，确保该驱动存在，设备存在，最后为该驱动绑定`uclass`与`uclass_driver`，为上层提供统一接口。
