@@ -175,6 +175,7 @@ MSI⁃X Capability 中断机制与 MSI Capability 的中断机制类似。 PCIe 
 
 <center>MSI-X Table</center>
 
+除了 Message Address 和 Message Data 外，还有一个Vector Control，用于表示设备是否能够使用该Entry提交中断请求。
 #### Message Address
 
 ![image-20231223153154751](image/[PCIe]-中断（MSI、MSI-X、INTx）/image-20231223153154751.png)
@@ -223,7 +224,19 @@ MSI⁃X Capability 中断机制与 MSI Capability 的中断机制类似。 PCIe 
 
 <center>MSI-X PBA Table</center>
 
-#### MSI/MSI-X对比
+![](image/-PCIe--中断（MSI、MSI-X、INTx）/IMG-20260710095537748.png)
+
+<center>Pending Bit Array</center>
+
+### MSI-X中断查找
+
+通过 [Table BIR](#Table%20Offset/Table%20BIR) 和 [Table Offset](Table%20Offset/Table%20BIR) 即可知道MSI-X Table在哪个BAR以及在BAR对应内存映射地址的偏移，即可找到对应的MSI-X Table，查找过程如下：
+
+![](image/-PCIe--中断（MSI、MSI-X、INTx）/IMG-20260710094129053.png)
+
+> 《PCI Express Technology 3.0.pdf》MSI-X Capability Structure p824
+
+## MSI/MSI-X对比
 
 |          | MSI          | MSI-X              |
 | -------- | ------------ | ------------------ |
@@ -231,7 +244,7 @@ MSI⁃X Capability 中断机制与 MSI Capability 的中断机制类似。 PCIe 
 | 中断号约束    | 必须连续         | 可以随意分配             |
 | 中断信息存放位置 | capbility寄存器 | MSI-X Table(bar空间) |
 
-### MSI/MSI-X操作流程
+## MSI/MSI-X操作流程
 
 #### 扫描设备
 
