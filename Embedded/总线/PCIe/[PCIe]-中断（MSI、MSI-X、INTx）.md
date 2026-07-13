@@ -122,15 +122,15 @@ MSI⁃X Capability 中断机制与 MSI Capability 的中断机制类似。 PCIe 
 
 <center>MSI⁃X Capability</center>
 
-#### Capability ID
+#### Capability ID(00h)
 
 * Capability ID 字段记载 MSI⁃X Capability 结构的 ID 号， 其值为 0x11。 在 PCIe 设备中，每个 Capability 都有唯一的 ID 号。
 
-#### Next Pointer
+#### Next Pointer(01h)
 
 * Next Pointer 字段存放下一个 Capability 结构的地址，如果功能链表中不存在其他项，则为 00h。
 
-#### Message Control
+#### Message Control(02h)
 
 * Message Control 字段， 该字段存放当前 PCIe 设备使用 MSI⁃X 机制进行中断请求的状态与控制信息，默认情况下，MSI-X 处于禁用状态。如果 MSI 和 MSI-X 均被禁用，则该功能会通过 INTx 中断（如果支持）请求服务。系统软件可以通过设置此寄存器的第 15 位来启用 MSI-X。系统软件可以修改 Message Control 寄存器的读写位和字段。设备驱动程序不允许修改 Message Control 寄存器的读写位和字段。
 
@@ -143,7 +143,7 @@ MSI⁃X Capability 中断机制与 MSI Capability 的中断机制类似。 PCIe 
 | 14    | Function Mask | 该位可读写， 是中断请求的全局 Mask 位， 复位值为 0。 如果该位为 1， 该设备所有的中断请求都将被屏蔽； 如果该位为 0， 则由 Per Vector Mask 位决定是否屏蔽相应的中断请求。 Per Vector Mask 位在 MSI⁃X Table 中定义                                                                                                           | RW  |
 | 15    | MSI-X Enable  | 该位可读写， 是 MSI⁃X 中断机制的使能位， 复位值为 0， 表示不使能 MSI⁃X 中断机制。该位为 1 且 MSI Enable 位为 0 时， 当前 PCIe 设备使用 MSI⁃X 中断机制， 此时 INTx 和 MSI 中断机制被禁止。                                                                                                                       | RW  |
 
-#### Table Offset/Table BIR
+#### Table Offset/Table BIR(04h)
 
 ![image-20231223151104144](image/[PCIe]-中断（MSI、MSI-X、INTx）/image-20231223151104144.png)
 
@@ -154,7 +154,7 @@ MSI⁃X Capability 中断机制与 MSI Capability 的中断机制类似。 PCIe 
 | 2:0  | Table BIR    | 该字段存放 MSI⁃X Table 所在的位置， PCIe 总线规范规定 MSI⁃X Table 存放在设备的 BAR 空间中。 该字段表示设备使用 BAR0 ～ 5 寄存器中的哪个空间存放 MSI⁃X table。 该字段由三位组成，其中 0b000 ～ 0b101 与 BAR0～ 5 空间一一对应。 | RO  |
 | 31:3 | Table Offset | 该字段存放 MSI⁃X Table 在相应 BAR 空间中的偏移。                                                                                                                        | RO  |
 
-#### PBA Offset/PBA BIR
+#### PBA Offset/PBA BIR(08h)
 
 ![image-20231223151803635](image/[PCIe]-中断（MSI、MSI-X、INTx）/image-20231223151803635.png)
 
@@ -176,7 +176,7 @@ MSI⁃X Capability 中断机制与 MSI Capability 的中断机制类似。 PCIe 
 <center>MSI-X Table</center>
 
 除了 Message Address 和 Message Data 外，还有一个Vector Control，用于表示设备是否能够使用该Entry提交中断请求。
-#### Message Address
+#### Message Address(00h)
 
 ![image-20231223153154751](image/[PCIe]-中断（MSI、MSI-X、INTx）/image-20231223153154751.png)
 
@@ -187,21 +187,23 @@ MSI⁃X Capability 中断机制与 MSI Capability 的中断机制类似。 PCIe 
 | 1:0  | Reserved        | 为了正确的DWORD对齐，软件必须始终将零写入这两个位；此字段的默认值为00b。PCIe 设备可以根据需要将这个字段设为只读， 或者可读写。 | RO or RW |
 | 31:2 | Message Address | 当 MSI⁃X Enable 位有效时， 该字段存放 MSI⁃X 存储器写事务的目的地址的低 32 位。                   |          |
 
-#### Message Upper Address
+#### Message Upper Address(04h)
 
 该字段可读写， 存放 MSI⁃X 存储器写事务的目的地址的高 32 位。
 
 ![image-20231223153549407](image/[PCIe]-中断（MSI、MSI-X、INTx）/image-20231223153549407.png)
 
 <center>Message Upper Address</center>
-#### Message Data
+
+#### Message Data(08h)
 
 该字段可读写， 存放 MSI⁃X 报文使用的数据。 其定义与处理器系统使用的中断控制器和 PCIe 设备相关。
 
 ![image-20231223153746119](image/[PCIe]-中断（MSI、MSI-X、INTx）/image-20231223153746119.png)
 
 <center>Message Data</center>
-#### Vector Control
+
+#### Vector Control(0Ch)
 
 ![image-20231223154006842](image/[PCIe]-中断（MSI、MSI-X、INTx）/image-20231223154006842.png)
 
@@ -214,28 +216,35 @@ MSI⁃X Capability 中断机制与 MSI Capability 的中断机制类似。 PCIe 
 | 23:16 | ST Lower | 如果该功能实现 TPH Requester Extended Capability 结构，并且ST表位置指示值10b，则该字段包含操纵标签的低8位，并且必须是读写的。                                        | RW             |
 | 31:24 | ST Upper | 如果该函数实现 TPH Requester Extended Capability 结构，并且ST表位置指示值为10b，并且设置了扩展TPH请求者支持位，则该字段包含转向标签的高8位，并且必须是读写的。<br/>否则软件必须保留这些保留位的值； | RW             |
 
-#### MSI-X PBA Table
+### MSI-X PBA Table结构
 
 在 Pending Table 中， 一个 Entry 由 64 位组成， 其中每一位与 MSI⁃X Table 中的一个 Entry 对应， 即 Pending Table 中的每一个 Entry 与 MSI⁃X Table 的 64 个 Entry 对应。
 
 与 MSI 机制类似， Pending 位需要与 Per Vector Mask 位配置使用。<font color=red>当 Per Vector Mask 位为 1 时， PCIe 设备不能立即发送 MSI⁃X 中断请求， 而是将对应的Pending 位置 1</font>； 当系统软件将 Per Vector Mask 位清零时， PCIe 设备需要提交 MSI⁃X 中断请求， 同时将 Pending 位清零。
 
-![image-20231223152656671](image/[PCIe]-中断（MSI、MSI-X、INTx）/image-20231223152656671.png)
+![](image/-PCIe--中断（MSI、MSI-X、INTx）/IMG-20260713095748534.png)
 
-<center>MSI-X PBA Table</center>
 
-![](image/-PCIe--中断（MSI、MSI-X、INTx）/IMG-20260710095537748.png)
-
-<center>Pending Bit Array</center>
+| Bits | 定义          | 描述                                                                                                                                                                                                                                                               | 属性       |
+| ---- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| 63：0 | PendingBits | 挂起位（Pending Bits）—— 对于每一个被置位（Set）的挂起位，Function 都拥有一条与相关联的 MSI-X 中断表表项（Table entry）相对应的挂起消息。<br>没有关联 MSI-X 中断表表项的挂起位为保留位（Reserved）。在默认情况下，保留挂起位的值必须为 0b。<br>软件绝不应该写入挂起位，而应该仅对其进行读取。如果软件写入挂起位，其结果是未定义的。<br>每个挂起位的默认值为 0b。<br>这些位允许为只读（read-only）或读写（read-write）属性。 | RO or RW |
 
 ### MSI-X中断查找
 
+#### MSI-X Table
 通过 [Table BIR](#Table%20Offset/Table%20BIR) 和 [Table Offset](Table%20Offset/Table%20BIR) 即可知道MSI-X Table在哪个BAR以及在BAR对应内存映射地址的偏移，即可找到对应的MSI-X Table，查找过程如下：
 
 ![](image/-PCIe--中断（MSI、MSI-X、INTx）/IMG-20260710094129053.png)
 
 > 《PCI Express Technology 3.0.pdf》MSI-X Capability Structure p824
 
+#### MSI-X PBA Table
+
+- 解析BIR（3：0）：查看 `PBA BIR` 的值，确定 `PBA Table` 基地址存在于哪个BAR；
+- 解析Offset（31：4）：将 `PBA Offset` 的高 29 位数据取出，低位补 3 个 0（即乘以 8，实现 **8 字节对齐**）。这个数值就是 Pending Table 相对于该 BAR 映射起始地址的**偏移量**。
+
+最终的内存地址计算公式：
+$$\text{Pending Table 物理地址} = \text{BAR}[BIR] \text{ 的映射基地址} + (\text{PBA Offset} \ \& \ \text{0xFFFFFFF8})$$
 ## MSI/MSI-X对比
 
 |          | MSI          | MSI-X              |
@@ -252,7 +261,7 @@ MSI⁃X Capability 中断机制与 MSI Capability 的中断机制类似。 PCIe 
 
 #### 配置设备
 
-一个设备，可能都支持INTx、MSI、MSI-X，这3中方式只能选择一种。
+一个设备，可能都支持INTx、MSI、MSI-X，这3种方式只能选择一种。
 
 MSI配置
 
