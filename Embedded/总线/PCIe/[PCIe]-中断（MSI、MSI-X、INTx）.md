@@ -1,4 +1,4 @@
-# PCI中断
+# PCI/PCIe中断
 
 ## INTx中断
 
@@ -141,7 +141,7 @@ MSI⁃X Capability 中断机制与 MSI Capability 的中断机制类似。 PCIe 
 | 10:0  | Table Size    | MSI⁃X 中断机制使用 MSI⁃X Table 存放 Message Address 字段和 Message Data 字段。 该字段用来存放 MSI⁃X Table 的大小， 该字段对系统软件只读，系统软件读取该字段以确定被编码为 N-1 的 MSI-X  Table大小 N。例如，返回值 000 0000 0011b 表示表大小为4。每个entry对应一个中断向量。从 table size 可看出一个 func 对多支持 2<sup>11</sup> 个 MXI-X 中断。 | RO  |
 | 13:11 | Resved        | 读时总是返回0，写操作没有效果。                                                                                                                                                                                                                                   | RO  |
 | 14    | Function Mask | 该位可读写， 是中断请求的全局 Mask 位， 复位值为 0。 如果该位为 1， 该设备所有的中断请求都将被屏蔽； 如果该位为 0， 则由 Per Vector Mask 位决定是否屏蔽相应的中断请求。 Per Vector Mask 位在 MSI⁃X Table 中定义                                                                                                           | RW  |
-| 15    | MSI-X Enable  | 该位可读写， 是 MSI⁃X 中断机制的使能位， 复位值为 0， 表示不使能 MSI⁃X 中断机制。该位为 1 且 MSI Enable 位为 0 时， 当前 PCIe 设备使用 MSI⁃X 中断机制， 此时 INTx 和 MSI 中断机制被禁止。                                                                                                                       | RW  |
+| 15    | MSI-X Enable  | 该位可读写， 是 MSI⁃X 中断机制的使能位， 复位值为 0， 表示不使能 MSI⁃X 中断机制。该 位为 1 且 MSI Enable 位为 0 时， 当前 PCIe 设备使用 MSI⁃X 中断机制， 此时 INTx 和 MSI 中断机制被禁止。                                                                                                                      | RW  |
 
 #### Table Offset/Table BIR(04h)
 
@@ -257,38 +257,40 @@ $$\text{Pending Table 物理地址} = \text{BAR}[BIR] \text{ 的映射基地址}
 
 #### 扫描设备
 
-扫描设备，读取 Capability，确定是否含有MSI Capability、是否含有MSI-X Capability。
+- 系统软件扫描 PCIe 配置空间，读取能力链表（Capability List），确定是否含有 MSI Capability（ID=05h）或 MSI-X Capability（ID=11h） 。
 
 #### 配置设备
 
-一个设备，可能都支持INTx、MSI、MSI-X，这3种方式只能选择一种。
+- **互斥与优先级：** INTx、MSI、MSI-X 保持后向兼容但物理互斥（仅可使用一种），驱动程序优先选择 **MSI-X**，其次 **MSI**，最后降级为 **INTx**。
+- **开启总线主控：** 系统软件必须将设备配置空间 Command 寄存器的 **Bus Master Enable (BME)** 位置 1，允许设备发起内存写 TLP。
 
 MSI配置
 
-* 系统软件读取MSI Capability，确定设备想申请多少个中断。
-* 系统软件确定能分配多少个中断给这个设备，并把"地址/数据"写入MSI Capability。
-* 如果MSI Capability支持中断使能的话，还需要系统软件设置MSI Capability来使能中断。[^2]
+* 系统软件读取 MSI Capability 的 Message Control 寄存器，确定设备申请的中断数量（多消息能力，Multiple Message Capable）。
+* 系统软件在系统中断源中分配连续的 $2^N$ 个中断，并将分配的基准消息地址（Message Address）**和**基准消息数据（Message Data，低 $N$ 位需清零对齐）写入 MSI Capability。
+* 系统软件将 MSI Capability 的 **MSI Enable** 位置 1[^2]，使能 MSI 中断（此时设备的 INTx 自动关闭）。
 
 [^2]:注意：如果支持多个MSI中断，PCI设备发出中断时，写的是同一个地址，但是数据的低位可以发生变化。比如支持4个MSI中断时，通过数据的bit1、bit0来表示是哪个中断。
 
 MSI-X配置
 
-* MSI-X机制中，中断相关的更多信息保存在设备的内存空间。所以要使用MSI-X中断，要先配置设备、分配内存空间。
-* 系统软件读取MSI-X Capability，确定设备需要多少个中断。
-* 系统软件确定能分配多少个中断给这个设备，并把多个"地址/数据"写入MSI-X Table。[^3]
+* 系统软件读取 MSI-X Capability，通过 **Table BIR** 和 **Table Offset** 指针，定位并映射设备 MMIO 空间中的 **MSI-X Table** 。
+* 系统软件根据设备所需的中断向量数量，在 MSI-X Table 的各个 Entry 中**分别**写入独立的“Message Address”和“Message Data” 。[^3]
+* 使能中断：系统软件将 MSI-X Capability 的 **MSI-X Enable** 位置 1（总开关）。同时，通过控制 MSI-X Table 中各个 Entry 的 Vector Control 寄存器中的 **Mask 位**，来实现单路中断的按需开关 。[^4]
 
 [^3]:注意：PCI设备要发出MSI-X中断时，它会往"地址"写入"数据"，这些"地址/数据"一旦配置后是不会变化的。MSI机制中，数据可以变化，MSI-X机制中数据不可以变化。
-
-* 使能中断：设置总开关、MSI-X Table中某个中断的开关。[^4]
 
 [^4]:注意：MSI-X Table中，每一项都可以保存一个"地址/数据"，Table中"地址/数据"可以相同，也就是说：PCI设备发出的中断可以是同一个。
 
 #### 设备发出中断
 
-PCI设备发出MSI中断、MSI-X中断时，都是发起"数据写"传输，就是往指定地址写入指定数据。
+- 当硬件触发中断时，设备发起一个内存写请求（Write TLP）：
+	- **MSI：** 往固定地址写入数据，**数据的低位由硬件根据中断号自动改变**。
+	- **MSI-X：** 硬件直接读取对应 Table Entry 中的 Address 和 Data 并发出，**Address 和 Data 在运行时完全由对应表项独立决定** 。
 
-PCI控制器接收到数据后，就会触发CPU中断。
-
+- **中断转换注入：** 该写操作送达系统的 MSI 控制器（如 ARM GIC ITS），控制器解析 TLP 携带的 Master ID (ReqID) 和 EventID (Data)，将其转换为对应的 CPU 中断矢量（如 LPI） 。
 #### 中断函数
 
-系统软件执行中断处理函数。
+- CPU 响应中断，系统软件（OS 内核）根据中断号调度对应的 **中断处理函数 (ISR)**。
+
+<mark style="background: #FF5582A6;">注意</mark>：无论是MSI还是MSI-X，其本质上都是基于Memory Write 的，因此也可能会产生错误。比如PCIe中的ECRC错误等。
