@@ -244,6 +244,7 @@ MSI⁃X Capability 中断机制与 MSI Capability 的中断机制类似。 PCIe 
 - 解析Offset（31：4）：将 `PBA Offset` 的高 29 位数据取出，低位补 3 个 0（即乘以 8，实现 **8 字节对齐**）。这个数值就是 Pending Table 相对于该 BAR 映射起始地址的**偏移量**。
 
 最终的内存地址计算公式：
+
 $$\text{Pending Table 物理地址} = \text{BAR}[BIR] \text{ 的映射基地址} + (\text{PBA Offset} \ \& \ \text{0xFFFFFFF8})$$
 ## MSI/MSI-X对比
 
