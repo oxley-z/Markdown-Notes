@@ -14,7 +14,7 @@ id: a525c3e3-1a77-461c-8765-80cc44f54eed
 
 发布时间：2026-06-11 20:53
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/d5673b61529048fc2392d6b1f5e4601a_MD5.gif]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/d5673b61529048fc2392d6b1f5e4601a_MD5.gif)
 
 大家好，我是蟹老板～
 
@@ -30,7 +30,7 @@ PCI 这玩意儿，表面看是一个总线驱动问题，实际背后牵着一�
 
 但越往后做项目我越明白一个道理：**所有高速外设驱动，本质上都是PCIe驱动**。
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/7c7c4371c27215ff82e68f95d3fa923d_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111004191.jpg)
 
 ## 一、PCI/PCIe 子系统基础
 
@@ -42,7 +42,7 @@ PCI 这玩意儿，表面看是一个总线驱动问题，实际背后牵着一�
 
 ### 1.1 PCI 总线架构概述
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/e9c137ecebf8ab12e58c76d95835f555_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111004296.jpg)
 
 PCI这玩意儿，全称Peripheral Component Interconnect，外围组件互连。说白了就是**CPU跟外设之间的一条高速公路**。
 
@@ -76,7 +76,7 @@ Root Complex
 
 ### 1.2 PCI、PCI-X、PCIe 的关系
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/d8977c062f32e8e6075ab286c9349a7e_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111004377.jpg)
 
 PCI 是老前辈。
 
@@ -100,7 +100,7 @@ PCIe 真正新增的东西更多体现在链路层、事务层、扩展能力、
 
 ### 1.3 Root Complex、Switch、Endpoint 与 PCIe 拓扑
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/b6690e40b3bdc270677e8b9cb575ebd9_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111004453.jpg)
 
 Root Complex 它一头连 CPU 和内存系统，一头连 PCIe 总线。CPU 发起对设备寄存器的访问，通常会经过 Root Complex 转成 PCIe 事务。设备发起 DMA，也会通过 Root Complex 访问主机内存。
 
@@ -130,7 +130,7 @@ lspci -t
 
 ### 1.4 Bus、Device、Function 与 BDF 地址
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/9fc3f94757c3709c5de9e77f08cf400c_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111004524.jpg)
 
 每个 PCI 设备都有一个地址，常见格式是 **BDF**。
 
@@ -175,7 +175,7 @@ lspci -s 03:00.0 -vvv
 
 ### 1.5 PCI 配置空间与设备标识
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/ca58c8892bbf4bfa13a207035b7abaac_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111004640.jpg)
 
 PCI 设备为什么能被系统自动发现？
 
@@ -216,7 +216,7 @@ MODULE_DEVICE_TABLE(pci, demo_pci_ids);
 
 ### 1.6 PCI 枚举流程与 Linux 设备模型
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/c3353ba23c2b2055be0b97bb10064eee_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111004856.jpg)
 
 PCI 枚举可以理解成系统给设备“上户口”。
 
@@ -254,7 +254,7 @@ module_pci_driver(demo_pci_driver);
 
 ### 1.7 PCIe 分层、链路训练与事务层
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/6d64b8402122c4b5514cca80a9dc22b9_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111004943.jpg)
 
 PCIe 是分层协议，常见分法是**事务层、数据链路层、物理层**。
 
@@ -282,13 +282,13 @@ lspci -s 03:00.0 -vvv | grep -i speed
 
 Linux PCI 驱动的本质是三件事。
 
-**让驱动和设备匹配上。****拿到设备资源并初始化硬件。****在设备离开时把资源干净释放掉。**
+**让驱动和设备匹配上。** **拿到设备资源并初始化硬件。** **在设备离开时把资源干净释放掉。**
 
 你看，听起来很简单。实际写起来，还是有很多坑等着你踩的。
 
 ### 2.1 Linux 设备驱动模型基础
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/af678a81f604d1d92b0355ae314212ab_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111005036.jpg)
 
 Linux 设备模型里，**bus、device、driver** 是三大核心。
 
@@ -316,7 +316,7 @@ pci_bus_type
 
 ### 2.2 `pci_bus`、`pci_dev`、`pci_driver` 的关系
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/5bb2055ecc99ed5f959fa3c1c74f065b_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111005115.jpg)
 
 `pci_bus` 表示一条 PCI 总线。
 
@@ -356,7 +356,7 @@ PCI 驱动就是从这里长出来的。
 
 ### 2.3 `pci_device_id` 与 ID Table 匹配机制
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/b4470de9bf8fcfc02946699f7b933b8f_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111005230.jpg)
 
 PCI 驱动怎么知道自己支持哪个设备？
 
@@ -403,7 +403,7 @@ lspci -nn
 
 ### 2.4 `MODULE_DEVICE_TABLE` 的作用
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/64a2a1059f0a19ef02990bba4dda2fa6_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111005319.jpg)
 
 很多新手会问，既然 id\_table 已经写在驱动里了，为什么还要加：
 
@@ -427,7 +427,7 @@ modinfo demo_pci.ko
 
 ### 2.5 `pci_register_driver()` 与驱动注册流程
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/0c6500fadf790247c5aa6d6c72f1620a_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111005423.jpg)
 
 驱动注册可以显式写：
 
@@ -476,7 +476,7 @@ dmesg -w
 
 ### 2.6 probe、remove、shutdown 生命周期
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/2d3d9612359d8778b255becd9507b1a0_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111005517.jpg)
 
 PCI 驱动生命周期绕不开三个函数。
 
@@ -524,7 +524,7 @@ probe 不是一个普通初始化函数，它是驱动和设备绑定后的入�
 
 ### 3.1 probe 函数什么时候被调用
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/a251fc3326a8226d9e4270e8d0d675bf_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111005598.jpg)
 
 probe 被调用的前提是**设备和驱动匹配成功**。
 
@@ -538,7 +538,7 @@ probe 被调用的前提是**设备和驱动匹配成功**。
 
 ### 3.2 `pci_enable_device()` 使能设备
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/f77462fb05f1e86c0d49b2354f6e5aa9_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111005667.jpg)
 
 probe 里常见第一步是：
 
@@ -564,7 +564,7 @@ pci_set_master(pdev);
 
 ### 3.3 `pci_request_regions()` 申请 BAR 资源
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/8be16fa6ffec308d1ae4ec21ed6da758_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111005743.jpg)
 
 PCI 设备通过 BAR 暴露资源。驱动访问之前，需要申请这些资源，避免多个驱动乱抢。
 
@@ -580,7 +580,7 @@ if (ret)
 ret = pci_request_region(pdev, bar, "demo_pci");
 ```
 
-**`pci_request_regions()`****并不是映射 MMIO。** 它只是告诉内核，这些 PCI 资源我这个驱动要用了，别让别人碰。
+**`pci_request_regions()`** **并不是映射 MMIO。** 它只是告诉内核，这些 PCI 资源我这个驱动要用了，别让别人碰。
 
 资源管理里最怕“我以为”。你以为没人用。内核不这么认为。规范申请，规范释放。
 
@@ -592,7 +592,7 @@ pci_release_regions(pdev);
 
 ### 3.4 BAR 类型
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/bb37a37a653f46bcaa1ec3e45db84771_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111005801.jpg)
 
 BAR 是 Base Address Register。
 
@@ -624,7 +624,7 @@ if (flags & IORESOURCE_IO) {
 
 ### 3.5 32-bit BAR、64-bit BAR、Prefetchable BAR
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/f86396d03d8221d1e1b2e18f5c78a90b_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111005913.jpg)
 
 Memory BAR 还分 32-bit 和 64-bit。
 
@@ -652,7 +652,7 @@ Region 0 常常是控制寄存器。Region 2 可能是大块设备内存。具�
 
 ### 3.6 `pci_resource_start()` / `pci_resource_len()`
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/fcbe6f41d11e62551191a1246766fe10_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111005980.jpg)
 
 这两个函数非常常用。
 
@@ -678,7 +678,7 @@ u32 val = *(u32 *)(bar_start + 0x100);
 
 ### 3.7 `pci_iomap()` / `ioremap()` 映射 MMIO
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/6be4e1a74a3a3a5940e5b2efff399712_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111006050.jpg)
 
 映射 BAR 可以用：
 
@@ -757,7 +757,7 @@ struct demo_dev *ddev = pci_get_drvdata(pdev);
 
 ### 3.9 probe 失败路径与资源回滚
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/a058b3a193210024633aafaa7fb6ab97_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111006287.jpg)
 
 **probe 失败路径与资源回滚** 这是驱动代码最能看出水平的地方。
 
@@ -854,7 +854,7 @@ BAR0 + 0x001C  DMA Start
 
 ### 4.1 CPU 如何访问 PCI 设备寄存器
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/d16655c6c66ed36b281fa9d015355a20_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111006407.jpg)
 
 **MMIO** 的意思是 Memory-Mapped I/O。
 
@@ -870,7 +870,7 @@ BAR0 + 0x001C  DMA Start
 
 ### 4.2 寄存器读函数：`readb/readw/readl/readq`
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/40720cbd2eb9a973a75750bbec8001cf_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111006507.jpg)
 
 读取寄存器时，用：
 
@@ -887,7 +887,7 @@ u64 v64 = readq(base + REG64);
 
 ### 4.3 寄存器写函数：`writeb/writew/writel/writeq`
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/5422f8bfc615d98a8436fa1b4dca05ab_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111006569.jpg)
 
 写寄存器也一样。
 
@@ -922,7 +922,7 @@ static void demo_start_dma(struct demo_dev *ddev,
 
 ### 4.4 MMIO 访问顺序与内存屏障
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/85b7d1ae5138dc6d4fca26dd84472108_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111006667.jpg)
 
 现代 CPU 会乱序执行。编译器也可能重排。设备访问又不能随便乱序。
 
@@ -950,7 +950,7 @@ writel(DOORBELL, ddev->bar0 + REG_DOORBELL);
 
 ### 4.5 posted write 问题
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/40720cbd2eb9a973a75750bbec8001cf_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111006507.jpg)
 
 PCIe 写操作通常可能是 **posted write**。意思是 CPU 这边写出去了，不一定等设备真正处理完才返回。
 
@@ -971,7 +971,7 @@ readl(ddev->bar0 + REG_STATUS);
 
 ### 4.6 为什么不能直接解引用 MMIO 地址
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/af4c5b65c9714d768259378554a530b4_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111006770.jpg)
 
 再强调一次，**不能直接把 MMIO 地址当普通指针**。
 
@@ -1016,7 +1016,7 @@ PCI 中断从传统 **INTx** 到 **MSI**，再到 **MSI-X**，演进非常明显
 
 ### 5.1 INTx 传统中断与共享中断
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/96431039931890218cd94f95aacab91b_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111006947.jpg)
 
 INTx 是传统 PCI 中断机制。它有 INTA、INTB、INTC、INTD 四根逻辑中断线。**多个设备可能共享中断**。
 
@@ -1046,7 +1046,7 @@ INTx 还有一个问题。它是电平触发，设备如果没有正确清中断
 
 ### 5.2 MSI 原理与使用方式
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/b348237febe5a47c54cd3ed77b0eaac8_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111007083.jpg)
 
 MSI 是 Message Signaled Interrupt。
 
@@ -1099,7 +1099,7 @@ pci_free_irq_vectors(pdev);
 
 ### 5.3 MSI-X 原理与多队列设备
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/6ee53da3433aea7a5572a32ad43d836c_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111007215.jpg)
 
 **MSI-X** 比 MSI 更适合高性能设备。
 
@@ -1122,7 +1122,7 @@ RX Queue 3 -> IRQ 35 -> CPU3
 
 ### 5.4 `pci_alloc_irq_vectors()`
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/956dc9226dfe19812fcb8b532c65192f_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111007330.jpg)
 
 推荐方式是：
 
@@ -1166,7 +1166,7 @@ ret = pci_alloc_irq_vectors(pdev, 1, max_vecs,
 
 ### 5.5 `request_irq()` 注册中断处理函数
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/0f857f9dcc7ba771144139e26f4995b8_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111007429.jpg)
 
 拿到 vector 后，要注册中断。
 
@@ -1200,7 +1200,7 @@ free_irq(irq, q);
 
 ### 5.6 顶半部与底半部
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/2b8784e8a51255345ecc08b4b0bbf001_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111007478.jpg)
 
 **中断处理要快。**
 
@@ -1228,7 +1228,7 @@ free_irq(irq, q);
 
 ### 5.7 tasklet、workqueue、threaded IRQ
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/6767b97b2746e390e898378d2ebf5742_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111007588.jpg)
 
 -   -   **tasklet**：运行在软中断上下文，不能睡眠。现在很多新驱动会避免使用 tasklet，转向更合适的机制。
 -   -   **workqueue**：在进程上下文，可以睡眠。适合耗时或可能阻塞的工作。
@@ -1278,12 +1278,12 @@ static irqreturn_t demo_irq_thread(int irq, void *data)
 
 ### 5.8 中断亲和性与负载均衡
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/e3ed32df16905dfd471d4461aea8a83b_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111007668.jpg)
 
 多队列设备最怕**所有中断打到一个 CPU**。
 
 查看中断：
-
+ 
 ```
 cat /proc/interrupts
 ```
@@ -1315,7 +1315,7 @@ PCI 驱动最容易让人头皮发麻的部分来了。
 
 ### 6.1 为什么 PCI 设备需要 DMA
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/25289fe4d4e226ebdf11b38442014a7b_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111007730.jpg)
 
 没有 DMA 会怎样？
 
@@ -1334,7 +1334,7 @@ CPU 只负责准备 buffer、告诉设备 DMA 地址、启动传输、处理中�
 
 ### 6.2 Bus Master DMA 的含义
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/90f5460b4962ba9f7d680a162c1c9b80_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111007844.jpg)
 
 设备要发起 DMA，必须具备 **Bus Master** 能力。驱动里通常调用：
 
@@ -1352,7 +1352,7 @@ pci_set_master(pdev);
 
 ### 6.3 DMA 地址、物理地址、虚拟地址的区别
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/4139bee68dd1f951fb4f404012ec5d08_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111007963.jpg)
 
 这里是新手重灾区。
 
@@ -1385,7 +1385,7 @@ cpu_addr = dma_alloc_coherent(&pdev->dev, size,
 
 ### 6.4 Streaming DMA 与 Coherent DMA
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/90b6115376272cb5ea433dfc384ec2a3_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111008044.jpg)
 
 Linux DMA API 里常见两类。
 
@@ -1407,7 +1407,7 @@ Streaming DMA 通过 **`dma_map_single()`****、****`dma_map_sg()`** 映射已�
 
 ### 6.5 `dma_set_mask_and_coherent()`
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/1d123445fc8b6a41eb1e7aed72bab76d_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111008120.jpg)
 
 设备不是一定能访问所有内存。
 
@@ -1434,7 +1434,7 @@ if (ret) {
 
 ### 6.6 `dma_alloc_coherent()`
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/a1e9e078bcc6a8b7331604c1b6ead671_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111008189.jpg)
 
 分配一致性 DMA 内存：
 
@@ -1474,7 +1474,7 @@ Coherent 不代表你完全不用考虑顺序。它解决的是缓存一致性�
 
 ### 6.7 `dma_map_single()` / `dma_unmap_single()`
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/718a48bb88660b5aa3ced0d421867698_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111008259.jpg)
 
 Streaming DMA 常用：
 
@@ -1511,7 +1511,7 @@ Streaming DMA 的规则比 coherent 更严格。**CPU 和设备对 buffer 的所
 
 ### 6.8 Scatter-Gather DMA
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/b163d9006cb48d6e191980def55ffde1_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111008325.jpg)
 
 实际 I/O buffer 很可能不是物理连续的。
 
@@ -1540,7 +1540,7 @@ SG 复杂在两个地方。
 
 ### 6.9 IOMMU 对 DMA 的影响
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/87a54ec0f881bdb49078cbe7ca83008c_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111008409.jpg)
 
 **IOMMU** 是 DMA 世界里的内存管理单元。
 
@@ -1556,7 +1556,7 @@ SG 复杂在两个地方。
 
 ### 6.10 DMA 缓存一致性与内存屏障
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/490040699b5735514a9c03f935085520_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111008474.jpg)
 
 **缓存一致性**是 DMA 的核心问题。
 
@@ -1614,7 +1614,7 @@ PCI 设备不是永远处在完美状态。系统会休眠，设备会掉电，�
 
 ### 7.1 PCI 电源状态 D0–D3
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/e89f4cdf72d2fb91a8b8b9ec5090dd24_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111008573.jpg)
 
 PCI 设备有电源状态。
 
@@ -1628,7 +1628,7 @@ PCI 设备有电源状态。
 
 ### 7.2 Runtime PM
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/9f561ef553fbb6c178ba19df72596330_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111008652.jpg)
 
 **Runtime PM** 是运行时电源管理。
 
@@ -1642,7 +1642,7 @@ Runtime PM 的麻烦在于状态交错。用户打开设备、关闭设备、中
 
 ### 7.3 suspend / resume 回调
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/86053421895a5367c2a56efd1f7311dd_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111008742.jpg)
 
 系统挂起时，驱动要做几件事。
 
@@ -1676,7 +1676,7 @@ Runtime PM 的麻烦在于状态交错。用户打开设备、关闭设备、中
 
 ### 7.4 PCI Hotplug 机制
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/1728a62dc989a2d01313ba1a3d50db12_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111008845.jpg)
 
 PCIe 支持 **热插拔**，尤其服务器、背板、外接 PCIe 设备场景。
 
@@ -1705,7 +1705,7 @@ remove 里必须停止硬件，阻止新的 I/O，等待已有工作完成，释
 
 ### 7.5 remove 流程与资源释放
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/37b2a6a5fb78feccce9325a55d89e225_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111008920.jpg)
 
 一个带 IRQ 和 DMA 的 remove 大概像这样。
 
@@ -1743,7 +1743,7 @@ static void demo_remove(struct pci_dev *pdev)
 
 ### 7.6 AER 错误上报机制
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/804b9d39da4f78dae7cb87f7cf989384_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111008964.jpg)
 
 **AER（Advanced Error Reporting）** 是 PCIe 高级错误上报。PCIe 用它上报链路和事务错误。
 
@@ -1759,7 +1759,7 @@ PCIe 问题有时候真不是软件锅。虽然最后通常还是软件同学先
 
 ### 7.7 设备 reset 与错误恢复
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/eb6154508f7e1343e2314ee346c391e4_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111009066.jpg)
 
 设备 reset 后，驱动要能重新建立状态。
 
@@ -1787,7 +1787,7 @@ reset 做不好，设备会进入半死不活状态。看起来还在 PCI 总线
 
 ### 8.1 PCIe Link、Lane 与速率
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/e92cec2d9f9edb710647426b5c2b960f_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111009142.jpg)
 
 **PCIe Link** 由多个 **Lane** 组成。
 
@@ -1812,7 +1812,7 @@ LnkSta: Speed 8GT/s, Width x4
 
 ### 8.2 Max Payload Size 与 Max Read Request Size
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/277f0823992772de0539d2656602b95c_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111009216.jpg)
 
 -   -   **Max Payload Size**：决定单个 TLP 最大数据负载。
 -   -   **Max Read Request Size**：决定一次 Memory Read 请求最大读多大。
@@ -1830,7 +1830,7 @@ LnkSta: Speed 8GT/s, Width x4
 
 ### 8.3 SR-IOV 中的 PF 与 VF
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/f2b6d20173b9521832b6af47a4c37c19_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111009305.jpg)
 
 **SR-IOV** 是 PCIe 虚拟化里的重要特性。
 
@@ -1849,7 +1849,7 @@ LnkSta: Speed 8GT/s, Width x4
 
 ### 8.4 VFIO 与设备直通
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/8020f0a849a0b489d0e78ae605bcde3d_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111009389.jpg)
 
 **VFIO** 提供了一套把设备安全暴露给用户态的框架，常用于虚拟机设备直通。
 
@@ -1871,7 +1871,7 @@ lspci -k -s 03:00.0
 
 ### 8.5 ACS、ARI、ATS、PRI、PASID
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/1ac4b37c601b1cece5dcab388f84f3ee_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111009432.jpg)
 
 -   -   **ACS**：用于访问控制和隔离，和 IOMMU group、P2P、虚拟化安全相关。
 -   -   **ARI**：扩展 Function 编号能力，让一个设备支持更多 function。
@@ -1885,7 +1885,7 @@ lspci -k -s 03:00.0
 
 ### 8.6 Peer-to-Peer DMA
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/2027a6e058db488f8a7eba0f0a90b19a_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111009550.jpg)
 
 **Peer-to-Peer（P2P）DMA** 指一个 PCIe 设备直接和另一个 PCIe 设备传数据，不经过主机内存中转。
 
@@ -2692,15 +2692,15 @@ IOMMU 是否带来明显开销
 
 PCI 驱动常用 API 速查表
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/de078184f7edc36e0124b90a97900c3f_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111009602.jpg)
 
 PCI 配置空间标准寄存器图
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/20b7cb47cc132d9daa8ff2823e0f8f21_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111009696.jpg)
 
 ### BAR、DMA、中断核心概念对照表
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/5f3518217bbc63bf4d83a1d9998f91d3_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111009796.jpg)
 
 **把这几个概念串起来，PCI 驱动主线就清楚了。**
 
@@ -2712,7 +2712,7 @@ PCI 配置空间标准寄存器图
 
 ### INTx、MSI、MSI-X 对比表
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/f0850fe311fbc7da28d5de5845b0d06b_MD5.jpg]]
+![](image/硬核干货！Linux%20PCI%20设备驱动详解（转）/IMG-20260715111009908.jpg)
 
 ### lspci / setpci / sysfs 调试命令清单
 

@@ -760,6 +760,8 @@ PCI Express Capabilities寄存器用于标识PCIe设备的功能类型及其相�
 | 14:12 | **Max_Read_Request_Size**                                             | 此字段设置作为请求者的功能的最大读取请求大小。功能不得生成超过设定值的读取请求。该字段定义的编码如下：<br/>000b：128字节最大读取请求大小 <br/>001b：256字节最大读取请求大小 <br/>010b：512字节最大读取请求大小 <br/>011b：1024字节最大读取请求大小 <br/>100b：2048字节最大读取请求大小 <br/>101b：4096字节最大读取请求大小 <br/>110b：保留<br/>111b：保留                                                                                                                                                                                                                                | RW  |
 | 15    | **Bridge Configuration Retry Enable / Initiate Function Level Reset** | 此位根据功能类型具有不同的含义：<br/>* **PCI Express to PCI/PCI-X Bridges**：<br/>**Bridge Configuration Retry Enable**：当设置此位时，允许PCI Express转PCI/PCI-X桥在响应针对桥下设备的配置请求时返回配置请求重试状态。<br/>此位的默认值为0b。<br/>* **Endpoints with Function Level Reset Capability set to 1b**：<br/>**Initiate Function Level Reset**：对此位写入1b将向该功能发起功能级复位。软件从此位读取的值始终为0b。<br/>* 其他类型：<br/>保留，必须硬连线为0b。                                                                                                    |     |
 
+[PCIe Max payload size-知乎](https://zhuanlan.zhihu.com/p/676301958)
+
 ### Device Status Register (Offset 0Ah)
 
 该寄存器提供有关PCIe设备（功能）特定参数的状态信息。

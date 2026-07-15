@@ -232,3 +232,5 @@ $ tc -s qdisc show dev ens33
 [Irqbalance/irqbalance: The irqbalance source tree - The new official site for irqbalance (github.com)](https://github.com/Irqbalance/irqbalance)
 
 [中断NUMA绑核-系统配置-优化建议指导-常用操作-鲲鹏性能分析插件-2.5.5-鲲鹏开发套件插件工具（IntelliJ）-鲲鹏DevKit历史版本-文档首页-鲲鹏社区 (hikunpeng.com)](https://www.hikunpeng.com/document/detail/zh/kunpengdevkithistory/intellijhistory/2.5.5/kunpengideintellij_10_0329.html)
+
+[irqbalance详解-2026新征程-知乎](https://zhuanlan.zhihu.com/p/335504099)
