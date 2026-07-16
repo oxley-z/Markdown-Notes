@@ -7,6 +7,7 @@
   "customTokensStr": "",
   "defaultImageSize": "",
   "defaultImageSizeDimension": "width",
+  "downloadNetworkImages": false,
   "duplicateNameSeparator": "_",
   "emptyFolderBehavior": "DeleteWithEmptyParents",
   "excludePaths": [],
@@ -16,6 +17,7 @@
   "jpegQuality": 0.8,
   "markdownUrlFormat": "",
   "moveAttachmentToProperFolderUsedByMultipleNotesMode": "CopyAll",
+  "networkImageDownloadTimeoutInSeconds": 30,
   "renamedAttachmentFileName": "",
   "shouldDeleteOrphanAttachments": false,
   "shouldHandleRenames": true,
@@ -28,5 +30,5 @@
   "treatAsAttachmentExtensions": [
     ".excalidraw.md"
   ],
-  "version": "10.3.7"
+  "version": "11.1.1"
 }
