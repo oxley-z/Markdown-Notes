@@ -42,11 +42,11 @@ U-Boot 2024.07 版本对 SPL/TPL 框架进行了以下几处收敛：
 
 TPL、SPL、U-Boot proper 三段共享大部分源码目录，具体哪些目标文件被编入哪一段，由 Kconfig 开关 `CONFIG_TPL_BUILD` 与 `CONFIG_SPL_BUILD` 控制：
 
-| 段 | 生效开关 | 编入范围 |
-| --- | --- | --- |
-| TPL | `CONFIG_TPL_BUILD=y` | `drivers/tpl/`、`arch/xxx/cpu/xxx/tpl.o` |
-| SPL | `CONFIG_SPL_BUILD=y` | `common/spl/`、`drivers/spl/` |
-| U-Boot proper | 两个都为 n | `common/board.c`及全量驱动 |
+| 段             | 生效开关                 | 编入范围                                    |
+| ------------- | -------------------- | --------------------------------------- |
+| TPL           | `CONFIG_TPL_BUILD=y` | `drivers/tpl/`、`arch/xxx/cpu/xxx/tpl.o` |
+| SPL           | `CONFIG_SPL_BUILD=y` | `common/spl/`、`drivers/spl/`            |
+| U-Boot proper | 两个都为 n               | `common/board.c`及全量驱动                   |
 
 同一份 `board/xxx/board.c` 在三轮编译中会分别产出三份不同的目标文件，`board_init()` 存在三个独立版本。这是分析 SPL/TPL 源码的第一个前提。
 
