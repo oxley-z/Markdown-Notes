@@ -123,11 +123,11 @@ static unsigned int hash_string(const char *key)
 
 ### hash table 的容量管理
 
-| 时机 | 行为 |
-| --- | --- |
-| `hcreate_r(nel, htab)` | 启动阶段一次性分配 nel 个 bucket。U-Boot 默认 `CONFIG_ENV_MIN_ENTRIES=64`，加载真实环境时按导入条数 ×3 重新分配 |
-| `hsearch_r(item, ENTER)` | 插入/更新。查槽 → 若已存在则触发 `change_ok` 校验并复写；若为空则占用 |
-| 装载因子 > 80% | `hmatch_r`探测代价升高，需要 `hdelete_r` 释放槽位或增大 size |
+| 时机                       | 行为                                                                                |
+| ------------------------ | --------------------------------------------------------------------------------- |
+| `hcreate_r(nel, htab)`   | 启动阶段一次性分配 nel 个 bucket。U-Boot 默认 `CONFIG_ENV_MIN_ENTRIES=64`，加载真实环境时按导入条数 ×3 重新分配 |
+| `hsearch_r(item, ENTER)` | 插入/更新。查槽 → 若已存在则触发 `change_ok` 校验并复写；若为空则占用                                       |
+| 装载因子 > 80%               | `hmatch_r`探测代价升高，需要 `hdelete_r` 释放槽位或增大 size                                      |
 
 ### import / export：hash table ↔ 字符串
 
