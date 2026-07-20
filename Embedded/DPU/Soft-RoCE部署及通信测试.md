@@ -8,13 +8,13 @@ csdn:
 
 操作系统：
 
-Windows10+Ubuntu20.04*2（虚拟机）
+Windows10+Ubuntu20.04\*2（虚拟机）
 
 软件：
 
 VmWare Workstation 16 Pro 16.2.4
 
-虚拟机*2
+虚拟机\*2
 
 ubuntu-20.04.3-desktop-amd64 
 
