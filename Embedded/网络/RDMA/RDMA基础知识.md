@@ -257,7 +257,7 @@ QPN指的是每个QP的编号，在IB网络中，每个节点的每个QP都有�
 
 <center>SQ、RQ、QP关系</center>
 
-&emsp;&emsp;每个节点的每个QP都有一个唯一的编号，称为QPN（Query Pair Number），通过QPN可以唯一确定一个节点上的QP。
+每个节点的每个QP都有一个唯一的编号，称为QPN（Query Pair Number），通过QPN可以唯一确定一个节点上的QP。
 
 ### SRQ
 
