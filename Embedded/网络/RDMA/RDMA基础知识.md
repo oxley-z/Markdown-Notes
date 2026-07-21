@@ -298,7 +298,7 @@ CQ即完成队列，与WQ相同，其中也包含多个CQE，可以认为CQE和W
 10. 发送端APP取得任务完成信息。
 
 ### CQN
-与QPN类似，每个节点的每个CQ都有唯一的编号，称谓CQN（Completion Queue Number，完成队列编号），通过CQN可以唯一确定和标识一个RDMA节点上的CQ。
+与QPN类似，每个节点的每个CQ都有唯一的编号，称为CQN（Completion Queue Number，完成队列编号），通过CQN可以唯一确定和标识一个RDMA节点上的CQ。
 
 ### WR与WC
 
