@@ -258,19 +258,19 @@ Vendor ID、Device ID这两个寄存器的值由 [PCI-SIG](https://pcisig.com/) 
 
 ![image-20240223104437210](image/[PCIe]-基础知识/image-20240223104437210.png)
 
-| Bits | 定义                                   | 描述                                                         | 属性 |
-| ---- | -------------------------------------- | ------------------------------------------------------------ | ---- |
-| 3    | Interrupt Status                       | 该位为 1 且 Command 寄存器的 Interrupt Disable 位为 0 时， 表示 PCI 设备已经使用 INTx 信号向处理器提交了中断请求。 在多数 PCI 设备中的 BAR 空间， 存在自定义的中断状态寄存器， 因此设备驱动程序很少使用该位判断 PCI 设备是否提交了中断请求。 | RO   |
-| 4    | Capabilities List                      | 该位为 1 时 Capability Pointer 寄存器中的值有效。            | RO   |
-| 5    | 66 MHz Capable                         | 66MHz Capability 位， 该位只读（历史遗留，PCIe忽略）。 为 1 时表示此设备支持 66 MHz 的 PCI 总线。 | RO   |
-| 7    | Fast Back-to-Back Transactions Capable | 该位为 1 表示此设备支持快速背靠背总线周期。                  | RO   |
-| 8    | Master Data Parity Error               | PCI 总线的 PERR#信号有效时将置该位为 1； 当 PCI 总线出现数据传送错误时置此位为 1； 当 Command 寄存器的 Parity Error Response 位为 1 时， 此位为 1。 | RW1C |
+| Bits | 定义                                     | 描述                                                                                                                                                                                                                                          | 属性   |
+| ---- | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---- |
+| 3    | Interrupt Status                       | 该位为 1 且 Command 寄存器的 Interrupt Disable 位为 0 时， 表示 PCI 设备已经使用 INTx 信号向处理器提交了中断请求。 在多数 PCI 设备中的 BAR 空间， 存在自定义的中断状态寄存器， 因此设备驱动程序很少使用该位判断 PCI 设备是否提交了中断请求。                                                                                      | RO   |
+| 4    | Capabilities List                      | 该位为 1 时 Capability Pointer 寄存器中的值有效。                                                                                                                                                                                                        | RO   |
+| 5    | 66 MHz Capable                         | 66MHz Capability 位， 该位只读（历史遗留，PCIe忽略）。 为 1 时表示此设备支持 66 MHz 的 PCI 总线。                                                                                                                                                                        | RO   |
+| 7    | Fast Back-to-Back Transactions Capable | 该位为 1 表示此设备支持快速背靠背总线周期。                                                                                                                                                                                                                     | RO   |
+| 8    | Master Data Parity Error               | PCI 总线的 PERR#信号有效时将置该位为 1； 当 PCI 总线出现数据传送错误时置此位为 1； 当 Command 寄存器的 Parity Error Response 位为 1 时， 此位为 1。                                                                                                                                     | RW1C |
 | 10:9 | DEVSEL Timing                          | 该字段为 0b00 时表示 PCI 设备为快速设备； 为 0b01 时表示 PCI 设备为中速设备；为 0b10 时表示 PCI 设备为慢速设备。快速设备要求 PCI 总线主设备置 FRAME# 信号有效的一个时钟周期后，置 DEVSEL#信号有效； 中速设备要求 PCI 总线主设备置 FRAME #信号有效的两个时钟周期后， 置 DEVSEL# 信号有效； 慢速设备要求 PCI 总线主设备置 FRAME# 信号有效的三个时钟周期后， 置 DEVSEL# 信号有效。 | RO   |
-| 11   | Signaled Target Abort                  | 该位由 PCI 目标设备设置， 当目标设备使用目标设备夭折 （ Target Abort） 时序， 结束当前总线周期时， PCI 设备将置该位为 1。 | RW1C |
-| 12   | Received Target Abort                  | 该位由 PCI 主设备设置， 当发生目标设备夭折时序时， 该位被置为 1。 | RW1C |
-| 13   | Received Master Abort                  | 该位由 PCI 主设备设置， 当发生主设备夭折时序， 该位被置为 1。 当以上几个 Abort 位有效时， 表示 PCI 总线的数据传送通路出现了较为严重的问题。 | RW1C |
-| 14   | Signaled System Error                  | 当设备置 SERR# 信号有效时， 该位被置 1。                     | RW1C |
-| 15   | Detected Parity Error                  | 当设备发现奇偶校验错时， 该位被置 1。                        | RW1C |
+| 11   | Signaled Target Abort                  | 该位由 PCI 目标设备设置， 当目标设备使用目标设备夭折 （ Target Abort） 时序， 结束当前总线周期时， PCI 设备将置该位为 1。                                                                                                                                                                 | RW1C |
+| 12   | Received Target Abort                  | 该位由 PCI 主设备设置， 当发生目标设备夭折时序时， 该位被置为 1。                                                                                                                                                                                                       | RW1C |
+| 13   | Received Master Abort                  | 该位由 PCI 主设备设置， 当发生主设备夭折时序， 该位被置为 1。 当以上几个 Abort 位有效时， 表示 PCI 总线的数据传送通路出现了较为严重的问题。                                                                                                                                                           | RW1C |
+| 14   | Signaled System Error                  | 当设备置 SERR# 信号有效时， 该位被置 1。                                                                                                                                                                                                                   | RW1C |
+| 15   | Detected Parity Error                  | 当设备发现奇偶校验错时， 该位被置 1。                                                                                                                                                                                                                        | RW1C |
 
 ### Revision ID Register (Offset 08h)
 
@@ -320,11 +320,11 @@ BIST被调用的 Function 不能阻止 PCI Express 链路的正常操作。
 
 ![image-20240223170053722](image/[PCIe]-基础知识/image-20240223170053722.png)
 
-| Bits | 定义            | 描述                                                         | 属性   |
-| ---- | --------------- | ------------------------------------------------------------ | ------ |
+| Bits | 定义              | 描述                                                                                                                                                      | 属性     |
+| ---- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
 | 3:0  | Completion Code | 此字段对最近测试的状态进行编码。值0000b表示 Func 已通过测试。非零值表示 Func 测试失败。功能特定的故障代码可以被编码在非零值中。此字段的值仅在设置了 BIST 功能且清除了 Start BIST 时才有意义。该字段的默认值为0000b。如果BIST可用，则此字段必须硬连线到0000b。 | RO     |
-| 6    | Start BIST      | 如果设置了 BIST 能力，则设置此位以调用 BIST。BIST 完成时，该 Func 重置该位。如果该位在设置后2秒未清除（BIST未完成），则允许软件使设备失效。将此位写入0b没有任何效果。<br/>如果BIST未设置，则此位必须硬接线至0b。 | RW/RO  |
-| 7    | BIST Capable    | 当设置时，此位表示 Func 支持BIST。清除时，函数不支持BIST。   | HWInit |
+| 6    | Start BIST      | 如果设置了 BIST 能力，则设置此位以调用 BIST。BIST 完成时，该 Func 重置该位。如果该位在设置后2秒未清除（BIST未完成），则允许软件使设备失效。将此位写入0b没有任何效果。<br/>如果BIST未设置，则此位必须硬接线至0b。                            | RW/RO  |
+| 7    | BIST Capable    | 当设置时，此位表示 Func 支持BIST。清除时，函数不支持BIST。                                                                                                                    | HWInit |
 
 ### Capabilities Pointer (Offset 34h)
 
