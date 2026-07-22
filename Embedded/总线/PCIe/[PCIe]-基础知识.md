@@ -486,11 +486,11 @@ Subsystem Vendor ID 和 Subsystem ID 寄存器用于唯一地标识 pciexpress�
 
 ![image-20240229104444191](image/[PCIe]-基础知识/image-20240229104444191.png)
 
-| Bits  | 定义                             | 描述                                                         | 属性       |
+| Bits  | 定义                               | 描述                                                           | 属性         |
 | ----- | -------------------------------- | ------------------------------------------------------------ | ---------- |
-| 0     | Expansion ROM Enable             | 该位控制该 Func 是否通过扩展 ROM 基地址寄存器接受对其扩展ROM的访问。 | RO/RW      |
-| 3:1   | Expansion ROM Validation Status  | 扩展ROM验证是可选的。当该字段为非零时，它指示扩展ROM内容的硬件验证的状态。 | HwInit/ROS |
-| 7:4   | Expansion ROM Validation Details | 包含与扩展ROM验证相关的可选的、特定于实现的详细信息。        | HwInit/ROS |
+| 0     | Expansion ROM Enable             | 该位控制该 Func 是否通过扩展 ROM 基地址寄存器接受对其扩展ROM的访问。                    | RO/RW      |
+| 3:1   | Expansion ROM Validation Status  | 扩展ROM验证是可选的。当该字段为非零时，它指示扩展ROM内容的硬件验证的状态。                     | HwInit/ROS |
+| 7:4   | Expansion ROM Validation Details | 包含与扩展ROM验证相关的可选的、特定于实现的详细信息。                                 | HwInit/ROS |
 | 31:11 | Expansion ROM Base Address       | 包含扩展ROM的起始存储器地址的高位21位。扩展ROM基地址寄存器的低11位被软件屏蔽 (设置为零) 以形成32位地址。 | RW/RO      |
 
 ### Min_Gnt Register/Max_Lat Register (Offset 3Eh/3Fh)
