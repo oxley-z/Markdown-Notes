@@ -290,6 +290,9 @@ ucmatose -s 192.168.159.132
 
 ## QP状态迁移
 
+![](image/-RDMA--Verbs编程/IMG-20260722153909255.png)
+
+> 《InfiniBand IB.Specification.Vol.1-Release-1.4-2020-04-07.3.pdf》p484 10.3.1 QUEUE PAIR AND EE CONTEXT STATES
 ### RST（Reset）
 
 复位状态。当一个QP通过Create QP创建好之后就处于这个状态，相关的资源都已经申请好了，但是这个QP目前什么都做不了，其无法接收用户下发的WQE，也无法接受对端某个QP的消息。
@@ -317,6 +320,13 @@ SQ错误状态。当某个Send WR发生完成错误（即硬件通过CQE告知�
 ### ERR（Error）
 
 即错误状态。其他状态如果发生了错误，都可能进入该状态。Error状态时，QP会停止处理WQE，已经处理到一半的WQE也会停止。上层需要在修复错误后再将QP重新切换到RST的初始状态。
+
+**注意**：
+- 可以从任何状态调用销毁qp，并退出状态图；
+- 使用modify接口修改qp状态时，可以从任何状态转换到ERR状态或者RST状态；
+- 除了重置状态外，可以使用modify接口将qp强制从任何状态触发错误。
+
+	
 
 ## 典型应用
 
