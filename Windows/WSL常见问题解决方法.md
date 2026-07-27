@@ -61,4 +61,6 @@ pause
 
 修改后缀为`.bat`。管理员运行CMD，执行`start gpedit.bat`，等待完成，完成之后即可打开`gpedit.msc`。
 
-# 删除 *某些设置由你的组织来管理
+# WSL迁移
+
+[# Ubuntu迁移记录](https://blog.csdn.net/u013097500/article/details/163096983?spm=1001.2100.3001.7377&utm_medium=distribute.pc_feed_blog.none-task-blog-personrec_tag-1-163096983-null-null.nonecase&depth_1-utm_source=distribute.pc_feed_blog.none-task-blog-personrec_tag-1-163096983-null-null.nonecase)
