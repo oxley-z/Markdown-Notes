@@ -195,7 +195,7 @@ AArch64 主要使用 A64 指令集。每一条指令可能完成算术运算、�
 
 驱动程序虽然不需要每天直接编写汇编代码，但是**理解寄存器、Cache、内存顺序以及异常处理，对于分析启动流程、DMA 和中断问题是非常重要的。**
 
-![](../images/4c4c63a75f118b339dbcc31c164458d7_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/70ab89890c042ebdb398245bbd979055_MD5.jpg]]
 
 ### 1.2 SoC 的主要组成部分
 
@@ -295,7 +295,7 @@ ARM SoC 中经常集成：
 
 **Linux 会通过不同的内核子系统来统一管理这些硬件接口，而不是让应用程序随意直接操作寄存器。**
 
-![](../images/7ee5c5ed4af170fea33115f21bf874b4_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/ca98c5a567030faa244f2527dae1c5b8_MD5.jpg]]
 
 ### 1.3 嵌入式开发板的启动相关硬件
 
@@ -353,7 +353,7 @@ BOOT_MODE = 011：USB 下载模式
 
 SWD 更常见于 Cortex-M 微控制器。对于复杂 Cortex-A SoC，通常使用 JTAG 或 CoreSight 调试体系。
 
-![](../images/7e9d51154da0590f2cacf608e7bd870c_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/1c33431b00a80a3388bd861989b1fbbc_MD5.jpg]]
 
 ### 1.4 硬件原理图与 Linux 软件配置的对应关系
 
@@ -540,7 +540,7 @@ Linux 内核负责：
 -   • 云平台连接。
     
 
-![](../images/2c4f3184ac5a47b33634bf0ac27d47ab_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/ccbce3b44e3ad7ba275be33bb445dc3e_MD5.jpg]]
 
 ### 2.2 各层之间的职责划分
 
@@ -614,7 +614,7 @@ MMIO / GPIO / I²C / SPI / DMA
 
 这样可以实现**权限隔离、资源共享和统一管理。**
 
-![](../images/a72ee59a587accf63cb34818baa38e32_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/369b71a38ee041cb7e9187a55675e4b8_MD5.jpg]]
 
 ### 2.3 常见系统组件及其依赖关系
 
@@ -705,7 +705,7 @@ mdev
 
 **它们负责启动系统服务、挂载文件系统、创建设备节点以及监督后台进程。**
 
-![](../images/5cf4d97c5d0d05721a57e6d7cec98c37_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/7a2394c579d115d0146b449da054823b_MD5.jpg]]
 
 ### 2.4 嵌入式 Linux 与桌面 Linux 的区别
 
@@ -763,7 +763,7 @@ mdev
 
 产品还必须考虑**掉电、升级中断以及回滚。**
 
-![](../images/fb6f8bd7a40f3a4f6634e0c1e7574e72_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/3ff3341db359e2b73707419743fd7b9f_MD5.jpg]]
 
 ## 三、Boot ROM 与 Bootloader：系统启动的第一棒
 
@@ -833,7 +833,7 @@ USB Recovery
 
 量产工具往往就是利用这种模式，把 SPL、U-Boot 和系统镜像写入 eMMC 或 NAND。
 
-![](../images/1ebced566ecb36a00795149864a39ca7_MD5.jpg)
+![](https://relay-1.bijitongbu.site/p/01c6f067ce95367bc07a00c7cb5e62ec.png)
 
 ### 3.2 SPL 与多阶段启动机制
 
@@ -907,7 +907,7 @@ DDR 参数错误时，常见表现包括：
 -   • 大内存访问时数据错误。
     
 
-![](../images/c785b272a7324c573706bf688fa06a77_MD5.jpg)
+![](https://relay-1.bijitongbu.site/p/892eb0ef217e8243c07bef46155dfba9.png)
 
 ### 3.3 U-Boot 的核心功能
 
@@ -978,7 +978,7 @@ bootz   启动 zImage
 bootm   启动 U-Boot 镜像或 FIT
 ```
 
-![](../images/965d07d17c00b9c504ce616657074b28_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/b9c9e66e9678e388650bda9769d95ad9_MD5.jpg]]
 
 ### 3.4 U-Boot 环境变量与启动命令
 
@@ -1052,7 +1052,7 @@ bootz ${kernel_addr_r} - ${fdt_addr_r}
 
 U-Boot 官方文档将 `booti` 定义为启动平坦或压缩的 Linux `Image`，将 `bootz` 定义为启动 Linux `zImage`，两者都可以同时接收 initrd 和设备树地址。
 
-![](../images/0457568822f0a691704fb06a7469d1b9_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/0457568822f0a691704fb06a7469d1b9_MD5.jpg]]
 
 ### 3.5 常见 Bootloader 启动故障
 
@@ -1145,7 +1145,7 @@ Could not find a valid device tree
 
 例如 **`root=` 指向错误分区，就会出现无法挂载根文件系统的问题。**
 
-![](../images/beb47a202280bb5668cc7f97af27dcc7_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/beb47a202280bb5668cc7f97af27dcc7_MD5.jpg]]
 
 ## 四、Linux 内核：嵌入式系统的核心管理者
 
@@ -1234,7 +1234,7 @@ Linux 内核实现：
 
 **驱动负责把通用内核接口转换成为具体硬件操作。**
 
-![](../images/0ad6391122056b700a40510dec515f63_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/761c4f955ff7d40b0d8a6ba2b18faa56_MD5.jpg]]
 
 ### 4.2 ARM Linux 内核启动过程
 
@@ -1318,7 +1318,7 @@ late_initcall
 
 **成功以后，系统就从纯内核环境进入了用户空间。**
 
-![](../images/256adf29e8e7b99c6e15f78c4c47a85e_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/4e60240f80a0f312166d8f3812b1c339_MD5.jpg]]
 
 ### 4.3 Linux 内核目录结构
 
@@ -1377,7 +1377,7 @@ drivers/media
 
 保存内核头文件和公共接口。
 
-![](../images/0db0921374cebb6c1adcc01dc61cf787_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/324a8fbeeca2ca27fd79ba4be2a90124_MD5.jpg]]
 
 ### 4.4 内核配置与裁剪
 
@@ -1454,7 +1454,7 @@ make ARCH=arm64 \
 
 **不能为了减小镜像而删除所有诊断能力，否则量产后的故障将很难定位。**
 
-![](../images/0bbb5c66fe453292298a31928ecbd47b_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/a9d306e7358aa43a0d22a2076d36c931_MD5.jpg]]
 
 ### 4.5 内核镜像类型
 
@@ -1493,7 +1493,7 @@ FIT 是 Flattened Image Tree。
 
 **FIT 更适合需要安全启动、多个设备树以及 A/B 系统的产品。**
 
-![](../images/54b07cf820ac8de78c62557dfa1e3f8c_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/54b07cf820ac8de78c62557dfa1e3f8c_MD5.jpg]]
 
 ## 五、设备树：连接硬件描述与 Linux 驱动
 
@@ -1507,7 +1507,7 @@ FIT 是 Flattened Image Tree。
 
 Linux 设备树使用模型的核心目的之一，就是**描述运行时不能由硬件自动发现的平台设备以及它们之间的连接关系。**
 
-![](../images/da9fdb4341f38c054bfb48a9b1bdbc12_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/da9fdb4341f38c054bfb48a9b1bdbc12_MD5.jpg]]
 
 ### 5.2 设备树文件体系
 
@@ -1559,7 +1559,7 @@ dtc -I dts -O dtb \
 
 **内核解析 DTB 后创建相应的平台设备和硬件资源。**
 
-![](../images/f245fed53efd6397846bffe6f4878385_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/f245fed53efd6397846bffe6f4878385_MD5.jpg]]
 
 ### 5.3 设备树的基本语法
 
@@ -1632,7 +1632,7 @@ reserved
 
 **`status = "disabled"` 的节点一般不会创建可供普通驱动绑定的设备。**
 
-![](../images/a6bad24acd64aed98d74ccc74b892fe1_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/22ee090b06254c6dca402cd512240812_MD5.jpg]]
 
 ### 5.4 设备树与驱动匹配机制
 
@@ -1693,7 +1693,7 @@ PHY
 IOMMU
 ```
 
-![](../images/841c52b487849c9a2638286d9c82fb6f_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/841c52b487849c9a2638286d9c82fb6f_MD5.jpg]]
 
 ### 5.5 常见设备树问题
 
@@ -1746,7 +1746,7 @@ reset-gpios = <&gpio3 10 GPIO_ACTIVE_LOW>;
 
 同一个引脚被 UART 和 SPI 同时使用时，最后生效的 Pinmux 配置可能导致另一个外设失效。
 
-![](../images/42a1be331e16b5905e1298ea6d00fbe2_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/5a78eb272f7244d788b2c29114061385_MD5.jpg]]
 
 ## 六、Linux 设备驱动：让操作系统真正控制硬件
 
@@ -1781,7 +1781,7 @@ Linux 驱动
 
 **正确做法一般是优先选择现有内核子系统，而不是为所有设备都自行创建一个字符设备节点。**
 
-![](../images/c914ab57799a961df648ee189ff6baff_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/917fb4e9b48ef216864474db6f6f2993_MD5.jpg]]
 
 ### 6.2 Linux 设备模型
 
@@ -1843,7 +1843,7 @@ I²C 和 SPI 控制器本身通常是 Platform Device，而挂接在控制器下
 
 USB 和 PCIe 具备较强的自动枚举能力，可以通过协议读取设备标识以及资源信息。
 
-![](../images/36ffd19d2094cae3b43559b5dcf9a20d_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/36ffd19d2094cae3b43559b5dcf9a20d_MD5.jpg]]
 
 ### 6.3 常见驱动类型
 
@@ -1898,7 +1898,7 @@ USB 和 PCIe 具备较强的自动枚举能力，可以通过协议读取设备�
 
 适用于摄像头、视频采集以及编解码设备。
 
-![](../images/14502500ee00c3690c243a13d01e10f9_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/14502500ee00c3690c243a13d01e10f9_MD5.jpg]]
 
 ### 6.4 驱动访问硬件的核心机制
 
@@ -1986,7 +1986,7 @@ regulator_enable(vdd);
 -   • RCU：读多写少的并发场景。
     
 
-![](../images/cda368fd3706333d21f1adde2012fe3b_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/942ce32533ab39315238db55f3612604_MD5.jpg]]
 
 ### 6.5 用户空间访问驱动的方式
 
@@ -2041,7 +2041,7 @@ procfs 主要用于进程以及内核状态信息。
 
 但是必须严格控制映射范围、Cache 属性和权限。
 
-![](../images/2966b31ecc9dda88ab765c2c5ab807e9_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/1fd8724e2c2090dcf7bbe33043e142d7_MD5.jpg]]
 
 ### 6.6 驱动调试方法
 
@@ -2114,7 +2114,7 @@ echo 'module demo +p' \
 -   • SDA 是否存在毛刺。
     
 
-![](../images/9a507707031de1fbc7326d624b687a32_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/9a507707031de1fbc7326d624b687a32_MD5.jpg]]
 
 ## 七、根文件系统：Linux 用户空间的运行环境
 
@@ -2128,7 +2128,7 @@ Linux 内核负责资源管理，但是它本身并不包含完整的用户命�
 
 **如果根文件系统不存在或者无法挂载，系统就无法进入正常用户空间。**
 
-![](../images/d5c6f838250d6cd715a16f29eea9a5ee_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/416d472aa106e8f936c631a1f1d8ca1c_MD5.jpg]]
 
 ### 7.2 根文件系统的标准目录
 
@@ -2191,7 +2191,7 @@ init.d
 
 用于挂载其他文件系统。
 
-![](../images/41543aeb7ca4e5d0f04cc57b4cb64a2b_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/22f1154c2b9d9a625e8582a14eac1bdb_MD5.jpg]]
 
 ### 7.3 BusyBox 的作用
 
@@ -2240,7 +2240,7 @@ rootfs/
 
 BusyBox 官方资料说明，被编译进 BusyBox 的命令以 Applet 形式存在，并可通过 BusyBox 本体或相应软链接进行调用。
 
-![](../images/e1178b963a2d40abb78bb8c70467016f_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/23afc1e3c6ae484d47de53ad84ccc521_MD5.jpg]]
 
 ### 7.4 C 运行库的选择
 
@@ -2308,7 +2308,7 @@ No such file or directory
 
 即使可执行文件明明存在，也可能是因为 **ELF 中指定的动态链接器不存在。**
 
-![](../images/153932115f4326fe7c6c9a49cbcbc923_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/153932115f4326fe7c6c9a49cbcbc923_MD5.jpg]]
 
 ### 7.5 根文件系统的组织形式
 
@@ -2366,7 +2366,7 @@ OverlayFS 统一视图
 
 适合只读根文件系统以及恢复出厂设置。
 
-![](../images/65b03cf245ef412e0a3d5d3241ec3d4c_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/8092cd91178fddb6bb42be1e3360611f_MD5.jpg]]
 
 ### 7.6 根文件系统启动失败的常见原因
 
@@ -2433,7 +2433,7 @@ rootdelay=5
 
 但是**根本解决办法是确保控制器、PHY、时钟以及块设备驱动能够在正确阶段初始化。**
 
-![](../images/95031a5862f455e1b2c70bf636384a01_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/e421a11153d43a9da6e82b74fe8543a5_MD5.jpg]]
 
 ## 八、系统初始化与后台服务：从内核启动到可用系统
 
@@ -2484,7 +2484,7 @@ init=/bin/sh
 
 **如果 PID 1 退出，内核通常会认为用户空间已经无法继续工作，并触发 Panic。**
 
-![](../images/632ebb5c7f383f6fe81af4c7020e6550_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/381aa636e5356688edb2b6e43f12973a_MD5.jpg]]
 
 ### 8.2 常见初始化系统
 
@@ -2528,7 +2528,7 @@ init=/bin/sh
 
 提供相对轻量级的依赖式服务管理，常见于一些精简发行版。
 
-![](../images/3ccbe7e3c44bbe955f6f30c174d4a0bd_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/3ccbe7e3c44bbe955f6f30c174d4a0bd_MD5.jpg]]
 
 ### 8.3 系统启动脚本
 
@@ -2571,7 +2571,7 @@ mkdir -p /var/log
 
 **BusyBox 的 `inittab` 语法具有自身特点，不应直接套用其他 init 实现的配置格式。**
 
-![](../images/c53e4a9363a32b6850a526767fe3f828_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/d52a09ca8f3f04fd84bc631f65b57932_MD5.jpg]]
 
 ### 8.4 嵌入式系统中的常见服务
 
@@ -2628,7 +2628,7 @@ Watchdog 服务需要周期性喂狗。
 
 对于没有电池 RTC 的设备，断电重启后系统时间可能从默认值开始，需要联网校时。
 
-![](../images/c916d591a130a177f02dee229681f665_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/e11ad9400cdb3bc6cffb66cbb6ecbb04_MD5.jpg]]
 
 ### 8.5 启动速度优化
 
@@ -2688,7 +2688,7 @@ systemd-analyze blame
 
 **真正的启动优化必须先测量，再针对耗时最大的阶段进行处理。**
 
-![](../images/bfcf73a975d1c73f4e7fbfadc80f8448_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/421dfef266401df0f62bf5be998fbfcc_MD5.jpg]]
 
 ## 九、应用程序与系统调用：业务功能如何落地
 
@@ -2732,7 +2732,7 @@ systemd-analyze blame
 -   • 线程退出。
     
 
-![](../images/d10c297011d382b08fe8e12b8728776e_MD5.jpg)
+![](https://relay-1.bijitongbu.site/p/cf9cabcf92bd912f8b2297a79f28e698.png)
 
 ### 9.2 应用程序如何访问系统资源
 
@@ -2784,7 +2784,7 @@ mmap();
 
 网络应用通过 Socket 进行 TCP、UDP、Unix Domain Socket 或其他协议通信。
 
-![](../images/a2d1d97c66e4981f65257533448b9da5_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/421dcb7b69cc100d6676f540a5e28fbe_MD5.jpg]]
 
 ### 9.3 进程间通信方式
 
@@ -2816,7 +2816,7 @@ mmap();
 
 适合较复杂的系统服务通信和对象化接口。
 
-![](../images/d5f8a72091f39e14534f4e9f31bc112e_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/231595cca4cf6d0373e72a39b01724c6_MD5.jpg]]
 
 ### 9.4 常见嵌入式应用框架
 
@@ -2868,7 +2868,7 @@ mmap();
 -   • 自定义 HTTP Server。
     
 
-![](../images/935c902d03c1c244abd3fc764dbdcbad_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/0a14fb48f9221ed6e69d29e94314cd56_MD5.jpg]]
 
 ### 9.5 应用程序的稳定性设计
 
@@ -2949,7 +2949,7 @@ if (ret < 0) {
 
 **不能只在内存中修改配置，然后假定 `write()` 返回就一定已经写入 Flash。**
 
-![](../images/0b6cc2266508a466c2a04d0bfb227243_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/ad6e2ee0544ce70fcdbd087a726c21db_MD5.jpg]]
 
 ## 十、交叉编译与系统构建：把完整系统制作出来
 
@@ -3017,7 +3017,7 @@ arm-linux-gnueabihf
 
 **应用程序、运行库和动态链接器必须使用兼容 ABI。**
 
-![](../images/3568e24427ef00a14f8c72fdec7c91e9_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/54cee937f9d5e9b94c6b2bb93ba5599c_MD5.jpg]]
 
 ### 10.2 手动构建 ARM Linux 系统
 
@@ -3082,7 +3082,7 @@ aarch64-linux-gnu-gcc \
 
 然后把程序以及依赖库复制到根文件系统。
 
-![](../images/956acad9392d9befc401b1e69e37d909_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/f23dba2a0a0b1e318f256d4d592da9d1_MD5.jpg]]
 
 ### 10.3 自动化构建系统
 
@@ -3162,7 +3162,7 @@ NPU/GPU SDK
 
 使用厂商 SDK 可以更快让硬件工作，但是也要避免过度依赖未经整理的大量私有补丁。
 
-![](../images/e202e8f0a760c52bc138ada11751d68c_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/b2c62a9c62ef54195062650f5f0b700b_MD5.jpg]]
 
 ### 10.4 系统镜像制作与分区设计
 
@@ -3226,7 +3226,7 @@ Slot B
 
 **这样可以避免升级中断造成系统完全无法启动。**
 
-![](../images/3d1b31b1a333fb947dd9e7e35ca68e9d_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/0119e02a1c9db45d3122e161ceef795b_MD5.jpg]]
 
 ### 10.5 系统烧录与部署
 
@@ -3713,7 +3713,7 @@ U-Boot 验证 Kernel/FIT
 
 **二者作用不同，不能用加密替代签名。**
 
-![](../images/be983173023399266262d94d204d3a31_MD5.jpg)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/aed0313bbb4f128039953b18e39cdc32_MD5.jpg]]
 
 ## 结语：建立 ARM Linux 的完整系统思维
 
