@@ -28,7 +28,7 @@ id: b01c6bad-7f23-4bdc-bbf3-e00348fa9b77
 
 > ☞【就业】**[简历模版](http://mp.weixin.qq.com/s?__biz=MzUxMjEyNDgyNw==&mid=2247518043&idx=1&sn=16892f858fd71d9fa493f2b5bdb29fac&chksm=f96bf5afce1c7cb97aa2246ad27d1e271ae56eb4c0046032a8af11be6a274bd7891f431a3d00&scene=21#wechat_redirect)**
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/876f400ef82408b0105898d5efa388af_MD5.gif||18]]
+![|18](../images/876f400ef82408b0105898d5efa388af_MD5.gif)
 
 ## 一、前言
 
@@ -60,11 +60,11 @@ mknod /dev/com1 c 250 1
 
 执行结果如下：
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/aa7d9a674c51fb050652786409dcbd82_MD5.jpg]]
+![](../images/aa7d9a674c51fb050652786409dcbd82_MD5.jpg)
 
   
 
-内核为了维护这两个文件节点，内核需要创建结构体维护这两个文件，具体如下图所示：![[Inbox/笔记同步助手/微信公众号/2026/07/images/31072d9867bd9d0063e8b35b0e2ef3a3_MD5.jpg]]
+内核为了维护这两个文件节点，内核需要创建结构体维护这两个文件，具体如下图所示：![](../images/31072d9867bd9d0063e8b35b0e2ef3a3_MD5.jpg)
 
 当我们通过命令mknod创建一个字符设备文件，那么内核就会创建好一个inode会存在存储器中，创建和该文件实体一一对应的inode。
 
@@ -83,7 +83,7 @@ fd0 = open("/dev/com0",O_RDWR);
 fd1 = open("/dev/com1",O_RDWR);
 ```
 
-各个结构体之间关系入下图所示：![[Inbox/笔记同步助手/微信公众号/2026/07/images/a88f73f4b7fa6bf7b225d68a183d29be_MD5.jpg]]
+各个结构体之间关系入下图所示：![](../images/a88f73f4b7fa6bf7b225d68a183d29be_MD5.jpg)
 
 当应用程序执行open函数，该函数会调用到内核的sys\_open（），该函数会根据该设备节点inode保存的信息，
 
@@ -194,9 +194,9 @@ static int dev_fifo_open (struct inode *inode, struct file *file)
 cd = (struct mydev *)file->private_data;
 ```
 
-执行结果如下:![[Inbox/笔记同步助手/微信公众号/2026/07/images/1a3359ba6729d5a4d591b4e917df56e6_MD5.jpg]]
+执行结果如下:![](../images/1a3359ba6729d5a4d591b4e917df56e6_MD5.jpg)
 
-由结果可知,应用程序正确读取了minor的值。![[Inbox/笔记同步助手/微信公众号/2026/07/images/b2b38f657135fe8987dc3bd5d5b43de1_MD5.jpg]]
+由结果可知,应用程序正确读取了minor的值。![](../images/b2b38f657135fe8987dc3bd5d5b43de1_MD5.jpg)
 
 从内核log来看，MINOR(file->f\_dentry->d\_inode->i\_rdev)可以成功读取此设备号。而read接口函数也成功通过file->private\_data得到了设备结构体变量（初始化的时候为不同设备的test成员附了不同的值）。
 
@@ -610,7 +610,7 @@ static struct rockchip_mux_route_data rk3568_mux_route_data[] = {
 
 rk平台pinctrl控制器驱动初始化入口函数 rockchip\_pinctrl\_probe()，其调用流程如下：
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/b888826ca1091593c24bbc7d2c998d17_MD5.jpg]]
+![](../images/b888826ca1091593c24bbc7d2c998d17_MD5.jpg)
 
   
 
@@ -627,7 +627,7 @@ rk平台pinctrl控制器驱动初始化入口函数 rockchip\_pinctrl\_probe()�
 5.  返回修正完成的 `rockchip_pin_ctrl *ctrl` 给上层 probe 使用。
     
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/18b166a671f55164e8aeaf23caeb3cf9_MD5.jpg]]
+![](../images/18b166a671f55164e8aeaf23caeb3cf9_MD5.jpg)
 
 end
 

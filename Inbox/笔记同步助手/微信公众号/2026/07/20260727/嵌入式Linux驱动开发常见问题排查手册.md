@@ -24,7 +24,7 @@ id: a5c0d602-e0a5-4ade-92c5-3254c89d2ab1
 
 遇到问题时的通用排查顺序：
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/9ac731388460691628e3ea500aa98f14_MD5.jpg]]
+![](../images/9ac731388460691628e3ea500aa98f14_MD5.jpg)
 
 1.  **确认事实**：硬件原理图与DTS是否一致
     
@@ -744,7 +744,7 @@ cat /sys/kernel/debug/clk/clk_summary
     
 -   **区分上下文**：中断不能睡眠
     
-    ![[Inbox/笔记同步助手/微信公众号/2026/07/images/92adb22fe1aacd6a86e20b28a4238db0_MD5.jpg]]
+    ![](../images/92adb22fe1aacd6a86e20b28a4238db0_MD5.jpg)
     
 
 ---

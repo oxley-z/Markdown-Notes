@@ -14,7 +14,7 @@ id: 522fca35-36f7-4f93-974f-0201076e183e
 
 发布时间：2026-07-24 20:34
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/d5673b61529048fc2392d6b1f5e4601a_MD5.gif]]
+![](../images/d5673b61529048fc2392d6b1f5e4601a_MD5.gif)
 
 大家好，我是蟹老板～
 
@@ -74,7 +74,7 @@ id: 522fca35-36f7-4f93-974f-0201076e183e
 
 Linux Kernel 是 Linux 操作系统的核心，管理着所有硬件、系统资源和基础服务。
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/b6f2ec1f76e136c7b43feeec6436a4bf_MD5.jpg]]
+![](../images/b6f2ec1f76e136c7b43feeec6436a4bf_MD5.jpg)
 
 ```
 GitHub地址：https://github.com/torvalds/linux
@@ -148,7 +148,7 @@ struct file_operations {
 
 musl 是一个 MIT 许可证的 C 标准库实现，面向 Linux syscall API，适合在各种部署环境中使用。
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/e17b7d946d04a24fdad5a0a85297f353_MD5.jpg]]
+![](../images/e17b7d946d04a24fdad5a0a85297f353_MD5.jpg)
 
 ```
 地址：https://git.musl-libc.org/cgit/musl
@@ -220,7 +220,7 @@ musl 的 `malloc` 实现非常值得学习——它不像 glibc 那样有复杂�
 
 BusyBox 是一个将数百个常见 Unix/Linux 命令整合到单个可执行文件中的轻量级工具集。
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/da3ad9d8fcff0b597664547af3799d80_MD5.jpg]]
+![](../images/da3ad9d8fcff0b597664547af3799d80_MD5.jpg)
 
 ```
 地址：https://busybox.net/
@@ -300,7 +300,7 @@ struct applet {
 
 Buildroot 是一个简单、高效、易用的工具，通过交叉编译生成嵌入式 Linux 系统。
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/405da2a07ff39ddae65579ad8097f3c8_MD5.jpg]]
+![](../images/405da2a07ff39ddae65579ad8097f3c8_MD5.jpg)
 
 ```
 官方网站：https://buildroot.org/
@@ -381,7 +381,7 @@ endef
 
 U-Boot 是嵌入式系统的引导加载程序，支持 PowerPC、ARM、MIPS 等多种处理器架构。
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/527a3c848d7fa7754184308b99b8c95b_MD5.jpg]]
+![](../images/527a3c848d7fa7754184308b99b8c95b_MD5.jpg)
 
 ```
 GitHub地址：https://github.com/u-boot/u-boot
@@ -445,7 +445,7 @@ SPL 阶段在片内 SRAM 中运行，负责初始化 DDR 内存，然后把 U-Bo
 
 OpenSSH 是 SSH 协议最流行、最广泛部署的开源实现，由 OpenBSD 项目开发。
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/9634fb7291eaa958d425a02a622ade73_MD5.jpg]]
+![](../images/9634fb7291eaa958d425a02a622ade73_MD5.jpg)
 
 ```
 GitHub地址：https://github.com/openssh/openssh-portable
@@ -520,7 +520,7 @@ Client ↔ Server: 加密会话建立
 
 iptables 是 Linux 内核包过滤系统的用户空间配置工具。nftables 是其新一代替代品，自 Linux 内核 3.13 起可用。
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/5e51ca4705b4e8d09ea94bba6cec9182_MD5.jpg]]
+![](../images/5e51ca4705b4e8d09ea94bba6cec9182_MD5.jpg)
 
 ```
 项目地址：https://www.netfilter.org/
@@ -596,7 +596,7 @@ nftables 更进一步，引入了**集合（set）**和**映射（map）**，规
 
 runc 是一个符合 OCI 容器运行时规范的命令行工具，用于在 Linux 上创建和运行容器。
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/d3eb66386ea52cc56f130db9a91d5439_MD5.jpg]]
+![](../images/d3eb66386ea52cc56f130db9a91d5439_MD5.jpg)
 
 ```
 GitHub地址：https://github.com/opencontainers/runc
@@ -672,7 +672,7 @@ execve("/bin/sh", ...);
 
 Moby 是 Docker 创建的开源项目，提供容器化所需的“乐高积木”式组件集。
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/d3cff9bfbcb00b317d46bc8da7301313_MD5.jpg]]
+![](../images/d3cff9bfbcb00b317d46bc8da7301313_MD5.jpg)
 
 ```
 GitHub地址：https://github.com/moby/moby
@@ -750,7 +750,7 @@ created → running → paused → stopped → deleted
 
 systemd 是 Linux 系统的系统和服务管理器。
 
-![[Inbox/笔记同步助手/微信公众号/2026/07/images/a4626caee2f39cb0db6bf48bc8f4b0c0_MD5.jpg]]
+![](../images/a4626caee2f39cb0db6bf48bc8f4b0c0_MD5.jpg)
 
 ```
 GitHub地址：https://github.com/systemd/systemd
