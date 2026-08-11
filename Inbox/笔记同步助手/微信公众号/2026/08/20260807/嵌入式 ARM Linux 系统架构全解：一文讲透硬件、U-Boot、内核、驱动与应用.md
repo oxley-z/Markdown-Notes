@@ -833,7 +833,7 @@ USB Recovery
 
 量产工具往往就是利用这种模式，把 SPL、U-Boot 和系统镜像写入 eMMC 或 NAND。
 
-![](https://relay-1.bijitongbu.site/p/01c6f067ce95367bc07a00c7cb5e62ec.png)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/1ebced566ecb36a00795149864a39ca7_MD5.jpg]]
 
 ### 3.2 SPL 与多阶段启动机制
 
@@ -907,7 +907,7 @@ DDR 参数错误时，常见表现包括：
 -   • 大内存访问时数据错误。
     
 
-![](https://relay-1.bijitongbu.site/p/892eb0ef217e8243c07bef46155dfba9.png)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/c785b272a7324c573706bf688fa06a77_MD5.jpg]]
 
 ### 3.3 U-Boot 的核心功能
 
@@ -2732,7 +2732,7 @@ systemd-analyze blame
 -   • 线程退出。
     
 
-![](https://relay-1.bijitongbu.site/p/cf9cabcf92bd912f8b2297a79f28e698.png)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/d10c297011d382b08fe8e12b8728776e_MD5.jpg]]
 
 ### 9.2 应用程序如何访问系统资源
 

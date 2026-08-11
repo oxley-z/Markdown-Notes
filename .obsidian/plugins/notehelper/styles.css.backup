@@ -1,27 +1,70 @@
-/* Style the button that is used to open and close the collapsible content */
-.omnivore-collapsible {
+/*----------------------------------------------------------------
+设置页分区折叠（Phase 1 IA 重排）：原生 <details>/<summary>，
+不用 max-height 动画（内容超高会被截断），不用全局事件绑定。
+----------------------------------------------------------------*/
+.nh-section {
+	border-top: 1px solid var(--background-modifier-border);
+	margin-top: 8px;
+	padding-top: 2px;
+}
+
+/* 折叠箭头 = Chromium 原生 disclosure marker（summary 默认 display:list-item）。
+   不自绘：summary 一旦改成 flex/block/list-style:none，原生 marker 就没了。 */
+.nh-section-summary {
 	cursor: pointer;
-	border-bottom: outset;
+	padding: 10px 2px;
+	user-select: none;
 }
 
-/* Style the collapsible content. Note: hidden by default */
-.omnivore-content {
-	max-height: 0;
-	overflow: hidden;
-	transition: max-height 0.2s ease-out;
+.nh-section-summary::marker {
+	color: var(--text-muted);
 }
 
-.omnivore-content.is-expanded {
-	max-height: 2000px;
+/* 原生 marker 是 inside 定位的 inline 盒；标题容器必须 inline-block 才能与
+   marker 同行（block 会把 marker 挤到单独一行） */
+.nh-section-titles {
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 4px;
 }
 
-.omnivore-collapsible:after {
-	content: '\02795'; /* Unicode character for "plus" sign (+) */
-	float: right;
+.nh-section-title {
+	font-weight: 600;
+	font-size: var(--font-ui-medium, 15px);
 }
 
-.omnivore-active:after {
-	content: '\2796'; /* Unicode character for "minus" sign (-) */
+.nh-section-sub {
+	color: var(--text-muted);
+	font-size: var(--font-ui-small, 12px);
+}
+
+.nh-section-body {
+	padding: 0 2px 8px;
+}
+
+/* 二级折叠（嵌套在一级分区 body 内）：更轻的标题 + 缩进，
+   视觉权重明显低于一级 summary */
+.nh-subsection {
+	border-top: 1px dashed var(--background-modifier-border);
+	margin: 4px 0 4px 12px;
+	padding-top: 0;
+}
+
+.nh-subsection > .nh-section-summary {
+	padding: 8px 2px;
+}
+
+.nh-subsection > .nh-section-summary .nh-section-title {
+	font-weight: 600;
+	font-size: var(--font-ui-small, 13px);
+}
+
+.nh-subsection > .nh-section-summary .nh-section-sub {
+	font-size: 11px;
+}
+
+.nh-subsection > .nh-section-body {
+	padding-left: 6px;
 }
 
 .omnivore-highlight-config-container {
@@ -191,4 +234,27 @@ VIP Status Display
 	margin: 12px 0 0;
 	padding-left: 20px;
 	line-height: 1.7;
+}
+
+/* 合并文件模板的校验提示条：模板开头的 `---` 会被 Obsidian 当属性块起始，
+   写歪了落盘后会吞正文，这里实时提示（只提示、不阻断保存）。默认隐藏，
+   校验不过时加 .is-visible。 */
+.notehelper-merge-template-status {
+	display: none;
+	font-size: 12px;
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+/* ⚠️ 背景别用 --background-modifier-error：那是「删除按钮」那种实心红，配
+   --text-error 是红字压红底，真机截图里整条只剩一块红（2026-08-06 实测）。
+   改成次级底色 + 红色左边框，浅色/深色主题下都读得清。 */
+.notehelper-merge-template-status.is-visible {
+	display: block;
+	margin: 0 0 12px 0;
+	padding: 8px 10px;
+	border-left: 3px solid var(--text-error);
+	border-radius: 4px;
+	color: var(--text-error);
+	background: var(--background-secondary);
 }
