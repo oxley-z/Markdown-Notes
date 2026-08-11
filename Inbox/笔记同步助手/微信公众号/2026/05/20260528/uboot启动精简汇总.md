@@ -26,9 +26,7 @@ id: 04bc0635-4a02-4cf8-9778-edfb026832f4
 
 end
 
-![[Inbox/笔记同步助手/微信公众号/20260528/images/025d35765ad4f69bb5c0e62aee35605d_MD5.jpg|
-
-![]]
+![[Inbox/笔记同步助手/微信公众号/2026/05/20260528/images/025d35765ad4f69bb5c0e62aee35605d_MD5.jpg]]
 
 MCU如何将常量和函数放在Code Flash/ROM指定地址
 
@@ -40,9 +38,7 @@ MCU如何将常量和函数放在Code Flash/ROM指定地址
 
 ](https://mp.weixin.qq.com/s?__biz=MzI4MDI4MDE5Ng==&mid=2247534184&idx=1&sn=5de00ae5813c5d90fe566332ddeeaa62&scene=21#wechat_redirect)
 
-![[Inbox/笔记同步助手/微信公众号/20260528/images/b52698f90b46e1093acab873cad9006c_MD5.jpg|
-
-![]]
+![[Inbox/笔记同步助手/微信公众号/2026/05/20260528/images/b52698f90b46e1093acab873cad9006c_MD5.jpg]]
 
 Linus Torvalds对 AI 的“爱恨交加”
 
@@ -54,9 +50,7 @@ Linus Torvalds对 AI 的“爱恨交加”
 
 ](https://mp.weixin.qq.com/s?__biz=MzI4MDI4MDE5Ng==&mid=2247534189&idx=1&sn=c0266e5d26e0a7f02b7b29ce2ba145c9&scene=21#wechat_redirect)
 
-![[Inbox/笔记同步助手/微信公众号/20260528/images/307dd254b5e608a808c6c3a7c0c69903_MD5.jpg|
-
-![]]
+![[Inbox/笔记同步助手/微信公众号/2026/05/20260528/images/307dd254b5e608a808c6c3a7c0c69903_MD5.jpg|]]
 
 送开发板 | 瑞萨RA MCU开发者日 · 深圳——全“芯”启程，共探嵌入式未来！
 
