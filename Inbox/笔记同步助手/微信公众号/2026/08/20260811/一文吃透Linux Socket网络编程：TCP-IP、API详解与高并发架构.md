@@ -153,7 +153,7 @@ Socket接收队列
 
 > **把一台计算机进程内存中的数据，经过协议以及物理网络，可靠或者尽力地转移到另外一台计算机的进程中。**
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/4547c1aae70c51ec09f426c84b1ba378_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/b92e39884a7300cd2a7de1a4b8610021.png)
 
 ### 1.2 从应用程序到网卡：数据经历了什么
 
@@ -207,7 +207,7 @@ send();
 
 **真正什么时候进入网卡、什么时候抵达对端、什么时候被对端应用程序读取，是后续发生的事情。**
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/ddcb90f567e055de3a4baeaa9d86fe9f_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/5aabcf20b9396df0b9d2ffd1253a0935.png)
 
 ### 1.3 Socket 是什么：为什么它是网络编程的入口
 
@@ -238,7 +238,7 @@ recv();
 
 因此 Socket 如同应用程序和内核网络协议栈之间的一扇门。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/f875156c0fcbc134505dc6c3c68e1876_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/b19faa5f122e351e9c58d1b9ceddabe7.png)
 
 ### 1.4 本文主线：从一次 TCP 通信推导 Linux 网络编程
 
@@ -339,7 +339,7 @@ close(fd);
 
 但是 Socket 文件描述符背后对应的并不是磁盘 inode 数据，而是网络协议相关的内核对象。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/dfa8b394acc32fc327f3c0a06e6c4a80_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/47397d1d280d6cafb1b833efc81d1c22.png)
 
 ### 2.2 Socket、文件描述符与内核对象
 
@@ -386,7 +386,7 @@ close(sockfd);
 
 对于 TCP 来说，协议层还可能继续在内核里面维护 FIN、重传以及 TIME\_WAIT 等状态。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/ea26033459cbcc4cadf89284aa6ccdbe_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/d7700d9198ff4c9cb90133e5a9ffd324.png)
 
 ### 2.3 IP 地址、端口与 Socket 地址
 
@@ -440,7 +440,7 @@ IP + Port
 192.168.1.20:8080
 ```
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/69d1183592059bbe5874ee2e5ce4cfcc_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/95d939d76900cd928d0df3baafa0c8d2.png)
 
 ### 2.4 IPv4、IPv6 与 `sockaddr` 地址结构
 
@@ -1051,7 +1051,7 @@ listen_fd
 
 **每一个 `accept()` 返回的连接 Socket，则用于服务对应客户端。**
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/91ea8eb4a09635b641b5c91185b72adf_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/e18577cf4258d3b29e6a209904ab64c8.png)
 
 ### 4.5 `recv()/read()`：接收客户端数据
 
@@ -1168,7 +1168,7 @@ ssize_t send_all(int fd,
 }
 ```
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/72d053fcc682b25bc2396a2308da18b4_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/64f1b570be07e06b7e400ae8f6a60240.png)
 
 ### 4.7 `close()`：关闭连接
 
@@ -1199,7 +1199,7 @@ TIME_WAIT
 
 等状态。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/bb657cb7a85669b282608b5bf681cd02_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/d3761eea37b7b86ad448367bd3fa38dc.png)
 
 ### 4.8 TCP服务器完整程序执行流程
 
@@ -1303,7 +1303,7 @@ int main(void)
 
 这会推动我们后面进入多进程、多线程以及 epoll。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/ca63ad554a9dbb76bf1c6b4f42e85f40_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/b90a6106d3a8052ba24d67a58bb6513f.png)
 
 ## 五、TCP客户端：connect() 背后发生了什么
 
@@ -1362,7 +1362,7 @@ connect();
 
 但一般普通客户端不需要。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/f47a0207844fc3cdcb6983dac4e9928a_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/684239413b824f174354b2334f8126aa.png)
 
 ### 5.2 `socket()` 创建客户端 Socket
 
@@ -1384,7 +1384,7 @@ connect();
 
 阶段。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/aff6936a5913d38f16766a7ec0192b69_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/629601449495558311904a4d62cbc3cb.png)
 
 ### 5.3 `connect()` 与 TCP 三次握手
 
@@ -1437,7 +1437,7 @@ ECONNREFUSED
 
 如果网络路径直接丢弃 SYN，则可能经历 SYN 重试，最终连接超时。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/53809d3aea8cfe96dc635ceae75bc6a4_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/e40637289e7b0aa61e51cc8fd7c6b4eb.png)
 
 ### 5.4 客户端的数据发送与接收
 
@@ -1468,7 +1468,7 @@ recv(fd,
 
 **只要连接已经 ESTABLISHED，双方都可以根据应用协议决定收发时机。**
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/fc4c5b41a2d2f3235af7861fb0d26973_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/a1536787a760bcfec8698d353e7b2f5d.png)
 
 ### 5.5 客户端主动断开连接
 
@@ -1492,7 +1492,7 @@ TIME_WAIT
 
 这并不一定是服务器问题。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/e7d648b9e623cb3cd0eb61a52954287e_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/12e3405e64385a5f043771c933913f65.png)
 
 ### 5.6 TCP客户端完整程序执行流程
 
@@ -1565,7 +1565,7 @@ int main(void)
 }
 ```
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/b0b09f1e420bce8992abe5deed1f470d_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/cae17802530914ef7ed5016b9e31ad12.png)
 
 ## 六、一次TCP通信全过程：把客户端和服务器串起来
 
@@ -1596,7 +1596,7 @@ LISTEN
 0.0.0.0:8080
 ```
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/fde9177647bc6e1bf21eb3b8d510c5ef_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/a73bf6671befdd154fc51da07d29b9d2.png)
 
 ### 6.2 客户端发起连接
 
@@ -1626,7 +1626,7 @@ ACK
 
 三次握手完成。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/b1c44151783b0bbd857365041e71dfa0_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/9317fe01cf22b0e3016a09f28a30dbcb.png)
 
 ### 6.3 accept 如何建立新的已连接 Socket
 
@@ -1774,7 +1774,7 @@ recv();
 
 > **当前已经被 Linux TCP 协议栈接收并放入该 Socket 接收队列的数据。**
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/e01ef2659b30fd57bae2e32cd1532eb2_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/3daff10b728bf0a3409a15c853ef3b63.png)
 
 ### 6.7 从连接建立到连接关闭的完整时序图
 
@@ -1848,7 +1848,7 @@ recvfrom(fd,
 发送者地址
 ```
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/937bb0e5f0b786da7bcac9a8fcf3f238_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/fcf078a8b136e6c4769ee108166a93e5.png)
 
 ### 7.3 UDP服务端编程流程
 
@@ -2255,7 +2255,7 @@ recv2 → DEFGH
 
 > **TCP 字节流与应用消息之间缺少边界定义。**
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/a84e569d8f11e0f14edf6fa65d743f71_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/61ca8aa680bfaec14bcadd5cc81cec19.png)
 
 ### 8.6 固定长度、分隔符与Length+Body协议设计
 
@@ -2386,7 +2386,7 @@ while (1) {
 
 **这才是 TCP 应用层正确解析方式。**
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/063443cc1620a0a4e0176e0d4dd6d1a7_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/9d4a34498ae421afdfe19d22bff7adc5.png)
 
 ## 九、阻塞与非阻塞：程序为什么会“卡住”
 
@@ -2492,7 +2492,7 @@ int set_nonblocking(int fd)
 }
 ```
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/3339a210d6fc98ba8c17cfe865b5a66e_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/a34342faac7a786b07d4ce11e5f55264.png)
 
 ### 9.4 `EAGAIN/EWOULDBLOCK` 到底意味着什么
 
@@ -2532,7 +2532,7 @@ EWOULDBLOCK
 
 同样，非阻塞 `send()` 如果发送缓存暂时没有空间，也可能返回 `EAGAIN`。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/c26a876c2e9d9aa4b5a81a07178cc10d_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/d5ab3545eda126bdb1eb16074d961abb.png)
 
 ### 9.5 非阻塞为什么不等于异步
 
@@ -2582,7 +2582,7 @@ O_NONBLOCK
 
 **真正的数据传输仍然通常由应用调用 `recv()`、`send()` 完成。**
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/1f00ca3495315624d8376fc73fc8c250_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/89a7775841a10e9bc97478816be7aa4a.png)
 
 ### 9.6 阻塞与非阻塞应该怎么选择
 
@@ -2621,7 +2621,7 @@ O_NONBLOCK
 
 > **并发模型和业务规模是否需要。**
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/38afff4a62db42ae010b3626480e69a9_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/01f9cd12788051b4b5dae61601ac3150.png)
 
 ## 十、多客户端并发：一个服务器如何同时服务万人
 
@@ -2731,7 +2731,7 @@ Main Thread
 
 **一万个连接就创建一万个线程，通常并不是理想方案。**
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/06db7be25045ae88daea1254cd499350_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/b408b982ddcde29e1f04438964b125f3.png)
 
 ### 10.4 线程池模型
 
@@ -2761,7 +2761,7 @@ Task Queue
 
 **但是如果每一个工作线程仍然在一个慢 Socket 上长期阻塞，线程池容量同样可能被占满。**
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/f38a9cd17d474db8e049eb105eebbcde_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/04596d1725b0e007030a31f4c836faf5.png)
 
 ### 10.5 IO多路复用模型
 
@@ -2800,7 +2800,7 @@ fd 13 readable
 
 **这就是 IO 多路复用。**
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/54f11e5f3b31ba1138470ee19deed6ab_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/a089bd1dfdb8af018a6a8d12c05920f7.png)
 
 ### 10.6 Reactor事件驱动模型
 
@@ -2838,11 +2838,11 @@ flush send buffer
 
 这也是高性能网络程序中极其常见的结构。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/663c234c3c63373d9910d69dbce795ac_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/dfb421b869975693108292f88188ad22.png)
 
 ### 10.7 不同并发模型的性能与适用场景
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/8ea8cb4e50ac71da88bd1b6e488d617b_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/00aeea8d343df3145eeaddf608303c19.png)
 
   
 
@@ -2874,7 +2874,7 @@ Thread
 
 哪个 fd 就绪，就处理哪个。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/de909ddf4249c6b3caf2024935f5ecb0_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/041632261f65317475f5d40ba47e8758.png)
 
 ### 11.2 `select()` 的工作原理
 
@@ -2909,7 +2909,7 @@ FD_ISSET(fd, &readfds)
 
 判断哪个 fd 就绪。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/87269bd716c26d2f4e481a3cd03d491f_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/f817e485bf000c0309f57d47c609565a.png)
 
 ### 11.3 select 为什么有 FD 数量限制
 
@@ -2946,7 +2946,7 @@ FD_SETSIZE
 
 **大量 fd 时效率会逐渐下降。**
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/74a7e95e9d1fba10d9db88e43e90ae0b_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/1e224a8896f7518b3575d74b97334ddd.png)
 
 ### 11.4 `poll()` 做了哪些改进
 
@@ -2980,7 +2980,7 @@ poll(fds,
 
 **即使只有少量连接发生事件，也需要在很多项中寻找。**
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/bdfaf74fc4e348ef2080e05fd3ce13bb_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/2f4d1c1d5130e4dd34191b9cd0e4fcc8.png)
 
 ### 11.5 `epoll_create/epoll_ctl/epoll_wait`
 
@@ -3043,7 +3043,7 @@ epoll_ctl(epfd,
           NULL);
 ```
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/1143c9391a741fd7aa66acfdc37bc948_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/4971c692cb85c448ec98c3e833916c99.png)
 
 ### 11.6 epoll 为什么适合高并发
 
@@ -3112,7 +3112,7 @@ epoll_wait();
 
 等因素影响。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/501082b6c8bfdec855fe134dab8cbeba_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/c2b8c789f125a72e43e6bd7456e941e1.png)
 
 ### 11.7 LT水平触发与ET边缘触发
 
@@ -3157,7 +3157,7 @@ LT 更容易编程，也是 epoll 默认模式。
 
 **所以 ET 下必须一次尽量把数据读干净。**
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/3ada92f27b83bb921166153ff3c3fc5a_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/d5252bbc759904087cd804c21d57ddf3.png)
 
 ### 11.8 ET模式为什么必须配合非阻塞IO
 
@@ -3207,11 +3207,11 @@ O_NONBLOCK
 
 结合。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/d57476df8e8770205f7a4bdb42b3adf2_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/22a3a5daec0d4b6197428c152897a8d0.png)
 
 ### 11.9 select、poll、epoll完整对比
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/0c095f7b009e6af8b8a7cd7d8d7acb6e_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/e6a4859d9ddf6effd7211dfd7c420617.png)
 
   
 
@@ -3247,7 +3247,7 @@ IPPROTO_TCP
 
 因此不同 Option 实际对应不同层次。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/da5ee4dcd99110e2ecae3d8ead27a6b0_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/5f5ef701ce9b58ace779c9f540eccae4.png)
 
 ### 12.2 `SO_REUSEADDR`：端口为什么无法立即重新绑定
 
@@ -3289,7 +3289,7 @@ listen端口不能bind
 
 > **`SO_REUSEADDR` 是本地地址绑定策略的一部分，而不是一个“强行清除TIME\_WAIT”的开关。**
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/d4cce901b27ca3ccc532e82b7c725ed6_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/e5cc0a02ebb2af55433b7d11d1521dfd.png)
 
 ### 12.3 `SO_KEEPALIVE`：如何检测失效连接
 
@@ -3335,7 +3335,7 @@ TCP_KEEPCNT
 
 很多应用会自己设计心跳，而不是完全依赖系统 TCP Keepalive。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/5a765233a90bd0764a1a87e09f622abc_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/50b85a11ec83c31eaa0e81979afd3a73.png)
 
 ### 12.4 `SO_RCVBUF/SO_SNDBUF`：调整收发缓冲区
 
@@ -3389,7 +3389,7 @@ setsockopt(fd,
 
 **Linux TCP 还具备自动缓冲区调优机制，因此真实项目应该结合测量结果进行调整。**
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/515f8d231d3b38141cf1d2ff0007a702_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/4acb641d3307840bdf2cd6b8e272095c.png)
 
 ### 12.5 `TCP_NODELAY` 与 Nagle 算法
 
@@ -3424,7 +3424,7 @@ setsockopt(fd,
 
 **合理批量发送仍然非常重要。**
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/36f40a379a343d2a576d0f2d2299d596_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/4ff3a25400c4b33d4078f6bd3357e12c.png)
 
 ### 12.6 `SO_RCVTIMEO/SO_SNDTIMEO` 超时控制
 
@@ -3470,7 +3470,7 @@ SO_SNDTIMEO
 
 则更加可靠的方式是使用统一 Deadline，而不是每一次 `recv()` 都重新获得 3 秒。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/23ceb30dd2d2961013738c49d02967b7_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/ef0d9ac2f8eeb9b6c475543579fca1aa.png)
 
 ### 12.7 `shutdown()` 和 `close()` 有什么区别
 
@@ -3516,7 +3516,7 @@ shutdown(SHUT_WR)
 继续recv服务端最终响应
 ```
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/e00afde0b17591e4ff47ef5f76f6be39_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/2713c09e52bfc31dc3d4b83a3f6c592c.png)
 
 ## 十三、网络字节序：为什么网络通信还需要转换大小端
 
@@ -3556,7 +3556,7 @@ uint32_t value = 0x12345678;
 
 不同 CPU 架构可能采用不同字节序。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/c7fc6b35ff97974595fc0c8a31322028_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/96e822a5e45da2a483126960a672f064.png)
 
 ### 13.2 为什么网络统一采用网络字节序
 
@@ -3577,7 +3577,7 @@ Network Byte Order
 
 **传统网络字节序为大端。**
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/404c08e56739db44eee3edc3a0e953b3_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/d272c13385ebe141865d665d80102b57.png)
 
 ### 13.3 `htons/htonl`
 
