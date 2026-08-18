@@ -744,7 +744,7 @@ cat /sys/kernel/debug/clk/clk_summary
     
 -   **区分上下文**：中断不能睡眠
     
-    ![](https://relay-1.bijitongbu.site/p/bc8bcb2eb2214275ce30b1489bda1b7e.png)
+    ![[Inbox/笔记同步助手/微信公众号/2026/08/images/92adb22fe1aacd6a86e20b28a4238db0_MD5.jpg]]
     
 
 ---
