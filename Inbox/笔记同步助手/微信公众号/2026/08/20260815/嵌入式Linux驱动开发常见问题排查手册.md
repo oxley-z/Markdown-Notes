@@ -173,7 +173,7 @@ static const struct of_device_id foo_of_match[] = {
 
 ---
 
-### 🚫 ② status = "disabled"或父节点未使能
+### 🚫 ② status = "disabled"或父节点未使能 
 
 **排查**：
 
