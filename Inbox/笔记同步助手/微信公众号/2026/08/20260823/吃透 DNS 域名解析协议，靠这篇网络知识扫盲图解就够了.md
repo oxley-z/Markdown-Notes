@@ -2272,7 +2272,7 @@ mail 300  IN A 192.0.2.20
 
 这是 DNS 权威数据的一种经典表示形式。
 
-![](https://relay-1.bijitongbu.site/p/46325f69b5bd9f436ee12a4dfe354bea.png)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/ca8d2b229f141c848ed09612a8b7ea97_MD5.jpg]]
 
 ### 13.5 什么是域名委派 Delegation？
 
@@ -2303,7 +2303,7 @@ dev.example.com NS ns2.dev-provider.example.
 
 **Delegation。**
 
-![](https://relay-1.bijitongbu.site/p/3dc4e3199f93a4053c82e54b859e7cfe.png)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/4f6dff81be3016c0a7ca6ae2a98a906a_MD5.jpg]]
 
 ### 13.6 NS记录如何实现管理权下放？
 
@@ -4075,7 +4075,7 @@ DoH 一般运行在 HTTPS 生态中，因此常见端口是：
 
 Cloudflare 官方当前同样说明 DoH 将 DNS 流量封装到 HTTPS 并使用 443。
 
-![](https://relay-1.bijitongbu.site/p/a3c6e9fc3c30e9c9191afe973e51bb48.png)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/f9db1e92224fb9261382dd617424f4f2_MD5.jpg]]
 
 ### 25.6 DoT和DoH有什么区别？
 
@@ -4725,7 +4725,7 @@ dig www.example.com CNAME
 dig example.com MX
 ```
 
-![](https://relay-1.bijitongbu.site/p/d1efb52843c028f527acb1e471fbf49d.png)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/2e67547e770d981d5949605d10a681ae_MD5.jpg]]
 
 ### 29.9 NS
 
@@ -4733,7 +4733,7 @@ dig example.com MX
 dig example.com NS
 ```
 
-![](https://relay-1.bijitongbu.site/p/951319a82e80503cc42f4507b9f14546.png)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/2b9184806256e0b0246af0de8dfb41c0_MD5.jpg]]
 
 ### 29.10 `dig +trace`
 
@@ -4799,7 +4799,7 @@ dig
 
 > **应用通过系统 libc/NSS 名字解析路径到底会得到什么。**
 
-![](https://relay-1.bijitongbu.site/p/d4976e2acc109487f27ac6a784eaad22.png)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/b7aa2942e465fa83dced917d3e6dc043_MD5.jpg]]
 
 ### 29.12 `/etc/resolv.conf`
 
