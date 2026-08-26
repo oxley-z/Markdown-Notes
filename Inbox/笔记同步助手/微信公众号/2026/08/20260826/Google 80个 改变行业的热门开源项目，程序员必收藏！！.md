@@ -93,7 +93,7 @@ https://github.com/tensorflow/tensorflow
 
 JAX 是 Google Research 开发的高性能数值计算框架，将 NumPy 风格接口、自动微分和 XLA 编译技术结合，为现代 AI 研究提供高效计算能力。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/c2ca825055d19017e6cddaff53be2e26_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/f62ea73377249a8639615bf38acd0826.png)
 
 **项目地址：**
 
@@ -137,7 +137,7 @@ https://github.com/jax-ml/jax
 
 Gemma 是 Google 推出的开放式大语言模型，基于 Gemini 技术体系，为开发者提供轻量化、高性能的生成式 AI 能力。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/55468b1be0ecb0f66aa87ad9db3dc9b9_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/f00dc9b3db02853cbd6fb74de2f32c06.png)
 
 **项目地址：**
 
@@ -179,7 +179,7 @@ https://github.com/google-deepmind/gemma
 
 MediaPipe 是 Google 开源的跨平台机器学习框架，主要用于在手机、浏览器和边缘设备中实现实时 AI 感知。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/9b6415006dfb371f242dde3e7df9daae_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/bf433fb81842d607dcda26374188c845.png)
 
 **项目地址：**
 
@@ -223,7 +223,7 @@ https://github.com/google-ai-edge/mediapipe
 
 seq2seq 是 Google 在自然语言处理领域的重要开源项目，用于解决序列到序列转换问题。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/0d482783799feef5f45bec521a7e1dc8_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/03fe051f2af7f428cc832b5b25011a0f.png)
 
 **项目地址：**
 
@@ -313,7 +313,7 @@ Sonnet 是 DeepMind 开发的高级神经网络库，建立在 TensorFlow 基础
 
 它主要用于研究人员快速构建复杂深度学习模型。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/b14a7ff97035c164d2c82778dbc12e66_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/3405a11a39f6e04d8a6c7bdfe63c3538.png)
 
 **项目地址：**
 
@@ -483,7 +483,7 @@ https://github.com/google-research/jaxnerf
 
 ADK-Go 是 Google 面向 AI Agent 开发推出的工具框架，用于帮助开发者构建能够调用工具、执行任务的智能代理。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/e1a5c87cc5eb1bb35dbbc8b5edfd4a0f_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/72c27cab19a02d5e6b15064ce1e5209e.png)
 
 **项目地址：**
 
@@ -523,7 +523,7 @@ https://github.com/google/adk-go
 
 Gemini CLI 是 Google 推出的终端 AI 工具，让开发者可以直接在命令行环境中使用 Gemini 模型能力。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/820ef173ee5f3123e1c0b26835e5a116_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/26a7152cc17eac70c8b03835f134b352.png)
 
 **项目地址：**
 
@@ -567,7 +567,7 @@ langextract 是 Google 开源的文本结构化提取工具。
 
 它利用大语言模型能力，将非结构化文本转换为结构化数据。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/54c51110748875f0fa1997ce0038b5d2_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/fefa55bf6bc390814a208ed3d1285bba.png)
 
 **项目地址：**
 
@@ -609,7 +609,7 @@ Temporian 是 Google 推出的时间序列数据处理框架。
 
 它专注于处理工业、传感器和业务系统中的连续变化数据。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/1dfdc2337abd7b45cb4256f47ae01c63_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/990a8810600cbbe48874642991e372cf.png)
 
 **项目地址：**
 
@@ -659,7 +659,7 @@ Angular 是 Google 开发维护的大型 Web 前端框架。
 
 它采用 TypeScript 技术体系，适合构建复杂企业级应用。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/d3943cde216344eec5e243400e571264_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/ad3ad88f4ba4297c409e9c8a8e1f6683.png)
 
 **项目地址：**
 
@@ -703,7 +703,7 @@ Flutter 是 Google 推出的跨平台应用开发框架。
 
 它允许开发者使用一套代码构建多个平台应用。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/a33f9e2a81277a4b67d2c51f9d0de8ce_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/7721a6f47bc80b62615d4bd4614488e5.png)
 
 **项目地址：**
 
@@ -747,7 +747,7 @@ https://github.com/flutter/flutter
 
 Material Design Icons 是 Google Material Design 体系中的图标资源集合。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/d925f5458a874463844fbd9bab7e3cc4_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/6887f79f45c91f1bf7cd38448a195e9b.png)
 
 **项目地址：**
 
@@ -783,7 +783,7 @@ https://github.com/google/material-design-icons
 
 MDL 是 Google 推出的轻量 Web UI 框架，用于帮助开发者快速构建符合 Material Design 风格的网站。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/cd405e67bac1739a0937b4760811c551_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/f7463cab4568c23b5d0451c7cc468679.png)
 
 **项目地址：**
 
@@ -823,7 +823,7 @@ Closure Library 是 Google 开发的一套成熟 JavaScript 库，最初用于�
 
 它提供了大量经过长期实践验证的前端基础组件。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/5e3287dd06e551c2dd00ea5ecc5f6c52_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/7aaf283532cace0f6def5ac368983dc6.png)
 
 **项目地址：**
 
@@ -909,7 +909,7 @@ https://github.com/google/blockly
 
 Tracing Framework 是 Google 开源的 Web 性能分析工具，用于帮助开发者观察复杂应用运行过程。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/db3fea07c2e2b268971d87da2b932c22_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/547de45668943994e585c200a110454b.png)
 
 **项目地址：**
 
@@ -957,7 +957,7 @@ Dart 是 Google 开发的现代编程语言，也是 Flutter 官方开发语言�
     
 -   • 跨平台开发能力。
     
-    ![[Inbox/笔记同步助手/微信公众号/2026/08/images/4821c9e825e7323e69161dbda70b6add_MD5.jpg]]
+    ![](https://relay-1.bijitongbu.site/p/3eabacbb5d0877f0a980a4f434b54b69.png)
     
 
 **项目地址：**
@@ -1000,7 +1000,7 @@ https://github.com/dart-lang/sdk
 
 GXUI 是 Google 相关开源 UI 组件项目，用于探索现代 Web 界面设计和交互方式。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/bcd20b6172a7bd94d54abf246b678343_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/73364e73cc127fbedc3fce38e5153c9f.png)
 
 **项目地址：**
 
@@ -1089,7 +1089,7 @@ AnyPixel.js 是 Google Creative Lab 开源的实验性项目，用于创建大�
 
 组合成大型互动像素屏幕。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/5a4daca8433575c2a251870489ec2901_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/3196d5c1c524cec612c2beeaa89c65ee.png)
 
 **项目地址：**
 
@@ -1139,7 +1139,7 @@ Kubernetes 是 Google 开源的容器编排平台，也是目前全球最主流�
 
 它最初来源于 Google 内部 Borg 系统的设计思想。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/1f15d5e773ec34b99139723922a9f742_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/b1daa64687a30192fcee14ee397d89cf.png)
 
 **项目地址：**
 
@@ -1196,7 +1196,7 @@ protobuf 具有：
 -   • 更强类型约束。
     
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/9ba35416bb00e291a00336e09058f9f6_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/6fbac935620e25648f047f599a43a022.png)
 
 **项目地址：**
 
@@ -1245,7 +1245,7 @@ gRPC 是 Google 推出的现代远程过程调用框架。
 
 实现高性能服务通信。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/8ab1edb3a5b66f33cfd7381c86c9131d_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/0611984a9d1f36df27f64624053b8d70.png)
 
 **项目地址：**
 
@@ -1291,7 +1291,7 @@ Bazel 是 Google 开源的自动化构建工具，用于管理大型软件项目
 
 > 当代码规模达到百万甚至千万级时，如何快速可靠地完成编译。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/31a62a19feb2005895afd1646106a19a_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/af1475195dd47fc145a8eb06069e30cb.png)
 
 **项目地址：**
 
@@ -1342,7 +1342,7 @@ Istio 是 Google、IBM、Lyft 等共同推动的服务网格项目。
 -   • 可观测性。
     
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/946d45ace01289fa7e506771f6de0e2c_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/0256ef7227e1a824f658edc3b13bef84.png)
 
 **项目地址：**
 
@@ -1441,7 +1441,7 @@ cAdvisor（Container Advisor）是 Google 开发的容器监控工具，用于�
 -   • 文件系统数据。
     
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/481c5f5a120ae2f586da8596faf531ed_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/9cdfb2e2bc90ee90d2ac314e8576c7ac.png)
 
 **项目地址：**
 
@@ -1481,7 +1481,7 @@ https://github.com/google/cadvisor
 
 gVisor 是 Google 开发的容器安全运行环境。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/fcfce3ad0676e2fb8b8990ffebbb6066_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/e0bacc70f126a05535b677de5a5acf3d.png)
 
 传统容器：
 
@@ -1663,7 +1663,7 @@ https://github.com/GoogleContainerTools/kaniko
 
 Seesaw 是 Google 开源的高性能负载均衡解决方案。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/399267b187fc96dccb59a8a4aa001302_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/c7ee669b54bdfa053b5300744b915027.png)
 
 它主要用于：
 
@@ -1710,7 +1710,7 @@ https://github.com/google/seesaw
 
 Agones 是 Google 与 Ubisoft 合作推出的 Kubernetes 游戏服务器管理系统。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/aa85e26826d730d0e00e4af9d2d8806f_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/22cd64b9c68194197b73644164b517a3.png)
 
 它解决：
 
@@ -1801,7 +1801,7 @@ https://github.com/GoogleCloudPlatform/microservices-demo
 
 Open Health Stack 是 Google 推动的医疗数据和数字健康开源项目集合。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/6eb371b8e4fc020d2f3465c87c378664_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/929510366d089aa1dec9485826b72e63.png)
 
 帮助开发者构建符合标准的医疗应用。
 
@@ -1841,7 +1841,7 @@ Apache License 2.0
 
 Elafros 是 Google 开源的基础设施相关项目，主要用于探索现代云环境中的服务管理和自动化能力。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/1f79113a68011bb581d1b8f5a4fdd998_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/91fe3f61e61d2f5dbe585bac50b90886.png)
 
 **项目地址：**
 
@@ -1877,7 +1877,7 @@ https://github.com/google/elafros
 
 SLO Generator 是 Google 开源的服务可靠性工程（SRE）工具。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/80332aa331d128cb677b2df31d35a4cc_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/da4c6619209f3f73199fc3476e650313.png)
 
 它帮助团队自动生成和管理：
 
@@ -1932,7 +1932,7 @@ LevelDB 是 Google 开发的轻量级嵌入式 Key-Value 数据库。
 
 它采用 LSM Tree 存储结构，在写入性能方面表现优秀。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/c124b377f5f045175bd43a2a50a5db86_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/1a70c28c1833be134a5957bab77cb169.png)
 
 **项目地址：**
 
@@ -2026,7 +2026,7 @@ Gson 是 Google 开发的 Java JSON 处理框架。
 
 之间的数据转换。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/bc3839c8a9934751279b265f20eeb07f_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/7e50edcc5b841ab9607e7fa51f85bef9.png)
 
 **项目地址：**
 
@@ -2076,7 +2076,7 @@ FlatBuffers 是 Google 开源的数据序列化工具。
 
 FlatBuffers 不需要完整解析即可访问数据。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/dea83da6f2cd1fc1c377f618afe2c6ef_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/9872e3b9c70e1e7e7a24fdbba71c756a.png)
 
 **项目地址：**
 
@@ -2160,7 +2160,7 @@ Guetzli 是 Google 开源的 JPEG 图像压缩算法。
 
 它目标是在保持视觉质量的同时降低图片大小。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/3f6d474d385d83238f39125490b47f90_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/f5fea1f2d57419537fe7dae0eebef818.png)
 
 **项目地址：**
 
@@ -2200,7 +2200,7 @@ Lovefield 是 Google 开发的 Web 端关系型数据库框架。
 
 它让浏览器应用能够使用类似 SQL 数据库的方式管理本地数据。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/330196ae2867da2acaccec7afbb32091_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/c4fc12e44029372b2c6810ded1ce1d6b.png)
 
 **项目地址：**
 
@@ -2249,7 +2249,7 @@ Vitess 最初来源于 YouTube 数据库架构。
 
 问题。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/d8d26ed5c2ca1007a402207abde8e84f_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/9f7a7546e7650c0eed100620e5bf56ec.png)
 
 **项目地址：**
 
@@ -2308,7 +2308,7 @@ Google 在开发工具领域开源了大量项目，包括：
 
 Go（Golang）是 Google 开发的一门编程语言。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/173d36aeb73a17e8e5370e5caa82ff54_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/539b0a54c3bb2cb91483df481de58f07.png)
 
 它主要用于解决：
 
@@ -2371,7 +2371,7 @@ GoogleTest 是目前 C++ 生态中最流行的测试框架之一。
 
 维护测试代码。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/0b8c63e44068574d2942cb76949efb1e_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/0ca6c7cb08fdbb0d1078f1eccbc3f5a5.png)
 
 **项目地址：**
 
@@ -2413,7 +2413,7 @@ Python Fire 是 Google 开源的 Python 工具。
 
 它可以自动将 Python 对象转换为命令行接口。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/ca5743caccc97289e8510ab3987d269d_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/7704dd965c1e2041703280100d6875b2.png)
 
 **项目地址：**
 
@@ -2451,7 +2451,7 @@ YAPF 是 Google 开源的 Python 自动格式化工具。
 
 它根据 Python 风格规范自动调整代码格式。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/372c6fe4be20b177393f1aac57121ccb_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/5b065b781fe08dd119de9d0c2ce768d3.png)
 
 **项目地址：**
 
@@ -2531,7 +2531,7 @@ Auto 是 Google 开源的 Java 自动代码生成框架。
 
 它主要用于减少 Java 项目中的重复代码，让开发者通过简单注解生成标准代码。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/843188cc7b0d0d6fbc1d51f95361e404_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/ac887b3a5562468c2ed1be00b000c7a5.png)
 
 **项目地址：**
 
@@ -2573,7 +2573,7 @@ ZXing（"Zebra Crossing"）是 Google 开源的二维码和条码处理库。
 
 它是移动端二维码识别领域非常经典的开源项目。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/8a4cf858aa2a43c0ba8c99acad72eaaa_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/a2226034d3916714f5bdb0815756958f.png)
 
 **项目地址：**
 
@@ -2628,7 +2628,7 @@ https://github.com/zxing/zxing
 
 Compile Testing 是 Google 开源的 Java 编译测试工具。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/2f9636990ed1c43833b4cd1cc7ea3280_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/2c8ffef655ae089b4be93b8c4e49c0c3.png)
 
 它主要用于测试：
 
@@ -2674,7 +2674,7 @@ GRR（Google Rapid Response）是 Google 开发的远程安全取证平台。
 
 大规模终端设备调查和安全事件响应。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/f4ab0d85bbeb6bdd0869e3076239cb36_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/1a286855c39e9979ec71f41a353ec329.png)
 
 **项目地址：**
 
@@ -2718,7 +2718,7 @@ Tsunami 是 Google 开源的大规模网络安全扫描系统。
 
 它用于自动发现企业网络中的安全风险。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/0f3dc3fc2abb384626179b94ae0e7f22_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/cab575968d311127b2785753b4e40ffe.png)
 
 **项目地址：**
 
@@ -2809,7 +2809,7 @@ OSS-Fuzz 是 Google 推动的开源软件安全测试平台。
 
 它通过持续运行模糊测试（Fuzzing）发现开源项目中的隐藏漏洞。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/305a535d5b8e260f21cf4bb487095add_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/8a799ec7daa297d3c09e179720258239.png)
 
 **项目地址：**
 
@@ -2857,7 +2857,7 @@ Android 是 Google 主导开发的开源移动操作系统。
 
 它基于 Linux Kernel 构建，形成了完整的软件平台。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/0fea0febe67c8ad7ace191d93d34fd30_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/93b4c56164dec318d91dbc5336f8cbc3.png)
 
 **项目地址：**
 
@@ -2902,7 +2902,7 @@ Chromium 是 Google Chrome 浏览器的开源基础。
 
 大量现代浏览器都基于 Chromium 构建。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/76ce766ce0d496bca36a9fa090158af2_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/117857f53c7a9ed51daba49e84e69086.png)
 
 **项目地址：**
 
@@ -2944,7 +2944,7 @@ Fuchsia 是 Google 开发的新型操作系统。
 
 不同于 Android 基于 Linux Kernel，Fuchsia 使用自研 Zircon 微内核。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/956e6c1477d4ff18b042d4ea64ec19a0_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/481b41ee908fc69b965ec06c1fa59ada.png)
 
 **项目地址：**
 
@@ -3024,7 +3024,7 @@ https://github.com/google/ExoPlayer
 
 iOSched 是 Google 针对移动系统任务调度进行研究的开源项目。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/28abf0963c95af6e19a8e09f7616ec31_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/75e52d8100b603f4253ffb703b0bcce1.png)
 
 **项目地址：**
 
@@ -3062,7 +3062,7 @@ Filament 是 Google 开发的跨平台实时 3D 渲染引擎。
 
 它用于在移动设备和桌面环境中实现高质量图形渲染。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/0b3941be2b1ced6a5cdf5db18b7361d5_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/294c148285deb9d266b7bdade870cc16.png)
 
 **项目地址：**
 
@@ -3102,7 +3102,7 @@ https://github.com/google/filament
 
 Hover 是 Google 相关移动交互实验项目，用于探索新的 UI 交互方式。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/910117b1a7b8c7299e9cac13a3536a20_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/1b43b20ad41b228b67e21e0d1063749d.png)
 
 **项目地址：**
 
@@ -3170,7 +3170,7 @@ Tink 是 Google 开发的一套跨语言密码学库。
 
 都需要依赖可靠的密码学实现。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/749a7dec515b06b7b7725bb2485046a9_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/34e18ed3004150c4bf98d1c2ff718c74.png)
 
 **项目地址：**
 
@@ -3227,7 +3227,7 @@ https://github.com/google/tink
 
 Differential Privacy（差分隐私）是 Google 推动的重要隐私保护技术。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/8def1556740064124c5902139312f951_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/c5a822cc5befc60863f6ac29165dd64b.png)
 
 它解决的问题：
 
@@ -3318,7 +3318,7 @@ Open Location Code 又称 Plus Codes，是 Google 开发的位置编码方案。
 
 即使没有传统地址，也可以准确表示位置。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/4b2a2776be275c0905aa39129e7e1101_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/5fc4176dcfb44dc0a3d15abae0e0e2a6.png)
 
 **项目地址：**
 
@@ -3371,7 +3371,7 @@ OSV-Scanner 是 Google 开发的软件供应链安全工具。
 
 因此依赖安全成为关键问题。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/d94f9421aa02f2dc71ee04dd547f859a_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/d5a33e7545b4c5e1674b01fd2d3b6e82.png)
 
 **项目地址：**
 
@@ -3422,7 +3422,7 @@ Scorecards 是 Google Open Source Security Team 推出的安全评估工具。
 -   • 是否保护发布流程。
     
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/dc265cb44a5078fa77f2384fa2c8df44_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/8d8a8d68df5606086e44185a2e61eaca.png)
 
 **项目地址：**
 
@@ -3472,7 +3472,7 @@ Wycheproof 是 Google 开源的密码学测试工具。
 
 可能导致安全问题。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/b702896ed2bb81fab6cd995dd8370f88_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/f1fcca37ef009827d3ca92989b81315d.png)
 
 **项目地址：**
 
@@ -3597,7 +3597,7 @@ Apache Beam 最初由 Google 开发，后来成为 Apache 基金会项目。
 -   • 流处理。
     
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/f10ab949f611470248c27c5bab536d3e_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/0ca33f5cf09fe093dfee8b8f25e6f9f3.png)
 
 **项目地址：**
 
@@ -3650,7 +3650,7 @@ Firebase SDK 提供：
 
 应用连接云服务的能力。
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/24f7138587cd136829d329a60d732616_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/44e1c3c458b66d56dbf650733ae68e8d.png)
 
 **项目地址：**
 
@@ -3787,7 +3787,7 @@ Lighthouse 是 Google 开发的自动化 Web 质量检测工具。
 -   • SEO；
     
 
-![[Inbox/笔记同步助手/微信公众号/2026/08/images/caf3795147ae6fcf93ffdaea23beaf39_MD5.jpg]]
+![](https://relay-1.bijitongbu.site/p/dd1f67a9d06e11ab65f06dec8f805e1a.png)
 
 **项目地址：**
 
