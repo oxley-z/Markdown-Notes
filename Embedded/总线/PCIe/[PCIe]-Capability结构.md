@@ -69,7 +69,7 @@ PCIe协议定义了以下物理层Link状态，这些状态也对应了LTSSM状�
 省电顺序：L0<L0s<L1<L2<L3，越省电的状态recovery到L0正常工作状态的时间就会越长。
 L1和L2/3 Ready的进入需要在L0状态下协商进行。
 
-### Power Management Capability结构
+### Power Management Capability
 
 ![](image/-PCIe--Capability结构/IMG-20260629153341155.png)
 
