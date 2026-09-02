@@ -178,3 +178,26 @@ msiexec /package <software.msi>
 1. 按win+r快捷键，输入`services.msc`，进入服务
 2. 找到`VMware Authorization Service`，将其改为自动；
 3. 右键`VMware Authorization Service`，启动即可。
+# 13、Win10设置开机自动登陆系统，不用输入密码
+
+1、Win+r打开运行，输入`netplwiz`后确定；
+
+![](image/Windows常见问题解决方法/IMG-20260902201732681.png)
+
+2、在如下的用户账户界面勾选“**要使用本计算机，用户必须输入用户名和密码**”，然后应用；
+
+![](image/Windows常见问题解决方法/IMG-20260902202418263.png)
+
+2.1、如果打开的用户账户界面窗口没有“**要使用本计算机，用户必须输入用户名和密码**”，通过下面设置即可出现；
+
+win+r打开运行，输入“regedit”打开注册表，按照以下路径找到对应配置项
+
+`计算机\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\PasswordLess\Device`
+
+![](image/Windows常见问题解决方法/IMG-20260902202534481.png)
+
+将**DevicePasswordLessBuildVersion**的值由2改为0保存后，重新进行第2步即可；
+
+3、在弹出的自动登录框中，输入密码，后面系统就会使用此密码自动登录；
+
+![](image/Windows常见问题解决方法/IMG-20260902202702071.png)
