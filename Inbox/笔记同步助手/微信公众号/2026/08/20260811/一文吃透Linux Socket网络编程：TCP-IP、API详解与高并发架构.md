@@ -1928,7 +1928,7 @@ recv();
 
 并让内核过滤其他对端的数据报。
 
-![](https://relay-1.bijitongbu.site/p/8150c1b7b48957c87fdfc1e1317ddb89.png)
+![[Inbox/笔记同步助手/微信公众号/2026/08/images/f2d289522f593e617147d152843a033f_MD5.jpg]]
 
 ### 7.5 UDP数据报与TCP字节流的区别
 
