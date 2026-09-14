@@ -141,6 +141,11 @@ PME 上下文（PME Con​​text）包含 PME_Status 和 PME_En 位的值，实
 
 使用数据寄存器（Data register）时，需先向 PMCSR 中的 Data_Select 字段写入适当的值，然后读取 Data_Scale 字段和数据寄存器。将从数据寄存器读取的二进制值乘以 Data_Scale 所指示的比例因子，即可得出所需的测量值。
 
+# PCI Express Capability Structure
+
+
+
+
 ## MSI（Message Signaled Interrupts）-消息信号中断能力（0x05）
 
 
