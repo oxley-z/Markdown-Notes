@@ -1,9 +1,9 @@
 {
   "id": "consistent-attachments-and-links",
   "name": "Consistent Attachments and Links",
-  "version": "3.33.12",
-  "minAppVersion": "1.12.7",
-  "description": "This plugin ensures the consistency of attachments and links.",
+  "version": "5.4.0",
+  "minAppVersion": "1.14.5",
+  "description": "Reports every link whose written path does not lead to its target and every misplaced attachment, and repairs names and paths that a platform your vault syncs to would reject.",
   "author": "Dmitry Savosh",
   "authorUrl": "https://github.com/dy-sh/",
   "isDesktopOnly": false,
