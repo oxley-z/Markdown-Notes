@@ -65,6 +65,30 @@ chcp 65001 > $null
 ```powershell
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
+
+## PowerShell中使用wget下载整个网页
+
+### 安装wget
+```bash
+winget install JernejSimoncic.Wget
+```
+### 下载网页
+```bash
+wget -r -p -np -k https://pcie.pw/
+```
+
+-r, --recursive（递归） specify recursive download.（指定递归下载）
+
+-k, --convert-links（转换链接） make links in downloaded HTML point to local files.（将下载的HTML页面中的链接转换为相对链接即本地链接）
+
+-p, --page-requisites（页面必需元素） get all images, etc. needed to display HTML page.（下载所有的图片等页面显示所需的内容）
+
+-np, --no-parent（不追溯至父级） don't ascend to the parent directory.
+
+另外断点续传用-nc参数 日志 用-o参数
+
+[wget 递归下载整个网站(网站扒皮必备)](https://www.cnblogs.com/ninama/p/16126290.html "发布于 2022-04-10 16:13")
+[高效下载 NGINX 静态网站：利用 wget 进行递归下载](https://sitoi.cn/posts/46937.html)
 # 3、禁用驱动程序强制签名
 
 打开设置（win+i）->更新和安全->恢复->高级启动->立即重新启动->疑难解答->高级选项->启动设置->重启->根据提示输入`7`禁用驱动程序强制签名
