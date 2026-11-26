@@ -13,6 +13,7 @@
 // 然后在订阅的「扩展」页把模式切到「脚本」并选中这个脚本。
 // 要求 FlClash ≥ 0.8.93（内核 mihomo ≥ v1.19.25 才有 type: tailscale）。
 
+注意以下为需要修改的地方
 // name-mihomo为在Tailscale网页端显示的名称，可更改为需要的名称
 // tskey-auth-xxxx为创建的auth key
 
